@@ -35,9 +35,9 @@ export type authLoginType = {
   rememberMe: boolean;
 };
 type RegisterResponseType = {
-  addedUser: User;
+  addedUser: ProfileType;
 };
-type User = {
+export type ProfileType = {
   _id: "644d432ec7db090b8cd48f34";
   email: "alexsuslim@inbox.ru";
   rememberMe: false;
