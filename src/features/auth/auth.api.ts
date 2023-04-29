@@ -5,7 +5,7 @@ export const authApi = {
     return instance.post<RegisterResponseType>("/auth/register", arg);
   },
   login(arg: authLoginType) {
-    return instance.post<LoginResponse>("/auth/login", arg);
+    return instance.post<ProfileType>("/auth/login", arg);
   },
 };
 
