@@ -25,13 +25,13 @@ function App() {
     <>
       {/*<header className="App-header">*/}
 
-      {/*<Routes>*/}
-      {/*  <Route path={"/"} element={<Profile />} />*/}
-      {/*  <Route path={"/login"} element={<Login />} />*/}
-      {/*  <Route path={"/learn"} element={<Learn />} />*/}
-      {/*  <Route path={"/packs"} element={<Packs />} />*/}
-      {/*  <Route path={"/register"} element={<Register />} />*/}
-      {/*</Routes>*/}
+      <Routes>
+        {/*  <Route path={"/"} element={<Profile />} />*/}
+        <Route path={"/login"} element={<Login />} />
+        {/*  <Route path={"/learn"} element={<Learn />} />*/}
+        {/*  <Route path={"/packs"} element={<Packs />} />*/}
+        <Route path={"/register"} element={<Register />} />
+      </Routes>
       {/*<img src={logo} className="App-logo" alt="logo" />*/}
       {isLoading && <> ...LOADING</>}
       <Counter />

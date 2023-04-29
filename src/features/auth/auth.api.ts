@@ -1,27 +1,51 @@
 import { instance } from "common/api";
 
 export const authApi = {
-  register() {
-    const payload = {
-      email: "nya-admin@nya.nya",
-      password: "1qazxcvBG",
-    };
-    return instance.post(" /auth/register", payload);
+  register(arg: argRegisterType) {
+    return instance.post<RegisterResponseType>("/auth/register", arg);
+  },
+  login(arg: authLoginType) {
+    return instance.post<LoginResponse>("/auth/login", arg);
   },
 };
 
-type meType = {
-  _id: string;
+export type LoginResponse = {
+  _id: "644d432ec7db090b8cd48f34";
+  email: "alexsuslim@inbox.ru";
+  rememberMe: false;
+  isAdmin: false;
+  name: "alexsuslim@inbox.ru";
+  verified: false;
+  publicCardPacksCount: 0;
+  created: "2023-04-29T16:17:50.078Z";
+  updated: "2023-04-29T16:57:41.399Z";
+  __v: 0;
+  token: "f42fe170-e6ae-11ed-83c8-e3cfd42ecbd9";
+  tokenDeathTime: 1682798261386;
+};
+// /auth/login
+export type argRegisterType = {
   email: string;
-  name: string;
-  avatar?: string;
-  publicCardPacksCount: number; // количество колод
+  password: string;
+};
 
-  created: Date;
-  updated: Date;
-  isAdmin: boolean;
-  verified: boolean; // подтвердил ли почту
+export type authLoginType = {
+  email: string;
+  password: string;
   rememberMe: boolean;
-
-  error?: string;
+};
+type RegisterResponseType = {
+  addedUser: User;
+};
+type User = {
+  _id: "644d432ec7db090b8cd48f34";
+  email: "alexsuslim@inbox.ru";
+  rememberMe: false;
+  isAdmin: false;
+  name: "alexsuslim@inbox.ru";
+  verified: false;
+  publicCardPacksCount: 0;
+  created: "2023-04-29T16:17:50.078Z";
+  updated: "2023-04-29T16:17:50.078Z";
+  __v: 0;
 };
