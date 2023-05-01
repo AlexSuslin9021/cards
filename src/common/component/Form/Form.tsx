@@ -1,25 +1,27 @@
 import { useAppDispatch } from "app/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { authThunks } from "features/auth/auth.slice";
 import s from "./Form.module.scss";
-import b from "common/component/Button/button.module.scss";
 import React from "react";
-import login from "Component/Login/Login";
-
-export const Form = () => {
+import { Button } from "common/component/Button/Button";
+import { NavLink } from "react-router-dom";
+type FormType = {
+  callback: any;
+  name: string;
+  toggle: boolean;
+};
+export const Form = (props: FormType) => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<IFormInput>({
     defaultValues: {
       email: "",
       password: "",
+      confirmPassword: "",
       rememberMe: false,
     },
   });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => alert(JSON.stringify(data));
-  // dispatch(authThunks.loginTC(data));
+  const onSubmit: SubmitHandler<IFormInput> = (data) => dispatch(props.callback(data));
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
-      {/*<div>Email</div>*/}
       <div className={s.input}>
         <input
           placeholder={"Email"}
@@ -32,19 +34,31 @@ export const Form = () => {
           })}
         />
       </div>
-      <div className={s.input}>
-        <input placeholder={"Password"} {...register("password")} />
-      </div>
-      <div className={s.input}>
-        <input type={"checkbox"} {...register("rememberMe")} />
-        Remember me
-      </div>
+      {props.toggle ? (
+        <div className={s.input}>
+          <input placeholder={"Password"} {...register("password")} />
+        </div>
+      ) : (
+        ""
+      )}
 
-      <button className={b.button} type="submit">
-        Sign in
-      </button>
-
-      {/*<input type="submit" />*/}
+      {props.toggle ? (
+        <div className={s.input}>
+          <input type={"checkbox"} {...register("rememberMe")} />
+          Remember me
+        </div>
+      ) : (
+        <div className={s.input}>
+          <input placeholder={"Confirm password"} {...register("confirmPassword")} />
+        </div>
+      )}
+      {props.toggle && (
+        <NavLink className={s.forgotPassword} to={""}>
+          {" "}
+          Forgot password{" "}
+        </NavLink>
+      )}
+      <Button name={props.name} />
     </form>
   );
 };
@@ -53,4 +67,5 @@ interface IFormInput {
   email: string;
   password: string;
   rememberMe: boolean;
+  confirmPassword: "";
 }

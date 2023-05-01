@@ -1,36 +1,19 @@
 import React from "react";
-import { useAppDispatch } from "app/hooks";
-import { authLoginType } from "features/auth/auth.api";
 import { authThunks, loginTC } from "features/auth/auth.slice";
-import { SubmitHandler, useForm } from "react-hook-form";
 import s from "Component/Login/ContainerLogin.module.scss";
 import { Title } from "common/component/Title/Title";
-import b from "../../common/component/Button/button.module.scss";
 import { Form } from "common/component/Form/Form";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
 import { Hint } from "common/component/Hint/Hint";
 
 const Login = () => {
-  const dispatch = useAppDispatch();
-
-  // const loginHandler = () => {
-  //   const payload = {
-  //     email: "alexsuslim@inbox.ru",
-  //     password: "utnthj[hjyyjcnm",
-  //     rememberMe: false,
-  //   };
-  //
-  //   dispatch(authThunks.loginTC(payload));
-  // };
   return (
     <div className={s.containLogo}>
       <div className={s.login}>
-        <Title name={"Login"} />
-        <Form />
+        <Title name={"Sign in"} />
+        <Form callback={authThunks.loginTC} name={"Sign in"} toggle={true} />
         <Hint description={"Don't have an account?"} />
-        <BottomAuth name={"Sign in"} />
-        {/*<button onClick={loginhandler}> add</button>*/}
-        {/*Login*/}
+        <BottomAuth name={"Sign up"} />
       </div>
     </div>
   );

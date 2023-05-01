@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <div className={s.header}>
       <div className={s.button}>
-        <Button name={"Sign in"} callback={() => console.log("test")} />
+        <Button name={"Sign in"} />
       </div>
     </div>
   );
