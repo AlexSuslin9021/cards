@@ -11,7 +11,7 @@ const Register = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Sign up"} />
-        <Form callback={authThunks.registerTC} name={"Sign un"} toggle={false} />
+        <Form callback={authThunks.registerTC} name={"Sign up"} toggle={false} />
         <Hint description={"Already have an account?"} />
         <BottomAuth name={"Sign in"} />
       </div>
@@ -20,3 +20,10 @@ const Register = () => {
 };
 
 export default Register;
+
+// let age = prompt('Возраст?', 18);
+//
+// let message = (age < 3) ? 'Здравствуй, малыш!' :
+//   (age < 18) ? 'Привет!' :
+//     (age < 100) ? 'Здравствуйте!' :
+//       'Какой необычный возраст!';

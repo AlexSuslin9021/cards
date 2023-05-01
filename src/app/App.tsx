@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsloadingTC } from "app/app.slice";
 import { AppDispatch, RootState } from "app/store";
 import { Header } from "Component/Header/Header";
+import { ForgotPassword } from "Component/ForgotPassword/ForgotPassword";
 
 function App() {
   const isLoading = useSelector<RootState>((state) => state.app.isLoading);
@@ -29,6 +30,8 @@ function App() {
       <Routes>
         {/*  <Route path={"/"} element={<Profile />} />*/}
         <Route path={"/login"} element={<Login />} />
+        <Route path={"/forgot-password"} element={<ForgotPassword />} />
+
         {/*  <Route path={"/learn"} element={<Learn />} />*/}
         {/*  <Route path={"/packs"} element={<Packs />} />*/}
         <Route path={"/register"} element={<Register />} />

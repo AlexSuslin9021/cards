@@ -34,7 +34,7 @@ export const Form = (props: FormType) => {
           })}
         />
       </div>
-      {props.toggle ? (
+      {props.name === "Sign in" ? (
         <div className={s.input}>
           <input placeholder={"Password"} {...register("password")} />
         </div>
@@ -42,21 +42,27 @@ export const Form = (props: FormType) => {
         ""
       )}
 
-      {props.toggle ? (
+      {props.name === "Sign in" ? (
         <div className={s.input}>
           <input type={"checkbox"} {...register("rememberMe")} />
           Remember me
         </div>
-      ) : (
+      ) : props.name === "Sign up" ? (
         <div className={s.input}>
           <input placeholder={"Confirm password"} {...register("confirmPassword")} />
         </div>
+      ) : (
+        ""
       )}
+
       {props.toggle && (
         <NavLink className={s.forgotPassword} to={""}>
           {" "}
           Forgot password{" "}
         </NavLink>
+      )}
+      {props.name === "Send Instructions" && (
+        <div>Enter your email address and we will send you further instructions </div>
       )}
       <Button name={props.name} />
     </form>
