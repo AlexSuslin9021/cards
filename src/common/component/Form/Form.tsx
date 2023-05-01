@@ -1,7 +1,7 @@
 import { useAppDispatch } from "app/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { authThunks } from "features/auth/auth.slice";
-import s from "Component/Login/ContainerLogin.module.scss";
+import s from "./Form.module.scss";
 import b from "common/component/Button/button.module.scss";
 import React from "react";
 import login from "Component/Login/Login";
@@ -20,7 +20,7 @@ export const Form = () => {
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
       {/*<div>Email</div>*/}
-      <div>
+      <div className={s.input}>
         <input
           placeholder={"Email"}
           {...register("email", {
@@ -32,12 +32,14 @@ export const Form = () => {
           })}
         />
       </div>
-
-      <div>
+      <div className={s.input}>
         <input placeholder={"Password"} {...register("password")} />
       </div>
-      <div> Remember me</div>
-      <input type={"checkbox"} {...register("rememberMe")} />
+      <div className={s.input}>
+        <input type={"checkbox"} {...register("rememberMe")} />
+        Remember me
+      </div>
+
       <button className={b.button} type="submit">
         Sign in
       </button>
