@@ -8,6 +8,7 @@ import { Title } from "common/component/Title/Title";
 import b from "../../common/component/Button/button.module.scss";
 import { Form } from "common/component/Form/Form";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
+import { Hint } from "common/component/Hint/Hint";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ const Login = () => {
       <div className={s.login}>
         <Title name={"Login"} />
         <Form />
+        <Hint description={"Don't have an account?"} />
         <BottomAuth name={"Sign in"} />
         {/*<button onClick={loginhandler}> add</button>*/}
         {/*Login*/}
