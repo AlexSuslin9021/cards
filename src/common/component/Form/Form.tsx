@@ -22,7 +22,7 @@ export const Form = (props: FormType) => {
   const onSubmit: SubmitHandler<IFormInput> = (data) => dispatch(props.callback(data));
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
-      <div className={s.input}>
+
         <input
           placeholder={"Email"}
           {...register("email", {
@@ -48,7 +48,7 @@ export const Form = (props: FormType) => {
         ) : (
           ""
         )}
-      </div>
+
       {props.toggle && (
         <NavLink className={s.forgotPassword} to={""}>
           {" "}
