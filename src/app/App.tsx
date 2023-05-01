@@ -11,6 +11,7 @@ import Register from "Component/Register/Register";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsloadingTC } from "app/app.slice";
 import { AppDispatch, RootState } from "app/store";
+import { Header } from "Component/Header/Header";
 
 function App() {
   const isLoading = useSelector<RootState>((state) => state.app.isLoading);
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      {/*<header className="App-header">*/}
+      <Header />
 
       <Routes>
         {/*  <Route path={"/"} element={<Profile />} />*/}
@@ -33,8 +34,8 @@ function App() {
         <Route path={"/register"} element={<Register />} />
       </Routes>
       {/*<img src={logo} className="App-logo" alt="logo" />*/}
-      {isLoading && <> ...LOADING</>}
-      <Counter />
+      {/*{isLoading && <> ...LOADING</>}*/}
+      {/*<Counter />*/}
       {/*<p>*/}
       {/*  Edit <code>src/App.tsx</code> and save to reload.*/}
       {/*</p>*/}
