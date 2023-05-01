@@ -33,28 +33,22 @@ export const Form = (props: FormType) => {
             },
           })}
         />
-      </div>
-      {props.name === "Sign in" ? (
-        <div className={s.input}>
-          <input placeholder={"Password"} {...register("password")} />
-        </div>
-      ) : (
-        ""
-      )}
 
-      {props.name === "Sign in" ? (
-        <div className={s.input}>
-          <input type={"checkbox"} {...register("rememberMe")} />
-          Remember me
-        </div>
-      ) : props.name === "Sign up" ? (
-        <div className={s.input}>
+        {props.name === "Sign in" ? <input placeholder={"Password"} {...register("password")} /> : ""}
+
+        {props.name === "Sign in" ? (
+          <div>
+            <input type={"checkbox"} {...register("rememberMe")} />
+            Remember Me
+          </div>
+        ) : // Remember me
+
+        props.name === "Sign up" ? (
           <input placeholder={"Confirm password"} {...register("confirmPassword")} />
-        </div>
-      ) : (
-        ""
-      )}
-
+        ) : (
+          ""
+        )}
+      </div>
       {props.toggle && (
         <NavLink className={s.forgotPassword} to={""}>
           {" "}

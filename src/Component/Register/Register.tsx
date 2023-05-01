@@ -13,7 +13,7 @@ const Register = () => {
         <Title name={"Sign up"} />
         <Form callback={authThunks.registerTC} name={"Sign up"} toggle={false} />
         <Hint description={"Already have an account?"} />
-        <BottomAuth name={"Sign in"} />
+        <BottomAuth name={"Sign in"} to={"/login"} />
       </div>
     </div>
   );
