@@ -14,6 +14,7 @@ import { AppDispatch, RootState } from "app/store";
 import { Header } from "Component/Header/Header";
 import { ForgotPassword } from "Component/ForgotPassword/ForgotPassword";
 import { CheckEmail } from "Component/CheckEmail/CheckEmail";
+import { CreatePassword } from "Component/CreatePassword/CreatePassword";
 
 function App() {
   const isLoading = useSelector<RootState>((state) => state.app.isLoading);
@@ -34,34 +35,10 @@ function App() {
         <Route path={"/register"} element={<Register />} />
         <Route path={"/forgot-password"} element={<ForgotPassword />} />
         <Route path={"/check-email"} element={<CheckEmail />} />
+        <Route path={"/create-password"} element={<CreatePassword />} />
         <Route path={"/learn"} element={<Learn />} />
         <Route path={"/packs"} element={<Packs />} />
       </Routes>
-      {/*<img src={logo} className="App-logo" alt="logo" />*/}
-      {/*{isLoading && <> ...LOADING</>}*/}
-      {/*<Counter />*/}
-      {/*<p>*/}
-      {/*  Edit <code>src/App.tsx</code> and save to reload.*/}
-      {/*</p>*/}
-      {/*<span>*/}
-      {/*  <span>Learn </span>*/}
-      {/*  <a className="App-link" href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">*/}
-      {/*    React*/}
-      {/*  </a>*/}
-      {/*  <span>, </span>*/}
-      {/*  <a className="App-link" href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">*/}
-      {/*    Redux*/}
-      {/*  </a>*/}
-      {/*  <span>, </span>*/}
-      {/*  <a className="App-link" href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">*/}
-      {/*    Redux Toolkit*/}
-      {/*  </a>*/}
-      {/*  ,<span> and </span>*/}
-      {/*  <a className="App-link" href="https://react-redux.js.org/" target="_blank" rel="noopener noreferrer">*/}
-      {/*    React Redux*/}
-      {/*  </a>*/}
-      {/*</span>*/}
-      {/*</header>*/}
     </>
   );
 }

@@ -15,9 +15,10 @@ const slice = createSlice({
     builder.addCase(loginTC.fulfilled, (state, action) => {
       state.profile = action.payload.profile;
     });
-    // builder.addCase(registerTC.fulfilled,(state, action)=>{
-    //
-    // })
+    builder.addCase(registerTC.fulfilled, (state, action) => {});
+    builder.addCase(updateUserTC.fulfilled, (state, action) => {
+      state.profile = action.payload.profile;
+    });
   },
 });
 //AC
@@ -25,6 +26,10 @@ export const authReducers = slice.reducer;
 //TC
 export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/register", async (arg) => {
   await authApi.register(arg);
+});
+export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginType>("/auth/me", async (arg) => {
+  let res = await authApi.updateUser(arg);
+  return { profile: res.data };
 });
 
 export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginType>("/auth/login", async (arg) => {

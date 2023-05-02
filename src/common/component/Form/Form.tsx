@@ -63,7 +63,7 @@ export const Form = (props: FormType) => {
 
       {props.toggle && (
         <div className={s.forgotPassword}>
-          <NavLink to={"/register"}>Forgot password</NavLink>
+          <NavLink to={"/forgot-password"}>Forgot password</NavLink>
         </div>
       )}
       {props.name === "Send Instructions" && (

@@ -7,6 +7,9 @@ export const authApi = {
   login(arg: authLoginType) {
     return instance.post<ProfileType>("/auth/login", arg);
   },
+  updateUser(arg: authLoginType) {
+    return instance.put<ProfileType>("/auth/me", arg);
+  },
 };
 
 export type LoginResponse = {
