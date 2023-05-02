@@ -1,32 +1,49 @@
 .formContainer{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 280px;
-
-  margin-bottom:20px ;
+  justify-content: center;
   align-items: center;
+  //width: 100%;
+  margin-bottom:20px ;
+  //align-items: center;
+  .me{
+    display: flex;
+    text-align: left;
+    margin-bottom: 30px;
 
+  }
+  .input{
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     input{
       border: none;
-      margin-top: 50px;
+      width: 250px;
       opacity: 0.2;
-      width: 200px;
       border-bottom: 2px solid black;
       //background-color: transparent;
       color: inherit;
       outline: none;
 
     }
+  }
 
-  a{
-    color:black;
+.forgotPassword {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  a {
+    color: black;
     font-family: Montserrat sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
     align-items: flex-start;
-text-decoration: none;
+    text-decoration: none;
 
   }
+}
 }

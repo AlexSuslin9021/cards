@@ -22,7 +22,7 @@ export const Form = (props: FormType) => {
   const onSubmit: SubmitHandler<IFormInput> = (data) => dispatch(props.callback(data));
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
-
+      <div className={s.input}>
         <input
           placeholder={"Email"}
           {...register("email", {
@@ -33,27 +33,38 @@ export const Form = (props: FormType) => {
             },
           })}
         />
+      </div>
 
-        {props.name === "Sign in" ? <input placeholder={"Password"} {...register("password")} /> : ""}
+      {props.name === "Sign in" ? (
+        <div className={s.input}>
+          {" "}
+          <input placeholder={"Password"} {...register("password")} />
+        </div>
+      ) : (
+        ""
+      )}
 
-        {props.name === "Sign in" ? (
+      {props.name === "Sign in" ? (
+        <div className={s.me}>
           <div>
             <input type={"checkbox"} {...register("rememberMe")} />
-            Remember Me
+            <span> Rememeber me</span>
           </div>
-        ) : // Remember me
+        </div>
+      ) : // <span> Remember Me</span>
 
-        props.name === "Sign up" ? (
-          <input placeholder={"Confirm password"} {...register("confirmPassword")} />
-        ) : (
-          ""
-        )}
+      // Remember me
+
+      props.name === "Sign up" ? (
+        <input placeholder={"Confirm password"} {...register("confirmPassword")} />
+      ) : (
+        ""
+      )}
 
       {props.toggle && (
-        <NavLink className={s.forgotPassword} to={""}>
-          {" "}
-          Forgot password{" "}
-        </NavLink>
+        <div className={s.forgotPassword}>
+          <NavLink to={"/register"}>Forgot password</NavLink>
+        </div>
       )}
       {props.name === "Send Instructions" && (
         <div>Enter your email address and we will send you further instructions </div>
