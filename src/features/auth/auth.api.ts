@@ -1,4 +1,5 @@
 import { instance } from "common/api";
+import axios from "axios";
 
 export const authApi = {
   register(arg: argRegisterType) {
@@ -17,9 +18,9 @@ export const authApi = {
     return instance.delete("/auth/me");
   },
   forgotPassword(arg: ForgotPasswordType) {
-    return instance.post<ForgotPasswordType>("/auth/forgot", arg);
+    return axios.post<ForgotPasswordType>("https://neko-back.herokuapp.com/2.0)", { arg }, { withCredentials: true });
   },
-  setNewPassword(arg: SetNewPasswordType) {
+  createNewPassword(arg: CreatePasswordType) {
     return instance.post<ForgotPasswordType>("/auth/set-new-password", arg);
   },
 };
@@ -28,6 +29,10 @@ export const authApi = {
 export type argRegisterType = {
   email: string;
   password: string;
+};
+export type CreatePasswordType = {
+  password: string;
+  resetPasswordToken: string;
 };
 export type SetNewPasswordType = {
   password: string;

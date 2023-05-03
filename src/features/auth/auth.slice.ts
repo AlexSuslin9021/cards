@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { argRegisterType, authApi, authLoginType, ProfileType, UpdateUserType } from "features/auth/auth.api";
+import {
+  argRegisterType,
+  authApi,
+  authLoginType,
+  CreatePasswordType,
+  ForgotPasswordType,
+  ProfileType,
+  UpdateUserType,
+} from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 
 import { setIsLoggedInAC } from "app/app.slice";
@@ -47,14 +55,22 @@ export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginTy
 });
 export const logoutTC = createAppAsyncThunk("/auth/login", async () => {
   await authApi.logout();
-
   return { profile: {} };
 });
+export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
+  "/auth/set-new-password",
+  async (arg: CreatePasswordType) => {
+    await authApi.createNewPassword(arg);
+  }
+);
 
-export const meTC = createAppAsyncThunk("/auth/login", async () => {
-  const res = await authApi.me();
-  return { profile: res.data };
-});
+export const forgotPasswordTC = createAppAsyncThunk(
+  "https://neko-back.herokuapp.com/2.0)x",
+  async (arg: ForgotPasswordType) => {
+    await authApi.forgotPassword(arg);
+    // return { profile: res.data };
+  }
+);
 
 export type ProfileDomainType = {
   _id?: "644d432ec7db090b8cd48f34";
@@ -111,4 +127,4 @@ export type ProfileDomainType = {
 //       })
 //   }
 // }
-export const authThunks = { registerTC, loginTC };
+export const authThunks = { registerTC, loginTC, createNewPasswordTC };
