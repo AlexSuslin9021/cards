@@ -7,25 +7,17 @@ export const authApi = {
   login(arg: authLoginType) {
     return instance.post<ProfileType>("/auth/login", arg);
   },
-  updateUser(arg: authLoginType) {
+  me() {
+    return instance.post<ProfileType>("/auth/me", {});
+  },
+  updateUser(arg: ProfileType) {
     return instance.put<ProfileType>("/auth/me", arg);
+  },
+  logout() {
+    return instance.delete("/auth/me");
   },
 };
 
-export type LoginResponse = {
-  _id: "644d432ec7db090b8cd48f34";
-  email: "alexsuslim@inbox.ru";
-  rememberMe: false;
-  isAdmin: false;
-  name: "alexsuslim@inbox.ru";
-  verified: false;
-  publicCardPacksCount: 0;
-  created: "2023-04-29T16:17:50.078Z";
-  updated: "2023-04-29T16:57:41.399Z";
-  __v: 0;
-  token: "f42fe170-e6ae-11ed-83c8-e3cfd42ecbd9";
-  tokenDeathTime: 1682798261386;
-};
 // /auth/login
 export type argRegisterType = {
   email: string;
@@ -41,6 +33,19 @@ type RegisterResponseType = {
   addedUser: ProfileType;
 };
 export type ProfileType = {
+  _id?: string;
+  email?: string;
+  rememberMe?: boolean;
+  isAdmin?: boolean;
+  name?: string;
+  verified?: boolean;
+  publicCardPacksCount?: string;
+  created?: string;
+  updated?: string;
+  __v?: number;
+};
+
+export type LoginResponse = {
   _id: "644d432ec7db090b8cd48f34";
   email: "alexsuslim@inbox.ru";
   rememberMe: false;
@@ -49,6 +54,8 @@ export type ProfileType = {
   verified: false;
   publicCardPacksCount: 0;
   created: "2023-04-29T16:17:50.078Z";
-  updated: "2023-04-29T16:17:50.078Z";
+  updated: "2023-04-29T16:57:41.399Z";
   __v: 0;
+  token: "f42fe170-e6ae-11ed-83c8-e3cfd42ecbd9";
+  tokenDeathTime: 1682798261386;
 };

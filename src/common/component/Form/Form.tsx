@@ -37,8 +37,7 @@ export const Form = (props: FormType) => {
 
       {props.name === "Sign in" ? (
         <div className={s.input}>
-          {" "}
-          <input placeholder={"Password"} {...register("password")} />
+          <input type={"password"} placeholder={"Password"} {...register("password")} />
         </div>
       ) : (
         ""
