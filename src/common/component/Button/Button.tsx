@@ -2,7 +2,7 @@ import React from "react";
 import s from "common/component/Button/button.module.scss";
 type ButtonType = {
   name: string;
-  // callback: () => void;
+  // callback?: any;
 };
 
 export const Button: React.FC<ButtonType> = (props) => {
@@ -10,7 +10,7 @@ export const Button: React.FC<ButtonType> = (props) => {
     // props.callback();
   };
   return (
-    <button className={s.button} type={"submit"}>
+    <button onClick={onClickHandler} className={s.button} type={"submit"}>
       {" "}
       {props.name}{" "}
     </button>

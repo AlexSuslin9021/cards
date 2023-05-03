@@ -30,8 +30,7 @@ export const setIsLoggedInTC = () => (dispatch: any) => {
   dispatch(setIsLoggedInAC({ isLoggedIn: false }));
 };
 export const initializedTC = createAppAsyncThunk("/auth/login", async () => {
-  debugger;
-  await authApi.me();
+  const res = await authApi.me();
 
-  return { profile: {} };
+  return { profile: res.data };
 });

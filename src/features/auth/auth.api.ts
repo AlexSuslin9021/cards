@@ -10,11 +10,17 @@ export const authApi = {
   me() {
     return instance.post<ProfileType>("/auth/me", {});
   },
-  updateUser(arg: ProfileType) {
+  updateUser(arg: UpdateUserType) {
     return instance.put<ProfileType>("/auth/me", arg);
   },
   logout() {
     return instance.delete("/auth/me");
+  },
+  forgotPassword(arg: ForgotPasswordType) {
+    return instance.post<ForgotPasswordType>("/auth/forgot", arg);
+  },
+  setNewPassword(arg: SetNewPasswordType) {
+    return instance.post<ForgotPasswordType>("/auth/set-new-password", arg);
   },
 };
 
@@ -22,6 +28,21 @@ export const authApi = {
 export type argRegisterType = {
   email: string;
   password: string;
+};
+export type SetNewPasswordType = {
+  password: string;
+  resetPasswordToken: string;
+};
+
+export type UpdateUserType = {
+  name?: string;
+  avatar?: string;
+};
+export type ForgotPasswordType = {
+  email: string;
+  from: string;
+
+  message: string;
 };
 
 export type authLoginType = {

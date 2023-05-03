@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { argRegisterType, authApi, authLoginType, ProfileType } from "features/auth/auth.api";
+import { argRegisterType, authApi, authLoginType, ProfileType, UpdateUserType } from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 
 import { setIsLoggedInAC } from "app/app.slice";
 
 const authInitialState = {
-  profile: { name: "" } as ProfileType | null,
+  profile: null as ProfileType | null,
   isLoggedIn: false,
   isAppInitialized: false,
 };
@@ -19,9 +19,13 @@ const slice = createSlice({
       state.profile = action.payload.profile;
       state.isLoggedIn = true;
     });
+    // builder.addCase(logoutTC.fulfilled, (state, action) => {
+    //   state.profile = {};
+    //   state.isLoggedIn = false;
+    // });
     builder.addCase(registerTC.fulfilled, (state, action) => {});
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
-      if (state.profile !== null) state.profile.name = action.payload.profile.name;
+      if (state.profile !== null) state.profile = action.payload.profile;
     });
   },
 });
@@ -31,39 +35,25 @@ export const authReducers = slice.reducer;
 export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/register", async (arg) => {
   await authApi.register(arg);
 });
-export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, ProfileType>("/auth/me", async (arg, get) => {
-  // let a = {
-  //   _id: arg._id,
-  //   email: arg.email,
-  //   rememberMe: arg.rememberMe,
-  //   isAdmin: arg.isAdmin,
-  //   name: arg.name,
-  //   verified: arg.verified,
-  //   publicCardPacksCount: arg.publicCardPacksCount,
-  //   created: arg.created,
-  //   updated: arg.updated,
-  //   __v: arg.__v,
-  //
-  //
-  // };
-
+export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>("/auth/me", async (arg) => {
   let res = await authApi.updateUser(arg);
   return { profile: res.data };
 });
 
 export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginType>("/auth/login", async (arg) => {
   let res = await authApi.login(arg);
-  setIsLoggedInAC({ isLoggedIn: true });
+
   return { profile: res.data };
 });
 export const logoutTC = createAppAsyncThunk("/auth/login", async () => {
   await authApi.logout();
+
   return { profile: {} };
 });
 
 export const meTC = createAppAsyncThunk("/auth/login", async () => {
-  await authApi.me();
-  return { profile: {} };
+  const res = await authApi.me();
+  return { profile: res.data };
 });
 
 export type ProfileDomainType = {
@@ -88,7 +78,7 @@ export type ProfileDomainType = {
 //   deadline?: string
 // }
 // export const updateTaskTC = (idTodo: string, idTask: string, domainModel: UpdateDomainTaskType) => (dispatch: Dispatch, getState: () => AppStateType) => {
-//   debugger
+//
 //   let task = getState().tasks[idTodo].find(t => t.id === idTask)
 //   if (task) {
 //     let model: TaskStatus = {

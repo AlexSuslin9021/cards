@@ -7,8 +7,9 @@ import { EditableSpan } from "Component/Profile/EditableSpan/EditableSpan";
 import b from "../../common/component//Button/button.module.scss";
 import { useAppDispatch } from "app/hooks";
 import { logoutTC } from "features/auth/auth.slice";
-import { useAppSelector } from "app/store";
+import { RootState, useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
+import { ProfileType } from "features/auth/auth.api";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,9 @@ const Profile = () => {
     dispatch(logoutTC());
   };
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+  const email = useAppSelector((state) => {
+    if (state.auth.profile !== null) return state.auth.profile.email;
+  });
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }
@@ -27,7 +31,7 @@ const Profile = () => {
           <div className={style.iconContainer}> </div>
           <EditableSpan />
         </div>
-        <div> email</div>
+        <div> {email}</div>
         <button className={b.button} onClick={onClickLogout}>
           Logout
         </button>
