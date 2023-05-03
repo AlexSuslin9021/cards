@@ -27,10 +27,9 @@ const slice = createSlice({
       state.profile = action.payload.profile;
       state.isLoggedIn = true;
     });
-    // builder.addCase(logoutTC.fulfilled, (state, action) => {
-    //   state.profile = {};
-    //   state.isLoggedIn = false;
-    // });
+    builder.addCase(logoutTC.fulfilled, (state, action) => {
+      state.isLoggedIn = false;
+    });
     builder.addCase(registerTC.fulfilled, (state, action) => {});
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;
@@ -53,9 +52,8 @@ export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginTy
 
   return { profile: res.data };
 });
-export const logoutTC = createAppAsyncThunk("/auth/login", async () => {
+export const logoutTC = createAppAsyncThunk<void>("auth/me", async () => {
   await authApi.logout();
-  return { profile: {} };
 });
 export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
   "/auth/set-new-password",

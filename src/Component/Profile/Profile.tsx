@@ -6,10 +6,11 @@ import { useSelector } from "react-redux";
 import { EditableSpan } from "Component/Profile/EditableSpan/EditableSpan";
 import b from "../../common/component//Button/button.module.scss";
 import { useAppDispatch } from "app/hooks";
-import { logoutTC } from "features/auth/auth.slice";
+
 import { RootState, useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
 import { ProfileType } from "features/auth/auth.api";
+import { logoutTC } from "features/auth/auth.slice";
 
 const Profile = () => {
   const dispatch = useAppDispatch();

@@ -7,6 +7,7 @@ import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
 import { Hint } from "common/component/Hint/Hint";
 import { useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
+import { Button } from "common/component/Button/Button";
 
 const Login = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
@@ -17,7 +18,9 @@ const Login = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Sign in"} />
-        <Form callback={authThunks.loginTC} name={"Sign in"} toggle={true} />
+        <Form callback={authThunks.loginTC} name={"Sign in"} toggle={true}>
+          <Button name={"Sign in"} />
+        </Form>
         <Hint description={"Don't have an account?"} />
         <BottomAuth name={"Sign up"} to={"/register"} />
       </div>

@@ -8,6 +8,7 @@ type FormType = {
   callback: any;
   name: string;
   toggle: boolean;
+  children?: any;
 };
 export const Form = (props: FormType) => {
   const dispatch = useAppDispatch();
@@ -35,12 +36,10 @@ export const Form = (props: FormType) => {
         />
       </div>
 
-      {props.name === "Sign in" ? (
+      {props.name === ("Sign in" || "Sign up") && (
         <div className={s.input}>
           <input type={"password"} placeholder={"Password"} {...register("password")} />
         </div>
-      ) : (
-        ""
       )}
 
       {props.name === "Sign in" ? (
@@ -55,7 +54,9 @@ export const Form = (props: FormType) => {
       // Remember me
 
       props.name === "Sign up" ? (
-        <input placeholder={"Confirm password"} {...register("confirmPassword")} />
+        <div className={s.input}>
+          <input placeholder={"Confirm password"} {...register("confirmPassword")} />
+        </div>
       ) : (
         ""
       )}
@@ -68,7 +69,8 @@ export const Form = (props: FormType) => {
       {props.name === "Send Instructions" && (
         <div>Enter your email address and we will send you further instructions </div>
       )}
-      <Button name={props.name} />
+
+      <div>{props.children}</div>
     </form>
   );
 };

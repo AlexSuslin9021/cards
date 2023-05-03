@@ -8,13 +8,16 @@ import { useAppDispatch } from "app/hooks";
 export const Header = () => {
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+  const name = useAppSelector((state) => {
+    if (state.auth.profile !== null) return state.auth.profile.name;
+  });
   const logoutButton = () => {
     dispatch(logoutTC());
   };
 
   return (
     <div className={s.header}>
-      <div className={s.button}>{isLoggedIn ? <Button name={"Logout"} /> : <Button name={"Sign in"} />}</div>
+      <div className={s.button}>{isLoggedIn ? <span>{name}</span> : <Button name={"Sign in"} />}</div>
     </div>
   );
 };
