@@ -17,11 +17,15 @@ export const authApi = {
   logout() {
     return instance.delete("/auth/me");
   },
-  forgotPassword(arg: ForgotPasswordType) {
-    return axios.post<ForgotPasswordType>("https://neko-back.herokuapp.com/2.0)", { arg }, { withCredentials: true });
+  forgotPassword(email: string, form: string, message: string) {
+    return axios.post(
+      "https://neko-back.herokuapp.com/2.0/auth/forgot",
+      { email, form, message },
+      { withCredentials: true }
+    );
   },
   createNewPassword(arg: CreatePasswordType) {
-    return instance.post<ForgotPasswordType>("/auth/set-new-password", arg);
+    return instance.post("/auth/set-new-password", arg);
   },
 };
 
@@ -46,7 +50,6 @@ export type UpdateUserType = {
 export type ForgotPasswordType = {
   email: string;
   from: string;
-
   message: string;
 };
 
@@ -59,16 +62,16 @@ type RegisterResponseType = {
   addedUser: ProfileType;
 };
 export type ProfileType = {
-  _id?: string;
-  email?: string;
-  rememberMe?: boolean;
-  isAdmin?: boolean;
-  name?: string;
-  verified?: boolean;
-  publicCardPacksCount?: string;
-  created?: string;
-  updated?: string;
-  __v?: number;
+  _id: string;
+  email: string;
+  rememberMe: boolean;
+  isAdmin: boolean;
+  name: string;
+  verified: boolean;
+  publicCardPacksCount: string;
+  created: string;
+  updated: string;
+  __v: number;
 };
 
 export type LoginResponse = {

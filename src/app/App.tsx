@@ -5,13 +5,13 @@ import Profile from "Component/Profile/Profile";
 import Login from "Component/Login/Login";
 import Packs from "Component/Packs/Packs";
 import Learn from "Component/Learn/Learn";
-import Register from "Component/Register/Register";
+import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "app/store";
 import { Header } from "Component/Header/Header";
-import { ForgotPassword } from "Component/ForgotPassword/ForgotPassword";
-import { CheckEmail } from "Component/CheckEmail/CheckEmail";
-import { CreatePassword } from "Component/CreatePassword/CreatePassword";
+import { ForgotPassword } from "features/auth/ForgotPassword/ForgotPassword";
+import { CheckEmail } from "features/auth/CheckEmail/CheckEmail";
+import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 
 import { initializedTC } from "app/app.slice";
 

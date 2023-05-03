@@ -11,7 +11,7 @@ export const ForgotPassword = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Forgot your password?"} />
-        <Form callback={authThunks.registerTC} name={"Send Instructions"} toggle={false} />
+        <Form callback={authThunks.forgotPasswordTC} name={"Send Instructions"} toggle={false} />
         <Hint description={"Did you remember your password?"} />
         <BottomAuth name={"Try logging in"} to={"/login"} />
       </div>
