@@ -7,6 +7,7 @@ import { setIsLoggedInAC } from "app/app.slice";
 const authInitialState = {
   profile: { name: "" } as ProfileType | null,
   isLoggedIn: false,
+  isAppInitialized: false,
 };
 
 const slice = createSlice({
@@ -53,7 +54,6 @@ export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, Profil
 export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginType>("/auth/login", async (arg) => {
   let res = await authApi.login(arg);
   setIsLoggedInAC({ isLoggedIn: true });
-
   return { profile: res.data };
 });
 export const logoutTC = createAppAsyncThunk("/auth/login", async () => {

@@ -7,20 +7,20 @@ import Packs from "Component/Packs/Packs";
 import Learn from "Component/Learn/Learn";
 import Register from "Component/Register/Register";
 import { useDispatch } from "react-redux";
-import { setIsLoggedInTC } from "app/app.slice";
 import { AppDispatch } from "app/store";
 import { Header } from "Component/Header/Header";
 import { ForgotPassword } from "Component/ForgotPassword/ForgotPassword";
 import { CheckEmail } from "Component/CheckEmail/CheckEmail";
 import { CreatePassword } from "Component/CreatePassword/CreatePassword";
+import { meTC } from "features/auth/auth.slice";
+import { initializedTC } from "app/app.slice";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(setIsLoggedInTC());
-    }, 3000);
-  });
+    debugger;
+    dispatch(initializedTC());
+  }, []);
 
   return (
     <>
