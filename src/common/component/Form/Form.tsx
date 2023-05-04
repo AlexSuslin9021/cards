@@ -55,7 +55,7 @@ export const Form = (props: FormType) => {
         <div className={s.me}>
           <div>
             <input type={"checkbox"} {...register("rememberMe")} />
-            <span> Rememeber me</span>
+            <span> Remember me</span>
           </div>
         </div>
       ) : // <span> Remember Me</span>
