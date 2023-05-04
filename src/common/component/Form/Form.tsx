@@ -4,6 +4,7 @@ import s from "./Form.module.scss";
 import React from "react";
 
 import { NavLink } from "react-router-dom";
+import { Button } from "common/component/Button/Button";
 
 type FormType = {
   callback: any;
@@ -74,11 +75,11 @@ export const Form = (props: FormType) => {
           <NavLink to={"/forgot-password"}>Forgot password</NavLink>
         </div>
       )}
-      {props.name === "Send Instructions" && (
-        <div>Enter your email address and we will send you further instructions </div>
-      )}
+      {/*{props.name === "Send Instructions" && (*/}
+      {/*  <div className={s.hind}>Enter your email address and we will send you further instructions </div>*/}
+      {/*)}*/}
 
-      <div>{props.children}</div>
+      {/*<Button name={"Sign in"} />*/}
     </form>
   );
 };

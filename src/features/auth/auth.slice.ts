@@ -30,6 +30,9 @@ const slice = createSlice({
     builder.addCase(logoutTC.fulfilled, (state, action) => {
       state.isLoggedIn = false;
     });
+    builder.addCase(forgotPasswordTC.fulfilled, (state, action) => {
+      state.isLoggedIn = true;
+    });
     builder.addCase(registerTC.fulfilled, (state, action) => {});
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;
@@ -65,7 +68,7 @@ export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
 export const forgotPasswordTC = createAppAsyncThunk(
   "https://neko-back.herokuapp.com/2.0/auth/forgot",
   async (email: string) => {
-    let res = await authApi.forgotPassword(
+    await authApi.forgotPassword(
       email,
       "test-front-admin",
       `<div style="background-color: lime; padding: 15px">
@@ -74,7 +77,6 @@ password recovery link:
 link</a>
 </div>`
     );
-    return res.data;
   }
 );
 
