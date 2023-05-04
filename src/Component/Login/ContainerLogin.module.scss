@@ -1,6 +1,7 @@
+@import  'src/common/styles/variables';
 .containLogo {
    height: 100vh;
-  background:#f9f9fa ;
+  background:$bgColor ;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +25,7 @@
     width: 100%;
     justify-content: flex-end;
     a {
-      color: #366EFF;
+      color: $colorButton;
       font-family: Montserrat sans-serif;
       font-size: 14px;
       font-weight: 500;
@@ -32,7 +33,7 @@
       align-items: flex-start;
       text-decoration: none;
       &:hover{
-        text-decoration: underline #366EFF;
+        text-decoration: underline $colorButton;
       }
 
     }

@@ -1,13 +1,11 @@
-.header{
+@import  'src/common/styles/variables';
+.header {
   display: flex;
-  background:#f9f9fa ;
+  background: $bgColor;
   width: 100%;
   height: 70px;
-
- border: 1px solid rgba(109, 109, 109, 0.25);
+  border: 1px solid rgba(109, 109, 109, 0.25);
   box-shadow: 0px 2px 10px rgba(109, 109, 109, 0.25), inset 0px 1px 0px rgba(255, 255, 255, 0.3);
-
-
 
   .button {
     display: flex;
@@ -16,15 +14,26 @@
     height: 100%;
     align-items: center;
     margin-right: 50px;
+.loginAvatar{
+  display: flex;
+  align-items: center;
 
-span{
-  font-family: Montserrat sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  border-bottom: 1px dashed #000000;
+
 }
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
+    span {
+      font-family: Montserrat sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      border-bottom: 1px dashed #000000;
+      margin-right: 10px;
+    }
 
     button {
       //width: 136px;
@@ -42,6 +51,6 @@ span{
 
     }
   }
-  }
+}
 
 

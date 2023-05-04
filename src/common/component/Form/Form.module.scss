@@ -43,7 +43,7 @@
   width: 100%;
   justify-content: flex-end;
   a {
-    color: #366EFF;
+    color: $colorButton;
     font-family: Montserrat sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -51,7 +51,7 @@
     align-items: flex-start;
     text-decoration: none;
     &:hover{
-      text-decoration: underline #366EFF;
+      text-decoration: underline $colorButton;
     }
 
   }
