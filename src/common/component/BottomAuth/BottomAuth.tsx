@@ -8,7 +8,6 @@ type TitleType = {
 export const BottomAuth = (props: TitleType) => {
   return (
     <NavLink to={props.to} className={s.description}>
-      {" "}
       {props.name}
     </NavLink>
   );

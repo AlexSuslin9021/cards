@@ -5,6 +5,7 @@ import b from "common/component/Button/button.module.scss";
 import style from "features/auth/CheckEmail/checkEmail.module.scss";
 import { NavLink } from "react-router-dom";
 import { Message } from "common/component/Message/Message";
+import mail from "../../../common/Image/mail.svg";
 
 export const CheckEmail = () => {
   return (
@@ -12,11 +13,14 @@ export const CheckEmail = () => {
       <div className={s.login}>
         <Title name={"Check email"} />
         <span className={style.image}>
-          <img src="src/features/auth/CheckEmail" alt="" />
+          <img src={mail} alt="" />
         </span>
         <Message message={"We’ve sent an Email with instructions to example@mail.com"} />
         <button className={b.button}>
-          <NavLink to={"/login"}> Back to login</NavLink>
+          <NavLink className={s.link} to={"/login"}>
+            {" "}
+            Back to login
+          </NavLink>
         </button>
       </div>
     </div>

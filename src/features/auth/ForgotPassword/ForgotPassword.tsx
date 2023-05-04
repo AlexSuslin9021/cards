@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "common/component/Button/Button";
 import { useAppSelector } from "app/store";
 import { authThunks } from "features/auth/auth.slice";
+import { Message } from "common/component/Message/Message";
 
 export const ForgotPassword = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
@@ -22,10 +23,11 @@ export const ForgotPassword = () => {
       <div className={s.login}>
         <Title name={"Forgot your password?"} />
         <Form callback={authThunks.forgotPasswordTC} name={"Send Instructions"}>
+          <Message message={"Enter your email address and we will send you further instructions "} />
           <Button name={"Send Instructions"} />
+          <Hint description={"Did you remember your password?"} />
+          <BottomAuth name={"Try logging in"} to={"/login"} />
         </Form>
-        <Hint description={"Did you remember your password?"} />
-        <BottomAuth name={"Try logging in"} to={"/login"} />
       </div>
     </div>
   );

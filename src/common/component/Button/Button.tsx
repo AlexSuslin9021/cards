@@ -2,12 +2,12 @@ import React from "react";
 import s from "common/component/Button/button.module.scss";
 type ButtonType = {
   name: string;
-  // callback?: any;
+  callback?: () => void;
 };
 
 export const Button: React.FC<ButtonType> = (props) => {
   const onClickHandler = () => {
-    // props.callback();
+    if (props.callback) props.callback();
   };
   return (
     <button onClick={onClickHandler} className={s.button} type={"submit"}>

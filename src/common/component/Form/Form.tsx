@@ -78,7 +78,7 @@ export const Form = (props: FormType) => {
       {/*{props.name === "Send Instructions" && (*/}
       {/*  <div className={s.hind}>Enter your email address and we will send you further instructions </div>*/}
       {/*)}*/}
-
+      <div className={s.children}> {props.children}</div>
       {/*<Button name={"Sign in"} />*/}
     </form>
   );

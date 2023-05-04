@@ -18,9 +18,13 @@ const Login = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Sign in"} />
-        <Form callback={authThunks.loginTC} name={"Sign in"}></Form>
-        <Hint description={"Don't have an account?"} />
-        <BottomAuth name={"Sign up"} to={"/register"} />
+        <Form callback={authThunks.loginTC} name={"Sign in"}>
+          <Button name={"Sign in"} />
+          <Hint description={"Don't have an account?"} />
+          <BottomAuth name={"Sign up"} to={"/register"} />
+        </Form>
+        {/*<Hint description={"Don't have an account?"} />*/}
+        {/*<BottomAuth name={"Sign up"} to={"/register"} />*/}
       </div>
     </div>
   );

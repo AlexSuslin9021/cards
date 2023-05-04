@@ -2,6 +2,8 @@ import { ChangeEvent, useState } from "react";
 import { useAppSelector } from "app/store";
 import { useAppDispatch } from "app/hooks";
 import { updateUserTC } from "features/auth/auth.slice";
+import s from "../EditableSpan/EditableSpan.module.scss";
+import pencil from "../../../common/Image/pencil.svg";
 
 export const EditableSpan = () => {
   debugger;
@@ -22,12 +24,15 @@ export const EditableSpan = () => {
     setValue(e.currentTarget.value);
   };
   return (
-    <>
+    <div>
       {editMode ? (
-        <span onDoubleClick={onClickHandler}> {value} </span>
+        <div className={s.imageContainer}>
+          <span onDoubleClick={onClickHandler}>{value}</span>
+          {/*<img src={pencil} alt="change name" />*/}
+        </div>
       ) : (
         <input value={value} onChange={onChangeHandler} onBlur={onBlurChange} />
       )}
-    </>
+    </div>
   );
 };
