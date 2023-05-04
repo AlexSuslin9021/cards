@@ -19,7 +19,7 @@ const Logintest = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Sign in"} />
-        <FormTest callback={authThunks.loginTC} defaultValues={{ email: "", password: "" }}>
+        <FormTest callback={authThunks.loginTC} defaultValues={{ email: "", password: "", rememberMe: false }}>
           <Input name={"email"} placeholder={"Email"} />
           <Input type={"password"} placeholder={"Password"} name={"password"} />
           <Input type={"checkbox"} name={"rememberMe"} />
