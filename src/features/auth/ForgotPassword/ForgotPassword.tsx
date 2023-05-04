@@ -16,7 +16,7 @@ export const ForgotPassword = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Forgot your password?"} />
-        <Form callback={Handler} name={"Send Instructions"} toggle={false}>
+        <Form callback={Handler} name={"Send Instructions"}>
           <Button name={"Send Instructions"} />
         </Form>
         <Hint description={"Did you remember your password?"} />

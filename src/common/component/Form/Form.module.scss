@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //width: 100%;
   margin-bottom:20px ;
   //align-items: center;
   .me{
@@ -22,8 +21,8 @@
     input{
       border: none;
       width: 250px;
-      opacity: 0.2;
-      border-bottom: 2px solid black;
+      //opacity: 0.2;
+      border-bottom: 2px solid gray;
       //background-color: transparent;
       color: inherit;
       outline: none;
@@ -36,13 +35,16 @@
   width: 100%;
   justify-content: flex-end;
   a {
-    color: black;
+    color: #366EFF;
     font-family: Montserrat sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 17px;
     align-items: flex-start;
     text-decoration: none;
+    &:hover{
+      text-decoration: underline #366EFF;
+    }
 
   }
 }

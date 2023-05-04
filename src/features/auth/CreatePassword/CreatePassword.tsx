@@ -11,7 +11,7 @@ export const CreatePassword = () => {
     <div className={s.containLogo}>
       <div className={s.login}>
         <Title name={"Create new password"} />
-        <Form callback={authThunks.createNewPasswordTC} name={"Create new password"} toggle={false} />
+        <Form callback={authThunks.createNewPasswordTC} name={"Create new password"} />
       </div>
     </div>
   );

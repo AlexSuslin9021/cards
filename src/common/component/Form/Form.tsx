@@ -2,12 +2,12 @@ import { useAppDispatch } from "app/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import s from "./Form.module.scss";
 import React from "react";
-import { Button } from "common/component/Button/Button";
+
 import { NavLink } from "react-router-dom";
+
 type FormType = {
   callback: any;
   name: string;
-  toggle: boolean;
   children?: any;
 };
 export const Form = (props: FormType) => {
@@ -36,10 +36,18 @@ export const Form = (props: FormType) => {
         />
       </div>
 
-      {props.name === ("Sign in" || "Sign up") && (
+      {props.name === "Sign in" ? (
         <div className={s.input}>
           <input type={"password"} placeholder={"Password"} {...register("password")} />
+          {/*<Input name={"password"} type={"password"} register={register} />*/}
         </div>
+      ) : props.name === "Sign up" ? (
+        <div className={s.input}>
+          <input type={"password"} placeholder={"Password"} {...register("password")} />
+          {/*<Input name={"password"} type={"password"} register={register} />*/}
+        </div>
+      ) : (
+        ""
       )}
 
       {props.name === "Sign in" ? (
@@ -61,7 +69,7 @@ export const Form = (props: FormType) => {
         ""
       )}
 
-      {props.toggle && (
+      {props.name === "Sign in" && (
         <div className={s.forgotPassword}>
           <NavLink to={"/forgot-password"}>Forgot password</NavLink>
         </div>
