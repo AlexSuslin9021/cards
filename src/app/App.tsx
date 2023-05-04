@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "app/App.css";
 import { Route, Routes } from "react-router-dom";
 import Profile from "Component/Profile/Profile";
-import Login from "Component/Login/Login";
+import LoginCopy from "Component/Login/LoginCopy";
 import Packs from "Component/Packs/Packs";
 import Learn from "Component/Learn/Learn";
 import Register from "features/auth/Register/Register";
@@ -14,7 +14,7 @@ import { CheckEmail } from "features/auth/CheckEmail/CheckEmail";
 import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 
 import { initializedTC } from "app/app.slice";
-import Logintest from "common/component/Login2/Logintest";
+import Login from "features/auth/Login/Login";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,7 +34,6 @@ function App() {
         <Route path={"/create-password"} element={<CreatePassword />} />
         <Route path={"/learn"} element={<Learn />} />
         <Route path={"/packs"} element={<Packs />} />
-        <Route path={"/logintest"} element={<Logintest />} />
       </Routes>
     </>
   );

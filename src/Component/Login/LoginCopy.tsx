@@ -11,7 +11,7 @@ import { Button } from "common/component/Button/Button";
 import { FormTest } from "common/component/FormTest/Form";
 import { Input } from "common/component/Input/Input";
 
-const Login = () => {
+const LoginCopy = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   if (isLoggedIn) {
     return <Navigate to={"/"} />;
@@ -35,4 +35,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginCopy;

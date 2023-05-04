@@ -10,7 +10,7 @@ import { Button } from "common/component/Button/Button";
 import { Input } from "common/component/Input/Input";
 import { FormTest } from "common/component/FormTest/Form";
 
-const Logintest = () => {
+const Login = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   if (isLoggedIn) {
     return <Navigate to={"/"} />;
@@ -37,4 +37,4 @@ const Logintest = () => {
   );
 };
 
-export default Logintest;
+export default Login;
