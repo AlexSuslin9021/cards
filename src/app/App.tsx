@@ -14,6 +14,7 @@ import { CheckEmail } from "features/auth/CheckEmail/CheckEmail";
 import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 
 import { initializedTC } from "app/app.slice";
+import Logintest from "common/component/Login2/Logintest";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,6 +34,7 @@ function App() {
         <Route path={"/create-password"} element={<CreatePassword />} />
         <Route path={"/learn"} element={<Learn />} />
         <Route path={"/packs"} element={<Packs />} />
+        <Route path={"/logintest"} element={<Logintest />} />
       </Routes>
     </>
   );
