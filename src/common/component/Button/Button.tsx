@@ -10,9 +10,10 @@ export const Button: React.FC<ButtonType> = (props) => {
     if (props.callback) props.callback();
   };
   return (
-    <button onClick={onClickHandler} className={s.button} type={"submit"}>
-      {" "}
-      {props.name}{" "}
-    </button>
+    <div>
+      <button onClick={onClickHandler} className={s.button} type={"submit"}>
+        {props.name}
+      </button>
+    </div>
   );
 };

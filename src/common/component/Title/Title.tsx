@@ -4,5 +4,5 @@ type TitleType = {
   name: string;
 };
 export const Title = (props: TitleType) => {
-  return <h2 className={s.title}> {props.name}</h2>;
+  return <div className={s.title}>{props.name}</div>;
 };

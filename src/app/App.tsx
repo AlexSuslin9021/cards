@@ -27,18 +27,16 @@ function App() {
     <>
       <Header />
       <div className={s.containLogo}>
-        <div className={s.login}>
-          <Routes>
-            <Route path={"/"} element={<Profile />} />
-            <Route path={"/login"} element={<Login />} />
-            <Route path={"/register"} element={<Register />} />
-            <Route path={"/forgot-password"} element={<ForgotPassword />} />
-            <Route path={"/check-email"} element={<CheckEmail />} />
-            <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
-            <Route path={"/learn"} element={<Learn />} />
-            <Route path={"/packs"} element={<Packs />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path={"/"} element={<Profile />} />
+          <Route path={"/login"} element={<Login />} />
+          <Route path={"/register"} element={<Register />} />
+          <Route path={"/forgot-password"} element={<ForgotPassword />} />
+          <Route path={"/check-email"} element={<CheckEmail />} />
+          <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
+          <Route path={"/learn"} element={<Learn />} />
+          <Route path={"/packs"} element={<Packs />} />
+        </Routes>
       </div>
     </>
   );
