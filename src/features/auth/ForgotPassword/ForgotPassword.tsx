@@ -8,7 +8,7 @@ import { useAppSelector } from "app/store";
 import { authThunks } from "features/auth/auth.slice";
 import { Message } from "common/component/Message/Message";
 import { Input } from "common/component/Input/Input";
-import { FormTest } from "common/component/FormTest/Form";
+import { FormTest } from "common/component/Form/Form";
 import style from "../../../common/styles/container.module.scss";
 
 export const ForgotPassword = () => {

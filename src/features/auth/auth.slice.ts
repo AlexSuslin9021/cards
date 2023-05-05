@@ -9,9 +9,6 @@ import {
 } from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 
-import { setIsLoggedInAC } from "app/app.slice";
-import { useParams } from "react-router-dom";
-
 const authInitialState = {
   profile: null as ProfileType | null,
   isLoggedIn: false,

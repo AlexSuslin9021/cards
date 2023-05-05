@@ -1,92 +1,42 @@
-import { useAppDispatch } from "app/hooks";
-import { SubmitHandler, useForm } from "react-hook-form";
+import React, { FC } from "react";
 import s from "./Form.module.scss";
-import React from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useAppDispatch } from "app/hooks";
+// type InputType = {
+//   name: string;
+//   type: string;
+//   register: any;
+// };
 
-import { NavLink } from "react-router-dom";
-import { Button } from "common/component/Button/Button";
-
-type FormType = {
-  callback: any;
-  name: string;
-  children?: any;
+export type DefaultValueType = {
+  email?: "";
+  password?: "";
+  confirmPassword?: "";
+  rememberMe?: false;
 };
-export const Form = (props: FormType) => {
+export type formT = {
+  defaultValues: DefaultValueType;
+  children?: any;
+  callback: any;
+};
+export const FormTest: FC<formT> = ({ defaultValues, children, callback }) => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm<IFormInput>({
-    defaultValues: {
-      email: "",
-      password: "",
-      confirmPassword: "",
-      rememberMe: false,
-    },
-  });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => dispatch(props.callback(data));
+  const methods = useForm({ defaultValues });
+  const { handleSubmit } = methods;
+  const onSubmit: SubmitHandler<DefaultValueType> = (data) => dispatch(callback(data));
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
-      <div className={s.input}>
-        <input
-          placeholder={"Email"}
-          {...register("email", {
-            required: "Обязательно",
-            minLength: {
-              value: 5,
-              message: "минимум 5 символов",
-            },
-          })}
-        />
-      </div>
-
-      {props.name === "Sign in" ? (
-        <div className={s.input}>
-          <input type={"password"} placeholder={"Password"} {...register("password")} />
-          {/*<Input name={"password"} type={"password"} register={register} />*/}
-        </div>
-      ) : props.name === "Sign up" ? (
-        <div className={s.input}>
-          <input type={"password"} placeholder={"Password"} {...register("password")} />
-          {/*<Input name={"password"} type={"password"} register={register} />*/}
-        </div>
-      ) : (
-        ""
-      )}
-
-      {props.name === "Sign in" ? (
-        <div className={s.me}>
-          <div>
-            <input type={"checkbox"} {...register("rememberMe")} />
-            <span> Remember me</span>
-          </div>
-        </div>
-      ) : // <span> Remember Me</span>
-
-      // Remember me
-
-      props.name === "Sign up" ? (
-        <div className={s.input}>
-          <input placeholder={"Confirm password"} {...register("confirmPassword")} />
-        </div>
-      ) : (
-        ""
-      )}
-
-      {props.name === "Sign in" && (
-        <div className={s.forgotPassword}>
-          <NavLink to={"/forgot-password"}>Forgot password</NavLink>
-        </div>
-      )}
-      {/*{props.name === "Send Instructions" && (*/}
-      {/*  <div className={s.hind}>Enter your email address and we will send you further instructions </div>*/}
-      {/*)}*/}
-      <div className={s.children}> {props.children}</div>
-      {/*<Button name={"Sign in"} />*/}
+      {React.Children.map(children, (child) => {
+        return child.props.name
+          ? React.createElement(child.type, {
+              ...{
+                ...child.props,
+                register: methods.register,
+                key: child.props.name,
+              },
+            })
+          : child;
+      })}
     </form>
   );
 };
-
-interface IFormInput {
-  email: string;
-  password: string;
-  rememberMe: boolean;
-  confirmPassword: "";
-}

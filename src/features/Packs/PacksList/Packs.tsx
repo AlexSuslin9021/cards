@@ -1,14 +1,15 @@
 import React from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
-import s from "./Packs.module.scss";
+import s from "features/Packs/PacksList/Packs.module.scss";
+import s1 from "../style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 const Packs = () => {
   return (
-    <div className={s.container}>
+    <div className={s1.container}>
       <PacksTitle name={"Packs"} buttonName={"Add new pack"} callback={() => {}} />
       <div className={s.dataCards}>
         <div className={s.search}>

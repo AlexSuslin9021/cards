@@ -3,57 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  //width: 100%;
   margin-bottom:20px ;
   //align-items: center;
 
-.children{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 
-}
-  .me{
-    display: flex;
-    text-align: left;
-    margin-bottom: 30px;
-
-  }
-  .input{
-    margin-bottom: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    input{
-      border: none;
-      width: 250px;
-      //opacity: 0.2;
-      border-bottom: 2px solid gray;
-      //background-color: transparent;
-      color: inherit;
-      outline: none;
-
-    }
-  }
-
-.forgotPassword {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  a {
-    color: $colorButton;
-    font-family: Montserrat sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
-    align-items: flex-start;
-    text-decoration: none;
-    &:hover{
-      text-decoration: underline $colorButton;
-    }
-
-  }
-}
 }

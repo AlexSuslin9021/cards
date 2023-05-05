@@ -4,7 +4,7 @@ import { Title } from "common/component/Title/Title";
 import { authThunks } from "features/auth/auth.slice";
 import { Message } from "common/component/Message/Message";
 import { Button } from "common/component/Button/Button";
-import { FormTest } from "common/component/FormTest/Form";
+import { FormTest } from "common/component/Form/Form";
 import { Input } from "common/component/Input/Input";
 import { useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
