@@ -15,6 +15,7 @@ import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 
 import { initializedTC } from "app/app.slice";
 import Login from "features/auth/Login/Login";
+import s from "Component/Login/ContainerLogin.module.scss";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -25,16 +26,20 @@ function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path={"/"} element={<Profile />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route path={"/register"} element={<Register />} />
-        <Route path={"/forgot-password"} element={<ForgotPassword />} />
-        <Route path={"/check-email"} element={<CheckEmail />} />
-        <Route path={"/create-password"} element={<CreatePassword />} />
-        <Route path={"/learn"} element={<Learn />} />
-        <Route path={"/packs"} element={<Packs />} />
-      </Routes>
+      <div className={s.containLogo}>
+        <div className={s.login}>
+          <Routes>
+            <Route path={"/"} element={<Profile />} />
+            <Route path={"/login"} element={<Login />} />
+            <Route path={"/register"} element={<Register />} />
+            <Route path={"/forgot-password"} element={<ForgotPassword />} />
+            <Route path={"/check-email"} element={<CheckEmail />} />
+            <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
+            <Route path={"/learn"} element={<Learn />} />
+            <Route path={"/packs"} element={<Packs />} />
+          </Routes>
+        </div>
+      </div>
     </>
   );
 }

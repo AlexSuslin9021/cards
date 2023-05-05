@@ -4,13 +4,13 @@ import {
   authApi,
   authLoginType,
   CreatePasswordType,
-  ForgotPasswordType,
   ProfileType,
   UpdateUserType,
 } from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 
 import { setIsLoggedInAC } from "app/app.slice";
+import { useParams } from "react-router-dom";
 
 const authInitialState = {
   profile: null as ProfileType | null,
@@ -33,7 +33,6 @@ const slice = createSlice({
     builder.addCase(forgotPasswordTC.fulfilled, (state, action) => {
       state.isLoggedIn = true;
     });
-    builder.addCase(registerTC.fulfilled, (state, action) => {});
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;
     });
@@ -59,25 +58,26 @@ export const logoutTC = createAppAsyncThunk<void>("auth/me", async () => {
   await authApi.logout();
 });
 export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
-  "/auth/set-new-password",
+  `/auth/set-new-password`,
   async (arg: CreatePasswordType) => {
-    await authApi.createNewPassword(arg);
+    debugger;
+    // const tokenPassword = useParams().token;
+    let res = await authApi.createNewPassword(arg);
+    return res.data;
   }
 );
 
-export const forgotPasswordTC = createAppAsyncThunk(
-  "https://neko-back.herokuapp.com/2.0/auth/forgot",
-  async (email: string) => {
-    await authApi.forgotPassword(
-      email,
-      "test-front-admin",
-      `<div style="background-color: lime; padding: 15px">
+export const forgotPasswordTC = createAppAsyncThunk("auth/forgot", async (email: string) => {
+  let res = await authApi.forgotPassword(
+    email,
+    "test-front-admin",
+    `<div style="background-color: lime; padding: 15px">
 password recovery link: 
-<a href='http://localhost:3000/#/set-new-password/$token$'>
+<a href='http://localhost:3000/set-new-password/$token$'>
 link</a>
 </div>`
-    );
-  }
-);
+  );
+  return res.data;
+});
 
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC };

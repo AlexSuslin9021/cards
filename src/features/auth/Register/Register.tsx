@@ -11,19 +11,17 @@ import { Input } from "common/component/Input/Input";
 
 const Register = () => {
   return (
-    <div className={s.containLogo}>
-      <div className={s.login}>
-        <Title name={"Sign up"} />
-        <FormTest callback={authThunks.registerTC} defaultValues={{ email: "", password: "", confirmPassword: "" }}>
-          <Input name={"email"} placeholder={"Email"} />
-          <Input type={"password"} placeholder={"Password"} name={"password"} />
-          <Input type={"password"} placeholder={"Password"} name={"confirmPassword"} />
-          <Button name={"Sign up"} />
-          <Hint description={"Already have an account?"} />
-          <BottomAuth name={"Sign in"} to={"/login"} />
-        </FormTest>
-      </div>
-    </div>
+    <>
+      <Title name={"Sign up"} />
+      <FormTest callback={authThunks.registerTC} defaultValues={{ email: "", password: "", confirmPassword: "" }}>
+        <Input name={"email"} placeholder={"Email"} />
+        <Input type={"password"} placeholder={"Password"} name={"password"} />
+        <Input type={"password"} placeholder={"Password"} name={"confirmPassword"} />
+        <Button name={"Sign up"} />
+        <Hint description={"Already have an account?"} />
+        <BottomAuth name={"Sign in"} to={"/login"} />
+      </FormTest>
+    </>
   );
 };
 

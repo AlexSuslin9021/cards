@@ -23,19 +23,17 @@ const Profile = () => {
     return <Navigate to={"/login"} />;
   }
   return (
-    <div className={s.containLogo}>
-      <div className={s.login}>
-        <Title name={"Personal Information"} />
-        <div className={style.iconContainer}>
-          <img src={avatar} alt="avatar" />
-        </div>
-        <EditableSpan />
-        <div className={s.email}> {email}</div>
-        <button className={s.button} onClick={onClickLogout}>
-          Logout
-        </button>
+    <>
+      <Title name={"Personal Information"} />
+      <div className={style.iconContainer}>
+        <img src={avatar} alt="avatar" />
       </div>
-    </div>
+      <EditableSpan />
+      <div className={s.email}> {email}</div>
+      <button className={s.button} onClick={onClickLogout}>
+        Logout
+      </button>
+    </>
   );
 };
 

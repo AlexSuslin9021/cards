@@ -17,15 +17,17 @@ export const authApi = {
   logout() {
     return instance.delete("/auth/me");
   },
-  forgotPassword(email: string, form: string, message: string) {
+  forgotPassword(data: any, form: string, message: string) {
+    const { email } = data;
     return axios.post(
       "https://neko-back.herokuapp.com/2.0/auth/forgot",
       { email, form, message },
       { withCredentials: true }
     );
   },
-  createNewPassword(arg: CreatePasswordType) {
-    return instance.post("/auth/set-new-password", arg);
+  createNewPassword(data: CreatePasswordType) {
+    debugger;
+    return instance.post(`/auth/set-new-password`, data);
   },
 };
 
@@ -36,11 +38,11 @@ export type argRegisterType = {
 };
 export type CreatePasswordType = {
   password: string;
-  resetPasswordToken: string;
+  resetPasswordToken: string | undefined;
 };
 export type SetNewPasswordType = {
   password: string;
-  resetPasswordToken: string;
+  resetPasswordToken: string | undefined;
 };
 
 export type UpdateUserType = {
