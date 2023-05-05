@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import s from "Component/Login/ContainerLogin.module.scss";
-import style from "./Profile.module.scss";
+import s from "./Profile.module.scss";
+import style from "../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
 import { EditableSpan } from "Component/Profile/EditableSpan/EditableSpan";
-import b from "../../common/component//Button/button.module.scss";
 import { useAppDispatch } from "app/hooks";
 import { useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
@@ -23,9 +22,9 @@ const Profile = () => {
     return <Navigate to={"/login"} />;
   }
   return (
-    <>
+    <div className={style.container}>
       <Title name={"Personal Information"} />
-      <div className={style.iconContainer}>
+      <div className={s.iconContainer}>
         <img src={avatar} alt="avatar" />
       </div>
       <EditableSpan />
@@ -33,7 +32,7 @@ const Profile = () => {
       <button className={s.button} onClick={onClickLogout}>
         Logout
       </button>
-    </>
+    </div>
   );
 };
 

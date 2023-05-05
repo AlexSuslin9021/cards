@@ -1,6 +1,6 @@
 import React from "react";
 import { authThunks } from "features/auth/auth.slice";
-import s from "Component/Login/ContainerLogin.module.scss";
+import s from "Component/Login/Login.module.scss";
 import { Title } from "common/component/Title/Title";
 import { Form } from "common/component/Form/Form";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";

@@ -1,6 +1,7 @@
 import React from "react";
 import { authThunks } from "features/auth/auth.slice";
-import s from "Component/Login/ContainerLogin.module.scss";
+import style from "../../../common/styles/container.module.scss";
+import s from "./Login.module.scss";
 import { Title } from "common/component/Title/Title";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
 import { Hint } from "common/component/Hint/Hint";
@@ -16,7 +17,7 @@ const Login = () => {
     return <Navigate to={"/"} />;
   }
   return (
-    <>
+    <div className={style.container}>
       <Title name={"Sign in"} />
       <FormTest callback={authThunks.loginTC} defaultValues={{ email: "", password: "", rememberMe: false }}>
         <Input name={"email"} placeholder={"Email"} />
@@ -29,7 +30,7 @@ const Login = () => {
         <Hint description={"Don't have an account?"} />
         <BottomAuth name={"Sign up"} to={"/register"} />
       </FormTest>
-    </>
+    </div>
   );
 };
 

@@ -1,14 +1,25 @@
 @import  'src/common/styles/variables';
-.app {
-   height: 100vh;
-  background:$bgColor ;
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //.link{
-  //  text-decoration: none;
-  //  color: white;
-//  }
+
+  .forgotPassword {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    a {
+      color: $colorButton;
+      font-family: Montserrat sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 17px;
+      align-items: flex-start;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline $colorButton;
+      }
+    }
+    }
+
 //.login{
 //  display: flex;
 //  flex-direction: column;
@@ -20,23 +31,6 @@
 //  border-radius: 2px;
 //  min-width: 413px;
 //
-//  .forgotPassword {
-//    display: flex;
-//    width: 100%;
-//    justify-content: flex-end;
-//    a {
-//      color: $colorButton;
-//      font-family: Montserrat sans-serif;
-//      font-size: 14px;
-//      font-weight: 500;
-//      line-height: 17px;
-//      align-items: flex-start;
-//      text-decoration: none;
-//      &:hover{
-//        text-decoration: underline $colorButton;
-//      }
-//
-//    }
 //  }
 //  .button{
 //    width: 127px;
@@ -63,4 +57,3 @@
 //}
     //
     ///*//font-size: calc(10px + 2vmin);*/
-}

@@ -1,5 +1,5 @@
 import React from "react";
-import s from "Component/Login/ContainerLogin.module.scss";
+import style from "../../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
 import { authThunks } from "features/auth/auth.slice";
 import { Message } from "common/component/Message/Message";
@@ -16,14 +16,14 @@ export const CreatePassword = () => {
     return <Navigate to={"/login"} />;
   }
   return (
-    <>
+    <div className={style.container}>
       <Title name={"Create new password"} />
       <FormTest callback={authThunks.createNewPasswordTC} defaultValues={{ password: "" }}>
         <Input type={"password"} placeholder={"Password"} name={"password"} />
         <Message message={"Create new password and we will send you further instructions to email"} />
         <Button name={"Create new password"} />
       </FormTest>
-    </>
+    </div>
   );
 };
 // };
