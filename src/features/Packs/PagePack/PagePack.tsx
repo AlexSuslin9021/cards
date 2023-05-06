@@ -9,7 +9,7 @@ import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 export const PagePack = () => {
   return (
     <div className={s1.container}>
-      <BackTo name={"Back to Packs List"} link={"/packs"} />
+      <BackTo name={"Back to MyPack List"} link={"/packs"} />
       <MiniTitle name={"Name Pack"} />
       <div className={s.buttonCont}>
         <Hint description={"This pack is empty. Click add new card to fill this pack"} />

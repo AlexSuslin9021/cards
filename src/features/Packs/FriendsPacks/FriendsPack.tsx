@@ -1,16 +1,17 @@
 import React from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
-import s from "features/Packs/PacksList/Packs.module.scss";
+import s from "features/Packs/PacksList/PacksList.module.scss";
 import s1 from "../style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
+import star from "../../../common/Image/Star 5.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
-const Packs = () => {
+const FriendsPack = () => {
   return (
     <div className={s1.container}>
-      <PacksTitle name={"Packs"} buttonName={"Add new pack"} callback={() => {}} />
+      <PacksTitle name={"FriendsPack"} buttonName={"Add new pack"} callback={() => {}} />
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
@@ -37,11 +38,10 @@ const Packs = () => {
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Name</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Cards</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Questions</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Answer</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Created by</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Actions</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Grade</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,9 +49,18 @@ const Packs = () => {
               <TableRow sx={{ borderBottom: "1px solid" }}>
                 <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.cards}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.lastUpdated}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.createdBy}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.actions}</TableCell>
+                <TableCell sx={{ background: "white" }}>
+                  {" "}
+                  {
+                    <>
+                      <img src={el.url} /> <img src={el.url} />
+                      <img src={el.url} />
+                      <img src={el.url} />
+                      <img src={el.url} />
+                    </>
+                  }{" "}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -62,25 +71,22 @@ const Packs = () => {
 };
 let data = [
   {
-    name: "Товар 1",
-    cards: "Card1",
-    lastUpdated: 162,
-    createdBy: "16-02-22",
-    actions: "sasas",
+    name: "How 'This' works in JavaScript?",
+    cards: 'This is how "This" works in JavaScript',
+    createdBy: "19.03.2021",
+    url: star,
   },
   {
-    name: "Товар 1",
-    cards: "Card2",
-    lastUpdated: 1322,
-    createdBy: "1-05-23",
-    actions: "sasas",
+    name: "How 'This' works in JavaScript?",
+    cards: 'This is how "This" works in JavaScript',
+    createdBy: "18.03.2021",
+    url: star,
   },
   {
-    name: "Товар 3",
-    cards: "Card3",
-    lastUpdated: 162323,
-    createdBy: "14-03-23",
-    actions: "sasas",
+    name: "How 'This' works in JavaScript?",
+    cards: 'This is how "This" works in JavaScript',
+    createdBy: "20.03.2021",
+    url: star,
   },
 ];
-export default Packs;
+export default FriendsPack;
