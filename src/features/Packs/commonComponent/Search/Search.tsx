@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Search.module.scss";
 const Search = () => {
   return (
-    <div>
-      <input />
+    <div className={s.searchBlock}>
+      <input placeholder={"    Provide your text"} />
     </div>
   );
 };

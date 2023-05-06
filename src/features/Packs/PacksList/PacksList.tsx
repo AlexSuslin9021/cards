@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
@@ -8,6 +8,10 @@ import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 const PacksList = () => {
+  const [mode, setMode] = useState(false);
+  const onClickHandler = () => {
+    setMode(!mode);
+  };
   return (
     <div className={s1.container}>
       <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={() => {}} />
@@ -19,16 +23,24 @@ const PacksList = () => {
         <div className={s.choiceCards}>
           <MiniTitle name={" Show packs cards"} />
           <div>
-            <button className={s.myCards}>My</button>
-            <button className={s.allCards}>All</button>
+            <button onClick={onClickHandler} className={mode ? s.myCards : s.allCards}>
+              My
+            </button>
+            <button onClick={onClickHandler} className={!mode ? s.myCards : s.allCards}>
+              All
+            </button>
           </div>
         </div>
         <div className={s.sliderCont}>
           <MiniTitle name={" Number of cards"} />
           <div className={s.slider}>
-            <div> 2</div>
-            <div> slider</div>
-            <div> 3</div>
+            <div className={s.sliderNumber}>
+              <span>2</span>{" "}
+            </div>
+            <div className={s.sliderLine}> </div>
+            <div className={s.sliderNumber}>
+              <span>3</span>
+            </div>
           </div>
         </div>
         <div className={s.icon}>icon</div>
