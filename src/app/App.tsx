@@ -16,6 +16,7 @@ import Login from "features/auth/Login/Login";
 import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
 import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
+import MyPack from "features/Packs/MyPacks/MyPack";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -38,6 +39,7 @@ function App() {
           <Route path={"/packs"} element={<PacksList />} />
           <Route path={"/page-pack"} element={<PagePack />} />
           <Route path={"/friends-pack"} element={<FriendsPack />} />
+          <Route path={"/my-pack"} element={<MyPack />} />
         </Routes>
       </div>
     </div>

@@ -31,7 +31,7 @@ const PacksList = () => {
             <div> 3</div>
           </div>
         </div>
-        <div>icon</div>
+        <div className={s.icon}>icon</div>
       </div>
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
@@ -62,6 +62,7 @@ const PacksList = () => {
 };
 let data = [
   {
+    id: 1,
     name: "Товар 1",
     cards: "Card1",
     lastUpdated: 162,
@@ -69,6 +70,7 @@ let data = [
     actions: "sasas",
   },
   {
+    id: 2,
     name: "Товар 1",
     cards: "Card2",
     lastUpdated: 1322,
@@ -76,6 +78,7 @@ let data = [
     actions: "sasas",
   },
   {
+    id: 3,
     name: "Товар 3",
     cards: "Card3",
     lastUpdated: 162323,

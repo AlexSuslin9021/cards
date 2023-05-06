@@ -7,32 +7,18 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import star from "../../../common/Image/Star 5.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 
 const FriendsPack = () => {
   return (
     <div className={s1.container}>
-      <PacksTitle name={"FriendsPack"} buttonName={"Add new pack"} callback={() => {}} />
+      <BackTo name={"Back to MyPack List"} link={"/packs"} />
+      <PacksTitle name={"FriendsPack"} buttonName={"Learn to pack"} callback={() => {}} />
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
           <Search></Search>
         </div>
-        <div className={s.choiceCards}>
-          <MiniTitle name={" Show packs cards"} />
-          <div>
-            <button className={s.myCards}>My</button>
-            <button className={s.allCards}>All</button>
-          </div>
-        </div>
-        <div className={s.sliderCont}>
-          <MiniTitle name={" Number of cards"} />
-          <div className={s.slider}>
-            <div> 2</div>
-            <div> slider</div>
-            <div> 3</div>
-          </div>
-        </div>
-        <div>icon</div>
       </div>
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
