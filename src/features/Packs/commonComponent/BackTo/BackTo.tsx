@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import s from "./BackTo.module.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import arrow from "../../../../common/Image/Vector 1.svg";
 type BackToType = {
   name: string;
   link: string;
@@ -12,7 +13,7 @@ export const BackTo: FC<BackToType> = ({ name, link }) => {
   };
   return (
     <div className={s.contLink}>
-      {/*<img src="" alt="" />*/}
+      <img src={arrow} alt="" />
       <span className={s.link} onClick={onClickHandler}>
         {name}
       </span>
