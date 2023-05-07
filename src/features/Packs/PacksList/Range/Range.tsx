@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import s from "features/Packs/Range/Range.module.scss";
+import s from "features/Packs/PacksList/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 
 export const Range = () => {

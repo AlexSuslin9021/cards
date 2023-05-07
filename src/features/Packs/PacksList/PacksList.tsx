@@ -6,7 +6,7 @@ import s1 from "../style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { Range } from "features/Packs/Range/Range";
+import { Range } from "features/Packs/PacksList/Range/Range";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
