@@ -1,0 +1,27 @@
+.paginationBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .active{
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+  }
+  .page{
+ width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   &:hover{
+     background: lightgray;
+     cursor: pointer;
+     border-radius: 5px;
+   }
+  }
+}

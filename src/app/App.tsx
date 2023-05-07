@@ -17,6 +17,7 @@ import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
 import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
 import MyPack from "features/Packs/MyPacks/MyPack";
+import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,6 +28,7 @@ function App() {
   return (
     <div className={s.app}>
       <Header />
+      <Pagination />
       <div className={s.container}>
         <Routes>
           <Route path={"/"} element={<Profile />} />
