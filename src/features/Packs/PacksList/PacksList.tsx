@@ -6,6 +6,7 @@ import s1 from "../style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Range } from "features/Packs/Range/Range";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
@@ -33,15 +34,7 @@ const PacksList = () => {
         </div>
         <div className={s.sliderCont}>
           <MiniTitle name={" Number of cards"} />
-          <div className={s.slider}>
-            <div className={s.sliderNumber}>
-              <span>2</span>{" "}
-            </div>
-            <div className={s.sliderLine}> </div>
-            <div className={s.sliderNumber}>
-              <span>3</span>
-            </div>
-          </div>
+          <Range />
         </div>
         <div className={s.icon}>icon</div>
       </div>

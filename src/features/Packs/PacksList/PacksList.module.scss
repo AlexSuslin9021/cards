@@ -32,34 +32,7 @@
     }
   }
   .sliderCont {
-    .slider {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .sliderLine{
-        height: 5px;
-        width: 80px;
-        border-radius: 5px;
-        background: #366EFF;
-        margin-left: 5px;
-        margin-right: 5px;
-        //border: 1px solid #366EFF ;
-      }
-      .sliderNumber{
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        height: 30px;
-        width: 30px;
-        font-weight: 600;
-        background: white;
-        border-color:#D9D9D9 ;
-        border-radius: 2px;
-        font-family: Montserrat, sans-serif;
-      }
-    }
   }
   }
 

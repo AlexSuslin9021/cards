@@ -17,7 +17,6 @@ import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
 import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
 import MyPack from "features/Packs/MyPacks/MyPack";
-import { Range } from "features/Packs/Range/Range";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,7 +40,6 @@ function App() {
           <Route path={"/page-pack"} element={<PagePack />} />
           <Route path={"/friends-pack"} element={<FriendsPack />} />
           <Route path={"/my-pack"} element={<MyPack />} />
-          <Route path={"/range"} element={<Range />} />
         </Routes>
       </div>
     </div>

@@ -1,0 +1,22 @@
+
+
+.wrapper {
+    display: flex;
+    //width: 260px;
+
+    .number {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        height: 30px;
+        width: 30px;
+        font-weight: 600;
+        background: white;
+        //border-color:#D9D9D9 ;
+        border-radius: 2px;
+        font-family: Montserrat, sans-serif;
+        border: 1px solid gray;
+
+    }
+}
