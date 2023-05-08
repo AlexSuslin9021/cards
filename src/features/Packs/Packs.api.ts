@@ -4,8 +4,26 @@ export const packsApi = {
   getPack(params: ParamsType) {
     return instance.get<GetPackType>(`/cards/pack/`, { params });
   },
+  addPack(arg: { cardsPack: AddPackType }) {
+    return instance.post(`/cards/pack/`, arg);
+  },
+  updatePack(arg: { cardsPack: UpdateType }) {
+    return instance.put(`/cards/pack/`, arg);
+  },
+  deletePack(id: string) {
+    return instance.put(`/cards/pack/`, { id });
+  },
 };
 
+export type AddPackType = {
+  name: string;
+  deckCover?: string;
+  private?: boolean;
+};
+export type UpdateType = {
+  _id: string;
+  name?: string;
+};
 export type ParamsType = {
   packName?: string;
   min?: string;
@@ -14,7 +32,6 @@ export type ParamsType = {
   page?: number;
   pageCount?: number;
   user_id?: string;
-  // чьи колоды не обязательно, или придут все
   block?: string;
 };
 export type GetPackType = {

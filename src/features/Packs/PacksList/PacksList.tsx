@@ -9,12 +9,14 @@ import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/
 import { Range } from "features/Packs/PacksList/Range/Range";
 import { useAppDispatch } from "app/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
+import { useAppSelector } from "app/store";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
   const onClickHandler = () => {
     setMode(!mode);
   };
+  const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 5 }));
@@ -57,13 +59,13 @@ const PacksList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((el) => (
+            {pack.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }}>
                 <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.cards}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.lastUpdated}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.createdBy}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.actions}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.created}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.user_id}</TableCell>
               </TableRow>
             ))}
           </TableBody>
