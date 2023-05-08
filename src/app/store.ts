@@ -2,11 +2,13 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { appReducer } from "app/app.slice";
 import { authReducers } from "features/auth/auth.slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { packsReducers } from "features/Packs/pack.slice";
 
 export const store = configureStore({
   reducer: {
     app: appReducer,
     auth: authReducers,
+    pack: packsReducers,
   },
 });
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

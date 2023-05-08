@@ -1,19 +1,37 @@
 import { instance } from "common/api";
 
 export const packsApi = {
-  register(arg: ParamsType) {
-    return instance.get(`/cards/pack/${arg.page}${arg.pageCount}`);
+  getPack(params: ParamsType) {
+    return instance.get<GetPackType>(`/cards/pack/`, { params });
   },
 };
 
-type ParamsType = {
-  packName?: "?packName=english";
-  min?: " &min=3";
-  max?: "&max=9";
-  sortPacks?: "&sortPacks=0updated";
-  page?: "&page=1";
-  pageCount?: "&pageCount=4";
-  id?: "&user_id=5eb543f6bea3ad21480f1ee7";
+export type ParamsType = {
+  packName?: string;
+  min?: string;
+  max?: string;
+  sortPacks?: string;
+  page?: number;
+  pageCount?: number;
+  user_id?: string;
   // чьи колоды не обязательно, или придут все
-  block?: "&block=true";
+  block?: string;
+};
+export type GetPackType = {
+  cardPacks: CardPacksType[];
+  cardPacksTotalCount: number;
+  // количество колод
+  maxCardsCount: number;
+  minCardsCount: number;
+  page: number; // выбранная страница
+  pageCount: number;
+  // количество элементов на странице
+};
+export type CardPacksType = {
+  _id: string;
+  user_id: string;
+  name: string;
+  cardsCount: number;
+  created: string;
+  updated: string;
 };
