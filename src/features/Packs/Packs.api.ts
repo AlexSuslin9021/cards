@@ -5,9 +5,9 @@ export const packsApi = {
     return instance.get<GetPackType>(`/cards/pack/`, { params });
   },
   addPack(arg: { cardsPack: AddPackType }) {
-    return instance.post(`/cards/pack/`, arg);
+    return instance.post<CardPacksType>(`/cards/pack/`, arg);
   },
-  updatePack(arg: { cardsPack: UpdateType }) {
+  updatePack(arg: AddPackResponseType) {
     return instance.put(`/cards/pack/`, arg);
   },
   deletePack(id: string) {
@@ -15,6 +15,9 @@ export const packsApi = {
   },
 };
 
+export type AddPackResponseType = {
+  cardsPack: AddPackType;
+};
 export type AddPackType = {
   name: string;
   deckCover?: string;

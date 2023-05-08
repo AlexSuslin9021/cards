@@ -8,6 +8,7 @@ import { useAppSelector } from "app/store";
 import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/auth/auth.slice";
 import avatar from "../../common/Image/ava.svg";
+import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +24,7 @@ const Profile = () => {
   }
   return (
     <div className={style.container}>
+      <BackTo name={"Back to MyPack List"} link={"/packs"} />
       <Title name={"Personal Information"} />
       <div className={s.iconContainer}>
         <img src={avatar} alt="avatar" />

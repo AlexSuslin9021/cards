@@ -10,20 +10,26 @@ import { Range } from "features/Packs/PacksList/Range/Range";
 import { useAppDispatch } from "app/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppSelector } from "app/store";
+import { Navigate } from "react-router-dom";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
   const onClickHandler = () => {
     setMode(!mode);
   };
+  const addPack = () => {
+    dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
+  };
+  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 5 }));
-  });
+  }, []);
+
   return (
     <div className={s1.container}>
-      <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={() => {}} />
+      <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
       {/*<button onClick={packsThunks.getPacksTC}>TEST</button>*/}
       <div className={s.dataCards}>
         <div className={s.search}>

@@ -1,6 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
-import { GetPackType, packsApi, ParamsType } from "features/Packs/Packs.api";
+import {
+  AddPackResponseType,
+  AddPackType,
+  CardPacksType,
+  GetPackType,
+  packsApi,
+  ParamsType,
+} from "features/Packs/Packs.api";
 
 const initialState: InitialStateType = {
   packList: {
@@ -31,15 +38,25 @@ const slice = createSlice({
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       state.packList = action.payload;
     });
+    builder.addCase(addPacksTC.fulfilled, (state, action) => {
+      state.packList.cardPacks.unshift(action.payload);
+    });
   },
 });
 export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", async (arg: ParamsType) => {
   let res = await packsApi.getPack(arg);
   return res.data;
 });
+export const addPacksTC = createAppAsyncThunk<CardPacksType, AddPackResponseType>(
+  "add/packs",
+  async (arg: AddPackResponseType) => {
+    let res = await packsApi.addPack(arg);
+    return res.data;
+  }
+);
 
 export const packsReducers = slice.reducer;
-export const packsThunks = { getPacksTC };
+export const packsThunks = { getPacksTC, addPacksTC };
 
 //types
 type InitialStateType = {
