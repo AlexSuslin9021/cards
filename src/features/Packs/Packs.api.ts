@@ -11,7 +11,7 @@ export const packsApi = {
     return instance.put(`/cards/pack/`, arg);
   },
   deletePack(id: string) {
-    return instance.put(`/cards/pack/`, { id });
+    return instance.delete(`/cards/pack/?id=${id}`);
   },
 };
 

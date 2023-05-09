@@ -42,6 +42,10 @@ const slice = createSlice({
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
     });
+    // builder.addCase(removePackTC.fulfilled, (state, action) => {
+    //   const index=state.packList.cardPacks.findIndex(c=>c._id===action.payload)
+    //   if(index!==-1) state.packList.cardPacks.splice(index,1)
+    // });
   },
 });
 export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", async (arg: ParamsType) => {
@@ -55,9 +59,13 @@ export const addPacksTC = createAppAsyncThunk<CardPacksType, AddPackResponseType
     return res.data;
   }
 );
+export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", async (arg: string) => {
+  await packsApi.deletePack(arg);
+  // return res.data;
+});
 
 export const packsReducers = slice.reducer;
-export const packsThunks = { getPacksTC, addPacksTC };
+export const packsThunks = { getPacksTC, addPacksTC, removePackTC };
 
 //types
 type InitialStateType = {

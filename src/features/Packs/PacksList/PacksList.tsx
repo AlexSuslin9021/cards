@@ -22,6 +22,9 @@ const PacksList = () => {
   const addPack = () => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
   };
+  const RemovePack = (id: string) => {
+    dispatch(packsThunks.removePackTC(id));
+  };
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -77,7 +80,7 @@ const PacksList = () => {
                     <span>
                       {/*<img src={lear} alt="lea" />*/}
                       <img onClick={() => {}} src={pencil} alt="change name" />
-                      <img onClick={() => {}} src={remove} alt="delete" />
+                      <img onClick={() => RemovePack(el._id)} src={remove} alt="delete" />
                     </span>
                   }
                 </TableCell>
