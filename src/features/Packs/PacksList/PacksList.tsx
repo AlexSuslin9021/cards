@@ -10,6 +10,9 @@ import { Range } from "features/Packs/PacksList/Range/Range";
 import { useAppDispatch } from "app/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppSelector } from "app/store";
+import remove from "../../../common/Image/trash.svg";
+import pencil from "../../../common/Image/pencil.svg";
+import lear from "../../../common/Image/learn.svg";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
@@ -68,8 +71,16 @@ const PacksList = () => {
                 <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.created}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.user_id}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.user_name}</TableCell>
+                <TableCell sx={{ background: "white" }}>
+                  {
+                    <span>
+                      {/*<img src={lear} alt="lea" />*/}
+                      <img onClick={() => {}} src={pencil} alt="change name" />
+                      <img onClick={() => {}} src={remove} alt="delete" />
+                    </span>
+                  }
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
