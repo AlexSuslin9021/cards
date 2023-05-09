@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import {
-  AddPackResponseType,
   AddPackType,
   CardPacksType,
   GetPackType,
+  PackResponseType,
   packsApi,
   ParamsType,
+  UpdateType,
 } from "features/Packs/Packs.api";
 
 const initialState: InitialStateType = {
@@ -42,6 +43,9 @@ const slice = createSlice({
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
     });
+    // builder.addCase(updatePackTC.fulfilled, (state, action) => {
+    //   state.packList.cardPacks.map((p) => (p._id === action.payload._id ? { ...p, name: action.payload.name } : p));
+    // });
     // builder.addCase(removePackTC.fulfilled, (state, action) => {
     //   const index=state.packList.cardPacks.findIndex(c=>c._id===action.payload)
     //   if(index!==-1) state.packList.cardPacks.splice(index,1)
@@ -52,9 +56,9 @@ export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", asy
   let res = await packsApi.getPack(arg);
   return res.data;
 });
-export const addPacksTC = createAppAsyncThunk<CardPacksType, AddPackResponseType>(
+export const addPacksTC = createAppAsyncThunk<CardPacksType, PackResponseType<AddPackType>>(
   "add/packs",
-  async (arg: AddPackResponseType) => {
+  async (arg: PackResponseType<AddPackType>) => {
     let res = await packsApi.addPack(arg);
     return res.data;
   }
@@ -63,9 +67,16 @@ export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", asyn
   await packsApi.deletePack(arg);
   // return res.data;
 });
+export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<UpdateType>>(
+  "update/packs",
+  async (arg: PackResponseType<UpdateType>) => {
+    let res = await packsApi.updatePack(arg);
+    return res.data;
+  }
+);
 
 export const packsReducers = slice.reducer;
-export const packsThunks = { getPacksTC, addPacksTC, removePackTC };
+export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };
 
 //types
 type InitialStateType = {
