@@ -29,13 +29,13 @@ export type UpdateType = {
 };
 export type ParamsType = {
   packName?: string;
-  min?: string;
-  max?: string;
+  min?: number;
+  max?: number;
   sortPacks?: string;
   page?: number;
   pageCount?: number;
   user_id?: string;
-  block?: string;
+  block?: boolean;
 };
 export type GetPackType = {
   cardPacks: CardPacksType[];

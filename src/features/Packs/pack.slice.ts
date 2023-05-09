@@ -37,6 +37,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       state.packList = action.payload;
+      state.packList.page = action.payload.page;
     });
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
@@ -61,7 +62,7 @@ export const packsThunks = { getPacksTC, addPacksTC };
 //types
 type InitialStateType = {
   packList: GetPackType;
-  queryParams: QueryParams;
+  queryParams: ParamsType;
 };
 type QueryParams = {
   min?: number;

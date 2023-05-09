@@ -6,7 +6,7 @@ import { packsThunks } from "features/Packs/pack.slice";
 
 export const Pagination = () => {
   const cardPacksTotalCount = useAppSelector((state) => state.pack.packList.cardPacksTotalCount);
-  const pageCurrent = useAppSelector((state) => state.pack.queryParams.page);
+  const pageCurrent = useAppSelector((state) => state.pack.packList.page);
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
     dispatch(packsThunks.getPacksTC({ page: page, pageCount: 10 }));
@@ -27,6 +27,7 @@ export const Pagination = () => {
   // первая цифра порции слева
   let rightPortionSizeNumber = portionNumber * portionSize;
   // последняя цифра порции справа
+  debugger;
   return (
     <div className={s.paginationBlock}>
       {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>Back</button>}
