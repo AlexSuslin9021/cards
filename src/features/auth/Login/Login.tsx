@@ -16,6 +16,7 @@ const Login = () => {
   if (isLoggedIn) {
     return <Navigate to={"/"} />;
   }
+
   return (
     <div className={style.container}>
       <Title name={"Sign in"} />

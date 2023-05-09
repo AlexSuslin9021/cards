@@ -10,7 +10,6 @@ import { Range } from "features/Packs/PacksList/Range/Range";
 import { useAppDispatch } from "app/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppSelector } from "app/store";
-import { Navigate } from "react-router-dom";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
@@ -20,7 +19,6 @@ const PacksList = () => {
   const addPack = () => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
   };
-  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
