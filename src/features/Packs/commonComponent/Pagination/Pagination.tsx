@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import s from "./Pagination.module.scss";
 import { useAppSelector } from "app/store";
+import { useAppDispatch } from "app/hooks";
+import { packsThunks } from "features/Packs/pack.slice";
 
 export const Pagination = () => {
   const cardPacksTotalCount = useAppSelector((state) => state.pack.packList.cardPacksTotalCount);
-  const query = useAppSelector((state) => state.pack.queryParams);
-
-  const onClickHandler = () => {};
+  const pageCurrent = useAppSelector((state) => state.pack.queryParams.page);
+  const dispatch = useAppDispatch();
+  const onClickHandler = (page: number) => {
+    dispatch(packsThunks.getPacksTC({ page: page, pageCount: 10 }));
+  };
   const pageSize = 10;
   const portionSize = 10;
   let pageCount = Math.ceil(cardPacksTotalCount / pageSize);
@@ -29,7 +33,7 @@ export const Pagination = () => {
       {page
         .filter((p) => p >= leftPortionSizeNumber && p <= rightPortionSizeNumber)
         .map((p, index) => (
-          <span key={index} onClick={onClickHandler} className={p === index + 1 ? s.active : s.page}>
+          <span key={index} onClick={() => onClickHandler(p)} className={p === pageCurrent ? s.active : s.page}>
             {p}
           </span>
         ))}
