@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/auth/auth.slice";
 import avatar from "../../common/Image/ava.svg";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { LinearProgress } from "@mui/material";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -17,9 +18,11 @@ const Profile = () => {
   };
   debugger;
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+
   const email = useAppSelector((state) => {
     if (state.auth.profile !== null) return state.auth.profile.email;
   });
+
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }

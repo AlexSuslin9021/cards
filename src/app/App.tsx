@@ -6,7 +6,7 @@ import PacksList from "features/Packs/PacksList/PacksList";
 import Learn from "Component/Learn/Learn";
 import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "app/store";
+import { AppDispatch, useAppSelector } from "app/store";
 import { Header } from "Component/Header/Header";
 import { ForgotPassword } from "features/auth/ForgotPassword/ForgotPassword";
 import { CheckEmail } from "features/auth/CheckEmail/CheckEmail";
@@ -19,16 +19,19 @@ import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
 import MyPack from "features/Packs/MyPacks/MyPack";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 import { authThunks } from "features/auth/auth.slice";
+import { LinearProgress } from "@mui/material";
 
 function App() {
+  const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(authThunks.initializedTC());
   }, []);
-
+  debugger;
   return (
     <div className={s.app}>
       <Header />
+      {isLoggedInApp && <LinearProgress />}
       <Pagination />
       <div className={s.container}>
         <Routes>

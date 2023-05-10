@@ -9,6 +9,8 @@ import {
   ParamsType,
   UpdateType,
 } from "features/Packs/Packs.api";
+import { thunkTryCatch } from "common/utils/thunkTryCatch";
+import { authApi } from "features/auth/auth.api";
 
 const initialState: InitialStateType = {
   packList: {
@@ -52,26 +54,35 @@ const slice = createSlice({
     // });
   },
 });
-export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", async (arg: ParamsType) => {
-  let res = await packsApi.getPack(arg);
-  return res.data;
+export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", async (arg: ParamsType, thunkAPI) => {
+  return thunkTryCatch(thunkAPI, async () => {
+    let res = await packsApi.getPack(arg);
+    return res.data;
+  });
 });
 export const addPacksTC = createAppAsyncThunk<CardPacksType, PackResponseType<AddPackType>>(
   "add/packs",
-  async (arg: PackResponseType<AddPackType>) => {
-    let res = await packsApi.addPack(arg);
-    return res.data;
+  async (arg: PackResponseType<AddPackType>, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      let res = await packsApi.addPack(arg);
+      return res.data;
+    });
   }
 );
-export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", async (arg: string) => {
-  await packsApi.deletePack(arg);
+export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", async (arg: string, thunkAPI) => {
+  return thunkTryCatch(thunkAPI, async () => {
+    await packsApi.deletePack(arg);
+  });
+
   // return res.data;
 });
 export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<UpdateType>>(
   "update/packs",
-  async (arg: PackResponseType<UpdateType>) => {
-    let res = await packsApi.updatePack(arg);
-    return res.data;
+  async (arg: PackResponseType<UpdateType>, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      let res = await packsApi.updatePack(arg);
+      return res.data;
+    });
   }
 );
 
