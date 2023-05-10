@@ -27,7 +27,6 @@ export const Pagination = () => {
   // первая цифра порции слева
   let rightPortionSizeNumber = portionNumber * portionSize;
   // последняя цифра порции справа
-  debugger;
   return (
     <div className={s.paginationBlock}>
       {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>Back</button>}

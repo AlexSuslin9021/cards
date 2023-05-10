@@ -15,7 +15,6 @@ export const ForgotPassword = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
 
   if (isLoggedIn) {
-    debugger;
     return <Navigate to={"/check-email"} />;
   }
 

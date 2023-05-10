@@ -26,7 +26,6 @@ export const authApi = {
     );
   },
   createNewPassword(data: CreatePasswordType) {
-    debugger;
     return instance.post(`/auth/set-new-password`, data);
   },
 };

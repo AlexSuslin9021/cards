@@ -16,7 +16,7 @@ const appSlice = createSlice({
       state.isLoggedIn = action.payload.isLoggedIn;
     },
     isAppInitializedAC(state, action: PayloadAction<{ isAppInitialized: boolean }>) {
-      state.isLoggedIn = action.payload.isAppInitialized;
+      state.isAppInitialized = true;
     },
   },
 });

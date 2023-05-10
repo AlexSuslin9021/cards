@@ -12,12 +12,16 @@ import { packsThunks } from "features/Packs/pack.slice";
 import { useAppSelector } from "app/store";
 import remove from "../../../common/Image/trash.svg";
 import pencil from "../../../common/Image/pencil.svg";
-import lear from "../../../common/Image/learn.svg";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
-  const onClickHandler = () => {
+  const onClickAllPack = () => {
+    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 5 }));
     setMode(!mode);
+  };
+  const onClickMyPack = () => {
+    setMode(!mode);
+    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 8, user_id: "64527e000415841fd8df2cf3" }));
   };
   const addPack = () => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
@@ -26,18 +30,17 @@ const PacksList = () => {
     dispatch(packsThunks.removePackTC(id));
   };
   const UpdatePack = (id: string) => {
-    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id } }));
+    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "stock" } }));
   };
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 5 }));
+    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 8 }));
   }, []);
 
   return (
     <div className={s1.container}>
       <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
-      {/*<button onClick={packsThunks.getPacksTC}>TEST</button>*/}
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
@@ -46,10 +49,10 @@ const PacksList = () => {
         <div className={s.choiceCards}>
           <MiniTitle name={" Show packs cards"} />
           <div>
-            <button onClick={onClickHandler} className={mode ? s.myCards : s.allCards}>
+            <button onClick={onClickMyPack} className={mode ? s.myCards : s.allCards}>
               My
             </button>
-            <button onClick={onClickHandler} className={!mode ? s.myCards : s.allCards}>
+            <button onClick={onClickAllPack} className={!mode ? s.myCards : s.allCards}>
               All
             </button>
           </div>
@@ -82,8 +85,12 @@ const PacksList = () => {
                   {
                     <span>
                       {/*<img src={lear} alt="lea" />*/}
-                      <img onClick={() => UpdatePack(el._id)} src={pencil} alt="change name" />
-                      <img onClick={() => RemovePack(el._id)} src={remove} alt="delete" />
+                      {el.user_id === "64527e000415841fd8df2cf3" && (
+                        <img onClick={() => UpdatePack(el._id)} src={pencil} alt="change name" />
+                      )}
+                      {el.user_id === "64527e000415841fd8df2cf3" && (
+                        <img onClick={() => RemovePack(el._id)} src={remove} alt="delete" />
+                      )}
                     </span>
                   }
                 </TableCell>

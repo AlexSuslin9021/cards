@@ -89,7 +89,6 @@ export const logoutTC = createAppAsyncThunk<void>("auth/me", async () => {
 export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
   `/auth/set-new-password`,
   async (arg: CreatePasswordType) => {
-    debugger;
     // const tokenPassword = useParams().token;
     let res = await authApi.createNewPassword(arg);
     return res.data;

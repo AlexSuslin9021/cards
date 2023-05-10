@@ -12,7 +12,6 @@ import { Navigate } from "react-router-dom";
 export const CreatePassword = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   if (isLoggedIn) {
-    debugger;
     return <Navigate to={"/login"} />;
   }
   return (

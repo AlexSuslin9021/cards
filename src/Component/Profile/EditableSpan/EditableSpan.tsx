@@ -6,7 +6,6 @@ import s from "../EditableSpan/EditableSpan.module.scss";
 import pencil from "../../../common/Image/pencil.svg";
 
 export const EditableSpan = () => {
-  debugger;
   const name = useAppSelector<any>((state) => {
     if (state.auth.profile !== null) return state.auth.profile.name;
   });
