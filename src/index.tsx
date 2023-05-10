@@ -6,7 +6,8 @@ import App from "app/App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-
+import "react-toastify/dist/ReactToastify.css";
+import GlobalError from "common/Global/GlobalError";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
@@ -15,6 +16,7 @@ root.render(
   <BrowserRouter>
     <Provider store={store}>
       <App />
+      <GlobalError />
     </Provider>
   </BrowserRouter>
   // </React.StrictMode>
