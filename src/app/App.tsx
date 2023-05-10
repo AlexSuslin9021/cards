@@ -18,11 +18,12 @@ import { PagePack } from "features/Packs/PagePack/PagePack";
 import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
 import MyPack from "features/Packs/MyPacks/MyPack";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
+import { authThunks } from "features/auth/auth.slice";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(initializedTC());
+    dispatch(authThunks.initializedTC());
   }, []);
 
   return (

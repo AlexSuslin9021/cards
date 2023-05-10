@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./Profile.module.scss";
 import style from "../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
@@ -15,6 +15,7 @@ const Profile = () => {
   const onClickLogout = () => {
     dispatch(logoutTC());
   };
+  debugger;
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const email = useAppSelector((state) => {
     if (state.auth.profile !== null) return state.auth.profile.email;
@@ -22,6 +23,7 @@ const Profile = () => {
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }
+  console.log(email);
   return (
     <div className={style.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />

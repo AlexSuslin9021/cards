@@ -12,32 +12,40 @@ import { packsThunks } from "features/Packs/pack.slice";
 import { useAppSelector } from "app/store";
 import remove from "../../../common/Image/trash.svg";
 import pencil from "../../../common/Image/pencil.svg";
+import { Navigate } from "react-router-dom";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
+  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const onClickAllPack = () => {
-    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 5 }));
+    dispatch(packsThunks.getPacksTC({}));
     setMode(!mode);
   };
   const onClickMyPack = () => {
     setMode(!mode);
-    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 8, user_id: "64527e000415841fd8df2cf3" }));
+    dispatch(packsThunks.getPacksTC({ user_id: "64527e000415841fd8df2cf3" }));
   };
   const addPack = () => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
   };
-  const RemovePack = (id: string) => {
+  const removePack = (id: string) => {
     dispatch(packsThunks.removePackTC(id));
   };
-  const UpdatePack = (id: string) => {
+  const updatePack = (id: string) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "stock" } }));
   };
+  const sortHandler = (name: string) => {
+    dispatch(packsThunks.getPacksTC({ sortPacks: name }));
+  };
+
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(packsThunks.getPacksTC({ page: 1, pageCount: 8 }));
+    dispatch(packsThunks.getPacksTC({}));
   }, []);
-
+  if (!isLoggedIn) {
+    return <Navigate to={"/login"} />;
+  }
   return (
     <div className={s1.container}>
       <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
@@ -67,7 +75,9 @@ const PacksList = () => {
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Name</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
+                <span onClick={() => sortHandler("name")}>Name</span>
+              </TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Cards</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Created by</TableCell>
@@ -86,10 +96,10 @@ const PacksList = () => {
                     <span>
                       {/*<img src={lear} alt="lea" />*/}
                       {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <img onClick={() => UpdatePack(el._id)} src={pencil} alt="change name" />
+                        <img onClick={() => updatePack(el._id)} src={pencil} alt="change name" />
                       )}
                       {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <img onClick={() => RemovePack(el._id)} src={remove} alt="delete" />
+                        <img onClick={() => removePack(el._id)} src={remove} alt="delete" />
                       )}
                     </span>
                   }
