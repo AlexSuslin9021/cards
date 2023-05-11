@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
-import { useAppSelector } from "app/store";
-import { useAppDispatch } from "app/hooks";
+
+import { useAppDispatch, useAppSelector } from "common/hooks";
 import { updateUserTC } from "features/auth/auth.slice";
 import s from "../EditableSpan/EditableSpan.module.scss";
 import pencil from "../../../common/Image/pencil.svg";

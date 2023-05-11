@@ -7,16 +7,31 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { Range } from "features/Packs/PacksList/Range/Range";
-import { useAppDispatch } from "app/hooks";
-import { packsThunks } from "features/Packs/pack.slice";
-import { useAppSelector } from "app/store";
+
+import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 import remove from "../../../common/Image/trash.svg";
 import pencil from "../../../common/Image/pencil.svg";
 import { Navigate } from "react-router-dom";
 
 const PacksList = () => {
   const [mode, setMode] = useState(false);
-  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+  const dispatch = useAppDispatch();
+  const pack = useAppSelector((state) => state.pack.packList.cardPacks);
+  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+  const page = useAppSelector((state) => state.pack.queryParams.page);
+  const max = useAppSelector((state) => state.pack.queryParams.max);
+  const min = useAppSelector((state) => state.pack.queryParams.min);
+  const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
+  const myId = useAppSelector((state) => state.pack.queryParams.user_id);
+  const sortPacks = useAppSelector((state) => state.pack.queryParams.sortPacks);
+
+  useEffect(() => {
+    dispatch(packsThunks.getPacksTC({ user_id: myId }));
+  }, [max, page, min, max, pageCount, myId, sortPacks]);
+  const searchHandler = (search: string, params: string) => {
+    dispatch(searchParamsAc({}));
+  };
   const onClickAllPack = () => {
     dispatch(packsThunks.getPacksTC({}));
     setMode(!mode);
@@ -25,7 +40,7 @@ const PacksList = () => {
     setMode(!mode);
     dispatch(packsThunks.getPacksTC({ user_id: "64527e000415841fd8df2cf3" }));
   };
-  const addPack = () => {
+  const addPack = (params: string) => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
   };
   const removePack = (id: string) => {
@@ -38,8 +53,6 @@ const PacksList = () => {
     dispatch(packsThunks.getPacksTC({ sortPacks: name }));
   };
 
-  const pack = useAppSelector((state) => state.pack.packList.cardPacks);
-  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({}));
   }, []);

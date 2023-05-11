@@ -6,7 +6,7 @@ import { Message } from "common/component/Message/Message";
 import { Button } from "common/component/Button/Button";
 import { FormTest } from "common/component/Form/Form";
 import { Input } from "common/component/Input/Input";
-import { useAppSelector } from "app/store";
+import { useAppSelector } from "common/hooks";
 import { Navigate } from "react-router-dom";
 
 export const CreatePassword = () => {

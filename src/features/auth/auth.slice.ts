@@ -68,7 +68,7 @@ const slice = createSlice({
     });
     builder.addCase(initializedTC.fulfilled, (state, action) => {
       state.isLoggedIn = true;
-      state.profile = action.payload;
+      state.profile = action.payload.profile;
     });
   },
 });
@@ -128,8 +128,7 @@ link</a>
   return res.data;
 });
 export const initializedTC = createAppAsyncThunk("/new/pass", async () => {
-  debugger;
   const res = await authApi.me();
-  return res.data;
+  return { profile: res.data };
 });
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC, initializedTC };

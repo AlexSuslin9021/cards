@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import s from "./Pagination.module.scss";
-import { useAppSelector } from "app/store";
-import { useAppDispatch } from "app/hooks";
+
 import { packsThunks } from "features/Packs/pack.slice";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 
 export const Pagination = () => {
   const cardPacksTotalCount = useAppSelector((state) => state.pack.packList.cardPacksTotalCount);

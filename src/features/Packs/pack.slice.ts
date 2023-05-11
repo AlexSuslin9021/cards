@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import {
   AddPackType,
@@ -11,6 +11,7 @@ import {
 } from "features/Packs/Packs.api";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
 import { authApi } from "features/auth/auth.api";
+import { RootState } from "app/store";
 
 const initialState: InitialStateType = {
   packList: {
@@ -36,11 +37,29 @@ const initialState: InitialStateType = {
 const slice = createSlice({
   name: "pack",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    searchParams: (state, action: PayloadAction<ParamsType>) => {
+      state.queryParams = { ...state.queryParams, ...action.payload };
+    },
+    deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
+      state.packList.page = 1;
+      state.queryParams.packName = "";
+      state.queryParams.min = state.packList.minCardsCount;
+      state.queryParams.max = state.packList.maxCardsCount;
+      state.queryParams.sortPacks = "0updated";
+      state.queryParams.pageCount = 10;
+      state.packList.maxCardsCount = 0;
+      state.packList.minCardsCount = 0;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
-      state.packList = action.payload;
+      state.packList.cardPacks = action.payload.cardPacks;
       state.packList.page = action.payload.page;
+      state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
+      state.packList.maxCardsCount = action.payload.maxCardsCount;
+      state.packList.minCardsCount = action.payload.minCardsCount;
+      state.packList.pageCount = action.payload.pageCount;
     });
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
@@ -54,12 +73,18 @@ const slice = createSlice({
     // });
   },
 });
-export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>("//", async (arg: ParamsType, thunkAPI) => {
-  return thunkTryCatch(thunkAPI, async () => {
-    let res = await packsApi.getPack(arg);
-    return res.data;
-  });
-});
+export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
+  "pack/getPack",
+  async (arg: ParamsType, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      const { getState } = thunkAPI;
+      const { pack } = getState() as RootState;
+      const params = { ...pack.queryParams, ...arg };
+      let res = await packsApi.getPack(params);
+      return res.data;
+    });
+  }
+);
 export const addPacksTC = createAppAsyncThunk<CardPacksType, PackResponseType<AddPackType>>(
   "add/packs",
   async (arg: PackResponseType<AddPackType>, thunkAPI) => {
@@ -87,6 +112,7 @@ export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<
 );
 
 export const packsReducers = slice.reducer;
+export const searchParamsAc = slice.actions.searchParams;
 export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };
 
 //types

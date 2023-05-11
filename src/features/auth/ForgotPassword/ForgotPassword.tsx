@@ -4,7 +4,7 @@ import { Hint } from "common/component/Hint/Hint";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
 import { Navigate } from "react-router-dom";
 import { Button } from "common/component/Button/Button";
-import { useAppSelector } from "app/store";
+import { useAppSelector } from "common/hooks";
 import { authThunks } from "features/auth/auth.slice";
 import { Message } from "common/component/Message/Message";
 import { Input } from "common/component/Input/Input";

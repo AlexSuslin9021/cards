@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import s from "./Form.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useAppDispatch } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 // type InputType = {
 //   name: string;
 //   type: string;

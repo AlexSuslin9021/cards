@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import s from "features/Packs/PacksList/Range/Range.module.scss";
 import { Slider } from "@mui/material";
-import { useAppSelector } from "app/store";
+
 import { getPacksTC, packsThunks } from "features/Packs/pack.slice";
-import { useAppDispatch } from "app/hooks";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 
 export const Range = () => {
   const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);

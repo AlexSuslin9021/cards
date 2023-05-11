@@ -5,12 +5,12 @@ import s from "./Login.module.scss";
 import { Title } from "common/component/Title/Title";
 import { BottomAuth } from "common/component/BottomAuth/BottomAuth";
 import { Hint } from "common/component/Hint/Hint";
-import { useAppSelector } from "app/store";
+
 import { Navigate, NavLink } from "react-router-dom";
 import { Button } from "common/component/Button/Button";
 import { Input } from "common/component/Input/Input";
 import { FormTest } from "common/component/Form/Form";
-
+import { useAppSelector } from "common/hooks";
 const Login = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   if (isLoggedIn) {

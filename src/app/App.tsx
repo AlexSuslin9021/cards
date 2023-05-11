@@ -27,7 +27,6 @@ function App() {
   useEffect(() => {
     dispatch(authThunks.initializedTC());
   }, []);
-  debugger;
   return (
     <div className={s.app}>
       <Header />
