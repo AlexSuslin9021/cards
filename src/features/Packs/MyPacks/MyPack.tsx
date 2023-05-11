@@ -15,13 +15,6 @@ const MyPack = () => {
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />
-      <PacksTitle name={"MyPack"} buttonName={"Add new card"} callback={() => {}} />
-      <div className={s.dataCards}>
-        <div className={s.search}>
-          <MiniTitle name={"Search"} />
-          <Search></Search>
-        </div>
-      </div>
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
           <TableHead>

@@ -1,0 +1,37 @@
+.dataCards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  .icon{
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .search {
+  }
+  .choiceCards {
+    .myCards {
+      width: 100px;
+      height: 30px;
+      background: #366EFF;
+      //border-color: #366EFF;
+      //border-radius: 2px;
+      border: none;
+      color:white;
+      font-family: Montserrat, sans-serif;
+    }
+
+    .allCards {
+      width: 100px;
+      height: 30px;
+      background: white;
+      border-color:#D9D9D9;
+      border-radius: 2px;
+      font-family: Montserrat, sans-serif;
+
+    }
+  }
+  .sliderCont {
+
+  }
+}

@@ -76,6 +76,7 @@ const slice = createSlice({
 export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
   "pack/getPack",
   async (arg: ParamsType, thunkAPI) => {
+    debugger;
     return thunkTryCatch(thunkAPI, async () => {
       const { getState } = thunkAPI;
       const { pack } = getState() as RootState;

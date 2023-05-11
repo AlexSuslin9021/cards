@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import s from "./Pagination.module.scss";
 
-import { packsThunks } from "features/Packs/pack.slice";
+import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 
 export const Pagination = () => {
@@ -9,7 +9,7 @@ export const Pagination = () => {
   const pageCurrent = useAppSelector((state) => state.pack.packList.page);
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
-    dispatch(packsThunks.getPacksTC({ page: page, pageCount: 10 }));
+    dispatch(searchParamsAc({ page: page, pageCount: 10 }));
   };
   const pageSize = 10;
   const portionSize = 10;

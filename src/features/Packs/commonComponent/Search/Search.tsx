@@ -1,9 +1,17 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import s from "./Search.module.scss";
-const Search = () => {
+
+type InputType = {
+  value: string;
+  callback: (value: string) => void;
+};
+const Search = (props: InputType) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    props.callback(e.currentTarget.value);
+  };
   return (
     <div className={s.searchBlock}>
-      <input placeholder={"    Provide your text"} />
+      <input value={props.value} onChange={onChangeHandler} placeholder={"    Provide your text"} />
     </div>
   );
 };

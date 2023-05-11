@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "app/App.module.scss";
 import { Route, Routes } from "react-router-dom";
 import Profile from "Component/Profile/Profile";
-import PacksList from "features/Packs/PacksList/PacksList";
+
 import Learn from "Component/Learn/Learn";
 import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
@@ -20,6 +20,7 @@ import MyPack from "features/Packs/MyPacks/MyPack";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 import { authThunks } from "features/auth/auth.slice";
 import { LinearProgress } from "@mui/material";
+import Pack from "features/Packs/Pack";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
@@ -41,7 +42,7 @@ function App() {
           <Route path={"/check-email"} element={<CheckEmail />} />
           <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
           <Route path={"/learn"} element={<Learn />} />
-          <Route path={"/packs"} element={<PacksList />} />
+          <Route path={"/packs"} element={<Pack />} />
           <Route path={"/page-pack"} element={<PagePack />} />
           <Route path={"/friends-pack"} element={<FriendsPack />} />
           <Route path={"/my-pack"} element={<MyPack />} />

@@ -17,7 +17,7 @@ const FriendsPack = () => {
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
-          <Search></Search>
+          {/*<Search></Search>*/}
         </div>
       </div>
       <TableContainer>
