@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "features/Packs/PacksList/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 
 import { getPacksTC, packsThunks, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
+import { useDebounce } from "common/hooks/useDebounce";
 
 export const Range = () => {
   const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
@@ -11,11 +12,18 @@ export const Range = () => {
   const [value1, setValue1] = useState<number>(minCardsCount);
   const [value2, setValue2] = useState<number>(maxCardsCount);
   const dispatch = useAppDispatch();
+
+  // const [value, setValue] = useState<string>("");
+  const debounceValue = useDebounce(value1 | value2, 1000);
+  //
+  useEffect(() => {
+    dispatch(searchParamsAc({ min: value1, max: value2 }));
+  }, [debounceValue]);
+
   const change = (event: Event, value: number | number[]) => {
     if (Array.isArray(value)) {
       setValue1(value[0]);
       setValue2(value[1]);
-      dispatch(searchParamsAc({ min: value1, max: value2 }));
     }
   };
 

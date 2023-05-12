@@ -30,7 +30,6 @@ function App() {
     <div className={s.app}>
       <Header />
       {isLoggedInApp && <LinearProgress />}
-      <Pagination />
       <div className={s.container}>
         <Routes>
           <Route path={"/"} element={<Profile />} />

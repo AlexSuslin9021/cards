@@ -20,6 +20,7 @@ const Pack = () => {
   const packName = useAppSelector((state) => state.pack.queryParams.packName);
   const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
   const maxCardsCount = useAppSelector((state) => state.pack.packList.maxCardsCount);
+
   useEffect(() => {
     // if (!isLoggedIn) {
     //   return;

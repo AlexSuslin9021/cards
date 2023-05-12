@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import s from "./Pagination.module.scss";
-
-import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
+import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 
 export const Pagination = () => {
   const cardPacksTotalCount = useAppSelector((state) => state.pack.packList.cardPacksTotalCount);
-  const pageCurrent = useAppSelector((state) => state.pack.packList.page);
+  const pageCurrent = useAppSelector((state) => state.pack.queryParams.page);
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
     dispatch(searchParamsAc({ page: page, pageCount: 10 }));
@@ -29,7 +28,7 @@ export const Pagination = () => {
   // последняя цифра порции справа
   return (
     <div className={s.paginationBlock}>
-      {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>Back</button>}
+      {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>{"<"}</button>}
       {page
         .filter((p) => p >= leftPortionSizeNumber && p <= rightPortionSizeNumber)
         .map((p, index) => (
@@ -37,7 +36,7 @@ export const Pagination = () => {
             {p}
           </span>
         ))}
-      {portionCount > portionNumber && <button onClick={() => setPortionNumber(portionNumber + 1)}>next</button>}
+      {portionCount > portionNumber && <button onClick={() => setPortionNumber(portionNumber + 1)}>{">"}</button>}
     </div>
   );
 };
