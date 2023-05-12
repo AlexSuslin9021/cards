@@ -2,5 +2,10 @@
   width: 1000px;
   height: 100%;
   border: 1px solid lightgray;
-
+}
+.arrow{
+opacity: 0;
+  &:hover{
+ opacity: 0.9;
+}
 }

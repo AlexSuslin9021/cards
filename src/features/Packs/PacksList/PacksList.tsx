@@ -15,19 +15,11 @@ import SearchPanel from "features/Packs/SearchPanel";
 
 export const PacksList = () => {
   const [mode, setMode] = useState(false);
+  const [changeFilter, setChangeFilter] = useState(false);
   const dispatch = useAppDispatch();
   const pack = useAppSelector((state) => state.pack.packList.cardPacks);
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
-  // const page = useAppSelector((state) => state.pack.queryParams.page);
-  // const max = useAppSelector((state) => state.pack.queryParams.max);
-  // const min = useAppSelector((state) => state.pack.queryParams.min);
-  // const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
-  // const myId = useAppSelector((state) => state.pack.queryParams.user_id);
-  // const sortPacks = useAppSelector((state) => state.pack.queryParams.sortPacks);
 
-  // useEffect(() => {
-  //   dispatch(packsThunks.getPacksTC({ user_id: myId }));
-  // }, [max, page, min, max, pageCount, myId, sortPacks]);
   const searchHandler = (search: string, params: string) => {
     dispatch(searchParamsAc({}));
   };
@@ -49,7 +41,8 @@ export const PacksList = () => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "stock" } }));
   };
   const sortHandler = (name: string) => {
-    dispatch(packsThunks.getPacksTC({ sortPacks: name }));
+    setChangeFilter(!changeFilter);
+    dispatch(searchParamsAc({ sortPacks: changeFilter ? `0${name}` : `1${name}` }));
   };
 
   // useEffect(() => {
@@ -58,15 +51,21 @@ export const PacksList = () => {
 
   return (
     <div className={s1.container}>
-      <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
-                <span onClick={() => sortHandler("name")}>Name</span>
+                <span onClick={() => sortHandler("name")}>
+                  Name <span className={s1.arrow}>{changeFilter ? "↓" : "↑"}</span>
+                </span>
               </TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Cards</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
+                <span onClick={() => sortHandler("cardsCount")}>
+                  Cards
+                  <span className={s1.arrow}>{changeFilter ? "↓" : "↑"}</span>
+                </span>
+              </TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Created by</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Actions</TableCell>

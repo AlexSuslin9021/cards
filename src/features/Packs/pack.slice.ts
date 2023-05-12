@@ -12,6 +12,7 @@ import {
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
 import { authApi } from "features/auth/auth.api";
 import { RootState } from "app/store";
+import { initializedTC } from "features/auth/auth.slice";
 
 const initialState: InitialStateType = {
   packList: {
@@ -39,7 +40,8 @@ export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
   async (arg: ParamsType, thunkAPI) => {
     debugger;
     return thunkTryCatch(thunkAPI, async () => {
-      const { getState } = thunkAPI;
+      const { getState, dispatch } = thunkAPI;
+      await dispatch(initializedTC());
       const params = { ...getState().pack.queryParams, ...arg };
       let res = await packsApi.getPack(params);
       return res.data;
@@ -108,7 +110,6 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       if (action.payload) {
-        debugger;
         state.packList.cardPacks = action.payload.cardPacks;
         state.queryParams.page = action.payload.page;
         state.queryParams.pageCount = action.payload.pageCount;

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
-import { Navigate } from "react-router-dom";
 import SearchPanel from "features/Packs/SearchPanel";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import { PacksList } from "features/Packs/PacksList/PacksList";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
+import { authThunks } from "features/auth/auth.slice";
 
 const Pack = () => {
   const dispatch = useAppDispatch();
@@ -25,8 +25,8 @@ const Pack = () => {
     // if (!isLoggedIn) {
     //   return;
     // }
-    debugger;
-    dispatch(packsThunks.getPacksTC({ user_id }));
+
+    dispatch(packsThunks.getPacksTC({}));
     // let [params, SetParams] = useSearchParams();
   }, [page, user_id, max, min, pageCount, sortPacks, packName, minCardsCount, maxCardsCount]);
 

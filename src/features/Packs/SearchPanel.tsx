@@ -15,7 +15,7 @@ const SearchPanel = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
-  //
+  const [mode, setMode] = useState(false);
   useEffect(() => {
     dispatch(searchParamsAc({ packName: debounceValue }));
   }, [debounceValue]);
@@ -24,12 +24,11 @@ const SearchPanel = () => {
     setMode(!mode);
     dispatch(searchParamsAc({ user_id: "64527e000415841fd8df2cf3" }));
   };
-
   const onChangeInputHandler = (value: string) => {
     setValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
-  const [mode, setMode] = useState(false);
+
   return (
     <>
       <div className={s.dataCards}>
