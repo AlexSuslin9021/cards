@@ -4,26 +4,30 @@ import Search from "features/Packs/commonComponent/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "./searchPanel.module.scss";
 import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch } from "common/hooks";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 const SearchPanel = () => {
   const onClickAllPack = () => {
+    debugger;
     setMode(!mode);
+    dispatch(searchParamsAc({ user_id: "" }));
   };
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
-
+  //
   useEffect(() => {
-    debugger;
     dispatch(searchParamsAc({ packName: debounceValue }));
   }, [debounceValue]);
   const onClickMyPack = () => {
+    debugger;
     setMode(!mode);
-    dispatch(packsThunks.getPacksTC({ user_id: "64527e000415841fd8df2cf3" }));
+    dispatch(searchParamsAc({ user_id: "64527e000415841fd8df2cf3" }));
   };
+
   const onChangeInputHandler = (value: string) => {
     setValue(value);
+    dispatch(searchParamsAc({ packName: debounceValue }));
   };
   const [mode, setMode] = useState(false);
   return (

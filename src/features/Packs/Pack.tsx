@@ -15,16 +15,19 @@ const Pack = () => {
   const max = useAppSelector((state) => state.pack.queryParams.max);
   const min = useAppSelector((state) => state.pack.queryParams.min);
   const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
-  const myId = useAppSelector((state) => state.pack.queryParams.user_id);
+  const user_id = useAppSelector((state) => state.pack.queryParams.user_id);
   const sortPacks = useAppSelector((state) => state.pack.queryParams.sortPacks);
   const packName = useAppSelector((state) => state.pack.queryParams.packName);
+  const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
+  const maxCardsCount = useAppSelector((state) => state.pack.packList.maxCardsCount);
   useEffect(() => {
-    dispatch(packsThunks.getPacksTC({ user_id: myId }));
+    // if (!isLoggedIn) {
+    //   return;
+    // }
+    debugger;
+    dispatch(packsThunks.getPacksTC({ user_id }));
     // let [params, SetParams] = useSearchParams();
-  }, [max, page, min, max, pageCount, myId, sortPacks, packName]);
-  if (!isLoggedIn) {
-    return <Navigate to={"/login"} />;
-  }
+  }, [page, user_id, max, min, pageCount, sortPacks, packName, minCardsCount, maxCardsCount]);
 
   const addPack = (params: string) => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));

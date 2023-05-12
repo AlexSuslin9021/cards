@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import s from "features/Packs/PacksList/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 
-import { getPacksTC, packsThunks } from "features/Packs/pack.slice";
+import { getPacksTC, packsThunks, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 
 export const Range = () => {
@@ -15,7 +15,7 @@ export const Range = () => {
     if (Array.isArray(value)) {
       setValue1(value[0]);
       setValue2(value[1]);
-      dispatch(packsThunks.getPacksTC({ min: value1, max: value2 }));
+      dispatch(searchParamsAc({ min: value1, max: value2 }));
     }
   };
 

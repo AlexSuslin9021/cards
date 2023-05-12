@@ -34,53 +34,13 @@ const initialState: InitialStateType = {
   },
 };
 
-const slice = createSlice({
-  name: "pack",
-  initialState: initialState,
-  reducers: {
-    searchParams: (state, action: PayloadAction<ParamsType>) => {
-      state.queryParams = { ...state.queryParams, ...action.payload };
-    },
-    deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
-      state.packList.page = 1;
-      state.queryParams.packName = "";
-      state.queryParams.min = state.packList.minCardsCount;
-      state.queryParams.max = state.packList.maxCardsCount;
-      state.queryParams.sortPacks = "0updated";
-      state.queryParams.pageCount = 10;
-      state.packList.maxCardsCount = 0;
-      state.packList.minCardsCount = 0;
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getPacksTC.fulfilled, (state, action) => {
-      state.packList.cardPacks = action.payload.cardPacks;
-      state.packList.page = action.payload.page;
-      state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
-      state.packList.maxCardsCount = action.payload.maxCardsCount;
-      state.packList.minCardsCount = action.payload.minCardsCount;
-      state.packList.pageCount = action.payload.pageCount;
-    });
-    builder.addCase(addPacksTC.fulfilled, (state, action) => {
-      state.packList.cardPacks.unshift(action.payload);
-    });
-    // builder.addCase(updatePackTC.fulfilled, (state, action) => {
-    //   state.packList.cardPacks.map((p) => (p._id === action.payload._id ? { ...p, name: action.payload.name } : p));
-    // });
-    // builder.addCase(removePackTC.fulfilled, (state, action) => {
-    //   const index=state.packList.cardPacks.findIndex(c=>c._id===action.payload)
-    //   if(index!==-1) state.packList.cardPacks.splice(index,1)
-    // });
-  },
-});
 export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
   "pack/getPack",
   async (arg: ParamsType, thunkAPI) => {
     debugger;
     return thunkTryCatch(thunkAPI, async () => {
       const { getState } = thunkAPI;
-      const { pack } = getState() as RootState;
-      const params = { ...pack.queryParams, ...arg };
+      const params = { ...getState().pack.queryParams, ...arg };
       let res = await packsApi.getPack(params);
       return res.data;
     });
@@ -112,10 +72,6 @@ export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<
   }
 );
 
-export const packsReducers = slice.reducer;
-export const searchParamsAc = slice.actions.searchParams;
-export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };
-
 //types
 type InitialStateType = {
   packList: GetPackType;
@@ -131,7 +87,48 @@ type QueryParams = {
   pageCount?: number;
   sortPacks?: string;
 };
-
+const slice = createSlice({
+  name: "pack",
+  initialState: initialState,
+  reducers: {
+    searchParams: (state, action: PayloadAction<ParamsType>) => {
+      state.queryParams = { ...state.queryParams, ...action.payload };
+    },
+    deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
+      state.packList.page = 1;
+      state.queryParams.packName = "";
+      state.queryParams.min = state.packList.minCardsCount;
+      state.queryParams.max = state.packList.maxCardsCount;
+      state.queryParams.sortPacks = "0updated";
+      state.queryParams.pageCount = 10;
+      state.packList.maxCardsCount = 0;
+      state.packList.minCardsCount = 0;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getPacksTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        debugger;
+        state.packList.cardPacks = action.payload.cardPacks;
+        state.queryParams.page = action.payload.page;
+        state.queryParams.pageCount = action.payload.pageCount;
+        state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
+        state.packList.maxCardsCount = action.payload.maxCardsCount;
+        state.packList.minCardsCount = action.payload.minCardsCount;
+      }
+    });
+    builder.addCase(addPacksTC.fulfilled, (state, action) => {
+      state.packList.cardPacks.unshift(action.payload);
+    });
+    // builder.addCase(updatePackTC.fulfilled, (state, action) => {
+    //   state.packList.cardPacks.map((p) => (p._id === action.payload._id ? { ...p, name: action.payload.name } : p));
+    // });
+    // builder.addCase(removePackTC.fulfilled, (state, action) => {
+    //   const index=state.packList.cardPacks.findIndex(c=>c._id===action.payload)
+    //   if(index!==-1) state.packList.cardPacks.splice(index,1)
+    // });
+  },
+});
 // type PackListType = {
 //   cardPacks:[]
 //   cardPacksTotalCount: number;
@@ -141,3 +138,6 @@ type QueryParams = {
 //   page: number; // выбранная страница
 //   pageCount: number;
 // };
+export const packsReducers = slice.reducer;
+export const searchParamsAc = slice.actions.searchParams;
+export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };

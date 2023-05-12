@@ -52,9 +52,9 @@ export const PacksList = () => {
     dispatch(packsThunks.getPacksTC({ sortPacks: name }));
   };
 
-  useEffect(() => {
-    dispatch(packsThunks.getPacksTC({}));
-  }, []);
+  // useEffect(() => {
+  //   // dispatch(packsThunks.getPacksTC({}));
+  // }, []);
 
   return (
     <div className={s1.container}>
@@ -74,7 +74,7 @@ export const PacksList = () => {
           </TableHead>
           <TableBody>
             {pack.map((el) => (
-              <TableRow sx={{ borderBottom: "1px solid" }}>
+              <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
                 <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>

@@ -48,33 +48,6 @@ const authInitialState = {
   isLoggedIn: false,
 };
 
-const slice = createSlice({
-  name: "auth",
-  initialState: authInitialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(loginTC.fulfilled, (state, action) => {
-      state.profile = action.payload.profile;
-      state.isLoggedIn = true;
-    });
-    builder.addCase(logoutTC.fulfilled, (state, action) => {
-      state.isLoggedIn = false;
-    });
-    builder.addCase(forgotPasswordTC.fulfilled, (state, action) => {
-      state.isLoggedIn = true;
-    });
-    builder.addCase(updateUserTC.fulfilled, (state, action) => {
-      if (state.profile !== null) state.profile = action.payload.profile;
-    });
-    builder.addCase(initializedTC.fulfilled, (state, action) => {
-      state.isLoggedIn = true;
-      state.profile = action.payload.profile;
-    });
-  },
-});
-//AC
-export const authReducers = slice.reducer;
-
 //TC
 
 export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/register", async (arg, thunkAPI) => {
@@ -132,3 +105,29 @@ export const initializedTC = createAppAsyncThunk("/new/pass", async () => {
   return { profile: res.data };
 });
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC, initializedTC };
+const slice = createSlice({
+  name: "auth",
+  initialState: authInitialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(loginTC.fulfilled, (state, action) => {
+      state.profile = action.payload.profile;
+      state.isLoggedIn = true;
+    });
+    builder.addCase(logoutTC.fulfilled, (state, action) => {
+      state.isLoggedIn = false;
+    });
+    builder.addCase(forgotPasswordTC.fulfilled, (state, action) => {
+      state.isLoggedIn = true;
+    });
+    builder.addCase(updateUserTC.fulfilled, (state, action) => {
+      if (state.profile !== null) state.profile = action.payload.profile;
+    });
+    builder.addCase(initializedTC.fulfilled, (state, action) => {
+      state.isLoggedIn = true;
+      state.profile = action.payload.profile;
+    });
+  },
+});
+//AC
+export const authReducers = slice.reducer;
