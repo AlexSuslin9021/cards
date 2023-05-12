@@ -9,8 +9,8 @@ import { useDebounce } from "common/hooks/useDebounce";
 export const Range = () => {
   const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
   const maxCardsCount = useAppSelector((state) => state.pack.packList.maxCardsCount);
-  const [value1, setValue1] = useState<number>(minCardsCount);
-  const [value2, setValue2] = useState<number>(maxCardsCount);
+  const [value1, setValue1] = useState<number>(Number(minCardsCount));
+  const [value2, setValue2] = useState<number>(Number(maxCardsCount));
   const dispatch = useAppDispatch();
 
   const debounceValue = useDebounce(value1 | value2, 1000);
@@ -25,7 +25,7 @@ export const Range = () => {
       setValue2(value[1]);
     }
   };
-
+  debugger;
   return (
     <div className={s.container}>
       <div className={s.wrapper}>

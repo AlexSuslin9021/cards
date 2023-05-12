@@ -38,7 +38,6 @@ const initialState: InitialStateType = {
 export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
   "pack/getPack",
   async (arg: ParamsType, thunkAPI) => {
-    debugger;
     return thunkTryCatch(thunkAPI, async () => {
       const { getState, dispatch } = thunkAPI;
       await dispatch(initializedTC());

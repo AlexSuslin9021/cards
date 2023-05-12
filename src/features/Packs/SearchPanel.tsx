@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 const SearchPanel = () => {
   const onClickAllPack = () => {
-    debugger;
     setMode(!mode);
     dispatch(searchParamsAc({ user_id: "" }));
   };
@@ -20,7 +19,6 @@ const SearchPanel = () => {
     dispatch(searchParamsAc({ packName: debounceValue }));
   }, [debounceValue]);
   const onClickMyPack = () => {
-    debugger;
     setMode(!mode);
     dispatch(searchParamsAc({ user_id: "64527e000415841fd8df2cf3" }));
   };
