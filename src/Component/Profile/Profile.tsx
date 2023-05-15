@@ -24,7 +24,7 @@ const Profile = () => {
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }
-  console.log(email);
+
   return (
     <div className={style.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />

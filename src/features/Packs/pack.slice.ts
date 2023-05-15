@@ -51,7 +51,9 @@ export const addPacksTC = createAppAsyncThunk<CardPacksType, PackResponseType<Ad
   "add/packs",
   async (arg: PackResponseType<AddPackType>, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
+      const { dispatch } = thunkAPI;
       let res = await packsApi.addPack(arg);
+      dispatch(getPacksTC({}));
       return res.data;
     });
   }

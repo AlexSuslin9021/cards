@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
-
 import s1 from "../style.module.scss";
-
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-
 import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import remove from "../../../common/Image/trash.svg";
 import pencil from "../../../common/Image/pencil.svg";
-
-import SearchPanel from "features/Packs/SearchPanel";
+import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 
 export const PacksList = () => {
   const [mode, setMode] = useState(false);
@@ -40,14 +36,6 @@ export const PacksList = () => {
   const updatePack = (id: string) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "stock" } }));
   };
-  const sortHandler = (name: string) => {
-    setChangeFilter(!changeFilter);
-    dispatch(searchParamsAc({ sortPacks: changeFilter ? `0${name}` : `1${name}` }));
-  };
-
-  // useEffect(() => {
-  //   // dispatch(packsThunks.getPacksTC({}));
-  // }, []);
 
   return (
     <div className={s1.container}>
@@ -56,15 +44,10 @@ export const PacksList = () => {
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
-                <span onClick={() => sortHandler("name")}>
-                  Name <span className={s1.arrow}>{changeFilter ? "↓" : "↑"}</span>
-                </span>
+                <TableHeader headerName={"Name"} sortName={"name"} />
               </TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
-                <span onClick={() => sortHandler("cardsCount")}>
-                  Cards
-                  <span className={s1.arrow}>{changeFilter ? "↓" : "↑"}</span>
-                </span>
+                <TableHeader headerName={"Cards"} sortName={"cardsCount"} />
               </TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Created by</TableCell>

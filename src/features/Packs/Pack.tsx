@@ -5,7 +5,8 @@ import SearchPanel from "features/Packs/SearchPanel";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import { PacksList } from "features/Packs/PacksList/PacksList";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
-import { authThunks } from "features/auth/auth.slice";
+import { Navigate } from "react-router-dom";
+import s from "./style.module.scss";
 
 const Pack = () => {
   const dispatch = useAppDispatch();
@@ -18,24 +19,20 @@ const Pack = () => {
   const user_id = useAppSelector((state) => state.pack.queryParams.user_id);
   const sortPacks = useAppSelector((state) => state.pack.queryParams.sortPacks);
   const packName = useAppSelector((state) => state.pack.queryParams.packName);
-  const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
-  const maxCardsCount = useAppSelector((state) => state.pack.packList.maxCardsCount);
 
   useEffect(() => {
-    // if (!isLoggedIn) {
-    //   return;
-    // }
-
     dispatch(packsThunks.getPacksTC({}));
     // let [params, SetParams] = useSearchParams();
-  }, [page, user_id, max, min, pageCount, sortPacks, packName, minCardsCount, maxCardsCount]);
-
+  }, [page, user_id, max, min, pageCount, sortPacks, packName]);
+  if (!isLoggedIn) {
+    return <Navigate to={"/login"} />;
+  }
   const addPack = (params: string) => {
-    dispatch(packsThunks.addPacksTC({ cardsPack: { name: "test" } }));
+    dispatch(packsThunks.addPacksTC({ cardsPack: { name: "New pack" } }));
   };
 
   return (
-    <div>
+    <div className={s.container}>
       <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
       <SearchPanel />
       <PacksList />

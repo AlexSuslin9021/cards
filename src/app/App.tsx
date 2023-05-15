@@ -15,7 +15,6 @@ import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
 import FriendsPack from "features/Packs/FriendsPacks/FriendsPack";
 import MyPack from "features/Packs/MyPacks/MyPack";
-import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 import { authThunks } from "features/auth/auth.slice";
 import { LinearProgress } from "@mui/material";
 import Pack from "features/Packs/Pack";
@@ -33,13 +32,13 @@ function App() {
       <div className={s.container}>
         <Routes>
           <Route path={"/"} element={<Profile />} />
+          <Route path={"/packs"} element={<Pack />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/forgot-password"} element={<ForgotPassword />} />
           <Route path={"/check-email"} element={<CheckEmail />} />
           <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
           <Route path={"/learn"} element={<Learn />} />
-          <Route path={"/packs"} element={<Pack />} />
           <Route path={"/page-pack"} element={<PagePack />} />
           <Route path={"/friends-pack"} element={<FriendsPack />} />
           <Route path={"/my-pack"} element={<MyPack />} />
