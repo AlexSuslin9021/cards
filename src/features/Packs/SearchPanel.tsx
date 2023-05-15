@@ -3,9 +3,10 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "./searchPanel.module.scss";
-import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch, useAppSelector } from "common/hooks";
+import { searchParamsAc } from "features/Packs/pack.slice";
+import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
+import filterData from "../../common/Image/filter.svg";
 const SearchPanel = () => {
   const onClickAllPack = () => {
     setMode(!mode);
@@ -49,7 +50,9 @@ const SearchPanel = () => {
           <MiniTitle name={" Number of cards"} />
           <Range />
         </div>
-        <div className={s.icon}>icon</div>
+        <div className={s.icon}>
+          <img src={filterData} alt="" />
+        </div>
       </div>
     </>
   );

@@ -4,7 +4,24 @@
   margin-bottom: 24px;
   .icon{
     display: flex;
-    align-items: flex-end;
+    align-items: end;
+//justify-content: flex-end;
+    //margin: 0 auto;
+    //height: 30px;
+    //width: 30px;
+    //font-weight: 600;
+    //background: white;
+    //border-color:#D9D9D9 ;
+    //border-radius: 2px;
+    //
+    //border: 1px solid gray;
+    img{
+      height: 18px;
+      width: 18px;
+      padding: 6px;
+      //border-color:#D9D9D9 ;
+      border: 1px solid gray;
+    }
   }
 
   .search {

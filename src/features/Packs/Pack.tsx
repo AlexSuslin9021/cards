@@ -22,7 +22,6 @@ const Pack = () => {
 
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({}));
-    // let [params, SetParams] = useSearchParams();
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
