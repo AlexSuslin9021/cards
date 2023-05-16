@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import s from "features/Packs/PacksList/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 
@@ -13,16 +13,17 @@ export const Range = () => {
   const [value2, setValue2] = useState<number>(maxCardsCount);
   const dispatch = useAppDispatch();
 
-  const debounceValue = useDebounce(value1 | value2, 1000);
+  // const debounceValue = useDebounce(value1 | value2, 1000);
 
-  useEffect(() => {
-    dispatch(searchParamsAc({ min: value1, max: value2 }));
-  }, [debounceValue]);
+  // useEffect(() => {
+  //   dispatch(searchParamsAc({ min: value1, max: value2 }));
+  // }, [debounceValue]);
 
-  const change = (event: Event, value: number | number[]) => {
+  const change = (event: Event | SyntheticEvent<Element, Event>, value: number | number[]) => {
     if (Array.isArray(value)) {
       setValue1(value[0]);
       setValue2(value[1]);
+      dispatch(searchParamsAc({ min: value1, max: value2 }));
     }
   };
   debugger;
@@ -32,7 +33,7 @@ export const Range = () => {
         <div className={s.number}>
           <span> {value1}</span>
         </div>
-        <Slider sx={{ width: "100px", margin: "0 15px 0 15px" }} value={[value1, value2]} onChange={change} />
+        <Slider sx={{ width: "100px", margin: "0 15px 0 15px" }} value={[value1, value2]} onChangeCommitted={change} />
         <div className={s.number}>
           <span> {value2}</span>
         </div>

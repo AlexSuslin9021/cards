@@ -60,7 +60,9 @@ export const addPacksTC = createAppAsyncThunk<CardPacksType, PackResponseType<Ad
 );
 export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", async (arg: string, thunkAPI) => {
   return thunkTryCatch(thunkAPI, async () => {
+    const { dispatch } = thunkAPI;
     await packsApi.deletePack(arg);
+    dispatch(getPacksTC({}));
   });
 
   // return res.data;
@@ -125,10 +127,10 @@ const slice = createSlice({
     // builder.addCase(updatePackTC.fulfilled, (state, action) => {
     //   state.packList.cardPacks.map((p) => (p._id === action.payload._id ? { ...p, name: action.payload.name } : p));
     // });
-    // builder.addCase(removePackTC.fulfilled, (state, action) => {
-    //   const index=state.packList.cardPacks.findIndex(c=>c._id===action.payload)
-    //   if(index!==-1) state.packList.cardPacks.splice(index,1)
-    // });
+    builder.addCase(removePackTC.fulfilled, (state, action) => {
+      const index = state.packList.cardPacks.findIndex((c) => c._id === action.payload);
+      if (index !== -1) state.packList.cardPacks.splice(index, 1);
+    });
   },
 });
 // type PackListType = {

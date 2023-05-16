@@ -3,7 +3,7 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "./searchPanel.module.scss";
-import { searchParamsAc } from "features/Packs/pack.slice";
+import { getPacksTC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import filterData from "../../common/Image/filter.svg";
@@ -27,7 +27,9 @@ const SearchPanel = () => {
     setValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
-
+  const onClickFilter = () => {
+    dispatch(searchParamsAc({ user_id: "" }));
+  };
   return (
     <>
       <div className={s.dataCards}>
@@ -51,7 +53,7 @@ const SearchPanel = () => {
           <Range />
         </div>
         <div className={s.icon}>
-          <img src={filterData} alt="" />
+          <img onClick={onClickFilter} src={filterData} alt="" />
         </div>
       </div>
     </>
