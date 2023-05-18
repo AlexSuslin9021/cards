@@ -64,8 +64,6 @@ export const removePackTC = createAppAsyncThunk<{}, string>("delete/packs", asyn
     await packsApi.deletePack(arg);
     dispatch(getPacksTC({}));
   });
-
-  // return res.data;
 });
 export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<UpdateType>>(
   "update/packs",
@@ -100,6 +98,7 @@ const slice = createSlice({
       state.queryParams = { ...state.queryParams, ...action.payload };
     },
     deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
+      debugger;
       state.packList.page = 1;
       state.queryParams.packName = "";
       state.queryParams.min = state.packList.minCardsCount;
@@ -144,4 +143,5 @@ const slice = createSlice({
 // };
 export const packsReducers = slice.reducer;
 export const searchParamsAc = slice.actions.searchParams;
+export const deleteSearchParamsAC = slice.actions.deleteSearchParams;
 export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };

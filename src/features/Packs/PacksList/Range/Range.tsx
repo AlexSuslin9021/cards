@@ -26,6 +26,12 @@ export const Range = () => {
       dispatch(searchParamsAc({ min: value1, max: value2 }));
     }
   };
+  const handleChange = (event: Event, value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setValue1(value[0]);
+      setValue2(value[1]);
+    }
+  };
   debugger;
   return (
     <div className={s.container}>
@@ -33,7 +39,12 @@ export const Range = () => {
         <div className={s.number}>
           <span> {value1}</span>
         </div>
-        <Slider sx={{ width: "100px", margin: "0 15px 0 15px" }} value={[value1, value2]} onChangeCommitted={change} />
+        <Slider
+          sx={{ width: "100px", margin: "0 15px 0 15px" }}
+          value={[value1, value2]}
+          onChange={handleChange}
+          onChangeCommitted={change}
+        />
         <div className={s.number}>
           <span> {value2}</span>
         </div>

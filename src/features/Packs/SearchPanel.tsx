@@ -3,15 +3,11 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "./searchPanel.module.scss";
-import { getPacksTC, searchParamsAc } from "features/Packs/pack.slice";
+import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import filterData from "../../common/Image/filter.svg";
 const SearchPanel = () => {
-  const onClickAllPack = () => {
-    setMode(!mode);
-    dispatch(searchParamsAc({ user_id: "" }));
-  };
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
@@ -23,12 +19,17 @@ const SearchPanel = () => {
     setMode(!mode);
     dispatch(searchParamsAc({ user_id: "64527e000415841fd8df2cf3" }));
   };
+  const onClickAllPack = () => {
+    setMode(!mode);
+    dispatch(searchParamsAc({ user_id: "" }));
+  };
   const onChangeInputHandler = (value: string) => {
     setValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
   const onClickFilter = () => {
-    dispatch(searchParamsAc({ user_id: "" }));
+    dispatch(dispatch(deleteSearchParamsAC({})));
+    setValue("");
   };
   return (
     <>

@@ -40,7 +40,7 @@ import {
   UpdateUserType,
 } from "features/auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
-import { appActions } from "app/app.slice";
+import { appActions, setAppError } from "app/app.slice";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
 
 const authInitialState = {
@@ -52,13 +52,21 @@ const authInitialState = {
 
 export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/register", async (arg, thunkAPI) => {
   return thunkTryCatch(thunkAPI, async () => {
-    await authApi.register(arg);
+    const { dispatch, rejectWithValue } = thunkAPI;
+    try {
+      await authApi.register(arg);
+    } catch (e: any) {
+      const error = e.response ? e.response.data.error : e.message;
+      dispatch(appActions.setAppError({ error }));
+      return rejectWithValue(null);
+    }
   });
 });
 export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>(
   "/auth/me",
   async (arg, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
+      const { rejectWithValue } = thunkAPI;
       let res = await authApi.updateUser(arg);
       return { profile: res.data };
     });

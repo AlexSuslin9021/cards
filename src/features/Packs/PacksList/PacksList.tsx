@@ -38,31 +38,27 @@ export const PacksList = () => {
           </TableHead>
 
           <TableBody>
-            {pack.length ? (
-              pack.map((el) => (
-                <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
-                  <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
-                  <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
-                  <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>
-                  <TableCell sx={{ background: "white" }}>{el.user_name}</TableCell>
-                  <TableCell sx={{ background: "white" }}>
-                    {
-                      <span>
-                        {/*<img src={lear} alt="lea" />*/}
-                        {el.user_id === "64527e000415841fd8df2cf3" && (
-                          <img onClick={() => updatePack(el._id)} src={pencil} alt="change name" />
-                        )}
-                        {el.user_id === "64527e000415841fd8df2cf3" && (
-                          <img onClick={() => removePack(el._id)} src={remove} alt="delete" />
-                        )}
-                      </span>
-                    }
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <ValueNotFound value={"Колоды с введенным название не найдены. Измените параметры запроса"} />
-            )}
+            {/*{pack.length ? (*/}
+            {pack.map((el) => (
+              <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
+                <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.user_name}</TableCell>
+                <TableCell sx={{ background: "white" }}>
+                  {
+                    <span>
+                      {el.user_id === "64527e000415841fd8df2cf3" && (
+                        <img onClick={() => updatePack(el._id)} src={pencil} alt="change name" />
+                      )}
+                      {el.user_id === "64527e000415841fd8df2cf3" && (
+                        <img onClick={() => removePack(el._id)} src={remove} alt="delete" />
+                      )}
+                    </span>
+                  }
+                </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
