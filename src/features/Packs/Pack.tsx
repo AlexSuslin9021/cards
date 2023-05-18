@@ -7,6 +7,7 @@ import { PacksList } from "features/Packs/PacksList/PacksList";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
+import { BasicModal } from "common/component/Modal/basicModal";
 
 const Pack = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,12 @@ const Pack = () => {
     return <Navigate to={"/login"} />;
   }
   const addPack = (params: string) => {
-    dispatch(packsThunks.addPacksTC({ cardsPack: { name: "New pack" } }));
+    // dispatch(packsThunks.addPacksTC({ cardsPack: { name: "New pack" } }));
+    return (
+      <BasicModal>
+        <h2>Add Pack</h2>
+      </BasicModal>
+    );
   };
 
   return (
