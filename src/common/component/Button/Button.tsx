@@ -11,7 +11,11 @@ export const Button: React.FC<ButtonType> = (props) => {
   };
   return (
     <div>
-      <button onClick={onClickHandler} className={s.button} type={"submit"}>
+      <button
+        onClick={onClickHandler}
+        className={props.name === "Cancel" ? `${s.button} ${s.buttonCancel}` : s.button}
+        type={"submit"}
+      >
         {props.name}
       </button>
     </div>

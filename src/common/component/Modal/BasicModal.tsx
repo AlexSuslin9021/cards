@@ -51,7 +51,10 @@ export const BasicModal: React.FC<ModalType> = ({ header, name, callback, mode =
         <Box sx={style}>
           <h2>{header}</h2>
           <input value={value} onChange={onChangeHandler} type="text" />
-          <Button name={"Save"} callback={onClickHandler}></Button>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Button name={"Cancel"} callback={handleClose}></Button>
+            <Button name={"Save"} callback={onClickHandler}></Button>
+          </div>
         </Box>
       </Modal>
     </>
