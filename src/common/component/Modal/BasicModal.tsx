@@ -1,8 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { Button } from "../Button/Button";
+import { ChangeEvent, useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -16,27 +16,44 @@ const style = {
   p: 4,
 };
 type ModalType = {
-  children: any;
+  children?: any;
   name?: string;
   callback?: any;
+  header?: string;
   mode?: boolean;
+  src?: string;
 };
-export const BasicModal: React.FC<ModalType> = ({ children, name, callback }) => {
+export const BasicModal: React.FC<ModalType> = ({ header, name, callback, mode = true, src }) => {
+  const [value, setValue] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value);
+  };
+  const onClickHandler = () => {
+    callback(value);
+    setValue("");
+    setOpen(false);
+  };
 
   return (
-    <div>
-      <Button onClick={handleOpen}>{name}</Button>
+    <>
+      <span onClick={handleOpen}>
+        {mode ? <Button name={name} /> : <img style={{ marginRight: "10px", cursor: "pointer" }} src={src} alt="" />}
+      </span>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>{children}</Box>
+        <Box sx={style}>
+          <h2>{header}</h2>
+          <input value={value} onChange={onChangeHandler} type="text" />
+          <Button name={"Save"} callback={onClickHandler}></Button>
+        </Box>
       </Modal>
-    </div>
+    </>
   );
 };

@@ -5,10 +5,11 @@ import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import remove from "../../../common/Image/trash.svg";
-import pencil from "../../../common/Image/pencil.svg";
 import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
-import { ValueNotFound } from "features/Packs/commonComponent/ValueNitFound/ValueNotFound";
+import { UpdateModal } from "common/component/Modal/UpdateModal";
+const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
+const styleTableBody = { background: "white" };
 
 export const PacksList = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ export const PacksList = () => {
     dispatch(packsThunks.removePackTC(id));
   };
   const updatePack = (id: string) => {
-    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "stock" } }));
+    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
   };
 
   return (
@@ -26,41 +27,45 @@ export const PacksList = () => {
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
+              <TableCell sx={styleTableHead}>
                 <TableHeader headerName={"Name"} sortName={"name"} />
               </TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
+              <TableCell sx={styleTableHead}>
                 <TableHeader headerName={"Cards"} sortName={"cardsCount"} />
               </TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Created by</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Actions</TableCell>
+              <TableCell sx={styleTableHead}>Last updated</TableCell>
+              <TableCell sx={styleTableHead}>Created by</TableCell>
+              <TableCell sx={styleTableHead}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {/*{pack.length ? (*/}
             {pack.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
-                <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.cardsCount}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.updated}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.user_name}</TableCell>
-                <TableCell sx={{ background: "white" }}>
+                <TableCell sx={styleTableBody}>{el.name}</TableCell>
+                <TableCell sx={styleTableBody}>{el.cardsCount}</TableCell>
+                <TableCell sx={styleTableBody}>{el.updated}</TableCell>
+                <TableCell sx={styleTableBody}>{el.user_name}</TableCell>
+                <TableCell sx={styleTableBody}>
                   {
                     <span>
-                      {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <img onClick={() => updatePack(el._id)} src={pencil} alt="change name" />
-                      )}
                       {
                         <img
-                          style={{ marginLeft: "10px", marginRight: "10px" }}
+                          style={{ marginRight: "10px", cursor: "pointer" }}
                           onClick={() => updatePack(el._id)}
                           src={teach}
                           alt="teach"
                         />
                       }
+                      {el.user_id === "64527e000415841fd8df2cf3" && <UpdateModal id={el._id} />}
+
                       {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <img onClick={() => removePack(el._id)} src={remove} alt="delete" />
+                        <img
+                          onClick={() => removePack(el._id)}
+                          style={{ cursor: "pointer" }}
+                          src={remove}
+                          alt="delete"
+                        />
                       )}
                     </span>
                   }

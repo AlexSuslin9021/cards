@@ -1,7 +1,7 @@
 import React from "react";
 import s from "common/component/Button/button.module.scss";
 type ButtonType = {
-  name: string;
+  name?: string;
   callback?: () => void;
 };
 

@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from "react";
 import s from "./PacksTitle.module.scss";
-import { AddModal } from "common/component/Modal/AddModal";
 
 type PacksTitleType = {
   name?: string;

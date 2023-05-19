@@ -30,7 +30,7 @@ const initialState: InitialStateType = {
     user_id: "",
     block: false,
     page: 0,
-    pageCount: 7,
+    pageCount: 5,
     sortPacks: "0updated",
   },
 };
@@ -69,7 +69,9 @@ export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<
   "update/packs",
   async (arg: PackResponseType<UpdateType>, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
+      const { dispatch } = thunkAPI;
       let res = await packsApi.updatePack(arg);
+      dispatch(getPacksTC({}));
       return res.data;
     });
   }
