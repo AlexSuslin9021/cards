@@ -26,13 +26,14 @@ export const Range = () => {
       dispatch(searchParamsAc({ min: value1, max: value2 }));
     }
   };
+
   const handleChange = (event: Event, value: number | number[]) => {
     if (Array.isArray(value)) {
       setValue1(value[0]);
       setValue2(value[1]);
     }
   };
-  debugger;
+
   return (
     <div className={s.container}>
       <div className={s.wrapper}>

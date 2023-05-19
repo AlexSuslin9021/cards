@@ -7,6 +7,7 @@ import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice"
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import filterData from "../../common/Image/filter.svg";
+
 const SearchPanel = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");

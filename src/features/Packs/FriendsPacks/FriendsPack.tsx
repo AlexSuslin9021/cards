@@ -13,7 +13,9 @@ const FriendsPack = () => {
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />
-      <PacksTitle name={"FriendsPack"} buttonName={"Learn to pack"} callback={() => {}} />
+      <PacksTitle name={"Friend's Pack"}>
+        <h1></h1>
+      </PacksTitle>
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
@@ -37,7 +39,6 @@ const FriendsPack = () => {
                 <TableCell sx={{ background: "white" }}>{el.cards}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.createdBy}</TableCell>
                 <TableCell sx={{ background: "white" }}>
-                  {" "}
                   {
                     <>
                       <img src={el.url} /> <img src={el.url} />

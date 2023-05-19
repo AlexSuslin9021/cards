@@ -1,6 +1,6 @@
 .paginationBlock{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   button{
     background: none;
@@ -19,6 +19,9 @@
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+
   }
   .page{
  width: 20px;
@@ -27,7 +30,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-   &:hover{
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: center;
+
+    &:hover{
      background: lightgray;
      cursor: pointer;
      border-radius: 5px;

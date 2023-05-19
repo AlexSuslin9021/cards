@@ -7,7 +7,8 @@ import { PacksList } from "features/Packs/PacksList/PacksList";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
-import { BasicModal } from "common/component/Modal/basicModal";
+import { BasicModal } from "common/component/Modal/BasicModal";
+import { AddModal } from "common/component/Modal/AddModal";
 
 const Pack = () => {
   const dispatch = useAppDispatch();
@@ -24,21 +25,18 @@ const Pack = () => {
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({}));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
+
+  const addPack = (params: string) => {
+    // dispatch(packsThunks.addPacksTC({ cardsPack: { name: "New pack" } }));
+  };
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }
-  const addPack = (params: string) => {
-    // dispatch(packsThunks.addPacksTC({ cardsPack: { name: "New pack" } }));
-    return (
-      <BasicModal>
-        <h2>Add Pack</h2>
-      </BasicModal>
-    );
-  };
-
   return (
     <div className={s.container}>
-      <PacksTitle name={"PacksList"} buttonName={"Add new pack"} callback={addPack} />
+      <PacksTitle name={"Pack list"}>
+        <AddModal />
+      </PacksTitle>
       <SearchPanel />
       <PacksList />
       <Pagination />

@@ -8,7 +8,6 @@ import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/auth/auth.slice";
 import avatar from "../../common/Image/ava.svg";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
-import { LinearProgress } from "@mui/material";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +15,6 @@ const Profile = () => {
     dispatch(logoutTC());
   };
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
-
   const email = useAppSelector((state) => {
     if (state.auth.profile !== null) return state.auth.profile.email;
   });
@@ -24,7 +22,6 @@ const Profile = () => {
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }
-
   return (
     <div className={style.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />

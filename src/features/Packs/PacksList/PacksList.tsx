@@ -6,6 +6,7 @@ import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import remove from "../../../common/Image/trash.svg";
 import pencil from "../../../common/Image/pencil.svg";
+import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { ValueNotFound } from "features/Packs/commonComponent/ValueNitFound/ValueNotFound";
 
@@ -36,7 +37,6 @@ export const PacksList = () => {
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Actions</TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
             {/*{pack.length ? (*/}
             {pack.map((el) => (
@@ -51,6 +51,14 @@ export const PacksList = () => {
                       {el.user_id === "64527e000415841fd8df2cf3" && (
                         <img onClick={() => updatePack(el._id)} src={pencil} alt="change name" />
                       )}
+                      {
+                        <img
+                          style={{ marginLeft: "10px", marginRight: "10px" }}
+                          onClick={() => updatePack(el._id)}
+                          src={teach}
+                          alt="teach"
+                        />
+                      }
                       {el.user_id === "64527e000415841fd8df2cf3" && (
                         <img onClick={() => removePack(el._id)} src={remove} alt="delete" />
                       )}

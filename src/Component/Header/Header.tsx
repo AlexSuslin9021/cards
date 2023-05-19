@@ -14,12 +14,15 @@ export const Header = () => {
   const logoutButton = () => {
     return navigate("/login");
   };
+  const onClickRedirectProfile = () => {
+    return navigate("/");
+  };
 
   return (
     <div className={s.header}>
       <div className={s.button}>
         {isLoggedIn ? (
-          <div className={s.loginAvatar}>
+          <div onClick={onClickRedirectProfile} className={s.loginAvatar}>
             <span>{name}</span>
             <img src={avatar} alt="Me" />
           </div>

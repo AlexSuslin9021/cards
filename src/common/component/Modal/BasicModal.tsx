@@ -17,15 +17,18 @@ const style = {
 };
 type ModalType = {
   children: any;
+  name?: string;
+  callback?: any;
+  mode?: boolean;
 };
-export const BasicModal: React.FC<ModalType> = ({ children }) => {
+export const BasicModal: React.FC<ModalType> = ({ children, name, callback }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>{name}</Button>
       <Modal
         open={open}
         onClose={handleClose}
