@@ -24,16 +24,13 @@ type ModalType = {
   src?: string;
 };
 export const BasicModal: React.FC<ModalType> = ({ header, children, name, callback, mode = true, src }) => {
-  const [value, setValue] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
-  };
+
   const onClickHandler = () => {
-    callback(value);
-    setValue("");
+    callback();
+
     setOpen(false);
   };
 
@@ -50,7 +47,6 @@ export const BasicModal: React.FC<ModalType> = ({ header, children, name, callba
       >
         <Box sx={style}>
           <h2>{header}</h2>
-          <input value={value} onChange={onChangeHandler} type="text" />
           {children}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button name={"Cancel"} callback={handleClose}></Button>
