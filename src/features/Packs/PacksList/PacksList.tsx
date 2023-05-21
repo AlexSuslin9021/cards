@@ -3,23 +3,25 @@ import s1 from "../style.module.scss";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { packsThunks } from "features/Packs/pack.slice";
-import { useAppDispatch, useAppSelector } from "common/hooks";
-import remove from "../../../common/Image/trash.svg";
+import { useAppDispatch } from "common/hooks";
 import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
+import { useNavigate } from "react-router-dom";
+import { myId, pack } from "features/Packs/selector";
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };
 
 export const PacksList = () => {
   const dispatch = useAppDispatch();
-  const pack = useAppSelector((state) => state.pack.packList.cardPacks);
-  const removePack = (id: string) => {
-    dispatch(packsThunks.removePackTC(id));
-  };
   const updatePack = (id: string) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
+  };
+  const navigate = useNavigate();
+  const onClickNamePack = (id: string) => {
+    debugger;
+    myId === id ? navigate("/my-pack") : navigate("/friends-pack");
   };
 
   return (
@@ -43,7 +45,9 @@ export const PacksList = () => {
             {/*{pack.length ? (*/}
             {pack.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
-                <TableCell sx={styleTableBody}>{el.name}</TableCell>
+                <TableCell sx={styleTableBody}>
+                  <span onClick={() => onClickNamePack(el.user_id)}> {el.name}</span>
+                </TableCell>
                 <TableCell sx={styleTableBody}>{el.cardsCount}</TableCell>
                 <TableCell sx={styleTableBody}>{el.updated}</TableCell>
                 <TableCell sx={styleTableBody}>{el.user_name}</TableCell>

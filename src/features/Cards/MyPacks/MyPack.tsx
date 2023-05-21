@@ -2,12 +2,12 @@ import React from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
-import s1 from "../style.module.scss";
+import s1 from "features/Packs/style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
-import star from "../../../common/Image/Star 5.svg";
-import pencil from "../../../common/Image/Vector (Stroke).svg";
-import trash from "../../../common/Image/trash.svg";
+import star from "common/Image/Star 5.svg";
+import pencil from "common/Image/Vector (Stroke).svg";
+import trash from "common/Image/trash.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 
