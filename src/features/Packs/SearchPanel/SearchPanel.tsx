@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
-import s from "./searchPanel.module.scss";
+import s from "features/Packs/SearchPanel/searchPanel.module.scss";
 import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
-import filterData from "../../common/Image/filter.svg";
+import filterData from "common/Image/filter.svg";
 
 const SearchPanel = () => {
   const dispatch = useAppDispatch();
