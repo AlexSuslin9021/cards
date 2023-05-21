@@ -8,6 +8,7 @@ import remove from "../../../common/Image/trash.svg";
 import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
+import { DeleteModal } from "common/component/Modal/DeleteModal";
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };
 
@@ -58,15 +59,7 @@ export const PacksList = () => {
                         />
                       }
                       {el.user_id === "64527e000415841fd8df2cf3" && <UpdateModal id={el._id} />}
-
-                      {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <img
-                          onClick={() => removePack(el._id)}
-                          style={{ cursor: "pointer" }}
-                          src={remove}
-                          alt="delete"
-                        />
-                      )}
+                      {el.user_id === "64527e000415841fd8df2cf3" && <DeleteModal id={el._id} name={el.name} />}
                     </span>
                   }
                 </TableCell>

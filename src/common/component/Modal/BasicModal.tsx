@@ -23,7 +23,7 @@ type ModalType = {
   mode?: boolean;
   src?: string;
 };
-export const BasicModal: React.FC<ModalType> = ({ header, name, callback, mode = true, src }) => {
+export const BasicModal: React.FC<ModalType> = ({ header, children, name, callback, mode = true, src }) => {
   const [value, setValue] = useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -51,6 +51,7 @@ export const BasicModal: React.FC<ModalType> = ({ header, name, callback, mode =
         <Box sx={style}>
           <h2>{header}</h2>
           <input value={value} onChange={onChangeHandler} type="text" />
+          {children}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button name={"Cancel"} callback={handleClose}></Button>
             <Button name={"Save"} callback={onClickHandler}></Button>

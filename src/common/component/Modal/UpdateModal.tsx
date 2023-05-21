@@ -11,4 +11,5 @@ export const UpdateModal: React.FC<UpdateModalType> = ({ id }) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: value } }));
   };
   return <BasicModal name={"Edit pack"} callback={onClickHandler} header={"Edit pack"} src={pencil} mode={false} />;
+  return <BasicModal></BasicModal>;
 };
