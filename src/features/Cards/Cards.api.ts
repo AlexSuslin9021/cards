@@ -1,24 +1,23 @@
 import { instance } from "common/api";
 
 export const apiCards = {
-  getPack(params: GetParamsType) {
+  getPack(params: GetCardsParamsType) {
     return instance.get<CardsResponseType>(` /cards/card`, { params });
   },
 };
 
-type GetParamsType = {
+export type GetCardsParamsType = {
   cardAnswer?: string;
   cardQuestion?: string;
   cardsPack_id?: string;
-  min?: string;
-  max?: string;
+  min?: number;
+  max?: number;
   sortCards?: string;
-  grade?: number;
   page?: number;
   pageCount?: number;
 };
 
-type CardsType = {
+export type CardsType = {
   answer: string;
   question: string;
   cardsPack_id: string;
@@ -29,9 +28,9 @@ type CardsType = {
   updated: string;
   _id: string;
 };
-type CardsResponseType = {
+export type CardsResponseType = {
   cards: CardsType[];
-  cardsTotalCount: 3;
+  cardsTotalCount: number;
   maxGrade: number;
   minGrade: number;
   page: number;
