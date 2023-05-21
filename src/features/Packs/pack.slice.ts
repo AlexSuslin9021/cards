@@ -100,7 +100,6 @@ const slice = createSlice({
       state.queryParams = { ...state.queryParams, ...action.payload };
     },
     deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
-      debugger;
       state.packList.page = 1;
       state.queryParams.packName = "";
       state.queryParams.min = state.packList.minCardsCount;
