@@ -8,9 +8,26 @@ import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
 import { AddModal } from "common/component/Modal/AddModal";
-import { isLoggedIn, page, max, min, pageCount, user_id, sortPacks, packName } from "features/Packs/selector";
+import {
+  isLoggedInSelector,
+  pageSelector,
+  maxSelector,
+  minSelector,
+  pageCountSelector,
+  user_idSelector,
+  sortPacksSelector,
+  packNameSelector,
+} from "features/Packs/selector";
 
 const Pack = () => {
+  const isLoggedIn = useAppSelector(isLoggedInSelector);
+  const page = useAppSelector(pageSelector);
+  const user_id = useAppSelector(user_idSelector);
+  const max = useAppSelector(maxSelector);
+  const min = useAppSelector(minSelector);
+  const pageCount = useAppSelector(pageCountSelector);
+  const sortPacks = useAppSelector(sortPacksSelector);
+  const packName = useAppSelector(packNameSelector);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

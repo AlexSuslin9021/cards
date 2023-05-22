@@ -1,14 +1,29 @@
-import { useAppSelector } from "app/store";
+import { RootState } from "app/store";
+import { useAppSelector } from "common/hooks";
 
-const pack = useAppSelector((state) => state.pack.packList.cardPacks);
-const myId = useAppSelector((state) => state.auth.profile?._id);
-const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
-const page = useAppSelector((state) => state.pack.queryParams.page);
-const max = useAppSelector((state) => state.pack.queryParams.max);
-const min = useAppSelector((state) => state.pack.queryParams.min);
-const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
-const user_id = useAppSelector((state) => state.pack.queryParams.user_id);
-const sortPacks = useAppSelector((state) => state.pack.queryParams.sortPacks);
-const packName = useAppSelector((state) => state.pack.queryParams.packName);
-
-export { pack, myId, isLoggedIn, page, max, min, pageCount, user_id, sortPacks, packName };
+const packSelector = (state: RootState) => state.pack.packList.cardPacks;
+const myIdSelector = (state: RootState) => state.auth.profile?._id;
+const isLoggedInSelector = (state: RootState) => state.auth.isLoggedIn;
+const pageSelector = (state: RootState) => state.pack.queryParams.page;
+const maxSelector = (state: RootState) => state.pack.queryParams.max;
+const minSelector = (state: RootState) => state.pack.queryParams.min;
+const pageCountSelector = (state: RootState) => state.pack.queryParams.pageCount;
+const user_idSelector = (state: RootState) => state.pack.queryParams.user_id;
+const sortPacksSelector = (state: RootState) => state.pack.queryParams.sortPacks;
+const packNameSelector = (state: RootState) => state.pack.queryParams.packName;
+const pageCurrentSelector = (state: RootState) => state.pack.queryParams.page;
+const cardPacksTotalCountSelector = (state: RootState) => state.pack.packList.cardPacksTotalCount;
+export {
+  packSelector,
+  myIdSelector,
+  pageCurrentSelector,
+  isLoggedInSelector,
+  pageSelector,
+  maxSelector,
+  minSelector,
+  pageCountSelector,
+  user_idSelector,
+  sortPacksSelector,
+  packNameSelector,
+  cardPacksTotalCountSelector,
+};

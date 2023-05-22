@@ -9,19 +9,23 @@ import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
 import { useNavigate } from "react-router-dom";
-import { myId, pack } from "features/Packs/selector";
+import { myIdSelector, packSelector } from "features/Packs/selector";
+import { useAppSelector } from "app/store";
+import { cardsSearchParams } from "features/Cards/cards.slice";
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };
 
 export const PacksList = () => {
   const dispatch = useAppDispatch();
+  const myId = useAppSelector(myIdSelector);
+  const pack = useAppSelector(packSelector);
   const updatePack = (id: string) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
   };
   const navigate = useNavigate();
-  const onClickNamePack = (id: string) => {
-    debugger;
+  const onClickNamePack = (id: string, cardId: string) => {
     myId === id ? navigate("/my-pack") : navigate("/friends-pack");
+    dispatch(cardsSearchParams({ cardsPack_id: cardId }));
   };
 
   return (
@@ -46,7 +50,7 @@ export const PacksList = () => {
             {pack.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
                 <TableCell sx={styleTableBody}>
-                  <span onClick={() => onClickNamePack(el.user_id)}> {el.name}</span>
+                  <span onClick={() => onClickNamePack(el.user_id, el._id)}> {el.name}</span>
                 </TableCell>
                 <TableCell sx={styleTableBody}>{el.cardsCount}</TableCell>
                 <TableCell sx={styleTableBody}>{el.updated}</TableCell>

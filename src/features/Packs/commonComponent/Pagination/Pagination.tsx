@@ -3,10 +3,11 @@ import s from "./Pagination.module.scss";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { SelectVariants } from "common/component/Select/Select";
+import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/selector";
 
 export const Pagination = () => {
-  const cardPacksTotalCount = useAppSelector((state) => state.pack.packList.cardPacksTotalCount);
-  const pageCurrent = useAppSelector((state) => state.pack.queryParams.page);
+  const cardPacksTotalCount = useAppSelector(cardPacksTotalCountSelector);
+  const pageCurrent = useAppSelector(pageCurrentSelector);
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
     dispatch(searchParamsAc({ page: page, pageCount: 10 }));

@@ -11,7 +11,6 @@ export function SelectVariants() {
   const [countPack, setCountPack] = React.useState(pageCount?.toString());
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
-    debugger;
     setCountPack(event.target.value);
     dispatch(searchParamsAc({ pageCount: Number(event.target.value) }));
   };

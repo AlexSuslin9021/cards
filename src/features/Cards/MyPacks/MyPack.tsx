@@ -15,6 +15,9 @@ const MyPack = () => {
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />
+      <PacksTitle name={"My Pack"}>
+        <h1></h1>
+      </PacksTitle>
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
           <TableHead>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
@@ -8,8 +8,16 @@ import Table from "@mui/material/Table/Table";
 import star from "common/Image/Star 5.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { useCards } from "features/Cards/hook/useCards";
+import { useAppDispatch } from "common/hooks";
+import { getCards } from "features/Cards/cards.slice";
 
 const FriendsPack = () => {
+  const { cards } = useCards();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getCards({}));
+  }, []);
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs"} />
@@ -33,20 +41,20 @@ const FriendsPack = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((el) => (
+            {cards.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }}>
-                <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.cards}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.createdBy}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.question}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.answer}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.created}</TableCell>
                 <TableCell sx={{ background: "white" }}>
                   {
                     <>
-                      <img src={el.url} /> <img src={el.url} />
-                      <img src={el.url} />
-                      <img src={el.url} />
-                      <img src={el.url} />
+                      {/*<img src={el.url} /> <img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
                     </>
-                  }{" "}
+                  }
                 </TableCell>
               </TableRow>
             ))}
@@ -56,24 +64,5 @@ const FriendsPack = () => {
     </div>
   );
 };
-let data = [
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "19.03.2021",
-    url: star,
-  },
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "18.03.2021",
-    url: star,
-  },
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "20.03.2021",
-    url: star,
-  },
-];
+
 export default FriendsPack;

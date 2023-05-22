@@ -77,21 +77,6 @@ export const updatePackTC = createAppAsyncThunk<CardPacksType, PackResponseType<
   }
 );
 
-//types
-type InitialStateType = {
-  packList: GetPackType;
-  queryParams: ParamsType;
-};
-type QueryParams = {
-  min?: number;
-  max?: number;
-  packName?: string;
-  user_id?: string;
-  block?: boolean;
-  page?: number;
-  pageCount?: number;
-  sortPacks?: string;
-};
 const slice = createSlice({
   name: "pack",
   initialState: initialState,
@@ -124,25 +109,30 @@ const slice = createSlice({
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
     });
-    // builder.addCase(updatePackTC.fulfilled, (state, action) => {
-    //   state.packList.cardPacks.map((p) => (p._id === action.payload._id ? { ...p, name: action.payload.name } : p));
-    // });
+
     builder.addCase(removePackTC.fulfilled, (state, action) => {
       const index = state.packList.cardPacks.findIndex((c) => c._id === action.payload);
       if (index !== -1) state.packList.cardPacks.splice(index, 1);
     });
   },
 });
-// type PackListType = {
-//   cardPacks:[]
-//   cardPacksTotalCount: number;
-//   // количество колод
-//   maxCardsCount: number;
-//   minCardsCount: number;
-//   page: number; // выбранная страница
-//   pageCount: number;
-// };
+
 export const packsReducers = slice.reducer;
 export const searchParamsAc = slice.actions.searchParams;
 export const deleteSearchParamsAC = slice.actions.deleteSearchParams;
 export const packsThunks = { getPacksTC, addPacksTC, removePackTC, updatePackTC };
+//types
+type InitialStateType = {
+  packList: GetPackType;
+  queryParams: ParamsType;
+};
+type QueryParams = {
+  min?: number;
+  max?: number;
+  packName?: string;
+  user_id?: string;
+  block?: boolean;
+  page?: number;
+  pageCount?: number;
+  sortPacks?: string;
+};

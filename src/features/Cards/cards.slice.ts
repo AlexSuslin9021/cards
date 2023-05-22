@@ -19,9 +19,9 @@ export const initialState: InitialStateType = {
     cardQuestion: "",
     cardsPack_id: "",
     min: 0,
-    max: 0,
+    max: 70,
     sortCards: "0grade",
-    page: 5,
+    page: 1,
     pageCount: 1,
   },
 };
@@ -31,14 +31,14 @@ type InitialStateType = {
 };
 
 export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsType>(
-  "add/packs",
+  "add/cards",
   async (arg: GetCardsParamsType, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       const { getState, dispatch } = thunkAPI;
       await dispatch(initializedTC());
       const params = { ...getState().cards.queryParams, ...arg };
       let res = await apiCards.getCards(params);
-      return { cardList: res.data };
+      return res.data;
     });
   }
 );
@@ -52,16 +52,15 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCards.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.cardList.cards = action.payload.cards;
-        state.cardList.cardsTotalCount = action.payload.cardsTotalCount;
-        state.cardList.minGrade = action.payload.minGrade;
-        state.cardList.maxGrade = action.payload.maxGrade;
-        state.cardList.packUserId = action.payload.packUserId;
-        state.cardList.page = action.payload.page;
-        state.cardList.pageCount = action.payload.pageCount;
-      }
+      state.cardList.cards = action.payload.cards;
+      state.cardList.cardsTotalCount = action.payload.cardsTotalCount;
+      state.cardList.minGrade = action.payload.minGrade;
+      state.cardList.maxGrade = action.payload.maxGrade;
+      state.cardList.packUserId = action.payload.packUserId;
+      state.cardList.page = action.payload.page;
+      state.cardList.pageCount = action.payload.pageCount;
     });
   },
 });
 export const cardsReducers = slice.reducer;
+export const cardsSearchParams = slice.actions.searchParams;
