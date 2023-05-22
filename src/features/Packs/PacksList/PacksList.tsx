@@ -8,7 +8,7 @@ import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { myIdSelector, packSelector } from "features/Packs/selector";
 import { useAppSelector } from "app/store";
 import { cardsSearchParams } from "features/Cards/cards.slice";
@@ -23,8 +23,9 @@ export const PacksList = () => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
   };
   const navigate = useNavigate();
+
   const onClickNamePack = (id: string, cardId: string) => {
-    myId === id ? navigate("/my-pack") : navigate("/friends-pack");
+    myId === id ? navigate("/my-cards") : navigate(`/friends-cards/${cardId}`);
     dispatch(cardsSearchParams({ cardsPack_id: cardId }));
   };
 

@@ -40,8 +40,8 @@ function App() {
           <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
           <Route path={"/learn"} element={<Learn />} />
           <Route path={"/page-pack"} element={<PagePack />} />
-          <Route path={"/friends-pack"} element={<FriendsPack />} />
-          <Route path={"/my-pack"} element={<MyPack />} />
+          <Route path={"/friends-cards/:id"} element={<FriendsPack />} />
+          <Route path={"/my-cards"} element={<MyPack />} />
         </Routes>
       </div>
     </div>

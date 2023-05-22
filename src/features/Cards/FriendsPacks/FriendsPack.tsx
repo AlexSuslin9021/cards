@@ -11,12 +11,14 @@ import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { useCards } from "features/Cards/hook/useCards";
 import { useAppDispatch } from "common/hooks";
 import { getCards } from "features/Cards/cards.slice";
+import { useParams } from "react-router-dom";
 
 const FriendsPack = () => {
   const { cards } = useCards();
   const dispatch = useAppDispatch();
+  const { id } = useParams();
   useEffect(() => {
-    dispatch(getCards({}));
+    dispatch(getCards({ cardsPack_id: id }));
   }, []);
   return (
     <div className={s1.container}>
