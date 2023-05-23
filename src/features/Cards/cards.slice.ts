@@ -1,4 +1,4 @@
-import { apiCards, CardsResponseType, GetCardsParamsType } from "features/Cards/Cards.api";
+import { AddCardType, apiCards, CardsResponseType, CardsType, GetCardsParamsType } from "features/Cards/Cards.api";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
@@ -22,7 +22,7 @@ export const initialState: InitialStateType = {
     max: 70,
     sortCards: "0grade",
     page: 1,
-    pageCount: 1,
+    pageCount: 5,
   },
 };
 type InitialStateType = {
@@ -31,7 +31,7 @@ type InitialStateType = {
 };
 
 export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsType>(
-  "add/cards",
+  "get/cards",
   async (arg: GetCardsParamsType, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       const { getState, dispatch } = thunkAPI;
@@ -42,6 +42,15 @@ export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsTyp
     });
   }
 );
+export const addCard = createAppAsyncThunk<CardsType, AddCardType>("add/card", async (arg: AddCardType, thunkAPI) => {
+  debugger;
+  return thunkTryCatch(thunkAPI, async () => {
+    const { dispatch } = thunkAPI;
+    let res = await apiCards.addCard(arg);
+    dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
+    return res.data;
+  });
+});
 const slice = createSlice({
   name: "cards",
   initialState: initialState,
@@ -60,7 +69,11 @@ const slice = createSlice({
       state.cardList.page = action.payload.page;
       state.cardList.pageCount = action.payload.pageCount;
     });
+    builder.addCase(addCard.fulfilled, (state, action) => {
+      state.cardList.cards.unshift(action.payload);
+    });
   },
 });
 export const cardsReducers = slice.reducer;
 export const cardsSearchParams = slice.actions.searchParams;
+export const cardsThunks = { addCard };

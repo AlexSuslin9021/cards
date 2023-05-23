@@ -1,24 +1,24 @@
 import s from "features/Packs/SearchPanel/searchPanel.module.scss";
-import React, { useState } from "react";
+import React from "react";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
+import { useNavigate, useParams } from "react-router-dom";
 type ButtonsType = {
   name: string;
 };
 export const Buttons: React.FC<ButtonsType> = ({ name }) => {
   const dispatch = useAppDispatch();
-  const [mode, setMode] = useState(false);
+  const params = useParams();
+  const navigate = useNavigate();
+
   const onClickMyPack = () => {
-    setMode(!mode);
-    dispatch(searchParamsAc({ user_id: name === "My" ? "64527e000415841fd8df2cf3" : "" }));
+    dispatch(searchParamsAc({ user_id: name === "my" ? "64527e000415841fd8df2cf3" : "" }));
+    navigate(`/packs/${name}`);
   };
-  // const onClickAllPack = () => {
-  //   setMode(!mode);
-  //   dispatch(searchParamsAc({ user_id: "" }));
-  // };
+
   return (
     <>
-      <button onClick={onClickMyPack} className={mode ? s.myCards : s.allCards}>
+      <button onClick={onClickMyPack} className={params.section === "my" ? s.myCards : s.allCards}>
         {name}
       </button>
     </>

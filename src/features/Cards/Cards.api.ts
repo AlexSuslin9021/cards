@@ -4,6 +4,24 @@ export const apiCards = {
   getCards(params: GetCardsParamsType) {
     return instance.get<any>(`cards/card?cardsPack_id=${params.cardsPack_id}`);
   },
+  addCard(params: AddCardType) {
+    debugger;
+    return instance.post<CardsType>(`/cards/card`, params);
+  },
+};
+export type AddCardType = {
+  card: CardType;
+};
+export type CardType = {
+  cardsPack_id?: string;
+  question?: string;
+  answer?: string;
+  grade?: number;
+  shots?: number;
+  answerImg?: string;
+  questionImg?: string;
+  questionVideo?: string;
+  answerVideo?: string;
 };
 
 export type GetCardsParamsType = {

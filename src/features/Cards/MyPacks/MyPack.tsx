@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
@@ -10,13 +10,25 @@ import pencil from "common/Image/Vector (Stroke).svg";
 import trash from "common/Image/trash.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
+import { useCards } from "features/Cards/hook/useCards";
+import { getCards } from "features/Cards/cards.slice";
+import { useAppDispatch, useAppSelector } from "common/hooks";
+import { useParams } from "react-router-dom";
+import { cardsPack_idSelector } from "features/Cards/selectors";
 
 const MyPack = () => {
+  const { cards } = useCards();
+  const dispatch = useAppDispatch();
+  const cardsPack_id = useAppSelector(cardsPack_idSelector);
+  useEffect(() => {
+    dispatch(getCards({ cardsPack_id: cardsPack_id }));
+  }, []);
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs/my"} />
       <PacksTitle name={"My Pack"}>
-        <h1></h1>
+        <ModalAddCards />
       </PacksTitle>
       <TableContainer>
         <Table sx={{ width: "1008px" }}>
@@ -26,31 +38,23 @@ const MyPack = () => {
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Answer</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Grade</TableCell>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((el) => (
+            {cards.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }}>
-                <TableCell sx={{ background: "white" }}>{el.name}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.cards}</TableCell>
-                <TableCell sx={{ background: "white" }}>{el.createdBy}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.question}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.answer}</TableCell>
+                <TableCell sx={{ background: "white" }}>{el.created}</TableCell>
                 <TableCell sx={{ background: "white" }}>
                   {
                     <>
-                      <img src={el.url} />
-                      <img src={el.url} />
-                      <img src={el.url} />
-                      <img src={el.url} />
-                      <img src={el.url} />
+                      {/*<img src={el.url} /> <img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
+                      {/*<img src={el.url} />*/}
                     </>
                   }
-                </TableCell>
-                <TableCell sx={{ background: "white" }}>
-                  <>
-                    <img src={el.url2} alt="change" />
-                    <img src={el.url3} alt="delete" />
-                  </>
                 </TableCell>
               </TableRow>
             ))}

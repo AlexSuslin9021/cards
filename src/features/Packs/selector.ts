@@ -1,5 +1,4 @@
 import { RootState } from "app/store";
-import { useAppSelector } from "common/hooks";
 
 const packSelector = (state: RootState) => state.pack.packList.cardPacks;
 const myIdSelector = (state: RootState) => state.auth.profile?._id;
