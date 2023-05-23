@@ -14,7 +14,7 @@ import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 const MyPack = () => {
   return (
     <div className={s1.container}>
-      <BackTo name={"Back to MyPack List"} link={"/packs"} />
+      <BackTo name={"Back to MyPack List"} link={"/packs/my"} />
       <PacksTitle name={"My Pack"}>
         <h1></h1>
       </PacksTitle>

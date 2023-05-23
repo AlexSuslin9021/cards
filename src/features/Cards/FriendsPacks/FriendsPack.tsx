@@ -22,7 +22,7 @@ const FriendsPack = () => {
   }, []);
   return (
     <div className={s1.container}>
-      <BackTo name={"Back to MyPack List"} link={"/packs"} />
+      <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
       <PacksTitle name={"Friend's Pack"}>
         <h1></h1>
       </PacksTitle>

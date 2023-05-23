@@ -24,7 +24,7 @@ const Profile = () => {
   }
   return (
     <div className={style.container}>
-      <BackTo name={"Back to MyPack List"} link={"/packs"} />
+      <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
       <Title name={"Personal Information"} />
       <div className={s.iconContainer}>
         <img src={avatar} alt="avatar" />

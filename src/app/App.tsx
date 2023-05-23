@@ -32,7 +32,7 @@ function App() {
       <div className={s.container}>
         <Routes>
           <Route path={"/"} element={<Profile />} />
-          <Route path={"/packs"} element={<Pack />} />
+          <Route path={"/packs/:section"} element={<Pack />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
           <Route path={"/forgot-password"} element={<ForgotPassword />} />
