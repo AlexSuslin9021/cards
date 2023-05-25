@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState } from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
 import pencil from "../../../common/Image/pencil.svg";
-import { packsThunks } from "features/Packs/pack.slice";
 import { cardsThunks } from "features/Cards/cards.slice";
 
 type UpdateModalType = { id: string; cardsPack_id: string };

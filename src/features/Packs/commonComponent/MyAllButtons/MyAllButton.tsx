@@ -2,25 +2,33 @@ import s from "features/Packs/SearchPanel/searchPanel.module.scss";
 import React from "react";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
-import { useNavigate, useParams } from "react-router-dom";
-type ButtonsType = {
-  name: string;
-};
-export const Buttons: React.FC<ButtonsType> = ({ name }) => {
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "app/store";
+import { myIdSelector, user_idSelector } from "features/Packs/selector";
+
+export const Buttons = () => {
   const dispatch = useAppDispatch();
-  const params = useParams();
   const navigate = useNavigate();
+  const myId = useAppSelector(myIdSelector);
+  const userId = useAppSelector(user_idSelector);
 
   const onClickMyPack = () => {
-    dispatch(searchParamsAc({ user_id: name === "my" ? "64527e000415841fd8df2cf3" : "" }));
-    navigate(`/packs/${name}`);
+    dispatch(searchParamsAc({ user_id: myId }));
+    navigate("/packs/my");
+  };
+  const onClickAllPack = () => {
+    dispatch(searchParamsAc({ user_id: "" }));
+    navigate("/packs/all");
   };
 
   return (
-    <>
-      <button onClick={onClickMyPack} className={params.section === "my" ? s.myCards : s.allCards}>
-        {name}
+    <div>
+      <button onClick={onClickMyPack} className={myId === userId ? s.myCards : s.allCards}>
+        My
       </button>
-    </>
+      <button onClick={onClickAllPack} className={myId !== userId ? s.myCards : s.allCards}>
+        All
+      </button>
+    </div>
   );
 };

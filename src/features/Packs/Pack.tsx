@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
-import SearchPanel from "features/Packs/SearchPanel/SearchPanel";
+import { SearchPanel } from "features/Packs/SearchPanel/SearchPanel";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import { PacksList } from "features/Packs/PacksList/PacksList";
 import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";

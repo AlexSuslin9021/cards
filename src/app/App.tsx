@@ -13,7 +13,7 @@ import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 import Login from "features/auth/Login/Login";
 import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
-import FriendsPack from "features/Cards/FriendsPacks/FriendsPack";
+import FriendsPack from "features/Cards/FriendsPacksDelete/FriendsPack";
 import MyPack from "features/Cards/MyPacks/MyPack";
 import { authThunks } from "features/auth/auth.slice";
 import { LinearProgress } from "@mui/material";

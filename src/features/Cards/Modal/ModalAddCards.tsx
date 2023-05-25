@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch, useAppSelector } from "common/hooks";
-
 import { cardsThunks } from "features/Cards/cards.slice";
 import { cardsPack_idSelector } from "features/Cards/selectors";
+import s from "../../../common/component/Input/input.module.scss";
 
 export const ModalAddCards = () => {
   const dispatch = useAppDispatch();
@@ -22,8 +22,13 @@ export const ModalAddCards = () => {
   };
   return (
     <BasicModal header={"Add new Cards"} name={"Add new card"} callback={onClickHandler}>
-      <input value={answer} onChange={onChangeAnswer} type="text" />
-      <input value={question} onChange={onChangeQuestion} type="text" />
+      <div className={s.input}>
+        <input value={answer} onChange={onChangeAnswer} type="text" />
+      </div>
+
+      <div className={s.input}>
+        <input value={question} onChange={onChangeQuestion} type="text" />
+      </div>
     </BasicModal>
   );
 };
