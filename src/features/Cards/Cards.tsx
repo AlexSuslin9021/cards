@@ -11,6 +11,8 @@ import { useParams } from "react-router-dom";
 import { useDebounce } from "common/hooks/useDebounce";
 import { Tables } from "common/Test/Table";
 import { packNameSelect } from "features/Cards/selectors";
+import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
+import { myIdSelector, user_idSelector } from "features/Packs/selector";
 
 export const Cards = () => {
   const [value, setValue] = useState<string>("");
@@ -22,6 +24,9 @@ export const Cards = () => {
     dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
   }, [debounceValue]);
   const packName = useAppSelector(packNameSelect);
+  const myId = useAppSelector(myIdSelector);
+  const userId = useAppSelector(user_idSelector);
+  const linkToPacks = myId === userId ? "my" : "all";
   const onChangeInputHandler = (value: string) => {
     debugger;
     setValue(value);
@@ -30,8 +35,10 @@ export const Cards = () => {
   debugger;
   return (
     <div className={s1.container}>
-      <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
-      <PacksTitle name={packName} />
+      <BackTo name={"Back to MyPack List"} link={`/packs/${linkToPacks}`} />
+      <PacksTitle name={packName}>
+        <ModalAddCards />
+      </PacksTitle>
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
