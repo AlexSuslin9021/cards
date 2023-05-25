@@ -18,6 +18,7 @@ import MyPack from "features/Cards/MyPacks/MyPack";
 import { authThunks } from "features/auth/auth.slice";
 import { LinearProgress } from "@mui/material";
 import Pack from "features/Packs/Pack";
+import Cards from "features/Cards/Cards";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
@@ -42,6 +43,7 @@ function App() {
           <Route path={"/page-pack"} element={<PagePack />} />
           <Route path={"/friends-cards/:id"} element={<FriendsPack />} />
           <Route path={"/my-cards"} element={<MyPack />} />
+          <Route path={"/cards/:id"} element={<Cards />} />
         </Routes>
       </div>
     </div>

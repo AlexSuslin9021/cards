@@ -40,6 +40,7 @@ const SearchPanel = () => {
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
+
           <Search value={value} callback={onChangeInputHandler}></Search>
         </div>
         <div className={s.choiceCards}>
@@ -54,7 +55,7 @@ const SearchPanel = () => {
           </div>
         </div>
         <div className={s.sliderCont}>
-          <MiniTitle name={" Number of cards"} />
+          <MiniTitle name={"Number of cards"} />
           <Range />
         </div>
         <div className={s.icon}>

@@ -1,26 +1,18 @@
 import React, { useEffect } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
-import Search from "features/Packs/commonComponent/Search/Search";
-import s from "features/Packs/PacksList/PacksList.module.scss";
 import s1 from "features/Packs/style.module.scss";
-import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
-import star from "common/Image/Star 5.svg";
-import pencil from "common/Image/Vector (Stroke).svg";
-import remove from "../../../common/Image/trash.svg";
+
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { useCards } from "features/Cards/hook/useCards";
 import { getCards } from "features/Cards/cards.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
-
 import { cardsPack_idSelector } from "features/Cards/selectors";
-import teach from "common/Image/teacher.svg";
-import { UpdateModal } from "common/component/Modal/UpdateModal";
-import { DeleteModal } from "common/component/Modal/DeleteModal";
 import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
 import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
+import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 
 const MyPack = () => {
   const { cards } = useCards();
@@ -39,7 +31,10 @@ const MyPack = () => {
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Questions</TableCell>
+              <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>
+                Questions
+                <TableHeader headerName={"Questions"} sortName={"question"} />
+              </TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Answer</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Last updated</TableCell>
               <TableCell sx={{ fontFamily: "Montserrat", fontWeight: "700" }}>Grade</TableCell>

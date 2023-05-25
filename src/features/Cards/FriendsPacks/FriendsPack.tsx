@@ -5,15 +5,13 @@ import s from "features/Packs/PacksList/PacksList.module.scss";
 import s1 from "features/Packs/style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
-import star from "common/Image/Star 5.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { useCards } from "features/Cards/hook/useCards";
-import { useAppDispatch } from "common/hooks";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
 import { useParams } from "react-router-dom";
 import { useDebounce } from "common/hooks/useDebounce";
-import { searchParamsAc } from "features/Packs/pack.slice";
 
 const FriendsPack = () => {
   const [value, setValue] = useState<string>("");
@@ -21,8 +19,9 @@ const FriendsPack = () => {
   const dispatch = useAppDispatch();
   const debounceValue = useDebounce(value, 1000);
   const { id } = useParams();
+
   useEffect(() => {
-    dispatch(getCards({ cardsPack_id: id }));
+    dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
   }, [debounceValue]);
 
   const onChangeInputHandler = (value: string) => {
@@ -30,10 +29,11 @@ const FriendsPack = () => {
     setValue(value);
     dispatch(cardsSearchParams({ cardAnswer: debounceValue }));
   };
+  debugger;
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
-      <PacksTitle name={"Friend's Pack"}>
+      <PacksTitle name={"Friends packs"}>
         <h1></h1>
       </PacksTitle>
       <div className={s.dataCards}>

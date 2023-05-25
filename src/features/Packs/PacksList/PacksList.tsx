@@ -18,14 +18,15 @@ const styleTableBody = { background: "white" };
 export const PacksList = () => {
   const dispatch = useAppDispatch();
   const myId = useAppSelector(myIdSelector);
-  const pack = useAppSelector(packSelector);
+  const packs = useAppSelector(packSelector);
+  const navigate = useNavigate();
+
   const updatePack = (id: string) => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
   };
-  const navigate = useNavigate();
 
   const onClickNamePack = (id: string, cardId: string) => {
-    myId === id ? navigate("/my-cards") : navigate(`/friends-cards/${cardId}`);
+    navigate(`/cards/${cardId}`);
     dispatch(cardsSearchParams({ cardsPack_id: cardId }));
   };
 
@@ -48,7 +49,7 @@ export const PacksList = () => {
           </TableHead>
           <TableBody>
             {/*{pack.length ? (*/}
-            {pack.map((el) => (
+            {packs.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
                 <TableCell sx={styleTableBody}>
                   <span onClick={() => onClickNamePack(el.user_id, el._id)}> {el.name}</span>
