@@ -3,7 +3,7 @@ import s from "./PacksTitle.module.scss";
 
 type PacksTitleType = {
   name?: string;
-  children: ReactNode;
+  children?: ReactNode;
   callback?: any;
 };
 export const PacksTitle: FC<PacksTitleType> = ({ name, callback, children }) => {

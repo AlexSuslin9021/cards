@@ -15,6 +15,7 @@ const maxSelector = (state: RootState) => state.cards.queryParams.max;
 const sortCardsSelector = (state: RootState) => state.cards.queryParams.sortCards;
 const pageQuerySelector = (state: RootState) => state.cards.queryParams.page;
 const pageCountQuerySelector = (state: RootState) => state.cards.queryParams.pageCount;
+const packNameSelect = (state: RootState) => state.cards.cardList.packName;
 //
 export {
   cardsSelector,
@@ -31,4 +32,5 @@ export {
   sortCardsSelector,
   pageQuerySelector,
   pageCountQuerySelector,
+  packNameSelect,
 };

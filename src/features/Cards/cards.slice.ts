@@ -13,6 +13,7 @@ export const initialState: InitialStateType = {
     page: 7,
     pageCount: 1,
     packUserId: "",
+    packName: "",
   },
   queryParams: {
     cardAnswer: "",
@@ -88,6 +89,7 @@ const slice = createSlice({
       state.cardList.packUserId = action.payload.packUserId;
       state.cardList.page = action.payload.page;
       state.cardList.pageCount = action.payload.pageCount;
+      state.cardList.packName = action.payload.packName;
     });
     builder.addCase(addCard.fulfilled, (state, action) => {
       state.cardList.cards.unshift(action.payload);

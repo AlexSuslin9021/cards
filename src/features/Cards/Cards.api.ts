@@ -60,4 +60,5 @@ export type CardsResponseType = {
   page: number;
   pageCount: number;
   packUserId: string;
+  packName: string;
 };
