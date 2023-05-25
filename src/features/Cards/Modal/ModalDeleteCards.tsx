@@ -3,17 +3,18 @@ import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
 import remove from "../../../common/Image/trash.svg";
+import { cardsThunks } from "features/Cards/cards.slice";
 
 type DeleteModalType = {
   id: string;
   name: string;
 };
-export const DeleteModal: React.FC<DeleteModalType> = ({ id, name }) => {
+export const DeleteModalCard: React.FC<DeleteModalType> = ({ id, name }) => {
   const dispatch = useAppDispatch();
   const onClickHandler = () => {
-    dispatch(packsThunks.removePackTC(id));
+    dispatch(cardsThunks.deleteCard(id));
   };
-
+  debugger;
   return (
     <BasicModal callback={onClickHandler} header={"Delete pack"} src={remove} mode={false}>
       <span>

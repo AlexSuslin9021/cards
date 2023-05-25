@@ -8,6 +8,12 @@ export const apiCards = {
     debugger;
     return instance.post<CardsType>(`/cards/card`, params);
   },
+  deleteCard(params: string) {
+    return instance.delete<{}>(`/cards/card?id=${params}`);
+  },
+  updateCard(params: { card: CardsType }) {
+    return instance.put<AddCardType>("/cards/card", params);
+  },
 };
 export type AddCardType = {
   card: CardType;
@@ -37,13 +43,13 @@ export type GetCardsParamsType = {
 
 export type CardsType = {
   answer: string;
-  question: string;
+  question?: string;
   cardsPack_id: string;
-  grade: number;
-  shots: number;
-  user_id: string;
-  created: string;
-  updated: string;
+  grade?: number;
+  shots?: number;
+  user_id?: string;
+  created?: string;
+  updated?: string;
   _id: string;
 };
 export type CardsResponseType = {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
@@ -10,16 +10,26 @@ import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { useCards } from "features/Cards/hook/useCards";
 import { useAppDispatch } from "common/hooks";
-import { getCards } from "features/Cards/cards.slice";
+import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
 import { useParams } from "react-router-dom";
+import { useDebounce } from "common/hooks/useDebounce";
+import { searchParamsAc } from "features/Packs/pack.slice";
 
 const FriendsPack = () => {
+  const [value, setValue] = useState<string>("");
   const { cards } = useCards();
   const dispatch = useAppDispatch();
+  const debounceValue = useDebounce(value, 1000);
   const { id } = useParams();
   useEffect(() => {
     dispatch(getCards({ cardsPack_id: id }));
-  }, []);
+  }, [debounceValue]);
+
+  const onChangeInputHandler = (value: string) => {
+    debugger;
+    setValue(value);
+    dispatch(cardsSearchParams({ cardAnswer: debounceValue }));
+  };
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
@@ -29,7 +39,7 @@ const FriendsPack = () => {
       <div className={s.dataCards}>
         <div className={s.search}>
           <MiniTitle name={"Search"} />
-          {/*<Search></Search>*/}
+          <Search value={value} callback={onChangeInputHandler}></Search>
         </div>
       </div>
       <TableContainer>

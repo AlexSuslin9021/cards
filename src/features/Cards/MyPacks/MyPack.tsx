@@ -7,15 +7,20 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import Table from "@mui/material/Table/Table";
 import star from "common/Image/Star 5.svg";
 import pencil from "common/Image/Vector (Stroke).svg";
-import trash from "common/Image/trash.svg";
+import remove from "../../../common/Image/trash.svg";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { useCards } from "features/Cards/hook/useCards";
 import { getCards } from "features/Cards/cards.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
-import { useParams } from "react-router-dom";
+
 import { cardsPack_idSelector } from "features/Cards/selectors";
+import teach from "common/Image/teacher.svg";
+import { UpdateModal } from "common/component/Modal/UpdateModal";
+import { DeleteModal } from "common/component/Modal/DeleteModal";
+import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
+import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
 
 const MyPack = () => {
   const { cards } = useCards();
@@ -42,18 +47,24 @@ const MyPack = () => {
           </TableHead>
           <TableBody>
             {cards.map((el) => (
-              <TableRow sx={{ borderBottom: "1px solid" }}>
+              <TableRow key={el._id} sx={{ borderBottom: "1px solid" }}>
                 <TableCell sx={{ background: "white" }}>{el.question}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.answer}</TableCell>
                 <TableCell sx={{ background: "white" }}>{el.created}</TableCell>
                 <TableCell sx={{ background: "white" }}>
                   {
-                    <>
-                      {/*<img src={el.url} /> <img src={el.url} />*/}
-                      {/*<img src={el.url} />*/}
-                      {/*<img src={el.url} />*/}
-                      {/*<img src={el.url} />*/}
-                    </>
+                    <span>
+                      {<UpdateModalCard id={el._id} cardsPack_id={el.cardsPack_id} />}
+                      {
+                        <DeleteModalCard id={el._id} name={el.answer} />
+                        // <img
+                        //   style={{ marginRight: "10px", cursor: "pointer" }}
+                        //   // onClick={() => updatePack(el._id)}
+                        //   src={remove}
+                        //   alt="delete"
+                        // />
+                      }
+                    </span>
                   }
                 </TableCell>
               </TableRow>
@@ -64,30 +75,5 @@ const MyPack = () => {
     </div>
   );
 };
-let data = [
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "19.03.2021",
-    url: star,
-    url2: pencil,
-    url3: trash,
-  },
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "18.03.2021",
-    url: star,
-    url2: pencil,
-    url3: trash,
-  },
-  {
-    name: "How 'This' works in JavaScript?",
-    cards: 'This is how "This" works in JavaScript',
-    createdBy: "20.03.2021",
-    url: star,
-    url2: pencil,
-    url3: trash,
-  },
-];
+
 export default MyPack;
