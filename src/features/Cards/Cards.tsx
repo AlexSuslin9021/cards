@@ -10,7 +10,7 @@ import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
 import { useParams } from "react-router-dom";
 import { useDebounce } from "common/hooks/useDebounce";
 import { Tables } from "common/Test/Table";
-import { packNameSelect } from "features/Cards/selectors";
+import { packNameSelect, sortCardsSelector } from "features/Cards/selectors";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { myIdSelector, user_idSelector } from "features/Packs/selector";
 
@@ -19,13 +19,15 @@ export const Cards = () => {
   const dispatch = useAppDispatch();
   const debounceValue = useDebounce(value, 1000);
   const { id } = useParams();
-
-  useEffect(() => {
-    dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
-  }, [debounceValue]);
   const packName = useAppSelector(packNameSelect);
   const myId = useAppSelector(myIdSelector);
   const userId = useAppSelector(user_idSelector);
+  const sortCards = useAppSelector(sortCardsSelector);
+
+  useEffect(() => {
+    dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
+  }, [debounceValue, sortCards]);
+
   const linkToPacks = myId === userId ? "my" : "all";
   const onChangeInputHandler = (value: string) => {
     debugger;

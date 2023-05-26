@@ -5,6 +5,7 @@ import Table from "@mui/material/Table/Table";
 import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
 import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
+import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 
 export const Tables = () => {
   const { cards } = useCards();
@@ -16,7 +17,9 @@ export const Tables = () => {
       <Table sx={{ width: "1008px" }}>
         <TableHead>
           <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-            <TableCell sx={style}>Questions</TableCell>
+            <TableCell sx={style}>
+              <TableHeader headerName={"Questions"} sortName={"question"} />
+            </TableCell>
             <TableCell sx={style}>Answer</TableCell>
             <TableCell sx={style}>Last updated</TableCell>
             <TableCell sx={style}>Grade</TableCell>

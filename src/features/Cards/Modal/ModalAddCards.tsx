@@ -18,7 +18,7 @@ export const ModalAddCards = () => {
     setQuestion(e.currentTarget.value);
   };
   const onClickHandler = () => {
-    dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: answer } }));
+    dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: question } }));
     setAnswer("");
   };
   return (
@@ -30,7 +30,6 @@ export const ModalAddCards = () => {
       </div>
       <div className={s.input}>
         <label>Answer</label>
-
         <input value={answer} onChange={onChangeAnswer} type="text" />
       </div>
     </BasicModal>
