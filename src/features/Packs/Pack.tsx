@@ -4,7 +4,7 @@ import { packsThunks } from "features/Packs/pack.slice";
 import { SearchPanel } from "features/Packs/SearchPanel/SearchPanel";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import { PacksList } from "features/Packs/PacksList/PacksList";
-import { Pagination } from "features/Packs/commonComponent/Pagination/Pagination";
+import { Pagination } from "common/component/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
 import { AddModal } from "common/component/Modal/AddModal";

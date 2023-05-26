@@ -13,6 +13,7 @@ import { Tables } from "common/Test/Table";
 import { packNameSelect, sortCardsSelector } from "features/Cards/selectors";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { myIdSelector, user_idSelector } from "features/Packs/selector";
+import { Pagination } from "common/component/Pagination/Pagination";
 
 export const Cards = () => {
   const [value, setValue] = useState<string>("");
@@ -48,6 +49,7 @@ export const Cards = () => {
         </div>
       </div>
       <Tables />
+      <Pagination name={"cards"} />
     </div>
   );
 };

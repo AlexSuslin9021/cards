@@ -6,12 +6,15 @@ import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
 import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
+import star from "../../common/Image/Star 5.svg";
+import { GradesStars } from "features/Cards/Raiting";
 
 export const Tables = () => {
   const { cards } = useCards();
   const myId = useAppSelector((state) => state.auth.profile?._id);
   const style = { fontFamily: "Montserrat", fontWeight: "700" };
   const style2 = { background: "white" };
+
   return (
     <TableContainer>
       <Table sx={{ width: "1008px" }}>
@@ -23,6 +26,7 @@ export const Tables = () => {
             <TableCell sx={style}>Answer</TableCell>
             <TableCell sx={style}>Last updated</TableCell>
             <TableCell sx={style}>Grade</TableCell>
+            <TableCell sx={style}></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -31,6 +35,9 @@ export const Tables = () => {
               <TableCell sx={style2}>{el.question}</TableCell>
               <TableCell sx={style2}>{el.answer}</TableCell>
               <TableCell sx={style2}>{el.created}</TableCell>
+              <TableCell sx={style2}>
+                <GradesStars />
+              </TableCell>
               <TableCell sx={style2}>
                 {el.user_id === myId && (
                   <span>
