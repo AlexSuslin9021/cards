@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
+import s from "common/component/Input/input.module.scss";
 
 export const AddModal = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +16,10 @@ export const AddModal = () => {
   };
   return (
     <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickHandler}>
-      <input value={value} onChange={onChangeHandler} type="text" />
+      <div className={s.input}>
+        <label>Pack name</label>
+        <input value={value} onChange={onChangeHandler} type="text" />
+      </div>
     </BasicModal>
   );
 };

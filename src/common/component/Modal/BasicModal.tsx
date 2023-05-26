@@ -2,7 +2,6 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Button } from "../Button/Button";
-import { ChangeEvent, useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -11,9 +10,9 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 type ModalType = {
   children?: any;
@@ -22,15 +21,15 @@ type ModalType = {
   header?: string;
   mode?: boolean;
   src?: string;
+  buttonName?: string;
 };
-export const BasicModal: React.FC<ModalType> = ({ header, children, name, callback, mode = true, src }) => {
+export const BasicModal: React.FC<ModalType> = ({ header, children, name, buttonName, callback, mode = true, src }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const onClickHandler = () => {
     callback();
-
     setOpen(false);
   };
 
@@ -46,11 +45,13 @@ export const BasicModal: React.FC<ModalType> = ({ header, children, name, callba
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <h2>{header}</h2>
+          <h2 style={{ marginBottom: "20px", marginTop: "0" }}>{header}</h2>
+          <hr style={{ marginBottom: "20px", padding: "0px" }} />
+
           {children}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button name={"Cancel"} callback={handleClose}></Button>
-            <Button name={"Save"} callback={onClickHandler}></Button>
+            <Button name={buttonName === "Delete" ? "Delete" : "Save"} callback={onClickHandler}></Button>
           </div>
         </Box>
       </Modal>

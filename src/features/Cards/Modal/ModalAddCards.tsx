@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsThunks } from "features/Cards/cards.slice";
 import { cardsPack_idSelector } from "features/Cards/selectors";
 import s from "../../../common/component/Input/input.module.scss";
+import Select from "@mui/material/Select";
 
 export const ModalAddCards = () => {
   const dispatch = useAppDispatch();
@@ -22,12 +23,15 @@ export const ModalAddCards = () => {
   };
   return (
     <BasicModal header={"Add new Cards"} name={"Add new card"} callback={onClickHandler}>
+      {/*<Select></Select>*/}
       <div className={s.input}>
-        <input value={answer} onChange={onChangeAnswer} type="text" />
-      </div>
-
-      <div className={s.input}>
+        <label>Question</label>
         <input value={question} onChange={onChangeQuestion} type="text" />
+      </div>
+      <div className={s.input}>
+        <label>Answer</label>
+
+        <input value={answer} onChange={onChangeAnswer} type="text" />
       </div>
     </BasicModal>
   );

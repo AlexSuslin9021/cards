@@ -1,10 +1,10 @@
 import * as React from "react";
-import InputLabel from "@mui/material/InputLabel";
+
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppDispatch, useAppSelector } from "common/hooks";
-import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
+import { searchParamsAc } from "features/Packs/pack.slice";
 
 export function SelectVariants() {
   const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
@@ -18,7 +18,6 @@ export function SelectVariants() {
   return (
     <>
       <FormControl variant="standard" sx={{ minWidth: 30 }}>
-        {/*<InputLabel id="demo-simple-select-standard-label">Age</InputLabel>*/}
         <div>Show pack </div>
         <div>
           <Select

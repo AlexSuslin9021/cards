@@ -16,7 +16,7 @@ export const DeleteModalCard: React.FC<DeleteModalType> = ({ id, name }) => {
   };
   debugger;
   return (
-    <BasicModal callback={onClickHandler} header={"Delete pack"} src={remove} mode={false}>
+    <BasicModal callback={onClickHandler} buttonName={"Delete"} header={"Delete pack"} src={remove} mode={false}>
       <span>
         Вы действительно хотите удалить <b>{name}</b>{" "}
       </span>
