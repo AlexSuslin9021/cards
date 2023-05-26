@@ -7,7 +7,7 @@ import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
 import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDebounce } from "common/hooks/useDebounce";
 import { Tables } from "common/Test/Table";
 import {
@@ -21,6 +21,7 @@ import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { myIdSelector, user_idSelector } from "features/Packs/selector";
 import { Pagination } from "common/component/Pagination/Pagination";
 import { searchParamsAc } from "features/Packs/pack.slice";
+import { Button } from "common/component/Button/Button";
 
 export const Cards = () => {
   const [value, setValue] = useState<string>("");
@@ -32,6 +33,7 @@ export const Cards = () => {
   const userId = useAppSelector(user_idSelector);
   const sortCards = useAppSelector(sortCardsSelector);
   const page = useAppSelector(pageQuerySelector);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
@@ -41,7 +43,9 @@ export const Cards = () => {
   const onClickHandler = (page: number) => {
     dispatch(cardsSearchParams({ page: page, pageCount: 10 }));
   };
-
+  const onClickLearn = () => {
+    navigate(`/learn/${packName}`);
+  };
   const onChangeInputHandler = (value: string) => {
     debugger;
     setValue(value);
@@ -52,7 +56,7 @@ export const Cards = () => {
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={`/packs/${linkToPacks}`} />
       <PacksTitle name={packName}>
-        <ModalAddCards />
+        {myId !== userId ? <Button callback={onClickLearn} name={"Learn"} /> : <ModalAddCards />}
       </PacksTitle>
       <div className={s.dataCards}>
         <div className={s.search}>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "app/App.module.scss";
 import { Route, Routes } from "react-router-dom";
 import Profile from "Component/Profile/Profile";
-import Learn from "Component/Learn/Learn";
+
 import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "app/store";
@@ -13,12 +13,11 @@ import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";
 import Login from "features/auth/Login/Login";
 import s from "./App.module.scss";
 import { PagePack } from "features/Packs/PagePack/PagePack";
-import FriendsPack from "features/Cards/FriendsPacksDelete/FriendsPack";
-import MyPack from "features/Cards/MyPacks/MyPack";
 import { authThunks } from "features/auth/auth.slice";
 import { LinearProgress } from "@mui/material";
 import Pack from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
+import { Learn } from "features/Learn/Learn";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
@@ -39,11 +38,9 @@ function App() {
           <Route path={"/forgot-password"} element={<ForgotPassword />} />
           <Route path={"/check-email"} element={<CheckEmail />} />
           <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
-          <Route path={"/learn"} element={<Learn />} />
           <Route path={"/page-pack"} element={<PagePack />} />
-          {/*<Route path={"/friends-cards/:id"} element={<FriendsPack />} />*/}
-          {/*<Route path={"/my-cards"} element={<MyPack />} />*/}
           <Route path={"/cards/:id"} element={<Cards />} />
+          <Route path={"/learn/:packName"} element={<Learn />} />
         </Routes>
       </div>
     </div>

@@ -13,12 +13,6 @@ export const Range = () => {
   const [value2, setValue2] = useState<number>(maxCardsCount);
   const dispatch = useAppDispatch();
 
-  // const debounceValue = useDebounce(value1 | value2, 1000);
-
-  // useEffect(() => {
-  //   dispatch(searchParamsAc({ min: value1, max: value2 }));
-  // }, [debounceValue]);
-
   const change = (event: Event | SyntheticEvent<Element, Event>, value: number | number[]) => {
     if (Array.isArray(value)) {
       setValue1(value[0]);

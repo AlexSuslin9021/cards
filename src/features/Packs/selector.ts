@@ -11,6 +11,7 @@ const user_idSelector = (state: RootState) => state.pack.queryParams.user_id;
 const sortPacksSelector = (state: RootState) => state.pack.queryParams.sortPacks;
 const packNameSelector = (state: RootState) => state.pack.queryParams.packName;
 const pageCurrentSelector = (state: RootState) => state.pack.queryParams.page;
+
 const cardPacksTotalCountSelector = (state: RootState) => state.pack.packList.cardPacksTotalCount;
 export {
   packSelector,

@@ -31,6 +31,7 @@ const Pack = () => {
   const pageCount = useAppSelector(pageCountSelector);
   const sortPacks = useAppSelector(sortPacksSelector);
   const packName = useAppSelector(packNameSelector);
+
   const dispatch = useAppDispatch();
 
   const onClickHandler = (page: number) => {
