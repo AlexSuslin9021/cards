@@ -10,10 +10,17 @@ import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
 import { useParams } from "react-router-dom";
 import { useDebounce } from "common/hooks/useDebounce";
 import { Tables } from "common/Test/Table";
-import { packNameSelect, sortCardsSelector } from "features/Cards/selectors";
+import {
+  cardsTotalCountSelector,
+  packNameSelect,
+  pageQuerySelector,
+  pageSelector,
+  sortCardsSelector,
+} from "features/Cards/selectors";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { myIdSelector, user_idSelector } from "features/Packs/selector";
 import { Pagination } from "common/component/Pagination/Pagination";
+import { searchParamsAc } from "features/Packs/pack.slice";
 
 export const Cards = () => {
   const [value, setValue] = useState<string>("");
@@ -24,12 +31,17 @@ export const Cards = () => {
   const myId = useAppSelector(myIdSelector);
   const userId = useAppSelector(user_idSelector);
   const sortCards = useAppSelector(sortCardsSelector);
+  const page = useAppSelector(pageQuerySelector);
 
   useEffect(() => {
     dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
-  }, [debounceValue, sortCards]);
+  }, [debounceValue, sortCards, page]);
 
   const linkToPacks = myId === userId ? "my" : "all";
+  const onClickHandler = (page: number) => {
+    dispatch(cardsSearchParams({ page: page, pageCount: 10 }));
+  };
+
   const onChangeInputHandler = (value: string) => {
     debugger;
     setValue(value);
@@ -49,7 +61,7 @@ export const Cards = () => {
         </div>
       </div>
       <Tables />
-      <Pagination name={"cards"} />
+      <Pagination totalCount={cardsTotalCountSelector} pageCurrents={pageSelector} callback={onClickHandler} />
     </div>
   );
 };

@@ -104,6 +104,7 @@ const slice = createSlice({
         state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
         state.packList.maxCardsCount = action.payload.maxCardsCount;
         state.packList.minCardsCount = action.payload.minCardsCount;
+        state.queryParams.max = action.payload.maxCardsCount;
       }
     });
     builder.addCase(addPacksTC.fulfilled, (state, action) => {

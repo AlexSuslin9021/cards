@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import s from "common/component/Pagination/Pagination.module.scss";
-import { searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch, useAppSelector } from "common/hooks";
+
+import { useAppSelector } from "common/hooks";
 import { SelectVariants } from "common/component/Select/Select";
-import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/selector";
-import { cardsSearchParams } from "features/Cards/cards.slice";
+
+import { RootState } from "app/store";
 type PaginationType = {
-  name?: string;
+  callback: (value: number) => void;
+  totalCount: (state: RootState) => number;
+  pageCurrents: (state: RootState) => number | undefined;
 };
-export const Pagination: React.FC<PaginationType> = ({ name }) => {
-  const cardPacksTotalCount = useAppSelector(cardPacksTotalCountSelector);
-  const pageCurrent = useAppSelector(pageCurrentSelector);
-  const dispatch = useAppDispatch();
+export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount, callback }) => {
+  const cardPacksTotalCount = useAppSelector(totalCount);
+  const pageCurrent = useAppSelector(pageCurrents);
+
   const onClickHandler = (page: number) => {
-    return name === "cards"
-      ? dispatch(cardsSearchParams({ page: page, pageCount: 10 }))
-      : dispatch(searchParamsAc({ page: page, pageCount: 10 }));
+    callback(page);
   };
   const pageSize = 10;
   const portionSize = 10;
