@@ -25,11 +25,10 @@ const FriendsPack = () => {
   }, [debounceValue]);
 
   const onChangeInputHandler = (value: string) => {
-    debugger;
     setValue(value);
     dispatch(cardsSearchParams({ cardAnswer: debounceValue }));
   };
-  debugger;
+
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={"/packs/all"} />

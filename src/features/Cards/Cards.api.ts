@@ -5,7 +5,6 @@ export const apiCards = {
     return instance.get<any>(`cards/card`, { params });
   },
   addCard(params: AddCardType) {
-    debugger;
     return instance.post<CardsType>(`/cards/card`, params);
   },
   deleteCard(params: string) {

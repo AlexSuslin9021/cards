@@ -12,7 +12,6 @@ const TableHeader = (props: TableHeaderType) => {
   const dispatch = useAppDispatch();
   const [changeFilter, setChangeFilter] = useState(false);
   const sortHandler = (name: string) => {
-    debugger;
     setChangeFilter(!changeFilter);
     props.sortName === "question"
       ? dispatch(cardsSearchParams({ sortCards: changeFilter ? `0${name}` : `1${name}` }))

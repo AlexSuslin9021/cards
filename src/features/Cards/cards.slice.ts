@@ -44,7 +44,6 @@ export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsTyp
   }
 );
 export const addCard = createAppAsyncThunk<CardsType, AddCardType>("add/card", async (arg: AddCardType, thunkAPI) => {
-  debugger;
   return thunkTryCatch(thunkAPI, async () => {
     const { dispatch } = thunkAPI;
     let res = await apiCards.addCard(arg);

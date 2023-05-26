@@ -14,7 +14,7 @@ export const DeleteModalCard: React.FC<DeleteModalType> = ({ id, name }) => {
   const onClickHandler = () => {
     dispatch(cardsThunks.deleteCard(id));
   };
-  debugger;
+
   return (
     <BasicModal callback={onClickHandler} buttonName={"Delete"} header={"Delete pack"} src={remove} mode={false}>
       <span>
