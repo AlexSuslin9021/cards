@@ -1,4 +1,11 @@
-import { AddCardType, apiCards, CardsResponseType, CardsType, GetCardsParamsType } from "features/Cards/Cards.api";
+import {
+  AddCardType,
+  apiCards,
+  CardResponseType,
+  CardsResponseType,
+  CardsType,
+  GetCardsParamsType,
+} from "features/Cards/Cards.api";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
@@ -43,25 +50,31 @@ export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsTyp
     });
   }
 );
-export const addCard = createAppAsyncThunk<CardsType, AddCardType>("add/card", async (arg: AddCardType, thunkAPI) => {
-  return thunkTryCatch(thunkAPI, async () => {
-    const { dispatch } = thunkAPI;
-    let res = await apiCards.addCard(arg);
-    dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
-    return res.data;
-  });
-});
+export const addCard = createAppAsyncThunk<CardResponseType, AddCardType>(
+  "add/card",
+  async (arg: AddCardType, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      const { dispatch } = thunkAPI;
+      let res = await apiCards.addCard(arg);
+      dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
+      return res.data;
+    });
+  }
+);
 
-export const deleteCard = createAppAsyncThunk<{}, string>("delete/card", async (arg: string, thunkAPI) => {
-  return thunkTryCatch(thunkAPI, async () => {
-    const { dispatch } = thunkAPI;
-    let res = await apiCards.deleteCard(arg);
-    dispatch(getCards({}));
-    return res.data;
-  });
-});
+export const deleteCard = createAppAsyncThunk<CardResponseType, string>(
+  "delete/card",
+  async (arg: string, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      const { dispatch } = thunkAPI;
+      let res = await apiCards.deleteCard(arg);
+      dispatch(getCards({ cardsPack_id: res.data.cardsPack_id }));
+      return res.data;
+    });
+  }
+);
 
-export const updateCard = createAppAsyncThunk<AddCardType, { card: CardsType }>(
+export const updateCard = createAppAsyncThunk<CardResponseType, { card: CardsType }>(
   "update/card",
   async (arg: { card: CardsType }, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {

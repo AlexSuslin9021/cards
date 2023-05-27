@@ -5,13 +5,13 @@ export const apiCards = {
     return instance.get<any>(`cards/card`, { params });
   },
   addCard(params: AddCardType) {
-    return instance.post<CardsType>(`/cards/card`, params);
+    return instance.post<CardResponseType>(`/cards/card`, params);
   },
   deleteCard(params: string) {
-    return instance.delete<{}>(`/cards/card?id=${params}`);
+    return instance.delete<CardResponseType>(`/cards/card?id=${params}`);
   },
   updateCard(params: { card: CardsType }) {
-    return instance.put<AddCardType>("/cards/card", params);
+    return instance.put<CardResponseType>("/cards/card", params);
   },
 };
 export type AddCardType = {
@@ -60,4 +60,12 @@ export type CardsResponseType = {
   pageCount: number;
   packUserId: string;
   packName: string;
+};
+
+export type CardResponseType = {
+  _id: string;
+  cardsPack_id: string;
+  user_id: string;
+  answer: string;
+  question: string;
 };
