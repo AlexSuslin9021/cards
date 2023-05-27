@@ -21,7 +21,7 @@ const FriendsPack = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getCards({ cardsPack_id: id, cardAnswer: value }));
+    dispatch(getCards({ cardsPack_id: id ? id : "", cardAnswer: value }));
   }, [debounceValue]);
 
   const onChangeInputHandler = (value: string) => {

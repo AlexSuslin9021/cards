@@ -2,9 +2,9 @@ import {
   AddCardType,
   apiCards,
   CardResponseType,
-  CardsResponseType,
   CardsType,
   GetCardsParamsType,
+  GetCardsResponseType,
 } from "features/Cards/Cards.api";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
@@ -34,11 +34,11 @@ export const initialState: InitialStateType = {
   },
 };
 type InitialStateType = {
-  cardList: CardsResponseType;
+  cardList: GetCardsResponseType;
   queryParams: GetCardsParamsType;
 };
 
-export const getCards = createAppAsyncThunk<CardsResponseType, GetCardsParamsType>(
+export const getCards = createAppAsyncThunk<GetCardsResponseType, GetCardsParamsType>(
   "get/cards",
   async (arg: GetCardsParamsType, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
@@ -88,7 +88,7 @@ const slice = createSlice({
   name: "cards",
   initialState: initialState,
   reducers: {
-    searchParams: (state, action: PayloadAction<GetCardsParamsType>) => {
+    searchParams: (state, action: PayloadAction<SearchParamsType>) => {
       state.queryParams = { ...state.queryParams, ...action.payload };
     },
   },
@@ -111,3 +111,13 @@ const slice = createSlice({
 export const cardsReducers = slice.reducer;
 export const cardsSearchParams = slice.actions.searchParams;
 export const cardsThunks = { addCard, deleteCard, updateCard };
+type SearchParamsType = {
+  cardAnswer?: string;
+  cardQuestion?: string;
+  cardsPack_id?: string;
+  min?: number;
+  max?: number;
+  sortCards?: string;
+  page?: number;
+  pageCount?: number;
+};

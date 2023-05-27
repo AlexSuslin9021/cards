@@ -2,7 +2,7 @@ import { instance } from "common/api";
 
 export const apiCards = {
   getCards(params: GetCardsParamsType) {
-    return instance.get<any>(`cards/card`, { params });
+    return instance.get<GetCardsResponseType>(`cards/card`, { params });
   },
   addCard(params: AddCardType) {
     return instance.post<CardResponseType>(`/cards/card`, params);
@@ -17,8 +17,9 @@ export const apiCards = {
 export type AddCardType = {
   card: CardType;
 };
+
 export type CardType = {
-  cardsPack_id?: string;
+  cardsPack_id: string;
   question?: string;
   answer?: string;
   grade?: number;
@@ -32,7 +33,7 @@ export type CardType = {
 export type GetCardsParamsType = {
   cardAnswer?: string;
   cardQuestion?: string;
-  cardsPack_id?: string;
+  cardsPack_id: string;
   min?: number;
   max?: number;
   sortCards?: string;
@@ -51,8 +52,20 @@ export type CardsType = {
   updated?: string;
   _id: string;
 };
-export type CardsResponseType = {
-  cards: CardsType[];
+
+export type CardResponseType = {
+  answer: string;
+  question: string;
+  cardsPack_id: string;
+  grade: number;
+  shots: number;
+  user_id: string;
+  created: string;
+  updated: string;
+  _id: string;
+};
+export type GetCardsResponseType = {
+  cards: CardResponseType[];
   cardsTotalCount: number;
   maxGrade: number;
   minGrade: number;
@@ -60,12 +73,4 @@ export type CardsResponseType = {
   pageCount: number;
   packUserId: string;
   packName: string;
-};
-
-export type CardResponseType = {
-  _id: string;
-  cardsPack_id: string;
-  user_id: string;
-  answer: string;
-  question: string;
 };
