@@ -1,11 +1,14 @@
 import React from "react";
 import s from "features/Learn/style.module.scss";
 
-export const Question = () => {
+type QuestionType = {
+  question: string;
+};
+export const Question: React.FC<QuestionType> = ({ question }) => {
   return (
     <>
       <div className={s.question}>
-        <b>Question:</b> How this work in JS
+        <b>Question:</b> {question}
       </div>
     </>
   );

@@ -20,7 +20,6 @@ import {
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { myIdSelector, user_idSelector } from "features/Packs/selector";
 import { Pagination } from "common/component/Pagination/Pagination";
-import { searchParamsAc } from "features/Packs/pack.slice";
 import { Button } from "common/component/Button/Button";
 
 export const Cards = () => {
