@@ -36,7 +36,7 @@ export const Tables = () => {
               <TableCell sx={style2}>{el.answer}</TableCell>
               <TableCell sx={style2}>{el.created}</TableCell>
               <TableCell sx={style2}>
-                <GradesStars />
+                <GradesStars grade={el.grade} />
               </TableCell>
               <TableCell sx={style2}>
                 {el.user_id === myId && (

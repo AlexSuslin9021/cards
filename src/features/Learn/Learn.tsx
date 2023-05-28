@@ -7,7 +7,7 @@ import { Answer } from "features/Learn/Component/Answer";
 import { CardResponseType } from "features/Cards/Cards.api";
 import { cardsSelector } from "features/Cards/selectors";
 import { useAppDispatch, useAppSelector } from "common/hooks";
-import { getCards } from "features/Cards/cards.slice";
+import { getCards, updateGrade } from "features/Cards/cards.slice";
 
 const getCard = (cards: CardResponseType[]) => {
   const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
@@ -61,6 +61,8 @@ export const Learn = () => {
     debugger;
     setEdit(false);
     if (cards.length > 0) {
+      debugger;
+      dispatch(updateGrade({ card_id: card._id, grade: 4 }));
       setCard(getCard(cards));
     } else {
     }

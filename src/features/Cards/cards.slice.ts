@@ -79,6 +79,7 @@ export const updateCard = createAppAsyncThunk<CardResponseType, { card: CardsTyp
   "update/card",
   async (arg: { card: CardsType }, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
+      debugger;
       const { dispatch } = thunkAPI;
       await apiCards.updateCard(arg);
       dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
