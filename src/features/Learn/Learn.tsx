@@ -56,13 +56,28 @@ export const Learn = () => {
     updated: "",
     user_id: "",
   });
+  const grades = [
+    { id: 1, gradesValue: "Did not know" },
+    { id: 2, gradesValue: "Forgot" },
+    { id: 3, gradesValue: "A lot of thought" },
+    { id: 4, gradesValue: "Сonfused" },
+    { id: 5, gradesValue: "Knew the answer" },
+  ];
 
+  let a = grades.find((el) => {
+    if (el.gradesValue === "Did not know") return 1;
+    if (el.gradesValue === "Forgot") return 2;
+    if (el.gradesValue === "A lot of thought") return 3;
+    if (el.gradesValue === "Сonfused") return 4;
+    if (el.gradesValue === "Knew the answer") return 5;
+  });
   const onNext = () => {
     debugger;
     setEdit(false);
     if (cards.length > 0) {
       debugger;
-      dispatch(updateGrade({ card_id: card._id, grade: 4 }));
+      console.log(a);
+      // dispatch(updateGrade({ card_id: card._id, grade: 4 }));
       setCard(getCard(cards));
     } else {
     }
@@ -80,14 +95,32 @@ export const Learn = () => {
         <div>
           <Question question={card.question} />
           <div className={s.countAnswer}> Количество попыток ответов на вопрос: 10</div>
-          {edit && <Answer answer={card.answer} />}
+          {edit && (
+            <div className={s.answerVariant}>
+              <div style={{ margin: "10px 0 10px 0" }}>
+                <b>Answer:</b>
+                {card.answer}
+              </div>
+              {grades.map((g) => {
+                return (
+                  <div key={g.id}>
+                    <input type="radio" value={g.id} />
+                    <span>{g.gradesValue}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         <div className={s.btn}>
           {!edit ? (
             <Button name={"Show answer"} callback={onClickShow}></Button>
           ) : (
-            <Button name={"Next"} callback={onNext}></Button>
+            // grades.map((g) => {
+            //   return
+            <Button name={"Next"} callback={onNext} />
+            // })
           )}
         </div>
       </div>
