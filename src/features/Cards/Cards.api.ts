@@ -13,6 +13,9 @@ export const apiCards = {
   updateCard(params: { card: CardsType }) {
     return instance.put<CardResponseType>("/cards/card", params);
   },
+  updateGrade(params: UpdateGradeType) {
+    return instance.put<UpdateGradeResponseType>("/cards/grade", params);
+  },
 };
 export type AddCardType = {
   card: CardType;
@@ -73,4 +76,19 @@ export type GetCardsResponseType = {
   pageCount: number;
   packUserId: string;
   packName: string;
+};
+
+export type UpdateGradeType = {
+  grade: number;
+  card_id: string;
+};
+type UpdateGradeResponseType = {
+  updatedGrade: {
+    _id: string;
+    cardsPack_id: string;
+    card_id: string;
+    user_id: string;
+    grade: number;
+    shots: number;
+  };
 };

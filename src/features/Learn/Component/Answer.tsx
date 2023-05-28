@@ -1,11 +1,14 @@
 import React from "react";
 import s from "features/Learn/style.module.scss";
-
-export const Answer = () => {
+type AnswerType = {
+  answer: string;
+};
+export const Answer: React.FC<AnswerType> = ({ answer }) => {
   return (
     <div className={s.answerVariant}>
       <div style={{ margin: "10px 0 10px 0" }}>
-        <b>Answer:</b>This is work in JS
+        <b>Answer:</b>
+        {answer}
       </div>
       <div>
         <input type="radio" />

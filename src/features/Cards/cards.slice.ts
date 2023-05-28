@@ -5,6 +5,7 @@ import {
   CardsType,
   GetCardsParamsType,
   GetCardsResponseType,
+  UpdateGradeType,
 } from "features/Cards/Cards.api";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
@@ -81,6 +82,17 @@ export const updateCard = createAppAsyncThunk<CardResponseType, { card: CardsTyp
       const { dispatch } = thunkAPI;
       await apiCards.updateCard(arg);
       dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
+    });
+  }
+);
+
+export const updateGrade = createAppAsyncThunk<CardResponseType, UpdateGradeType>(
+  "grade/card",
+  async (arg: UpdateGradeType, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
+      const { dispatch } = thunkAPI;
+      let res = await apiCards.updateGrade(arg);
+      dispatch(getCards({ cardsPack_id: res.data.updatedGrade.cardsPack_id }));
     });
   }
 );
