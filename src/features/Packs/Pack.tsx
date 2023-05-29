@@ -8,36 +8,11 @@ import { Pagination } from "common/component/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
 import { AddModal } from "common/component/Modal/AddModal";
-import {
-  isLoggedInSelector,
-  pageSelector,
-  maxSelector,
-  minSelector,
-  pageCountSelector,
-  user_idSelector,
-  sortPacksSelector,
-  packNameSelector,
-  cardPacksTotalCountSelector,
-  pageCurrentSelector,
-} from "features/Packs/selector";
-import { cardsSearchParams } from "features/Cards/cards.slice";
+import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/selector";
+import { usePack } from "features/Packs/hooks/usePack";
 
 const Pack = () => {
-  const isLoggedIn = useAppSelector(isLoggedInSelector);
-  const page = useAppSelector(pageSelector);
-  const user_id = useAppSelector(user_idSelector);
-  const max = useAppSelector(maxSelector);
-  const min = useAppSelector(minSelector);
-  const pageCount = useAppSelector(pageCountSelector);
-  const sortPacks = useAppSelector(sortPacksSelector);
-  const packName = useAppSelector(packNameSelector);
-
-  const dispatch = useAppDispatch();
-
-  const onClickHandler = (page: number) => {
-    dispatch(searchParamsAc({ page: page, pageCount: 10 }));
-  };
-
+  const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch } = usePack();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({}));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
