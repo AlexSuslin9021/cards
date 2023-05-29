@@ -1,5 +1,6 @@
 import React from "react";
 import s from "features/Learn/style.module.scss";
+import { Button } from "common/component/Button/Button";
 type AnswerType = {
   answer: string;
   // id:number
@@ -19,14 +20,17 @@ export const Answer: React.FC<AnswerType> = ({ answer }) => {
         <b>Answer:</b>
         {answer}
       </div>
-      {grades.map((g) => {
-        return (
-          <div key={g.id}>
-            <input type="radio" value={g.id} />
-            <span>{g.gradesValue}</span>
-          </div>
-        );
-      })}
+      <form action="">
+        {grades.map((g) => {
+          return (
+            <div key={g.id}>
+              {/*<input type="radio" value={g.id} onChange={onChange} />*/}
+              <span>{g.gradesValue}</span>
+            </div>
+          );
+        })}
+        {/*<Button name={"Next"} callback={() => onNext(value)} />*/}
+      </form>
     </div>
   );
 };

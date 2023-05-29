@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
-import Search from "features/Packs/commonComponent/Search/Search";
+import Search from "common/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "features/Packs/SearchPanel/searchPanel.module.scss";
 import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import filterData from "common/Image/filter.svg";
-import { useNavigate, useParams } from "react-router-dom";
-import { useAppSelector } from "app/store";
-import { myIdSelector, user_idSelector } from "features/Packs/selector";
 import { Buttons } from "features/Packs/commonComponent/MyAllButtons/MyAllButton";
 
 export const SearchPanel = () => {

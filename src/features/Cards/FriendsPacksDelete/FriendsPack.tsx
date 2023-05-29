@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
-import Search from "features/Packs/commonComponent/Search/Search";
+import Search from "common/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
 import s1 from "features/Packs/style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";

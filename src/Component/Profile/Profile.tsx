@@ -11,14 +11,14 @@ import { BackTo } from "common/component/BackTo/BackTo";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
-  const onClickLogout = () => {
-    dispatch(logoutTC());
-  };
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const email = useAppSelector((state) => {
     if (state.auth.profile !== null) return state.auth.profile.email;
   });
 
+  const onClickLogout = () => {
+    dispatch(logoutTC());
+  };
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
   }

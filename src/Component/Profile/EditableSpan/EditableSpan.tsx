@@ -1,9 +1,7 @@
 import { ChangeEvent, useState } from "react";
-
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { updateUserTC } from "features/auth/auth.slice";
 import s from "../EditableSpan/EditableSpan.module.scss";
-import pencil from "../../../common/Image/pencil.svg";
 
 export const EditableSpan = () => {
   const name = useAppSelector<any>((state) => {
@@ -27,7 +25,6 @@ export const EditableSpan = () => {
       {editMode ? (
         <div className={s.imageContainer}>
           <span onDoubleClick={onClickHandler}>{value}</span>
-          {/*<img src={pencil} alt="change name" />*/}
         </div>
       ) : (
         <input value={value} onChange={onChangeHandler} onBlur={onBlurChange} />

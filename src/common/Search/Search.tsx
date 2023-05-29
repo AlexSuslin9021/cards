@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import s from "./Search.module.scss";
+import s from "common/Search/Search.module.scss";
 import { useDebounce } from "common/hooks/useDebounce";
 import { cardsSearchParams } from "features/Cards/cards.slice";
 

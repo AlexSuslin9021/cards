@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "app/App.module.scss";
 import { Route, Routes } from "react-router-dom";
 import Profile from "Component/Profile/Profile";
-
 import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "app/store";
@@ -18,7 +17,6 @@ import { LinearProgress } from "@mui/material";
 import Pack from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
-import { BackTo } from "common/component/BackTo/BackTo";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
