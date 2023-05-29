@@ -6,10 +6,11 @@ type QuestionType = {
 };
 export const Question: React.FC<QuestionType> = ({ question }) => {
   return (
-    <>
+    <div>
       <div className={s.question}>
         <b>Question:</b> {question}
+        <div className={s.countAnswer}> Количество попыток ответов на вопрос:5</div>
       </div>
-    </>
+    </div>
   );
 };
