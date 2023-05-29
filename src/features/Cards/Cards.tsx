@@ -4,7 +4,7 @@ import Search from "features/Packs/commonComponent/Search/Search";
 import s from "features/Packs/PacksList/PacksList.module.scss";
 import s1 from "features/Packs/style.module.scss";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
-import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { BackTo } from "common/component/BackTo/BackTo";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
 import { useNavigate, useParams } from "react-router-dom";

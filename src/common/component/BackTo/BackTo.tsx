@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import s from "./BackTo.module.scss";
+import s from "common/component/BackTo/BackTo.module.scss";
 import { useNavigate } from "react-router-dom";
-import arrow from "../../../../common/Image/Vector 1.svg";
+import arrow from "common/Image/Vector 1.svg";
 type BackToType = {
   name: string;
   link: string;

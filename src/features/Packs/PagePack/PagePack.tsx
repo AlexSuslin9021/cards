@@ -4,7 +4,7 @@ import s1 from "../style.module.scss";
 import { Button } from "common/component/Button/Button";
 import { Hint } from "common/component/Hint/Hint";
 import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
-import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { BackTo } from "common/component/BackTo/BackTo";
 
 export const PagePack = () => {
   return (

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "common/hooks";
 import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/auth/auth.slice";
 import avatar from "../../common/Image/ava.svg";
-import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { BackTo } from "common/component/BackTo/BackTo";
 
 const Profile = () => {
   const dispatch = useAppDispatch();

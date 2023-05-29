@@ -4,7 +4,7 @@ import s1 from "features/Packs/style.module.scss";
 import Table from "@mui/material/Table/Table";
 
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { BackTo } from "features/Packs/commonComponent/BackTo/BackTo";
+import { BackTo } from "common/component/BackTo/BackTo";
 import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
 import { useCards } from "features/Cards/hook/useCards";
 import { getCards } from "features/Cards/cards.slice";

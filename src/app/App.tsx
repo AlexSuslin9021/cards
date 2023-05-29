@@ -18,6 +18,7 @@ import { LinearProgress } from "@mui/material";
 import Pack from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
+import { BackTo } from "common/component/BackTo/BackTo";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
@@ -29,6 +30,7 @@ function App() {
     <div className={s.app}>
       <Header />
       {isLoggedInApp && <LinearProgress />}
+
       <div className={s.container}>
         <Routes>
           <Route path={"/"} element={<Profile />} />
