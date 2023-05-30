@@ -12,6 +12,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { myIdSelector, packSelector } from "features/Packs/selector";
 import { useAppSelector } from "app/store";
 import { cardsSearchParams } from "features/Cards/cards.slice";
+import cover from "../../../common/Image/Mask.svg";
+
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };
 
@@ -36,6 +38,7 @@ export const PacksList = () => {
         <Table sx={{ width: "1008px" }}>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
+              <TableCell sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>Cover</TableCell>
               <TableCell sx={styleTableHead}>
                 <TableHeader headerName={"Name"} sortName={"name"} />
               </TableCell>
@@ -51,6 +54,10 @@ export const PacksList = () => {
             {/*{pack.length ? (*/}
             {packs.map((el) => (
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
+                <TableCell sx={styleTableBody}>
+                  {" "}
+                  <img src={cover} alt="" />{" "}
+                </TableCell>
                 <TableCell sx={styleTableBody}>
                   <span onClick={() => onClickNamePack(el.user_id, el._id)}> {el.name}</span>
                 </TableCell>
