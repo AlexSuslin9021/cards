@@ -6,8 +6,9 @@ import { EditableSpan } from "Component/Profile/EditableSpan/EditableSpan";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/auth/auth.slice";
-import avatar from "../../common/Image/ava.svg";
+import changePhoto from "../../common/Image/changePhoto.svg";
 import { BackTo } from "common/component/BackTo/BackTo";
+import Avatar from "common/component/Avatar/Avatar";
 
 const Profile = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,11 @@ const Profile = () => {
       <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
       <Title name={"Personal Information"} />
       <div className={s.iconContainer}>
-        <img src={avatar} alt="avatar" />
+        <Avatar />
+        <input style={{ display: "none" }} id={"1"} type="file" />
+        <label htmlFor={"1"}>
+          <img className={s.changePhoto} src={changePhoto} />
+        </label>
       </div>
       <EditableSpan />
       <div className={s.email}> {email}</div>

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "common/hooks";
-import { packsThunks, searchParamsAc } from "features/Packs/pack.slice";
+import { packsThunks } from "features/Packs/pack.slice";
 import { SearchPanel } from "features/Packs/SearchPanel/SearchPanel";
 import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
 import { PacksList } from "features/Packs/PacksList/PacksList";

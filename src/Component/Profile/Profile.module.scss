@@ -3,9 +3,21 @@
   width: 96px;
   height: 96px;
   margin-bottom: 10px;
+  position: relative;
   img{
     width: 96px;
     height: 96px;
+
+
+  }
+  .changePhoto{
+    width: 24px;
+    height: 24px;
+    z-index: 3;
+    position: absolute;
+    bottom:7px;
+    right: 2px;
+    cursor: pointer;
   }
 }
 .email{
