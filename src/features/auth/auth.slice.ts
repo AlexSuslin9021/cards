@@ -1,35 +1,3 @@
-// export type PostUsersResponse = {
-//   resultCode: number
-//   messages: string[],
-//   data: object
-// }
-// export const Users = (props: PropsUsersType) => {
-//
-//   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize)
-//   let page = []
-//   for (let i = 1; i <= pageCount; i++) {
-//     page.push(i)
-//   }
-//   const portionSize=10;
-//   const portionCount=Math.ceil(props.totalUsersCount /portionSize) //сколько порций всего
-//   let[portionNumber, setPortionNumber]=useState(1);
-//   let leftPortionPageNumber=(portionNumber-1)*portionSize+1;
-//   let rightPortionPageNumber=portionNumber*portionSize
-//
-//
-//
-//
-//   return (
-//     <div>
-//       {props.isFetching && <div><img src={preloader} alt=""/></div>}
-//       {portionNumber > 1 && <button onClick={()=>setPortionNumber(portionNumber-1)}>Back</button>}
-//       {page
-//         .filter(p=>p >= leftPortionPageNumber && p<= rightPortionPageNumber)
-//         .map((p, index) => <span key={index} className={props.currentPage === p ? s.selected : ''}
-//                                  onClick={() => props.onClickPage(p)}>{p} </span>)}
-//       {portionCount > portionNumber && <button onClick={()=>setPortionNumber(portionNumber+1)}>next</button>}
-//       {props.users.map(u => <div key={u.id}>
-
 import { createSlice } from "@reduxjs/toolkit";
 import {
   argRegisterType,
@@ -58,8 +26,18 @@ export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/regi
 export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>(
   "/auth/me",
   async (arg, thunkAPI) => {
+    const { dispatch } = thunkAPI;
     return thunkTryCatch(thunkAPI, async () => {
-      const { rejectWithValue } = thunkAPI;
+      let res = await authApi.updateUser(arg);
+      dispatch(initializedTC());
+      return { profile: res.data };
+    });
+  }
+);
+export const updateAvatar = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>(
+  "/auth/me",
+  async (arg, thunkAPI) => {
+    return thunkTryCatch(thunkAPI, async () => {
       let res = await authApi.updateUser(arg);
       return { profile: res.data };
     });
@@ -86,6 +64,7 @@ export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
     // const tokenPassword = useParams().token;
     return thunkTryCatch(thunkAPI, async () => {
       let res = await authApi.createNewPassword(arg);
+
       return { profile: res.data };
     });
   }
@@ -126,6 +105,9 @@ const slice = createSlice({
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;
     });
+    // builder.addCase(updateAvatar.fulfilled, (state, action) => {
+    //   if (state.profile !== null) state.profile = action.payload.profile;
+    // });
     builder.addCase(initializedTC.fulfilled, (state, action) => {
       state.isLoggedIn = true;
       state.profile = action.payload.profile;

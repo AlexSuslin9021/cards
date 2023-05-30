@@ -28,6 +28,9 @@ export const authApi = {
   createNewPassword(data: CreatePasswordType) {
     return instance.post(`/auth/set-new-password`, data);
   },
+  changeAvatar(data: UpdateUserType) {
+    return instance.put("/auth/me", data);
+  },
 };
 
 // /auth/login
@@ -67,6 +70,7 @@ export type ProfileType = {
   email: string;
   rememberMe: boolean;
   isAdmin: boolean;
+  avatar?: string;
   name: string;
   verified: boolean;
   publicCardPacksCount: string;

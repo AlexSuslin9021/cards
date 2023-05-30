@@ -1,11 +1,9 @@
 import React from "react";
 import s from "./Header.module.scss";
 import { Button } from "common/component/Button/Button";
-
 import { useNavigate } from "react-router-dom";
-import avatar from "../../common/Image/ava.svg";
 import { useAppSelector } from "common/hooks";
-import Avatar from "common/component/Avatar/Avatar";
+import { Avatar } from "common/component/Avatar/Avatar";
 export const Header = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const name = useAppSelector((state) => {
