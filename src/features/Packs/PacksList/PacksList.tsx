@@ -19,7 +19,6 @@ const styleTableBody = { background: "white" };
 
 export const PacksList = () => {
   const dispatch = useAppDispatch();
-  const myId = useAppSelector(myIdSelector);
   const packs = useAppSelector(packSelector);
   const navigate = useNavigate();
 
@@ -75,7 +74,7 @@ export const PacksList = () => {
                           alt="teach"
                         />
                       }
-                      {el.user_id === "64527e000415841fd8df2cf3" && <UpdateModal id={el._id} />}
+                      {el.user_id === "64527e000415841fd8df2cf3" && <UpdateModal src={el.deckCover} id={el._id} />}
                       {el.user_id === "64527e000415841fd8df2cf3" && <DeleteModal id={el._id} name={el.name} />}
                     </span>
                   }
