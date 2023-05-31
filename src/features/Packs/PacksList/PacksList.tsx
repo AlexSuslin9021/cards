@@ -8,7 +8,7 @@ import teach from "../../../common/Image/teacher.svg";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { myIdSelector, packSelector } from "features/Packs/selector";
 import { useAppSelector } from "app/store";
 import { cardsSearchParams } from "features/Cards/cards.slice";
@@ -53,10 +53,10 @@ export const PacksList = () => {
           <TableBody>
             {/*{pack.length ? (*/}
             {packs.map((el) => (
-              <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
+              <TableRow key={el._id} sx={{ borderBottom: "1px solid" }}>
                 <TableCell sx={styleTableBody}>
                   {" "}
-                  <img src={el.deckCover ? el.deckCover : cover} alt="" />{" "}
+                  <img style={{ width: "30px", height: "30px" }} src={el.deckCover ? el.deckCover : cover} alt="" />
                 </TableCell>
                 <TableCell sx={styleTableBody}>
                   <span onClick={() => onClickNamePack(el.user_id, el._id)}> {el.name}</span>

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useRef } from "react";
+import React, { ChangeEvent } from "react";
 import s from "./Profile.module.scss";
 import style from "../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";

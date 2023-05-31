@@ -8,19 +8,24 @@ import { AddCover } from "common/component/AddCover/AddCover";
 export const AddModal = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState("");
+  const [file, setFile] = useState("");
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
+
   const onClickHandler = () => {
-    dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: "" } }));
+    debugger;
+    dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: file } }));
     setValue("");
   };
   return (
     <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickHandler}>
       <div className={s.input}>
-        <label>Pack name</label>
-        <input value={value} onChange={onChangeHandler} type="text" />
-        <AddCover />
+        <div>
+          <label>Pack name</label>
+          <input value={value} onChange={onChangeHandler} type="text" />
+        </div>
+        <AddCover setFile={setFile} />
       </div>
     </BasicModal>
   );
