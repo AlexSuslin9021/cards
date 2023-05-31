@@ -98,7 +98,6 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       if (action.payload) {
-        debugger;
         state.packList.cardPacks = action.payload.cardPacks;
         state.queryParams.page = action.payload.page;
         state.queryParams.pageCount = action.payload.pageCount;

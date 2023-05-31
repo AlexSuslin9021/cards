@@ -13,6 +13,7 @@ import { Tables } from "common/Test/Table";
 import {
   cardsTotalCountSelector,
   packNameSelect,
+  packUserIdSelector,
   pageQuerySelector,
   pageSelector,
   sortCardsSelector,
@@ -29,7 +30,7 @@ export const Cards = () => {
   const { id } = useParams();
   const packName = useAppSelector(packNameSelect);
   const myId = useAppSelector(myIdSelector);
-  const userId = useAppSelector(user_idSelector);
+  const userId = useAppSelector(packUserIdSelector);
   const sortCards = useAppSelector(sortCardsSelector);
   const page = useAppSelector(pageQuerySelector);
   const navigate = useNavigate();
@@ -46,16 +47,15 @@ export const Cards = () => {
     navigate(`/learn/${packName}`);
   };
   const onChangeInputHandler = (value: string) => {
-    debugger;
     setValue(value);
     dispatch(cardsSearchParams({ cardAnswer: debounceValue }));
   };
-  debugger;
+
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={`/packs/${linkToPacks}`} />
       <PacksTitle name={packName}>
-        {myId !== userId ? <Button callback={onClickLearn} name={"Learn"} /> : <ModalAddCards />}
+        {userId === myId ? <ModalAddCards /> : <Button callback={onClickLearn} name={"Learn"} />}
       </PacksTitle>
       <div className={s.dataCards}>
         <div className={s.search}>

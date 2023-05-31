@@ -14,7 +14,6 @@ export const AddModal = () => {
   };
 
   const onClickHandler = () => {
-    debugger;
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: file } }));
     setValue("");
   };

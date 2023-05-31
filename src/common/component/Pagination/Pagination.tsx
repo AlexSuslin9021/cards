@@ -17,18 +17,19 @@ export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount,
   const onClickHandler = (page: number) => {
     callback(page);
   };
-  const pageSize = 10;
-  const portionSize = 10;
+  const pageSize = 5;
+  const portionSize = useAppSelector((state) => state.pack.queryParams.pageCount);
   let pageCount = Math.ceil(cardPacksTotalCount / pageSize);
 
   let page = [];
   for (let i = 1; i <= pageCount; i++) {
     page.push(i);
   }
-  let portionCount = Math.ceil(cardPacksTotalCount / portionSize);
+  debugger;
+  let portionCount = Math.ceil(cardPacksTotalCount / Number(portionSize));
   let [portionNumber, setPortionNumber] = useState(1);
-  let leftPortionSizeNumber = (portionNumber - 1) * portionSize + 1;
-  let rightPortionSizeNumber = portionNumber * portionSize;
+  let leftPortionSizeNumber = (portionNumber - 1) * Number(portionSize) + 1;
+  let rightPortionSizeNumber = portionNumber * Number(portionSize);
 
   return (
     <div className={s.paginationBlock}>

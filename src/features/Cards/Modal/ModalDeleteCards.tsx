@@ -12,7 +12,6 @@ type DeleteModalType = {
 export const DeleteModalCard: React.FC<DeleteModalType> = ({ id, name }) => {
   const dispatch = useAppDispatch();
   const onClickHandler = () => {
-    debugger;
     dispatch(cardsThunks.deleteCard(id));
   };
 

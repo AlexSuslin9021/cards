@@ -33,7 +33,11 @@ export const Tables = () => {
           {cards.map((el) => (
             <TableRow key={el._id} sx={{ borderBottom: "1px solid" }}>
               <TableCell sx={style2}>
-                {el.question.includes("base64") ? <img src={el.question} alt="" /> : el.question}
+                {el.question.includes("base64") ? (
+                  <img style={{ width: "30px", height: "30px" }} src={el.question} alt="" />
+                ) : (
+                  el.question
+                )}
               </TableCell>
               <TableCell sx={style2}>{el.answer}</TableCell>
               <TableCell sx={style2}>{el.created}</TableCell>

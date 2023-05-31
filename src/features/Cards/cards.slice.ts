@@ -69,7 +69,7 @@ export const deleteCard = createAppAsyncThunk<CardResponseType, string>(
     return thunkTryCatch(thunkAPI, async () => {
       const { dispatch } = thunkAPI;
       let res = await apiCards.deleteCard(arg);
-      debugger;
+
       dispatch(getCards({ cardsPack_id: res.data.deletedCard.cardsPack_id }));
       return res.data;
     });
@@ -80,7 +80,6 @@ export const updateCard = createAppAsyncThunk<CardResponseType, { card: CardsTyp
   "update/card",
   async (arg: { card: CardsType }, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
-      debugger;
       const { dispatch } = thunkAPI;
       await apiCards.updateCard(arg);
       dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
