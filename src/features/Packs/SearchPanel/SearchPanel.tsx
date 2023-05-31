@@ -4,15 +4,18 @@ import Search from "common/Search/Search";
 import { Range } from "features/Packs/PacksList/Range/Range";
 import s from "features/Packs/SearchPanel/searchPanel.module.scss";
 import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch } from "common/hooks";
+import { useAppDispatch, useAppSelector } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import filterData from "common/Image/filter.svg";
 import { Buttons } from "features/Packs/commonComponent/MyAllButtons/MyAllButton";
+import { maxCardSelector, maxSelector, minSelector } from "features/Packs/selector";
 
 export const SearchPanel = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
+  const minCardsCount = useAppSelector(minSelector);
+  const maxCardsCount = useAppSelector(maxCardSelector);
 
   useEffect(() => {
     dispatch(searchParamsAc({ packName: debounceValue }));
@@ -39,7 +42,7 @@ export const SearchPanel = () => {
         </div>
         <div className={s.sliderCont}>
           <MiniTitle name={"Number of cards"} />
-          <Range />
+          <Range max={maxCardsCount} />
         </div>
         <div className={s.icon}>
           <img onClick={onClickFilter} src={filterData} alt="" />

@@ -40,7 +40,7 @@ export const getPacksTC = createAppAsyncThunk<GetPackType, ParamsType>(
   async (arg: ParamsType, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       const { getState, dispatch } = thunkAPI;
-      await dispatch(initializedTC());
+      // await dispatch(initializedTC());
       const params = { ...getState().pack.queryParams, ...arg };
       let res = await packsApi.getPack(params);
       return res.data;
@@ -98,6 +98,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       if (action.payload) {
+        debugger;
         state.packList.cardPacks = action.payload.cardPacks;
         state.queryParams.page = action.payload.page;
         state.queryParams.pageCount = action.payload.pageCount;

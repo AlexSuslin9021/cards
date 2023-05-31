@@ -13,7 +13,7 @@ import { usePack } from "features/Packs/hooks/usePack";
 const Pack = () => {
   const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch } = usePack();
   useEffect(() => {
-    dispatch(packsThunks.getPacksTC({}));
+    dispatch(packsThunks.getPacksTC({ user_id, min, max }));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
 
   if (!isLoggedIn) {

@@ -25,7 +25,7 @@ export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount,
   for (let i = 1; i <= pageCount; i++) {
     page.push(i);
   }
-  debugger;
+
   let portionCount = Math.ceil(cardPacksTotalCount / Number(portionSize));
   let [portionNumber, setPortionNumber] = useState(1);
   let leftPortionSizeNumber = (portionNumber - 1) * Number(portionSize) + 1;

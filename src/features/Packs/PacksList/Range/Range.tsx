@@ -5,12 +5,15 @@ import { Slider } from "@mui/material";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
-
-export const Range = () => {
-  const minCardsCount = useAppSelector((state) => state.pack.packList.minCardsCount);
-  const maxCardsCount = useAppSelector((state) => state.pack.packList.maxCardsCount);
-  const [value1, setValue1] = useState<number>(minCardsCount);
-  const [value2, setValue2] = useState<number>(maxCardsCount);
+import { maxCardSelector, maxSelector, minSelector } from "features/Packs/selector";
+type RangeType = {
+  max: number;
+};
+export const Range: React.FC<RangeType> = ({ max }) => {
+  const minCardsCount = useAppSelector(minSelector);
+  const maxCardsCount = useAppSelector(maxSelector);
+  const [value1, setValue1] = useState<number>(Number(minCardsCount));
+  const [value2, setValue2] = useState<number>(max);
   const dispatch = useAppDispatch();
 
   const change = (event: Event | SyntheticEvent<Element, Event>, value: number | number[]) => {
@@ -27,7 +30,7 @@ export const Range = () => {
       setValue2(value[1]);
     }
   };
-
+  debugger;
   return (
     <div className={s.container}>
       <div className={s.wrapper}>
