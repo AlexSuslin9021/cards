@@ -26,6 +26,7 @@ export type AddPackType = {
 export type UpdateType = {
   _id: string;
   name?: string;
+  deckCover?: string | null;
 };
 export type ParamsType = {
   packName?: string;
