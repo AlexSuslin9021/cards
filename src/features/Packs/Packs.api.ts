@@ -55,4 +55,5 @@ export type CardPacksType = {
   created: string;
   updated: string;
   user_name: string;
+  deckCover: null | string;
 };

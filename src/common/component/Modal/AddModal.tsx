@@ -3,6 +3,7 @@ import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
 import s from "common/component/Input/input.module.scss";
+import { AddCover } from "common/component/AddCover/AddCover";
 
 export const AddModal = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +12,7 @@ export const AddModal = () => {
     setValue(e.currentTarget.value);
   };
   const onClickHandler = () => {
-    dispatch(packsThunks.addPacksTC({ cardsPack: { name: value } }));
+    dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: "" } }));
     setValue("");
   };
   return (
@@ -19,6 +20,7 @@ export const AddModal = () => {
       <div className={s.input}>
         <label>Pack name</label>
         <input value={value} onChange={onChangeHandler} type="text" />
+        <AddCover />
       </div>
     </BasicModal>
   );

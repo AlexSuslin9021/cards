@@ -56,7 +56,7 @@ export const PacksList = () => {
               <TableRow sx={{ borderBottom: "1px solid" }} key={el._id}>
                 <TableCell sx={styleTableBody}>
                   {" "}
-                  <img src={cover} alt="" />{" "}
+                  <img src={el.deckCover ? el.deckCover : cover} alt="" />{" "}
                 </TableCell>
                 <TableCell sx={styleTableBody}>
                   <span onClick={() => onClickNamePack(el.user_id, el._id)}> {el.name}</span>

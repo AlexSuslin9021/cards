@@ -32,26 +32,8 @@ const Profile = () => {
         console.error("Error: ", "Файл слишком большого размера");
       }
     }
-
-    // if (file.size < 4000000) {
-    // https://developer.mozilla.org/ru/docs/Web/API/FileReader/FileReader
-    //   const reader = new FileReader();
-    //
-    //   reader.onloadend = () => {
-    //     const file64 = reader.result as string;
-    //     dispatch(updateUserTC({ avatar: file64 }));
-    //   };
-    //   debugger;
-    //   // https://developer.mozilla.org/ru/docs/Web/API/FileReader/readAsDataURL
-    //   reader.readAsDataURL(file);
-    // }
-    // else {
-    //     console.error("Error: ", "Файл слишком большого размера");
-    //   }
-    // }
   };
-  // dispatch(updateUserTC({ avatar: file.name }));
-  // console.log("file: ", file.name);
+
   const onClickLogout = () => {
     dispatch(logoutTC());
   };
