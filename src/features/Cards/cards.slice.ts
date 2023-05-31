@@ -51,14 +51,14 @@ export const getCards = createAppAsyncThunk<GetCardsResponseType, GetCardsParams
     });
   }
 );
-export const addCard = createAppAsyncThunk<CardResponseType, AddCardType>(
+export const addCard = createAppAsyncThunk<CardResponseType, { card: CardsType }>(
   "add/card",
-  async (arg: AddCardType, thunkAPI) => {
+  async (arg: { card: CardsType }, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       const { dispatch } = thunkAPI;
       let res = await apiCards.addCard(arg);
-      dispatch(getCards({ cardsPack_id: arg.card.cardsPack_id }));
-      return res.data;
+      dispatch(getCards({ cardsPack_id: res.data.newCard.cardsPack_id }));
+      return res.data.newCard;
     });
   }
 );

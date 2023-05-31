@@ -18,7 +18,6 @@ export const ModalAddCards = () => {
   const [question, setQuestion] = useState("");
   const [value, setValue] = useState<any>("");
   const [value1, setValue1] = useState<any>("");
-  const [file, setFile] = useState("");
   const onClickHandler = () => {
     dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: question } }));
     setAnswer("");
@@ -41,12 +40,12 @@ export const ModalAddCards = () => {
         </Select>
       </FormControl>
       {value === "Text questions" && <Question question={question} setQuestion={setQuestion} />}
-      {value === "Image" && <AddCover setFile={setAnswer} />}
+      {value === "Image" && <AddCover setFile={setQuestion} />}
       <FormControl fullWidth>
         <InputLabel>Answer</InputLabel>
         <Select value={value1} label="Answer" onChange={handleChangeAnswer}>
           <MenuItem value={"Image"}>Image</MenuItem>
-          <MenuItem value={"Text answer"}>Text questions</MenuItem>
+          <MenuItem value={"Text answer"}>Text answer</MenuItem>
         </Select>
       </FormControl>
       {value1 === "Text answer" && <Answer answer={answer} setAnswer={setAnswer} />}
