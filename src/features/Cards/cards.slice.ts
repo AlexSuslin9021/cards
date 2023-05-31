@@ -69,7 +69,8 @@ export const deleteCard = createAppAsyncThunk<CardResponseType, string>(
     return thunkTryCatch(thunkAPI, async () => {
       const { dispatch } = thunkAPI;
       let res = await apiCards.deleteCard(arg);
-      dispatch(getCards({ cardsPack_id: res.data.cardsPack_id }));
+      debugger;
+      dispatch(getCards({ cardsPack_id: res.data.deletedCard.cardsPack_id }));
       return res.data;
     });
   }
@@ -118,6 +119,16 @@ const slice = createSlice({
     });
     builder.addCase(addCard.fulfilled, (state, action) => {
       state.cardList.cards.unshift(action.payload);
+    });
+    builder.addCase(deleteCard.fulfilled, (state, action) => {
+      const index = state.cardList.cards.findIndex((card) => card._id === action.payload._id);
+      if (index !== -1) state.cardList.cards.splice(index, 1);
+    });
+    builder.addCase(updateCard.fulfilled, (state, action) => {
+      const cards = state.cardList.cards.find((card) => card._id === action.payload._id);
+      if (cards) {
+        cards._id = action.payload._id;
+      }
     });
   },
 });
