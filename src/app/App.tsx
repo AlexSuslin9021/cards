@@ -14,7 +14,7 @@ import s from "./App.module.scss";
 import { PagePack } from "features/Packs/packsComponents/PagePack/PagePack";
 import { authThunks } from "features/Auth/auth.slice";
 import { LinearProgress } from "@mui/material";
-import Pack from "features/Packs/Pack";
+import { Pack } from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
 

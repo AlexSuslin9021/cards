@@ -10,7 +10,7 @@ import { AddModal } from "common/component/Modal/AddModal";
 import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/packsSelector";
 import { usePack } from "features/Packs/hooks/usePack";
 
-const Pack = () => {
+export const Pack = () => {
   const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch } = usePack();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ user_id, min, max }));
@@ -34,5 +34,3 @@ const Pack = () => {
     </div>
   );
 };
-
-export default Pack;

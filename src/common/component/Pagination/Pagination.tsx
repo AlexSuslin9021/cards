@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import s from "common/component/Pagination/Pagination.module.scss";
-
 import { useAppSelector } from "common/hooks";
 import { SelectVariants } from "common/component/Select/Select";
 

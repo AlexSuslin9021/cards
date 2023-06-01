@@ -57,12 +57,7 @@ export const Cards = () => {
       <PacksTitle name={packName}>
         {userId === myId ? <ModalAddCards /> : <Button callback={onClickLearn} name={"Learn"} />}
       </PacksTitle>
-      <div className={s.dataCards}>
-        <div className={s.search}>
-          <MiniTitle name={"Search"} />
-          <Search value={value} callback={onChangeInputHandler}></Search>
-        </div>
-      </div>
+      <Search value={value} callback={onChangeInputHandler}></Search>
       <Tables />
       <Pagination totalCount={cardsTotalCountSelector} pageCurrents={pageSelector} callback={onClickHandler} />
     </div>
