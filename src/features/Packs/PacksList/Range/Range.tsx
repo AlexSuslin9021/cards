@@ -5,7 +5,7 @@ import { Slider } from "@mui/material";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
-import { maxCardSelector, maxSelector, minSelector } from "features/Packs/selector";
+import { maxCardSelector, maxSelector, minSelector } from "features/Packs/packsSelector";
 type RangeType = {
   max: number;
 };

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { Question } from "features/Learn/Component/Question";
 import { Answer } from "features/Learn/Component/Answer";
 import { CardResponseType } from "features/Cards/Cards.api";
-import { cardsSelector } from "features/Cards/selectors";
+import { cardsSelector } from "features/Cards/cardsSelectors";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { getCards, updateGrade } from "features/Cards/cards.slice";
 import { BackTo } from "common/component/BackTo/BackTo";

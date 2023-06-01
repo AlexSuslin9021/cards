@@ -7,7 +7,7 @@ import { Pagination } from "common/component/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
 import { AddModal } from "common/component/Modal/AddModal";
-import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/selector";
+import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/packsSelector";
 import { usePack } from "features/Packs/hooks/usePack";
 
 const Pack = () => {

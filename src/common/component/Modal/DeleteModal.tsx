@@ -2,7 +2,7 @@ import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
 import { packsThunks } from "features/Packs/pack.slice";
-import remove from "../../../common/Image/trash.svg";
+import remove from "../../image/trash.svg";
 
 type DeleteModalType = {
   id: string;

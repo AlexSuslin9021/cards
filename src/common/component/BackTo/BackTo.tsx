@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import s from "common/component/BackTo/BackTo.module.scss";
 import { useNavigate } from "react-router-dom";
-import arrow from "common/Image/Vector 1.svg";
+import arrow from "common/image/Vector 1.svg";
 
 export const BackTo: FC<BackToType> = ({ name, link }) => {
   const navigate = useNavigate();

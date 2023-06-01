@@ -1,5 +1,5 @@
 import React from "react";
-import avatar from "common/Image/ava.svg";
+import avatar from "common/image/ava.svg";
 import { useAppSelector } from "common/hooks";
 
 export const Avatar = () => {

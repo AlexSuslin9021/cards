@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Header.module.scss";
+import s from "common/component/Header/Header.module.scss";
 import { Button } from "common/component/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "common/hooks";

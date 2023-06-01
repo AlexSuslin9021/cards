@@ -4,7 +4,7 @@ import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "app/store";
-import { myIdSelector, user_idSelector } from "features/Packs/selector";
+import { myIdSelector, user_idSelector } from "features/Packs/packsSelector";
 
 export const Buttons = () => {
   const dispatch = useAppDispatch();

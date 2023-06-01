@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsThunks } from "features/Cards/cards.slice";
-import { cardsPack_idSelector } from "features/Cards/selectors";
+import { cardsPack_idSelector } from "features/Cards/cardsSelectors";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Question } from "features/Cards/commonComponent/Question";
 import { Answer } from "features/Cards/commonComponent/Answer";

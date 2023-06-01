@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { updateUserTC } from "features/auth/auth.slice";
-import s from "../EditableSpan/EditableSpan.module.scss";
+import s from "common/component/Profile/EditableSpan/EditableSpan.module.scss";
 
 export const EditableSpan = () => {
   const name = useAppSelector<any>((state) => {

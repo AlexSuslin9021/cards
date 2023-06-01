@@ -1,10 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch } from "common/hooks";
-import pencil from "../../../common/Image/pencil.svg";
+import pencil from "../../image/pencil.svg";
 import { packsThunks } from "features/Packs/pack.slice";
 import { AddCover } from "common/component/AddCover/AddCover";
-import cover from "../../Image/Mask.svg";
+import cover from "../../image/Mask.svg";
 
 type UpdateModalType = { id: string; src: string | null };
 export const UpdateModal: React.FC<UpdateModalType> = ({ id, src }) => {

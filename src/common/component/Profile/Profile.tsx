@@ -1,12 +1,12 @@
 import React, { ChangeEvent } from "react";
-import s from "./Profile.module.scss";
-import style from "../../common/styles/container.module.scss";
+import s from "common/component/Profile/Profile.module.scss";
+import style from "common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
-import { EditableSpan } from "Component/Profile/EditableSpan/EditableSpan";
+import { EditableSpan } from "common/component/Profile/EditableSpan/EditableSpan";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { Navigate } from "react-router-dom";
 import { logoutTC, updateUserTC } from "features/auth/auth.slice";
-import changePhoto from "../../common/Image/changePhoto.svg";
+import changePhoto from "common/image/changePhoto.svg";
 import { BackTo } from "common/component/BackTo/BackTo";
 import { Avatar } from "common/component/Avatar/Avatar";
 import { convertFileToBase64 } from "common/utils/convertFileToBase64";

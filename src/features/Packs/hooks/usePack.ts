@@ -8,7 +8,7 @@ import {
   pageSelector,
   sortPacksSelector,
   user_idSelector,
-} from "features/Packs/selector";
+} from "features/Packs/packsSelector";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useEffect } from "react";
 

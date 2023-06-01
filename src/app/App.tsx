@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "app/App.module.scss";
 import { Route, Routes } from "react-router-dom";
-import Profile from "Component/Profile/Profile";
+import Profile from "common/component/Profile/Profile";
 import Register from "features/auth/Register/Register";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "app/store";
-import { Header } from "Component/Header/Header";
+import { Header } from "common/component/Header/Header";
 import { ForgotPassword } from "features/auth/ForgotPassword/ForgotPassword";
 import { CheckEmail } from "features/auth/CheckEmail/CheckEmail";
 import { CreatePassword } from "features/auth/CreatePassword/CreatePassword";

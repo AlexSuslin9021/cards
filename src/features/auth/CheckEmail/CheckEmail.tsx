@@ -5,7 +5,7 @@ import s1 from "common/component/Button/button.module.scss";
 import s from "features/auth/CheckEmail/checkEmail.module.scss";
 import { NavLink } from "react-router-dom";
 import { Message } from "common/component/Message/Message";
-import mail from "../../../common/Image/mail.svg";
+import mail from "../../../common/image/mail.svg";
 
 export const CheckEmail = () => {
   return (

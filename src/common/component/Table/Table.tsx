@@ -6,8 +6,8 @@ import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
 import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
 import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
-import star from "../../common/Image/Star 5.svg";
-import { GradesStars } from "features/Cards/Raiting";
+import star from "common/image/Star 5.svg";
+import { GradesStars } from "features/Cards/commonComponent/Raiting";
 
 export const Tables = () => {
   const { cards } = useCards();

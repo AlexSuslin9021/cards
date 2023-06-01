@@ -1,5 +1,5 @@
 import { useAppSelector } from "app/store";
-import { cardsPack_idSelector, cardsSelector, cardsTotalCountSelector } from "../selectors";
+import { cardsPack_idSelector, cardsSelector, cardsTotalCountSelector } from "features/Cards/cardsSelectors";
 
 export const useCards = () => {
   const cards = useAppSelector(cardsSelector);
