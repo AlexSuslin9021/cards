@@ -5,8 +5,9 @@ import { useAppDispatch } from "common/hooks";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "app/store";
 import { myIdSelector, user_idSelector } from "features/Packs/packsSelector";
+import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 
-export const Buttons = () => {
+export const MyAllButton = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const myId = useAppSelector(myIdSelector);
@@ -22,13 +23,16 @@ export const Buttons = () => {
   };
 
   return (
-    <div>
-      <button onClick={onClickMyPack} className={myId === userId ? s.myCards : s.allCards}>
-        My
-      </button>
-      <button onClick={onClickAllPack} className={myId !== userId ? s.myCards : s.allCards}>
-        All
-      </button>
+    <div className={s.choiceCards}>
+      <MiniTitle name={" Show packs cards"} />
+      <div>
+        <button onClick={onClickMyPack} className={myId === userId ? s.myCards : s.allCards}>
+          My
+        </button>
+        <button onClick={onClickAllPack} className={myId !== userId ? s.myCards : s.allCards}>
+          All
+        </button>
+      </div>
     </div>
   );
 };

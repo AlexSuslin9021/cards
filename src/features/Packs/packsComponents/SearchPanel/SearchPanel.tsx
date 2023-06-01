@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import Search from "common/component/Search/Search";
 import { Range } from "features/Packs/packsComponents/PacksList/Range/Range";
 import s from "features/Packs/packsComponents/SearchPanel/searchPanel.module.scss";
-import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch, useAppSelector } from "common/hooks";
+import { searchParamsAc } from "features/Packs/pack.slice";
+import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
-import filterData from "common/image/filter.svg";
-import { Buttons } from "features/Packs/packsComponents/MyAllButtons/MyAllButton";
-import { maxCardSelector, maxSelector, minSelector } from "features/Packs/packsSelector";
+import { MyAllButton } from "features/Packs/packsComponents/MyAllButtons/MyAllButton";
+import { ResetFilters } from "features/Packs/packsComponents/ResetFiltres/ResetFilters";
 
 export const SearchPanel = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
-  const minCardsCount = useAppSelector(minSelector);
-  const maxCardsCount = useAppSelector(maxCardSelector);
 
   useEffect(() => {
     dispatch(searchParamsAc({ packName: debounceValue }));
@@ -25,29 +21,13 @@ export const SearchPanel = () => {
     setValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
-  const onClickFilter = () => {
-    dispatch(dispatch(deleteSearchParamsAC({})));
-    setValue("");
-  };
+
   return (
-    <>
-      <div className={s.dataCards}>
-        <div className={s.search}>
-          <MiniTitle name={"Search"} />
-          <Search value={value} callback={onChangeInputHandler}></Search>
-        </div>
-        <div className={s.choiceCards}>
-          <MiniTitle name={" Show packs cards"} />
-          <Buttons />
-        </div>
-        <div className={s.sliderCont}>
-          <MiniTitle name={"Number of cards"} />
-          <Range max={maxCardsCount} />
-        </div>
-        <div className={s.icon}>
-          <img onClick={onClickFilter} src={filterData} alt="" />
-        </div>
-      </div>
-    </>
+    <div className={s.dataCards}>
+      <Search value={value} callback={onChangeInputHandler}></Search>
+      <MyAllButton />
+      <Range />
+      <ResetFilters />
+    </div>
   );
 };

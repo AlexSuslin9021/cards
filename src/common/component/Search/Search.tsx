@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import s from "common/component/Search/Search.module.scss";
 import { useDebounce } from "common/hooks/useDebounce";
 import { cardsSearchParams } from "features/Cards/cards.slice";
+import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 
 type InputType = {
   value: string;
@@ -13,8 +14,11 @@ const Search = (props: InputType) => {
     props.callback(e.currentTarget.value);
   };
   return (
-    <div className={s.searchBlock}>
-      <input value={props.value} onChange={onChangeHandler} placeholder={"    Provide your text"} />
+    <div className={s.search}>
+      <MiniTitle name={"Search"} />
+      <div className={s.searchBlock}>
+        <input value={props.value} onChange={onChangeHandler} placeholder={"    Provide your text"} />
+      </div>
     </div>
   );
 };
