@@ -1,11 +1,13 @@
 import React from "react";
-import avatar from "common/image/ava.svg";
-import { useAppSelector } from "common/hooks";
+import s from "common/component/Profile/Profile.module.scss";
+import { ProfilePhoto } from "common/component/Avatar/ProfilePhoto/ProfilePhoto";
+import { ChangeAvatar } from "common/component/Avatar/ChangeAvatar/ChangeAvatar";
 
 export const Avatar = () => {
-  const ava = useAppSelector((state) => {
-    if (state.auth.profile !== null) return state.auth.profile.avatar;
-  });
-
-  return <img src={ava ? ava : avatar} />;
+  return (
+    <div className={s.iconContainer}>
+      <ProfilePhoto />
+      <ChangeAvatar />
+    </div>
+  );
 };

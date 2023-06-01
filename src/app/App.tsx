@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "app/App.module.scss";
 import { Route, Routes } from "react-router-dom";
-import Profile from "common/component/Profile/Profile";
+import { Profile } from "common/component/Profile/Profile";
 import Register from "features/Auth/Register/Register";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "app/store";

@@ -3,7 +3,7 @@ import s from "common/component/Header/Header.module.scss";
 import { Button } from "common/component/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "common/hooks";
-import { Avatar } from "common/component/Avatar/Avatar";
+import { ProfilePhoto } from "common/component/Avatar/ProfilePhoto/ProfilePhoto";
 export const Header = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const name = useAppSelector((state) => {
@@ -23,7 +23,7 @@ export const Header = () => {
         {isLoggedIn ? (
           <div onClick={onClickRedirectProfile} className={s.loginAvatar}>
             <span>{name}</span>
-            <Avatar />
+            <ProfilePhoto />
           </div>
         ) : (
           <Button callback={logoutButton} name={"Sign in"} />
