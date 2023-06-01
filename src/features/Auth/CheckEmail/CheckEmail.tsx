@@ -2,7 +2,7 @@ import React from "react";
 import style from "../../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
 import s1 from "common/component/Button/button.module.scss";
-import s from "features/auth/CheckEmail/checkEmail.module.scss";
+import s from "features/Auth/CheckEmail/checkEmail.module.scss";
 import { NavLink } from "react-router-dom";
 import { Message } from "common/component/Message/Message";
 import mail from "../../../common/image/mail.svg";

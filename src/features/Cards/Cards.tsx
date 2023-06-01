@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { PacksTitle } from "features/Packs/commonComponent/PacksTitle/PacksTitle";
+import { PacksTitle } from "features/Packs/packsComponents/PacksTitle/PacksTitle";
 import Search from "common/component/Search/Search";
-import s from "features/Packs/PacksList/PacksList.module.scss";
+import s from "features/Packs/packsComponents/PacksList/PacksList.module.scss";
 import s1 from "features/Packs/style.module.scss";
-import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
+import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import { BackTo } from "common/component/BackTo/BackTo";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
@@ -18,7 +18,7 @@ import {
   pageSelector,
   sortCardsSelector,
 } from "features/Cards/cardsSelectors";
-import { ModalAddCards } from "features/Cards/Modal/ModalAddCards";
+import { ModalAddCards } from "features/Cards/cardsComponents/Modal/ModalAddCards";
 import { myIdSelector } from "features/Packs/packsSelector";
 import { Pagination } from "common/component/Pagination/Pagination";
 import { Button } from "common/component/Button/Button";

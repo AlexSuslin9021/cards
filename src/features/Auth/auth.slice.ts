@@ -6,7 +6,7 @@ import {
   CreatePasswordType,
   ProfileType,
   UpdateUserType,
-} from "features/auth/auth.api";
+} from "features/Auth/auth.api";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import { appActions } from "app/app.slice";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
@@ -18,13 +18,13 @@ const authInitialState = {
 
 //TC
 
-export const registerTC = createAppAsyncThunk<void, argRegisterType>("/auth/register", async (arg, thunkAPI) => {
+export const registerTC = createAppAsyncThunk<void, argRegisterType>("/Auth/register", async (arg, thunkAPI) => {
   return thunkTryCatch(thunkAPI, async () => {
     await authApi.register(arg);
   });
 });
 export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>(
-  "/auth/me",
+  "/Auth/me",
   async (arg, thunkAPI) => {
     const { dispatch } = thunkAPI;
     return thunkTryCatch(thunkAPI, async () => {
@@ -35,7 +35,7 @@ export const updateUserTC = createAppAsyncThunk<{ profile: ProfileType }, Update
   }
 );
 export const updateAvatar = createAppAsyncThunk<{ profile: ProfileType }, UpdateUserType>(
-  "/auth/me",
+  "/Auth/me",
   async (arg, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       let res = await authApi.updateUser(arg);
@@ -45,7 +45,7 @@ export const updateAvatar = createAppAsyncThunk<{ profile: ProfileType }, Update
 );
 
 export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginType>(
-  "/auth/login",
+  "/Auth/login",
   async (arg, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
       let res = await authApi.login(arg);
@@ -53,7 +53,7 @@ export const loginTC = createAppAsyncThunk<{ profile: ProfileType }, authLoginTy
     });
   }
 );
-export const logoutTC = createAppAsyncThunk<void>("auth/me", async (any, thunkAPI) => {
+export const logoutTC = createAppAsyncThunk<void>("Auth/me", async (any, thunkAPI) => {
   return thunkTryCatch(thunkAPI, async () => {
     await authApi.logout();
   });
@@ -70,7 +70,7 @@ export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
   }
 );
 
-export const forgotPasswordTC = createAppAsyncThunk("auth/forgot", async (email: string) => {
+export const forgotPasswordTC = createAppAsyncThunk("Auth/forgot", async (email: string) => {
   let res = await authApi.forgotPassword(
     email,
     "test-front-admin",

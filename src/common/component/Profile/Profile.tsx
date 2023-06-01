@@ -5,7 +5,7 @@ import { Title } from "common/component/Title/Title";
 import { EditableSpan } from "common/component/Profile/EditableSpan/EditableSpan";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { Navigate } from "react-router-dom";
-import { logoutTC, updateUserTC } from "features/auth/auth.slice";
+import { logoutTC, updateUserTC } from "features/Auth/auth.slice";
 import changePhoto from "common/image/changePhoto.svg";
 import { BackTo } from "common/component/BackTo/BackTo";
 import { Avatar } from "common/component/Avatar/Avatar";

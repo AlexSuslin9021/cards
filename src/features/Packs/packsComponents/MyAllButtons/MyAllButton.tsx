@@ -1,4 +1,4 @@
-import s from "features/Packs/SearchPanel/searchPanel.module.scss";
+import s from "features/Packs/packsComponents/SearchPanel/searchPanel.module.scss";
 import React from "react";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";

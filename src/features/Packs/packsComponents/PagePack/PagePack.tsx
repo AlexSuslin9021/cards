@@ -1,9 +1,9 @@
 import React from "react";
-import s from "./PagePack.module.scss";
-import s1 from "../style.module.scss";
+import s from "features/Packs/packsComponents/PagePack/PagePack.module.scss";
+import s1 from "features/Packs/style.module.scss";
 import { Button } from "common/component/Button/Button";
 import { Hint } from "common/component/Hint/Hint";
-import { MiniTitle } from "features/Packs/commonComponent/MiniTitle/MiniTitle";
+import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import { BackTo } from "common/component/BackTo/BackTo";
 
 export const PagePack = () => {

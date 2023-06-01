@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../../../common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
-import { authThunks } from "features/auth/auth.slice";
+import { authThunks } from "features/Auth/auth.slice";
 import { Message } from "common/component/Message/Message";
 import { Button } from "common/component/Button/Button";
 import { FormTest } from "common/component/Form/Form";

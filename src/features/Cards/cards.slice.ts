@@ -10,7 +10,7 @@ import {
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
-import { initializedTC } from "features/auth/auth.slice";
+import { initializedTC } from "features/Auth/auth.slice";
 
 export const initialState: InitialStateType = {
   cardList: {

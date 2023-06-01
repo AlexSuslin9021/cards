@@ -33,7 +33,7 @@ export const authApi = {
   },
 };
 
-// /auth/login
+// /Auth/login
 export type argRegisterType = {
   email: string;
   password: string;

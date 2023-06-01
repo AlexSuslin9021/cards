@@ -10,9 +10,9 @@ import {
   UpdateType,
 } from "features/Packs/Packs.api";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
-import { authApi } from "features/auth/auth.api";
+import { authApi } from "features/Auth/auth.api";
 import { RootState } from "app/store";
-import { initializedTC } from "features/auth/auth.slice";
+import { initializedTC } from "features/Auth/auth.slice";
 
 const initialState: InitialStateType = {
   packList: {

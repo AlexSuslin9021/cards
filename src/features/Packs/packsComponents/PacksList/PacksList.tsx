@@ -1,18 +1,18 @@
 import React from "react";
-import s1 from "../style.module.scss";
+import s1 from "features/Packs/style.module.scss";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
-import teach from "../../../common/image/teacher.svg";
-import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
+import teach from "common/image/teacher.svg";
+import TableHeader from "features/Packs/packsComponents/PacksList/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
 import { useNavigate } from "react-router-dom";
 import { myIdSelector, packSelector } from "features/Packs/packsSelector";
 import { useAppSelector } from "app/store";
 import { cardsSearchParams } from "features/Cards/cards.slice";
-import cover from "../../../common/image/Mask.svg";
+import cover from "common/image/Mask.svg";
 
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };

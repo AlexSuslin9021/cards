@@ -1,5 +1,5 @@
 import React from "react";
-import { authThunks } from "features/auth/auth.slice";
+import { authThunks } from "features/Auth/auth.slice";
 import style from "../../../common/styles/container.module.scss";
 import s from "./Login.module.scss";
 import { Title } from "common/component/Title/Title";

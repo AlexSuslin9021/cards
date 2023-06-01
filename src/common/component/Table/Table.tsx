@@ -2,12 +2,12 @@ import React from "react";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useCards } from "features/Cards/hook/useCards";
 import Table from "@mui/material/Table/Table";
-import { UpdateModalCard } from "features/Cards/Modal/ModalUpdateCards";
-import { DeleteModalCard } from "features/Cards/Modal/ModalDeleteCards";
+import { UpdateModalCard } from "features/Cards/cardsComponents/Modal/ModalUpdateCards";
+import { DeleteModalCard } from "features/Cards/cardsComponents/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
-import TableHeader from "features/Packs/PacksList/TableHeader/TableHeader";
+import TableHeader from "features/Packs/packsComponents/PacksList/TableHeader/TableHeader";
 import star from "common/image/Star 5.svg";
-import { GradesStars } from "features/Cards/commonComponent/Raiting";
+import { GradesStars } from "features/Cards/cardsComponents/Raiting";
 
 export const Tables = () => {
   const { cards } = useCards();

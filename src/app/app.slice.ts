@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
-import { authApi } from "features/auth/auth.api";
+import { authApi } from "features/Auth/auth.api";
 
 const appInitialState = {
   error: null as string | null,
@@ -31,7 +31,7 @@ export const setIsLoggedInAC = appSlice.actions.setIsLoggedInAC;
 export const setIsLoggedInTC = () => (dispatch: any) => {
   dispatch(setIsLoggedInAC({ isLoggedIn: false }));
 };
-export const initializedTC = createAppAsyncThunk("/auth/login", async () => {
+export const initializedTC = createAppAsyncThunk("/Auth/login", async () => {
   const res = await authApi.me();
   return { profile: res.data };
 });

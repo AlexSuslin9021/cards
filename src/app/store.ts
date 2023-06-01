@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { appReducer } from "app/app.slice";
-import { authReducers } from "features/auth/auth.slice";
+import { authReducers } from "features/Auth/auth.slice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { packsReducers } from "features/Packs/pack.slice";
 import { cardsReducers } from "features/Cards/cards.slice";
