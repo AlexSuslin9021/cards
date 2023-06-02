@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Button } from "../Button/Button";
+import { useAppSelector } from "common/hooks";
 
 const style = {
   position: "absolute" as "absolute",
@@ -27,6 +28,7 @@ export const BasicModal: React.FC<ModalType> = ({ header, children, name, button
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const disabled = useAppSelector((state) => state.app.isLoggedIn);
 
   const onClickHandler = () => {
     callback();
@@ -51,7 +53,11 @@ export const BasicModal: React.FC<ModalType> = ({ header, children, name, button
           {children}
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button name={"Cancel"} callback={handleClose}></Button>
-            <Button name={buttonName === "Delete" ? "Delete" : "Save"} callback={onClickHandler}></Button>
+            <Button
+              disabled={disabled}
+              name={buttonName === "Delete" ? "Delete" : "Save"}
+              callback={onClickHandler}
+            ></Button>
           </div>
         </Box>
       </Modal>

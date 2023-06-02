@@ -3,23 +3,24 @@ import s from "common/component/Button/button.module.scss";
 type ButtonType = {
   name?: string;
   callback?: () => any;
+  disabled?: boolean;
 };
 
-export const Button: React.FC<ButtonType> = (props) => {
+export const Button: React.FC<ButtonType> = ({ disabled, callback, name }) => {
   const buttonStyle =
-    props.name === "Cancel"
+    name === "Cancel"
       ? `${s.button} ${s.buttonCancel}`
-      : props.name === "Delete"
+      : name === "Delete"
       ? `${s.button} ${s.buttonDelete}`
       : s.button;
 
   const onClickHandler = () => {
-    if (props.callback) props.callback();
+    if (callback) callback();
   };
   return (
     <div>
-      <button onClick={onClickHandler} className={buttonStyle} type={"submit"}>
-        {props.name}
+      <button disabled={disabled} onClick={onClickHandler} className={buttonStyle} type={"submit"}>
+        {name}
       </button>
     </div>
   );

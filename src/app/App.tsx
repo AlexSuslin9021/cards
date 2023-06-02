@@ -17,19 +17,26 @@ import { CircularProgress, LinearProgress } from "@mui/material";
 import { Pack } from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
-import { Circle } from "@mui/icons-material";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
+  const isInitialized = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(authThunks.initializedTC());
   }, []);
+  if (!isInitialized) {
+    return (
+      <div style={{ position: "fixed", top: "30%", textAlign: "center", width: "100%" }}>
+        <CircularProgress />
+      </div>
+    );
+  }
 
   return (
     <div className={s.app}>
       <Header />
-      {isLoggedInApp && <LinearProgress />}
+      {isLoggedInApp && <LinearProgress sx={{ position: "fixed", top: "72px", left: "0", right: "0" }} />}
 
       <div className={s.container}>
         <Routes>

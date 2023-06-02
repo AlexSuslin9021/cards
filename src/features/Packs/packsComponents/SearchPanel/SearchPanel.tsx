@@ -7,9 +7,11 @@ import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import { MyAllButton } from "features/Packs/packsComponents/MyAllButtons/MyAllButton";
 import { ResetFilters } from "features/Packs/packsComponents/ResetFiltres/ResetFilters";
+import { useAppSelector } from "app/store";
 
 export const SearchPanel = () => {
   const dispatch = useAppDispatch();
+  const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
   const [value, setValue] = useState<string>("");
   const debounceValue = useDebounce(value, 1000);
 
@@ -22,7 +24,7 @@ export const SearchPanel = () => {
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
   const onClickFilter = () => {
-    dispatch(dispatch(deleteSearchParamsAC({})));
+    if (!isLoggedInApp) dispatch(dispatch(deleteSearchParamsAC({})));
     setValue("");
   };
 
