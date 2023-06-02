@@ -66,14 +66,16 @@ export const TablePacks = () => {
                 <TableCell sx={styleTableBody}>
                   {
                     <span>
-                      {
-                        <img
-                          style={{ marginRight: "10px", cursor: "pointer" }}
-                          onClick={() => updatePack(el._id)}
-                          src={teach}
-                          alt="teach"
-                        />
-                      }
+                      <img
+                        style={{
+                          marginRight: "10px",
+                          cursor: "pointer",
+                          display: el.cardsCount === 0 ? "none" : "inline",
+                        }}
+                        onClick={() => updatePack(el._id)}
+                        src={teach}
+                        alt="teach"
+                      />
                       {el.user_id === "64527e000415841fd8df2cf3" && <UpdateModal src={el.deckCover} id={el._id} />}
                       {el.user_id === "64527e000415841fd8df2cf3" && <DeleteModal id={el._id} name={el.name} />}
                     </span>
