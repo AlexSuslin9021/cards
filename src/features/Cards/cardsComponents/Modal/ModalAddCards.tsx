@@ -40,7 +40,7 @@ export const ModalAddCards = () => {
         </Select>
       </FormControl>
       {value === "Text questions" && <Question question={question} setQuestion={setQuestion} />}
-      {value === "Image" && <AddCover setFile={setQuestion} />}
+      {value === "Image" && <AddCover name={"add card"} setFile={setQuestion} />}
       <FormControl fullWidth>
         <InputLabel>Answer</InputLabel>
         <Select value={value1} label="Answer" onChange={handleChangeAnswer}>
@@ -49,6 +49,7 @@ export const ModalAddCards = () => {
         </Select>
       </FormControl>
       {value1 === "Text answer" && <Answer answer={answer} setAnswer={setAnswer} />}
+      {value1 === "Image" && <AddCover name={"Download image"} setFile={setAnswer} />}
     </BasicModal>
   );
 };

@@ -1,10 +1,12 @@
 import React, { ChangeEvent } from "react";
 import { convertFileToBase64 } from "common/utils/convertFileToBase64";
-
+import s from "./AddCover.module.scss";
 type AddCoverType = {
   setFile: (file: string) => void;
+  name: string;
 };
-export const AddCover: React.FC<AddCoverType> = ({ setFile }) => {
+
+export const AddCover: React.FC<AddCoverType> = ({ setFile, name }) => {
   const onChangeCover = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length) {
       const file = e.target.files[0];
@@ -19,10 +21,12 @@ export const AddCover: React.FC<AddCoverType> = ({ setFile }) => {
     }
   };
   return (
-    <div>
+    <div className={s.coverBlock}>
       <input style={{ display: "none" }} accept={"image/*"} onChange={onChangeCover} id={"download"} type="file" />
       <label htmlFor={"download"}>
-        <span id={"download"}>Download </span>
+        <div className={s.button} id={"download"}>
+          <span> {name}</span>
+        </div>
       </label>
     </div>
   );

@@ -110,6 +110,11 @@ const slice = createSlice({
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);
     });
+    builder.addCase(updatePackTC.fulfilled, (state, action) => {
+      state.packList.cardPacks = state.packList.cardPacks.map((t) =>
+        t._id === action.payload._id ? { ...t, name: action.payload.name, deckCover: action.payload.deckCover } : t
+      );
+    });
 
     builder.addCase(removePackTC.fulfilled, (state, action) => {
       const index = state.packList.cardPacks.findIndex((c) => c._id === action.payload);

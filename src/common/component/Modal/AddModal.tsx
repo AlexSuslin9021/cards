@@ -20,12 +20,10 @@ export const AddModal = () => {
   return (
     <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickHandler}>
       <div className={s.input}>
-        <div>
-          <label>Pack name</label>
-          <input value={value} onChange={onChangeHandler} type="text" />
-        </div>
-        <AddCover setFile={setFile} />
+        <label>Pack name</label>
+        <input value={value} onChange={onChangeHandler} type="text" />
       </div>
+      <AddCover name={"Download pack"} setFile={setFile} />
     </BasicModal>
   );
 };
