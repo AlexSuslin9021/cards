@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Search from "common/component/Search/Search";
 import { Range } from "features/Packs/packsComponents/TablePacks/Range/Range";
 import s from "features/Packs/packsComponents/SearchPanel/searchPanel.module.scss";
-import { searchParamsAc } from "features/Packs/pack.slice";
+import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import { MyAllButton } from "features/Packs/packsComponents/MyAllButtons/MyAllButton";
@@ -21,13 +21,17 @@ export const SearchPanel = () => {
     setValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
   };
+  const onClickFilter = () => {
+    dispatch(dispatch(deleteSearchParamsAC({})));
+    setValue("");
+  };
 
   return (
     <div className={s.dataCards}>
       <Search value={value} callback={onChangeInputHandler}></Search>
       <MyAllButton />
       <Range />
-      <ResetFilters />
+      <ResetFilters onClickFilter={onClickFilter} />
     </div>
   );
 };

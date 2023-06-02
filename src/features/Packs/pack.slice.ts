@@ -85,14 +85,14 @@ const slice = createSlice({
       state.queryParams = { ...state.queryParams, ...action.payload };
     },
     deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
-      state.packList.page = 1;
+      debugger;
+      state.queryParams.page = 1;
       state.queryParams.packName = "";
+      state.queryParams.user_id = "";
       state.queryParams.min = state.packList.minCardsCount;
-      state.queryParams.max = state.packList.maxCardsCount;
+      state.queryParams.max = 78;
       state.queryParams.sortPacks = "0updated";
-      state.queryParams.pageCount = 10;
-      state.packList.maxCardsCount = 0;
-      state.packList.minCardsCount = 0;
+      state.queryParams.pageCount = 5;
     },
   },
   extraReducers: (builder) => {

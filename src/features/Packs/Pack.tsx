@@ -10,6 +10,7 @@ import { AddModal } from "common/component/Modal/AddModal";
 import { cardPacksTotalCountSelector, packSelector, pageCurrentSelector } from "features/Packs/packsSelector";
 import { usePack } from "features/Packs/hooks/usePack";
 import { useAppSelector } from "app/store";
+import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
 
 export const Pack = () => {
   const packs = useAppSelector(packSelector);
@@ -27,7 +28,11 @@ export const Pack = () => {
         <AddModal />
       </PacksTitle>
       <SearchPanel />
-      <TablePacks />
+      {packs.length ? (
+        <TablePacks />
+      ) : (
+        <ValueNotFound value={"Колоды с введенным название не найдены 🙈. Измените параметры запроса!"} />
+      )}
       <Pagination
         name={"pack"}
         callback={onClickHandler}

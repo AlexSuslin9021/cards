@@ -5,6 +5,7 @@ const myIdSelector = (state: RootState) => state.auth.profile?._id;
 const isLoggedInSelector = (state: RootState) => state.auth.isLoggedIn;
 const pageSelector = (state: RootState) => state.pack.queryParams.page;
 const maxCardSelector = (state: RootState) => state.pack.packList.maxCardsCount;
+const minCardSelector = (state: RootState) => state.pack.packList.minCardsCount;
 const maxSelector = (state: RootState) => state.pack.queryParams.max;
 const minSelector = (state: RootState) => state.pack.queryParams.min;
 const pageCountSelector = (state: RootState) => state.pack.queryParams.pageCount;
@@ -15,6 +16,7 @@ const pageCurrentSelector = (state: RootState) => state.pack.queryParams.page;
 
 const cardPacksTotalCountSelector = (state: RootState) => state.pack.packList.cardPacksTotalCount;
 export {
+  minCardSelector,
   maxCardSelector,
   packSelector,
   myIdSelector,
