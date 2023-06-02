@@ -22,13 +22,13 @@ export const TablePacks = () => {
   const packs = useAppSelector(packSelector);
   const navigate = useNavigate();
 
-  const updatePack = (id: string) => {
-    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: "new pack" } }));
-  };
-
   const onClickNamePack = (id: string, cardId: string) => {
     navigate(`/cards/${cardId}`);
     dispatch(cardsSearchParams({ cardsPack_id: cardId }));
+  };
+  const onClickLearn = (name: string) => {
+    debugger;
+    navigate(`/learn/${name}`);
   };
 
   return (
@@ -67,12 +67,12 @@ export const TablePacks = () => {
                   {
                     <span>
                       <img
+                        onClick={() => onClickLearn(el.name)}
                         style={{
                           marginRight: "10px",
                           cursor: "pointer",
                           display: el.cardsCount === 0 ? "none" : "inline",
                         }}
-                        onClick={() => updatePack(el._id)}
                         src={teach}
                         alt="teach"
                       />

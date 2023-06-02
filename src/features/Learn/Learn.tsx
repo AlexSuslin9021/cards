@@ -66,7 +66,7 @@ export const Learn = () => {
   }, [dispatch, id, cards, first]);
   return (
     <div>
-      <BackTo name={"Back to MyPack List"} link={`/cards/${card.cardsPack_id}`} />
+      <BackTo name={"Back to MyPack List"} link={card.cardsPack_id ? `/cards/${card.cardsPack_id}` : "/packs/all"} />
       <h2 className={s.header}> {packName}</h2>
       <div className={s.learnContainer}>
         <Question question={card.question} />

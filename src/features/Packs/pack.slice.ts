@@ -85,7 +85,6 @@ const slice = createSlice({
       state.queryParams = { ...state.queryParams, ...action.payload };
     },
     deleteSearchParams: (state, action: PayloadAction<ParamsType>) => {
-      debugger;
       state.queryParams.page = 1;
       state.queryParams.packName = "";
       state.queryParams.user_id = "";
@@ -98,7 +97,6 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
       if (action.payload) {
-        debugger;
         state.packList.cardPacks = action.payload.cardPacks;
         state.queryParams.page = action.payload.page;
         state.queryParams.pageCount = action.payload.pageCount;

@@ -6,7 +6,7 @@ import arrow from "common/image/Vector 1.svg";
 export const BackTo: FC<BackToType> = ({ name, link }) => {
   const navigate = useNavigate();
   const onClickHandler = () => {
-    return navigate(link);
+    return navigate(-1);
   };
 
   return (
@@ -21,5 +21,5 @@ export const BackTo: FC<BackToType> = ({ name, link }) => {
 
 type BackToType = {
   name: string;
-  link: string;
+  link?: string;
 };

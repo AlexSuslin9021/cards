@@ -23,6 +23,8 @@ import { Pagination } from "common/component/Pagination/Pagination";
 import { Button } from "common/component/Button/Button";
 import { useCards } from "features/Cards/hook/useCards";
 import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
+import { Loader } from "common/component/Loader/Loader";
+import { isLoggedInSelect } from "app/selectorsApp";
 
 export const Cards = () => {
   const [value, setValue] = useState<string>("");
@@ -37,6 +39,7 @@ export const Cards = () => {
   const pageCount = useAppSelector(pageCountSelector);
   const navigate = useNavigate();
   const { cards } = useCards();
+  const loading = useAppSelector(isLoggedInSelect);
 
   useEffect(() => {
     dispatch(getCards({ cardsPack_id: id ? id : "", cardAnswer: value }));
@@ -61,7 +64,9 @@ export const Cards = () => {
         {userId === myId ? <ModalAddCards /> : <Button callback={onClickLearn} name={"Learn"} />}
       </PacksTitle>
       <Search value={value} callback={SearchCards}></Search>
-      {cards.length ? (
+      {loading ? (
+        <Loader />
+      ) : cards.length ? (
         <TableCards />
       ) : (
         <ValueNotFound value={"Карточки с введенным название не найдены 🙈. Измените параметры запроса!"} />

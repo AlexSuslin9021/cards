@@ -36,7 +36,7 @@ function App() {
   return (
     <div className={s.app}>
       <Header />
-      {isLoggedInApp && <LinearProgress sx={{ position: "fixed", top: "72px", left: "0", right: "0" }} />}
+      {/*{isLoggedInApp && <LinearProgress sx={{ position: "fixed", top: "72px", left: "0", right: "0" }} />}*/}
 
       <div className={s.container}>
         <Routes>

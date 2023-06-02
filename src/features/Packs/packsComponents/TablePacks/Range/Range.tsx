@@ -29,7 +29,7 @@ export const Range = () => {
       setValue2(value[1]);
     }
   };
-  debugger;
+
   return (
     <div className={s.sliderCont}>
       <MiniTitle name={"Number of cards"} />

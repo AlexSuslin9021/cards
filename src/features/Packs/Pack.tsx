@@ -11,9 +11,12 @@ import { cardPacksTotalCountSelector, packSelector, pageCurrentSelector } from "
 import { usePack } from "features/Packs/hooks/usePack";
 import { useAppSelector } from "app/store";
 import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
+import { isLoggedInSelect } from "app/selectorsApp";
+import { Loader } from "common/component/Loader/Loader";
 
 export const Pack = () => {
   const packs = useAppSelector(packSelector);
+  const loading = useAppSelector(isLoggedInSelect);
   const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch } = usePack();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ user_id, min, max }));
@@ -28,7 +31,9 @@ export const Pack = () => {
         <AddModal />
       </PacksTitle>
       <SearchPanel />
-      {packs.length ? (
+      {loading ? (
+        <Loader />
+      ) : packs.length ? (
         <TablePacks />
       ) : (
         <ValueNotFound value={"Колоды с введенным название не найдены 🙈. Измените параметры запроса!"} />
