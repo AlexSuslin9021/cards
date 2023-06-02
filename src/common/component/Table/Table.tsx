@@ -6,7 +6,6 @@ import { UpdateModalCard } from "features/Cards/cardsComponents/Modal/ModalUpdat
 import { DeleteModalCard } from "features/Cards/cardsComponents/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
-import star from "common/image/Star 5.svg";
 import { GradesStars } from "features/Cards/cardsComponents/Raiting";
 
 export const TableCards = () => {
@@ -17,7 +16,7 @@ export const TableCards = () => {
 
   return (
     <TableContainer>
-      <Table sx={{ width: "1008px" }}>
+      <Table sx={{ maxWidth: "1008px" }}>
         <TableHead>
           <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
             <TableCell sx={style}>

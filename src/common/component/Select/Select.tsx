@@ -23,8 +23,10 @@ export const SelectCountElement: React.FC<SelectVariantsType> = ({ name }) => {
   return (
     <>
       <FormControl variant="standard" sx={{ minWidth: 30 }}>
-        <div>Show pack </div>
+        {/*<div>Show pack </div>*/}
         <div>
+          <span style={{ margin: "0 10px" }}>Show pack</span>
+
           <Select
             sx={{ minWidth: 30 }}
             labelId="demo-simple-select-standard-label"

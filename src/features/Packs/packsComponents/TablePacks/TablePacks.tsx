@@ -15,7 +15,7 @@ import { cardsSearchParams } from "features/Cards/cards.slice";
 import cover from "common/image/Mask.svg";
 
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
-const styleTableBody = { background: "white" };
+const styleTableBody = { background: "white", maxWidth: "20%" };
 
 export const TablePacks = () => {
   const dispatch = useAppDispatch();
@@ -34,10 +34,10 @@ export const TablePacks = () => {
   return (
     <div className={s1.container}>
       <TableContainer>
-        <Table sx={{ width: "1008px" }}>
+        <Table>
           <TableHead>
             <TableRow sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>
-              <TableCell sx={{ background: "#EFEFEF", height: "48px", fontWeight: "700" }}>Cover</TableCell>
+              <TableCell sx={styleTableHead}>Cover</TableCell>
               <TableCell sx={styleTableHead}>
                 <TableHeader headerName={"Name"} sortName={"name"} />
               </TableCell>

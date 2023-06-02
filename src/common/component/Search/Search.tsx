@@ -1,7 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import s from "common/component/Search/Search.module.scss";
-import { useDebounce } from "common/hooks/useDebounce";
-import { cardsSearchParams } from "features/Cards/cards.slice";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 
 type InputType = {
