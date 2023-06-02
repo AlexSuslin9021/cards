@@ -24,7 +24,7 @@ export function usePack() {
 
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
-    dispatch(searchParamsAc({ page: page, pageCount: 10 }));
+    dispatch(searchParamsAc({ page, pageCount }));
   };
   return { onClickHandler, useEffect, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch };
 }

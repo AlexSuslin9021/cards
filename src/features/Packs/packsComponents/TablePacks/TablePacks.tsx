@@ -5,7 +5,7 @@ import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/
 import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import teach from "common/image/teacher.svg";
-import TableHeader from "features/Packs/packsComponents/PacksList/TableHeader/TableHeader";
+import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
 import { UpdateModal } from "common/component/Modal/UpdateModal";
 import { DeleteModal } from "common/component/Modal/DeleteModal";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ import cover from "common/image/Mask.svg";
 const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
 const styleTableBody = { background: "white" };
 
-export const PacksList = () => {
+export const TablePacks = () => {
   const dispatch = useAppDispatch();
   const packs = useAppSelector(packSelector);
   const navigate = useNavigate();

@@ -5,14 +5,19 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { searchParamsAc } from "features/Packs/pack.slice";
+import { cardsSearchParams } from "features/Cards/cards.slice";
 
-export function SelectVariants() {
+type SelectVariantsType = {
+  name: string;
+};
+export const SelectCountElement: React.FC<SelectVariantsType> = ({ name }) => {
   const pageCount = useAppSelector((state) => state.pack.queryParams.pageCount);
   const [countPack, setCountPack] = React.useState(pageCount?.toString());
   const dispatch = useAppDispatch();
   const handleChange = (event: SelectChangeEvent) => {
     setCountPack(event.target.value);
-    dispatch(searchParamsAc({ pageCount: Number(event.target.value) }));
+    name === "pack" && dispatch(searchParamsAc({ pageCount: Number(event.target.value) }));
+    name === "card" && dispatch(cardsSearchParams({ pageCount: Number(event.target.value) }));
   };
 
   return (
@@ -35,4 +40,4 @@ export function SelectVariants() {
       </FormControl>
     </>
   );
-}
+};

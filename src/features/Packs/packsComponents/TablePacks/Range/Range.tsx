@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
-import s from "features/Packs/packsComponents/PacksList/Range/Range.module.scss";
+import s from "features/Packs/packsComponents/TablePacks/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 
 import { searchParamsAc } from "features/Packs/pack.slice";

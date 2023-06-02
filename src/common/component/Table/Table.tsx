@@ -5,11 +5,11 @@ import Table from "@mui/material/Table/Table";
 import { UpdateModalCard } from "features/Cards/cardsComponents/Modal/ModalUpdateCards";
 import { DeleteModalCard } from "features/Cards/cardsComponents/Modal/ModalDeleteCards";
 import { useAppSelector } from "common/hooks";
-import TableHeader from "features/Packs/packsComponents/PacksList/TableHeader/TableHeader";
+import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
 import star from "common/image/Star 5.svg";
 import { GradesStars } from "features/Cards/cardsComponents/Raiting";
 
-export const Tables = () => {
+export const TableCards = () => {
   const { cards } = useCards();
   const myId = useAppSelector((state) => state.auth.profile?._id);
   const style = { fontFamily: "Montserrat", fontWeight: "700" };

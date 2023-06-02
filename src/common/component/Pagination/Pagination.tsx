@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import s from "common/component/Pagination/Pagination.module.scss";
 import { useAppSelector } from "common/hooks";
-import { SelectVariants } from "common/component/Select/Select";
+import { SelectCountElement } from "common/component/Select/Select";
 
 import { RootState } from "app/store";
 type PaginationType = {
   callback: (value: number) => void;
   totalCount: (state: RootState) => number;
   pageCurrents: (state: RootState) => number | undefined;
+  name: string;
 };
-export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount, callback }) => {
+export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount, callback, name }) => {
   const cardPacksTotalCount = useAppSelector(totalCount);
   const pageCurrent = useAppSelector(pageCurrents);
 
@@ -42,7 +43,7 @@ export const Pagination: React.FC<PaginationType> = ({ pageCurrents, totalCount,
         ))}
       {portionCount > portionNumber && <button onClick={() => setPortionNumber(portionNumber + 1)}>{">"}</button>}
       <div>
-        <SelectVariants />
+        <SelectCountElement name={name} />
       </div>
     </div>
   );

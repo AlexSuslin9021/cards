@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Search from "common/component/Search/Search";
-import { Range } from "features/Packs/packsComponents/PacksList/Range/Range";
+import { Range } from "features/Packs/packsComponents/TablePacks/Range/Range";
 import s from "features/Packs/packsComponents/SearchPanel/searchPanel.module.scss";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
