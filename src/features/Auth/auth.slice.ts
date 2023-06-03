@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   argRegisterType,
   authApi,
@@ -14,6 +14,7 @@ import { thunkTryCatch } from "common/utils/thunkTryCatch";
 const authInitialState = {
   profile: null as ProfileType | null,
   isLoggedIn: false,
+  isInitialized: false,
 };
 
 //TC
@@ -81,18 +82,24 @@ link</a>
   );
   return res.data;
 });
-export const initializedTC = createAppAsyncThunk("/new/pass", async () => {
+export const initializedTC = createAppAsyncThunk("/new/pass", async (arg, thunkAPI) => {
+  const { dispatch } = thunkAPI;
   try {
     const res = await authApi.me();
     return { profile: res.data };
   } finally {
+    dispatch(isInitializedAc({ isInitialized: true }));
   }
 });
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC, initializedTC };
 const slice = createSlice({
   name: "auth",
   initialState: authInitialState,
-  reducers: {},
+  reducers: {
+    setIsInitialized(state, action: PayloadAction<{ isInitialized: boolean }>) {
+      state.isInitialized = action.payload.isInitialized;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loginTC.fulfilled, (state, action) => {
       state.profile = action.payload.profile;
@@ -118,3 +125,4 @@ const slice = createSlice({
 });
 //AC
 export const authReducers = slice.reducer;
+const isInitializedAc = slice.actions.setIsInitialized;

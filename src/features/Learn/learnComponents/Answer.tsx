@@ -21,7 +21,7 @@ export const Answer: React.FC<AnswerType> = ({ answer, onNext }) => {
     <div className={s.answerVariant}>
       <div style={{ margin: "10px 0 10px 0" }}>
         <b>Answer:</b>
-        {answer}
+        {answer.includes("base64") ? <img style={{ width: "30px", height: "30px" }} src={answer} alt="" /> : answer}
       </div>
       <form action="">
         {grades.map((g) => {

@@ -20,18 +20,18 @@ import { Learn } from "features/Learn/Learn";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
-  // const isInitialized = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+  const isInitialized = useAppSelector<boolean>((state) => state.auth.isInitialized);
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(authThunks.initializedTC());
   }, []);
-  // if (!isInitialized) {
-  //   return (
-  //     <div style={{ position: "fixed", top: "30%", textAlign: "center", width: "100%" }}>
-  //       <CircularProgress />
-  //     </div>
-  //   );
-  // }
+  if (!isInitialized) {
+    return (
+      <div style={{ position: "fixed", top: "30%", textAlign: "center", width: "100%" }}>
+        <CircularProgress />
+      </div>
+    );
+  }
 
   return (
     <div className={s.app}>
