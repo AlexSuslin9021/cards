@@ -7,10 +7,10 @@ import { AddCover } from "common/component/AddCover/AddCover";
 import cover from "../../image/Mask.svg";
 import s from "common/component/Input/input.module.scss";
 
-type UpdateModalType = { id: string; src: string | null; name: string };
-export const UpdateModal: React.FC<UpdateModalType> = ({ id, src, name }) => {
+type UpdateModalType = { id: string; src: string | null; name: string; deckCover: string | null };
+export const UpdateModal: React.FC<UpdateModalType> = ({ id, src, name, deckCover }) => {
   const [title, setValue] = useState<string>(name);
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(deckCover);
   const dispatch = useAppDispatch();
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);

@@ -77,7 +77,7 @@ export const TablePacks = () => {
                         alt="teach"
                       />
                       {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <UpdateModal name={el.name} src={el.deckCover} id={el._id} />
+                        <UpdateModal deckCover={el.deckCover} name={el.name} src={el.deckCover} id={el._id} />
                       )}
                       {el.user_id === "64527e000415841fd8df2cf3" && <DeleteModal id={el._id} name={el.name} />}
                     </span>

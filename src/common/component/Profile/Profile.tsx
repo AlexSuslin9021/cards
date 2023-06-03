@@ -21,6 +21,7 @@ export const Profile = () => {
   };
 
   if (!isLoggedIn) {
+    debugger;
     return <Navigate to={"/login"} />;
   }
 

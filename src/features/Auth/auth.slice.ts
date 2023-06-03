@@ -64,7 +64,6 @@ export const createNewPasswordTC = createAppAsyncThunk<{}, CreatePasswordType>(
     // const tokenPassword = useParams().token;
     return thunkTryCatch(thunkAPI, async () => {
       let res = await authApi.createNewPassword(arg);
-
       return { profile: res.data };
     });
   }
@@ -83,8 +82,11 @@ link</a>
   return res.data;
 });
 export const initializedTC = createAppAsyncThunk("/new/pass", async () => {
-  const res = await authApi.me();
-  return { profile: res.data };
+  try {
+    const res = await authApi.me();
+    return { profile: res.data };
+  } finally {
+  }
 });
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC, initializedTC };
 const slice = createSlice({

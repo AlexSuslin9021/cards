@@ -23,6 +23,7 @@ export const Pack = () => {
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
 
   if (!isLoggedIn) {
+    debugger;
     return <Navigate to={"/login"} />;
   }
   return (

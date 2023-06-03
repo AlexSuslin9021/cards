@@ -5,7 +5,6 @@ import { authApi } from "features/Auth/auth.api";
 const appInitialState = {
   error: null as string | null,
   isLoggedIn: false,
-  isAppInitialized: false,
 };
 
 const appSlice = createSlice({
@@ -31,7 +30,8 @@ export const setIsLoggedInAC = appSlice.actions.setIsLoggedInAC;
 export const setIsLoggedInTC = () => (dispatch: any) => {
   dispatch(setIsLoggedInAC({ isLoggedIn: false }));
 };
-export const initializedTC = createAppAsyncThunk("/Auth/login", async () => {
-  const res = await authApi.me();
-  return { profile: res.data };
-});
+// export const initializedTC = createAppAsyncThunk("/Auth/login", async () => {
+//   const res = await authApi.me();
+//
+//   return { profile: res.data };
+// });
