@@ -16,7 +16,7 @@ export const UpdateModalCard: React.FC<UpdateModalType> = ({ id, cardsPack_id })
   };
 
   return (
-    <BasicModal name={"Edit pack"} callback={onClickHandler} header={"Edit pack"} src={pencil} mode={false}>
+    <BasicModal name={"Edit card"} callback={onClickHandler} header={"Edit pack"} src={pencil} mode={false}>
       <input value={value} onChange={onChangeHandler} type="text" />;
     </BasicModal>
   );

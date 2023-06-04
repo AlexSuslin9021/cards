@@ -3,51 +3,44 @@ import { BasicModal } from "common/component/Modal/BasicModal";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsThunks } from "features/Cards/cards.slice";
 import { cardsPack_idSelector } from "features/Cards/cardsSelectors";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SelectChangeEvent } from "@mui/material/Select";
 import { Question } from "features/Cards/cardsComponents/Question";
 import { Answer } from "features/Cards/cardsComponents/Answer";
-import MenuItem from "@mui/material/MenuItem";
-import { InputLabel } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
 import { AddCover } from "common/component/AddCover/AddCover";
+import { SelectModal } from "common/component/Modal/FormControl/FormControls";
+import { useModal } from "features/Cards/hook/useModal";
 
 export const ModalAddCards = () => {
-  const dispatch = useAppDispatch();
-  const cardsPack_id = useAppSelector(cardsPack_idSelector);
-  const [answer, setAnswer] = useState("");
-  const [question, setQuestion] = useState("");
-  const [value, setValue] = useState<any>("");
-  const [value1, setValue1] = useState<any>("");
-  const onClickHandler = () => {
-    dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: question } }));
-    setAnswer("");
-    setValue("");
-    setValue1("");
-  };
-  const handleChangeQuestion = (e: SelectChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
-  const handleChangeAnswer = (e: SelectChangeEvent<HTMLInputElement>) => {
-    setValue1(e.target.value);
-  };
+  const {
+    answer,
+    setAnswer,
+    question,
+    setQuestion,
+    value,
+    value1,
+    onClickHandler,
+    handleChangeQuestion,
+    handleChangeAnswer,
+  } = useModal();
   return (
     <BasicModal header={"Add new Cards"} name={"Add new card"} callback={onClickHandler}>
-      <FormControl fullWidth>
-        <InputLabel>Question</InputLabel>
-        <Select value={value} label="Question" onChange={handleChangeQuestion}>
-          <MenuItem value={"Image"}>Image</MenuItem>
-          <MenuItem value={"Text questions"}>Text questions</MenuItem>
-        </Select>
-      </FormControl>
+      <SelectModal
+        value={value}
+        option1={"Image"}
+        option2={"Text questions"}
+        label={"Question"}
+        handleChange={handleChangeQuestion}
+      />
       {value === "Text questions" && <Question question={question} setQuestion={setQuestion} />}
       {value === "Image" && <AddCover name={"add card"} setFile={setQuestion} />}
-      <FormControl fullWidth>
-        <InputLabel>Answer</InputLabel>
-        <Select value={value1} label="Answer" onChange={handleChangeAnswer}>
-          <MenuItem value={"Image"}>Image</MenuItem>
-          <MenuItem value={"Text answer"}>Text answer</MenuItem>
-        </Select>
-      </FormControl>
+
+      <SelectModal
+        value={value1}
+        option1={"Image"}
+        option2={"Text answer"}
+        label={"Answer"}
+        handleChange={handleChangeAnswer}
+      />
       {value1 === "Text answer" && <Answer answer={answer} setAnswer={setAnswer} />}
       {value1 === "Image" && <AddCover name={"Download image"} setFile={setAnswer} />}
     </BasicModal>

@@ -29,6 +29,7 @@
     color: #000000;
     opacity: 0.5;
   }
+
   .button {
     width: 127px;
     height: 36px;
@@ -38,9 +39,11 @@
     border-radius: 30px;
     margin-bottom: 36px;
     margin-top: 19px;
+img{}
 
     &:hover {
       background: lavender;
     }
   }
+
 

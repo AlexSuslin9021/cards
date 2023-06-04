@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import { logoutTC } from "features/Auth/auth.slice";
 import { BackTo } from "common/component/BackTo/BackTo";
 import { Avatar } from "common/component/Avatar/Avatar";
+import logout from "../../image/logout2.svg";
 
 export const Profile = () => {
   const dispatch = useAppDispatch();
@@ -32,8 +33,9 @@ export const Profile = () => {
       <Avatar />
       <EditableSpan />
       <div className={s.email}> {email}</div>
+
       <button className={s.button} onClick={onClickLogout}>
-        Logout
+        <img src={logout} alt="" /> Logout
       </button>
     </div>
   );
