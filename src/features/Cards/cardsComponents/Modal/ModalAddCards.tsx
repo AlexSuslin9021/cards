@@ -1,9 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
-import { useAppDispatch, useAppSelector } from "common/hooks";
-import { cardsThunks } from "features/Cards/cards.slice";
-import { cardsPack_idSelector } from "features/Cards/cardsSelectors";
-import { SelectChangeEvent } from "@mui/material/Select";
 import { Question } from "features/Cards/cardsComponents/Question";
 import { Answer } from "features/Cards/cardsComponents/Answer";
 import { AddCover } from "common/component/AddCover/AddCover";
