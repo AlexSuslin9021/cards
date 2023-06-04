@@ -1,24 +1,14 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
-import { useAppDispatch } from "common/hooks";
 import pencil from "../../image/pencil.svg";
-import { packsThunks } from "features/Packs/pack.slice";
 import { AddCover } from "common/component/AddCover/AddCover";
 import cover from "../../image/Mask.svg";
 import s from "common/component/Input/input.module.scss";
+import { useModal } from "common/component/Modal/hook/useModal";
 
 type UpdateModalType = { id: string; src: string | null; name: string; deckCover: string | null };
 export const UpdateModal: React.FC<UpdateModalType> = ({ id, src, name, deckCover }) => {
-  const [title, setValue] = useState<string>(name);
-  const [file, setFile] = useState(deckCover);
-  const dispatch = useAppDispatch();
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value);
-  };
-
-  const onClickHandler = () => {
-    dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: title, deckCover: file } }));
-  };
+  const { value, setFile, onChangeHandler, onClickHandler } = useModal(name, src, id);
 
   return (
     <BasicModal name={"Edit pack"} callback={onClickHandler} header={"Edit pack"} src={pencil} mode={false}>
@@ -27,7 +17,7 @@ export const UpdateModal: React.FC<UpdateModalType> = ({ id, src, name, deckCove
       </div>
       <div className={s.input}>
         <div>
-          <input value={title} onChange={onChangeHandler} />
+          <input value={value} onChange={onChangeHandler} />
         </div>
       </div>
       <AddCover name={"Change cover"} setFile={setFile} />

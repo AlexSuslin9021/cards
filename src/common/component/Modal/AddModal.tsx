@@ -13,12 +13,12 @@ export const AddModal = () => {
     setValue(e.currentTarget.value);
   };
 
-  const onClickHandler = () => {
+  const onClickAddModal = () => {
     dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: file } }));
     setValue("");
   };
   return (
-    <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickHandler}>
+    <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickAddModal}>
       <div className={s.input}>
         <label>Pack name</label>
         <input value={value} onChange={onChangeHandler} type="text" />
