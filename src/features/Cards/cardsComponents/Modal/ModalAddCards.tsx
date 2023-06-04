@@ -21,7 +21,7 @@ export const ModalAddCards = () => {
     onClickHandler,
     handleChangeQuestion,
     handleChangeAnswer,
-  } = useModal();
+  } = useModal("", "");
   return (
     <BasicModal header={"Add new Cards"} name={"Add new card"} callback={onClickHandler}>
       <SelectModal

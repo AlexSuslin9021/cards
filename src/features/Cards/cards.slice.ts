@@ -124,10 +124,13 @@ const slice = createSlice({
       if (index !== -1) state.cardList.cards.splice(index, 1);
     });
     builder.addCase(updateCard.fulfilled, (state, action) => {
-      const cards = state.cardList.cards.find((card) => card._id === action.payload._id);
-      if (cards) {
-        cards._id = action.payload._id;
-      }
+      // const cards = state.cardList.cards.find((card) => card._id === action.payload._id);
+      // if (cards) {
+      //   cards._id = action.payload._id;
+      // }
+      state.cardList.cards = state.cardList.cards.map((c) =>
+        c._id === action.payload._id ? { ...c, question: action.payload.question, answer: action.payload.answer } : c
+      );
     });
   },
 });

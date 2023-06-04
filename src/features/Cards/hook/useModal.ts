@@ -4,11 +4,11 @@ import { useState } from "react";
 import { cardsThunks } from "features/Cards/cards.slice";
 import { SelectChangeEvent } from "@mui/material/Select";
 
-export const useModal = () => {
+export const useModal = (answerUpdate: string, questionUpdate: string) => {
   const dispatch = useAppDispatch();
   const cardsPack_id = useAppSelector(cardsPack_idSelector);
-  const [answer, setAnswer] = useState("");
-  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState(answerUpdate);
+  const [question, setQuestion] = useState(questionUpdate);
   const [value, setValue] = useState<any>("");
   const [value1, setValue1] = useState<any>("");
   const onClickHandler = () => {

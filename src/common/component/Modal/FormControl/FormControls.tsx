@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 export const SelectModal: React.FC<SelectModalType> = ({ value, label, option1, option2, handleChange }) => {
   return (
-    <FormControl fullWidth>
+    <FormControl sx={{ marginBottom: "10px" }} fullWidth>
       <InputLabel>Question</InputLabel>
       <Select value={value} label={label} onChange={handleChange}>
         <MenuItem value={option1}>Image</MenuItem>

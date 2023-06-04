@@ -46,7 +46,14 @@ export const TableCards = () => {
               <TableCell sx={style2}>
                 {el.user_id === myId && (
                   <span>
-                    {<UpdateModalCard id={el._id} cardsPack_id={el.cardsPack_id} />}
+                    {
+                      <UpdateModalCard
+                        id={el._id}
+                        answerUpdate={el.answer}
+                        questionUpdate={el.question}
+                        cardsPack_id={el.cardsPack_id}
+                      />
+                    }
                     {<DeleteModalCard id={el._id} name={el.answer} />}
                   </span>
                 )}
