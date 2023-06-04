@@ -7,6 +7,7 @@ import { Question } from "features/Cards/cardsComponents/Question";
 import { AddCover } from "common/component/AddCover/AddCover";
 import { Answer } from "features/Cards/cardsComponents/Answer";
 import { useModal } from "features/Cards/hook/useModal";
+import Icon from "common/component/Icon/Icon";
 
 type UpdateModalType = { id: string; cardsPack_id: string; answerUpdate: string; questionUpdate: string };
 export const UpdateModalCard: React.FC<UpdateModalType> = ({ id, cardsPack_id, answerUpdate, questionUpdate }) => {
@@ -37,9 +38,11 @@ export const UpdateModalCard: React.FC<UpdateModalType> = ({ id, cardsPack_id, a
       />
       {value === "Text questions" && <Question question={question} setQuestion={setQuestion} />}
       {value === "Image" && <AddCover name={"Change question"} setFile={setQuestion} />}
-      {questionUpdate.includes("base64") && (
-        <img style={{ width: "30px", height: "30px" }} src={questionUpdate} alt="" />
-      )}
+      {/*{questionUpdate.includes("base64") && (*/}
+      {/*  <img style={{ width: "30px", height: "30px" }} src={questionUpdate} alt="" />*/}
+      {/*  */}
+      {/*)}*/}
+      <Icon src={questionUpdate} />
       <SelectModal
         value={value1}
         option1={"Image"}

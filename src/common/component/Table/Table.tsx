@@ -7,6 +7,7 @@ import { DeleteModalCard } from "features/Cards/cardsComponents/Modal/ModalDelet
 import { useAppSelector } from "common/hooks";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
 import { GradesStars } from "features/Cards/cardsComponents/Raiting";
+import Icon from "common/component/Icon/Icon";
 
 export const TableCards = () => {
   const { cards } = useCards();
@@ -32,11 +33,7 @@ export const TableCards = () => {
           {cards.map((el) => (
             <TableRow key={el._id} sx={{ borderBottom: "1px solid" }}>
               <TableCell sx={style2}>
-                {el.question.includes("base64") ? (
-                  <img style={{ width: "30px", height: "30px" }} src={el.question} alt="" />
-                ) : (
-                  el.question
-                )}
+                {el.question.includes("base64") ? <Icon src={el.question} /> : el.question}
               </TableCell>
               <TableCell sx={style2}>{el.answer}</TableCell>
               <TableCell sx={style2}>{el.created}</TableCell>

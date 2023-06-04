@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from "react";
 import s from "common/component/Search/Search.module.scss";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
+import { useCards } from "features/Cards/hook/useCards";
 
 type InputType = {
   value: string;
@@ -8,6 +9,7 @@ type InputType = {
 };
 
 const Search = (props: InputType) => {
+  // const { onChangeHandler, value } = useCards();
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     props.callback(e.currentTarget.value);
   };

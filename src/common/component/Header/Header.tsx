@@ -4,6 +4,7 @@ import { Button } from "common/component/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "common/hooks";
 import { ProfilePhoto } from "common/component/Avatar/ProfilePhoto/ProfilePhoto";
+
 export const Header = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   const name = useAppSelector((state) => {

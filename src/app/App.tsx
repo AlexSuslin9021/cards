@@ -22,6 +22,7 @@ function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
   const isInitialized = useAppSelector<boolean>((state) => state.auth.isInitialized);
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     dispatch(authThunks.initializedTC());
   }, []);
