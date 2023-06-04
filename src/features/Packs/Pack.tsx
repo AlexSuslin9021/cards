@@ -13,6 +13,7 @@ import { useAppSelector } from "app/store";
 import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
 import { isLoggedInSelect } from "app/selectorsApp";
 import { Loader } from "common/component/Loader/Loader";
+import { Table } from "common/component/Table/Table";
 
 export const Pack = () => {
   const {
@@ -43,13 +44,12 @@ export const Pack = () => {
         <AddPackModal />
       </PacksTitle>
       <SearchPanel />
-      {loading ? (
-        <Loader />
-      ) : packs.length ? (
+      <Table
+        elementCount={packs.length}
+        valueNotFound={"Колоды с введенным название не найдены 🙈. Измените параметры запроса!"}
+      >
         <TablePacks />
-      ) : (
-        <ValueNotFound value={"Колоды с введенным название не найдены 🙈. Измените параметры запроса!"} />
-      )}
+      </Table>
       <Pagination
         name={"pack"}
         callback={onClickHandler}

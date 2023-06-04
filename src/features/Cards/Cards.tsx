@@ -4,7 +4,7 @@ import Search from "common/component/Search/Search";
 import s1 from "features/Packs/style.module.scss";
 import { BackTo } from "common/component/BackTo/BackTo";
 import { getCards } from "features/Cards/cards.slice";
-import { TableCards } from "common/component/Table/Table";
+import { TableCards } from "features/Cards/cardsComponents/TableCards/TableCards";
 import { cardsTotalCountSelector, pageSelector } from "features/Cards/cardsSelectors";
 import { ModalAddCards } from "features/Cards/cardsComponents/Modal/ModalAddCards";
 import { Pagination } from "common/component/Pagination/Pagination";
@@ -12,6 +12,7 @@ import { Button } from "common/component/Button/Button";
 import { useCards } from "features/Cards/hook/useCards";
 import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
 import { Loader } from "common/component/Loader/Loader";
+import { Table } from "common/component/Table/Table";
 
 export const Cards = () => {
   const {
@@ -42,13 +43,12 @@ export const Cards = () => {
         {userId === myId ? <ModalAddCards /> : <Button callback={onClickLearn} name={"Learn"} />}
       </PacksTitle>
       <Search value={value} callback={SearchCards}></Search>
-      {loading ? (
-        <Loader />
-      ) : cards.length ? (
+      <Table
+        elementCount={cards.length}
+        valueNotFound={"Карточки с введенным название не найдены 🙈. Измените параметры запроса!"}
+      >
         <TableCards />
-      ) : (
-        <ValueNotFound value={"Карточки с введенным название не найдены 🙈. Измените параметры запроса!"} />
-      )}
+      </Table>
       <Pagination
         name={"card"}
         totalCount={cardsTotalCountSelector}

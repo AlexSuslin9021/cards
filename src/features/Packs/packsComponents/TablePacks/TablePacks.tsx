@@ -2,7 +2,6 @@ import React from "react";
 import s1 from "features/Packs/style.module.scss";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import teach from "common/image/teacher.svg";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";

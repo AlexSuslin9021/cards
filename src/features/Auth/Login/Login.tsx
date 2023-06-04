@@ -9,7 +9,7 @@ import { Navigate, NavLink } from "react-router-dom";
 import { Button } from "common/component/Button/Button";
 import { Input } from "common/component/Input/Input";
 import { FormTest } from "common/component/Form/Form";
-import { useAppDispatch, useAppSelector } from "common/hooks";
+import { useAppSelector } from "common/hooks";
 const Login = () => {
   const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
   if (isLoggedIn) {
