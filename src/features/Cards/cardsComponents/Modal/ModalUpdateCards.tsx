@@ -1,6 +1,5 @@
-import React, { ChangeEvent, useState } from "react";
+import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
-import { useAppDispatch } from "common/hooks";
 import pencil from "common/image/pencil.svg";
 import { cardsThunks } from "features/Cards/cards.slice";
 import { SelectModal } from "common/component/Modal/FormControl/FormControls";
@@ -38,7 +37,9 @@ export const UpdateModalCard: React.FC<UpdateModalType> = ({ id, cardsPack_id, a
       />
       {value === "Text questions" && <Question question={question} setQuestion={setQuestion} />}
       {value === "Image" && <AddCover name={"Change question"} setFile={setQuestion} />}
-
+      {questionUpdate.includes("base64") && (
+        <img style={{ width: "30px", height: "30px" }} src={questionUpdate} alt="" />
+      )}
       <SelectModal
         value={value1}
         option1={"Image"}
