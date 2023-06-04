@@ -6,7 +6,7 @@ import { TablePacks } from "features/Packs/packsComponents/TablePacks/TablePacks
 import { Pagination } from "common/component/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
-import { AddModal } from "common/component/Modal/AddModal";
+import { AddPackModal } from "features/Packs/packsComponents/Modal/AddPackModal";
 import { cardPacksTotalCountSelector, packSelector, pageCurrentSelector } from "features/Packs/packsSelector";
 import { usePack } from "features/Packs/hooks/usePack";
 import { useAppSelector } from "app/store";
@@ -40,7 +40,7 @@ export const Pack = () => {
   return (
     <div className={s.container}>
       <PacksTitle name={"Pack list"}>
-        <AddModal />
+        <AddPackModal />
       </PacksTitle>
       <SearchPanel />
       {loading ? (

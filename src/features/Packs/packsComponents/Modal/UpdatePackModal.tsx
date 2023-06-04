@@ -1,17 +1,17 @@
 import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
-import pencil from "../../image/pencil.svg";
+import pencil from "common/image/pencil.svg";
 import { AddCover } from "common/component/AddCover/AddCover";
-import cover from "../../image/Mask.svg";
+import cover from "common/image/Mask.svg";
 import s from "common/component/Input/input.module.scss";
-import { useModal } from "common/component/Modal/hook/useModal";
+import { useModal } from "features/Packs/hooks/useModal";
 
 type UpdateModalType = { id: string; src: string | null; name: string; deckCover: string | null };
-export const UpdateModal: React.FC<UpdateModalType> = ({ id, src, name, deckCover }) => {
-  const { value, setFile, onChangeHandler, onClickHandler } = useModal(name, src, id);
+export const UpdatePackModal: React.FC<UpdateModalType> = ({ id, src, name, deckCover }) => {
+  const { value, setFile, onChangeHandler, onClickUpdate } = useModal(name, src, id);
 
   return (
-    <BasicModal name={"Edit pack"} callback={onClickHandler} header={"Edit pack"} src={pencil} mode={false}>
+    <BasicModal name={"Edit pack"} callback={onClickUpdate} header={"Edit pack"} src={pencil} mode={false}>
       <div className={s.icon}>
         <img style={{ width: "40px", height: "40px" }} src={src ? src : cover} alt="" />
       </div>

@@ -6,8 +6,8 @@ import { packsThunks } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import teach from "common/image/teacher.svg";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
-import { UpdateModal } from "common/component/Modal/UpdateModal";
-import { DeleteModal } from "common/component/Modal/DeleteModal";
+import { UpdatePackModal } from "features/Packs/packsComponents/Modal/UpdatePackModal";
+import { DeletePackModal } from "features/Packs/packsComponents/Modal/DeletePackModal";
 import { useNavigate } from "react-router-dom";
 import { myIdSelector, packSelector } from "features/Packs/packsSelector";
 import { useAppSelector } from "app/store";
@@ -77,9 +77,9 @@ export const TablePacks = () => {
                         alt="teach"
                       />
                       {el.user_id === "64527e000415841fd8df2cf3" && (
-                        <UpdateModal deckCover={el.deckCover} name={el.name} src={el.deckCover} id={el._id} />
+                        <UpdatePackModal deckCover={el.deckCover} name={el.name} src={el.deckCover} id={el._id} />
                       )}
-                      {el.user_id === "64527e000415841fd8df2cf3" && <DeleteModal id={el._id} name={el.name} />}
+                      {el.user_id === "64527e000415841fd8df2cf3" && <DeletePackModal id={el._id} name={el.name} />}
                     </span>
                   }
                 </TableCell>

@@ -2,7 +2,7 @@ import React from "react";
 import { BasicModal } from "common/component/Modal/BasicModal";
 import pencil from "common/image/pencil.svg";
 import { cardsThunks } from "features/Cards/cards.slice";
-import { SelectModal } from "common/component/Modal/FormControl/FormControls";
+import { SelectModal } from "features/Cards/cardsComponents/Modal/SelectModal";
 import { Question } from "features/Cards/cardsComponents/Question";
 import { AddCover } from "common/component/AddCover/AddCover";
 import { Answer } from "features/Cards/cardsComponents/Answer";

@@ -7,7 +7,7 @@ import { SelectChangeEvent } from "@mui/material/Select";
 import { Question } from "features/Cards/cardsComponents/Question";
 import { Answer } from "features/Cards/cardsComponents/Answer";
 import { AddCover } from "common/component/AddCover/AddCover";
-import { SelectModal } from "common/component/Modal/FormControl/FormControls";
+import { SelectModal } from "features/Cards/cardsComponents/Modal/SelectModal";
 import { useModal } from "features/Cards/hook/useModal";
 
 export const ModalAddCards = () => {

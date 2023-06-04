@@ -9,17 +9,25 @@ export const useModal = (name: string, deckCover: any, id: string) => {
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value);
   };
-  const onClickHandler = () => {
+  const onClickUpdate = () => {
     dispatch(packsThunks.updatePackTC({ cardsPack: { _id: id, name: value, deckCover: file } }));
+  };
+  const onClickAddModal = () => {
+    dispatch(packsThunks.addPacksTC({ cardsPack: { name: value, deckCover: file } }));
+    setValue("");
+  };
+  const onClickDeleteModal = () => {
+    dispatch(packsThunks.removePackTC(id));
   };
 
   return {
+    onClickDeleteModal,
     value,
     setValue,
     file,
     onChangeHandler,
-    onClickHandler,
+    onClickUpdate,
     setFile,
-    // onClickAddModal
+    onClickAddModal,
   };
 };

@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { Button } from "../Button/Button";
 import { useAppSelector } from "common/hooks";
+import { useBasicModal } from "common/component/Modal/hook/useBasicModal";
 
 const style = {
   position: "absolute" as "absolute",
@@ -11,29 +12,12 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-
   boxShadow: 24,
   p: 2,
 };
-type ModalType = {
-  children?: any;
-  name?: string;
-  callback?: any;
-  header?: string;
-  mode?: boolean;
-  src?: string;
-  buttonName?: string;
-};
-export const BasicModal: React.FC<ModalType> = ({ header, children, name, buttonName, callback, mode = true, src }) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const disabled = useAppSelector((state) => state.app.isLoggedIn);
 
-  const onClickHandler = () => {
-    callback();
-    setOpen(false);
-  };
+export const BasicModal: React.FC<ModalType> = ({ header, children, name, buttonName, callback, mode = true, src }) => {
+  const { open, handleOpen, handleClose, disabled, onClickHandler } = useBasicModal(callback);
 
   return (
     <>
@@ -63,4 +47,13 @@ export const BasicModal: React.FC<ModalType> = ({ header, children, name, button
       </Modal>
     </>
   );
+};
+type ModalType = {
+  children?: any;
+  name?: string;
+  callback?: any;
+  header?: string;
+  mode?: boolean;
+  src?: string;
+  buttonName?: string;
 };
