@@ -4,6 +4,7 @@ import {
   maxSelector,
   minSelector,
   packNameSelector,
+  packSelector,
   pageCountSelector,
   pageSelector,
   sortPacksSelector,
@@ -11,6 +12,7 @@ import {
 } from "features/Packs/packsSelector";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useEffect } from "react";
+import { isLoggedInSelect } from "app/selectorsApp";
 
 export function usePack() {
   const isLoggedIn = useAppSelector(isLoggedInSelector);
@@ -21,10 +23,26 @@ export function usePack() {
   const pageCount = useAppSelector(pageCountSelector);
   const sortPacks = useAppSelector(sortPacksSelector);
   const packName = useAppSelector(packNameSelector);
+  const packs = useAppSelector(packSelector);
+  const loading = useAppSelector(isLoggedInSelect);
 
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
     dispatch(searchParamsAc({ page, pageCount }));
   };
-  return { onClickHandler, useEffect, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch };
+  return {
+    onClickHandler,
+    useEffect,
+    page,
+    user_id,
+    max,
+    min,
+    pageCount,
+    sortPacks,
+    packName,
+    isLoggedIn,
+    packs,
+    loading,
+    dispatch,
+  };
 }

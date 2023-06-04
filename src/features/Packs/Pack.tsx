@@ -15,9 +15,20 @@ import { isLoggedInSelect } from "app/selectorsApp";
 import { Loader } from "common/component/Loader/Loader";
 
 export const Pack = () => {
-  const packs = useAppSelector(packSelector);
-  const loading = useAppSelector(isLoggedInSelect);
-  const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch } = usePack();
+  const {
+    onClickHandler,
+    page,
+    user_id,
+    max,
+    min,
+    pageCount,
+    sortPacks,
+    packName,
+    isLoggedIn,
+    dispatch,
+    packs,
+    loading,
+  } = usePack();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ user_id, min, max }));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);

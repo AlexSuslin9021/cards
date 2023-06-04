@@ -10,8 +10,7 @@ import { GradesStars } from "features/Cards/cardsComponents/Raiting";
 import Icon from "common/component/Icon/Icon";
 
 export const TableCards = () => {
-  const { cards } = useCards();
-  const myId = useAppSelector((state) => state.auth.profile?._id);
+  const { cards, myId } = useCards();
   const style = { fontFamily: "Montserrat", fontWeight: "700" };
   const style2 = { background: "white" };
 

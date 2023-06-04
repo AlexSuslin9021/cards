@@ -7,13 +7,13 @@ import {
   pageQuerySelector,
   sortCardsSelector,
 } from "features/Cards/cardsSelectors";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useState } from "react";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
 import { useNavigate, useParams } from "react-router-dom";
 import { myIdSelector } from "features/Packs/packsSelector";
 import { isLoggedInSelect } from "app/selectorsApp";
-import { cardsSearchParams, getCards } from "features/Cards/cards.slice";
+import { cardsSearchParams } from "features/Cards/cards.slice";
 
 export const useCards = () => {
   const [value, setValue] = useState<string>("");
@@ -41,9 +41,6 @@ export const useCards = () => {
     setValue(value);
     dispatch(cardsSearchParams({ cardAnswer: debounceValue }));
   };
-  // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-  //   SearchCards(e.currentTarget.value);
-  // };
 
   return {
     cards,
@@ -64,6 +61,5 @@ export const useCards = () => {
     onClickPageNumber,
     onClickLearn,
     SearchCards,
-    // onChangeHandler,
   };
 };
