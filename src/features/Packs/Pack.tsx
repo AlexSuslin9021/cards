@@ -7,12 +7,8 @@ import { Pagination } from "common/component/Pagination/Pagination";
 import { Navigate } from "react-router-dom";
 import s from "./style.module.scss";
 import { AddPackModal } from "features/Packs/packsComponents/Modal/AddPackModal";
-import { cardPacksTotalCountSelector, packSelector, pageCurrentSelector } from "features/Packs/packsSelector";
+import { cardPacksTotalCountSelector, pageCurrentSelector } from "features/Packs/packsSelector";
 import { usePack } from "features/Packs/hooks/usePack";
-import { useAppSelector } from "app/store";
-import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
-import { isLoggedInSelect } from "app/selectorsApp";
-import { Loader } from "common/component/Loader/Loader";
 import { Table } from "common/component/Table/Table";
 
 export const Pack = () => {

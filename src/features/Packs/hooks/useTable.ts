@@ -8,7 +8,7 @@ export const useTable = () => {
   const dispatch = useAppDispatch();
   const packs = useAppSelector(packSelector);
   const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
-  const styleTableBody = { background: "white", maxWidth: "20%" };
+  const styleTableBody = { background: "white", wordWrap: "break-word" };
   const myId = useAppSelector(myIdSelector);
   const navigate = useNavigate();
 
