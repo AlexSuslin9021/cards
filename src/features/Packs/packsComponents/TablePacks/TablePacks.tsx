@@ -2,34 +2,13 @@ import React from "react";
 import s1 from "features/Packs/style.module.scss";
 import Table from "@mui/material/Table/Table";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
-import { useAppDispatch } from "common/hooks";
-import teach from "common/image/teacher.svg";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
-import { UpdatePackModal } from "features/Packs/packsComponents/Modal/UpdatePackModal";
-import { DeletePackModal } from "features/Packs/packsComponents/Modal/DeletePackModal";
-import { useNavigate } from "react-router-dom";
-import { myIdSelector, packSelector } from "features/Packs/packsSelector";
-import { useAppSelector } from "app/store";
-import { cardsSearchParams } from "features/Cards/cards.slice";
 import cover from "common/image/Mask.svg";
-
-const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
-const styleTableBody = { background: "white", maxWidth: "20%" };
+import { Icon } from "features/Packs/packsComponents/TablePacks/Icon/Icon";
+import { useTable } from "features/Packs/hooks/useTable";
 
 export const TablePacks = () => {
-  const dispatch = useAppDispatch();
-  const packs = useAppSelector(packSelector);
-  const myId = useAppSelector(myIdSelector);
-  const navigate = useNavigate();
-
-  const onClickNamePack = (id: string, cardId: string) => {
-    navigate(`/cards/${cardId}`);
-    dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1 }));
-  };
-  const onClickLearn = (name: string) => {
-    debugger;
-    navigate(`/learn/${name}`);
-  };
+  const { packs, styleTableHead, styleTableBody, onClickNamePack } = useTable();
 
   return (
     <div className={s1.container}>
@@ -62,24 +41,13 @@ export const TablePacks = () => {
                 <TableCell sx={styleTableBody}>{el.updated}</TableCell>
                 <TableCell sx={styleTableBody}>{el.user_name}</TableCell>
                 <TableCell sx={styleTableBody}>
-                  {
-                    <span>
-                      <img
-                        onClick={() => onClickLearn(el.name)}
-                        style={{
-                          marginRight: "10px",
-                          cursor: "pointer",
-                          display: el.cardsCount === 0 ? "none" : "inline",
-                        }}
-                        src={teach}
-                        alt="teach"
-                      />
-                      {el.user_id === myId && (
-                        <UpdatePackModal deckCover={el.deckCover} name={el.name} src={el.deckCover} id={el._id} />
-                      )}
-                      {el.user_id === myId && <DeletePackModal id={el._id} name={el.name} />}
-                    </span>
-                  }
+                  <Icon
+                    name={el.name}
+                    user_id={el.user_id}
+                    cardsCount={el.cardsCount}
+                    deckCover={el.deckCover}
+                    _id={el._id}
+                  />
                 </TableCell>
               </TableRow>
             ))}
