@@ -9,8 +9,8 @@ type ResetFiltersType = {
 export const ResetFilters: React.FC<ResetFiltersType> = ({ onClickFilter }) => {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
   return (
-    <div className={s.icon}>
+    <span className={s.icon}>
       <img style={{ opacity: isLoggedInApp ? "0.5" : "1" }} onClick={onClickFilter} src={filterData} alt="" />
-    </div>
+    </span>
   );
 };

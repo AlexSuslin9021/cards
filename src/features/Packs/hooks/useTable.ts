@@ -11,6 +11,7 @@ export const useTable = () => {
   const styleTableBody = { background: "white", maxWidth: "20%" };
   const myId = useAppSelector(myIdSelector);
   const navigate = useNavigate();
+
   const onClickLearn = (name: string) => {
     debugger;
     navigate(`/learn/${name}`);

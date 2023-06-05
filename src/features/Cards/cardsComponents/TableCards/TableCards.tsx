@@ -2,12 +2,10 @@ import React from "react";
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useCards } from "features/Cards/hook/useCards";
 import Table from "@mui/material/Table/Table";
-import { UpdateModalCard } from "features/Cards/cardsComponents/Modal/ModalUpdateCards";
-import { DeleteModalCard } from "features/Cards/cardsComponents/Modal/ModalDeleteCards";
-import { useAppSelector } from "common/hooks";
 import TableHeader from "features/Packs/packsComponents/TablePacks/TableHeader/TableHeader";
 import { GradesStars } from "features/Cards/cardsComponents/Raiting";
 import Icon from "common/component/Icon/Icon";
+import { IconCards } from "features/Cards/cardsComponents/TableCards/Icon/IconCards";
 
 export const TableCards = () => {
   const { cards, myId } = useCards();
@@ -41,17 +39,7 @@ export const TableCards = () => {
               </TableCell>
               <TableCell sx={style2}>
                 {el.user_id === myId && (
-                  <span>
-                    {
-                      <UpdateModalCard
-                        id={el._id}
-                        answerUpdate={el.answer}
-                        questionUpdate={el.question}
-                        cardsPack_id={el.cardsPack_id}
-                      />
-                    }
-                    {<DeleteModalCard id={el._id} name={el.answer} />}
-                  </span>
+                  <IconCards _id={el._id} answer={el.answer} question={el.question} cardsPack_id={el.cardsPack_id} />
                 )}
               </TableCell>
             </TableRow>
