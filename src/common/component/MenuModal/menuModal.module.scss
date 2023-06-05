@@ -1,0 +1,16 @@
+.modal{
+  width: 120px;
+  height: 80px;
+  background: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  position: fixed;
+  top:65px;
+  //display: none;
+  &hover{
+    //display: block;
+  }
+}

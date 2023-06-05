@@ -16,6 +16,7 @@ export const useSearch = () => {
   const [valueRangeMin, setValueRangeMin] = useState<number>(minCardsCount);
   const [valueRangeMax, setValueRangeMax] = useState<number>(maxCardsCount);
   const debounceValue = useDebounce(searchValue, 1000);
+
   const onChangeInputHandler = (value: string) => {
     setSearchValue(value);
     dispatch(searchParamsAc({ packName: debounceValue }));
