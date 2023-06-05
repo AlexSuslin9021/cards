@@ -19,11 +19,12 @@ const styleTableBody = { background: "white", maxWidth: "20%" };
 export const TablePacks = () => {
   const dispatch = useAppDispatch();
   const packs = useAppSelector(packSelector);
+  const myId = useAppSelector(myIdSelector);
   const navigate = useNavigate();
 
   const onClickNamePack = (id: string, cardId: string) => {
     navigate(`/cards/${cardId}`);
-    dispatch(cardsSearchParams({ cardsPack_id: cardId }));
+    dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1 }));
   };
   const onClickLearn = (name: string) => {
     debugger;
@@ -49,11 +50,9 @@ export const TablePacks = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {/*{pack.length ? (*/}
             {packs.map((el) => (
               <TableRow key={el._id} sx={{ borderBottom: "1px solid" }}>
                 <TableCell sx={styleTableBody}>
-                  {" "}
                   <img style={{ width: "30px", height: "30px" }} src={el.deckCover ? el.deckCover : cover} alt="" />
                 </TableCell>
                 <TableCell sx={styleTableBody}>
@@ -75,10 +74,10 @@ export const TablePacks = () => {
                         src={teach}
                         alt="teach"
                       />
-                      {el.user_id === "64527e000415841fd8df2cf3" && (
+                      {el.user_id === myId && (
                         <UpdatePackModal deckCover={el.deckCover} name={el.name} src={el.deckCover} id={el._id} />
                       )}
-                      {el.user_id === "64527e000415841fd8df2cf3" && <DeletePackModal id={el._id} name={el.name} />}
+                      {el.user_id === myId && <DeletePackModal id={el._id} name={el.name} />}
                     </span>
                   }
                 </TableCell>

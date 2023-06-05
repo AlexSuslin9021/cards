@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Search from "common/component/Search/Search";
-import { Range } from "features/Packs/packsComponents/TablePacks/Range/Range";
+import { Range } from "features/Packs/packsComponents/SearchPanel/Range/Range";
 import s from "features/Packs/packsComponents/SearchPanel/searchPanel.module.scss";
 import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useDebounce } from "common/hooks/useDebounce";
-import { MyAllButton } from "features/Packs/packsComponents/MyAllButtons/MyAllButton";
-import { ResetFilters } from "features/Packs/packsComponents/ResetFiltres/ResetFilters";
+import { MyAllButton } from "features/Packs/packsComponents/SearchPanel/MyAllButtons/MyAllButton";
+import { ResetFilters } from "features/Packs/packsComponents/SearchPanel/ResetFiltres/ResetFilters";
 import { useAppSelector } from "app/store";
 
 export const SearchPanel = () => {

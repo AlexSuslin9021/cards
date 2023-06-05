@@ -21,7 +21,6 @@ export const Cards = () => {
     packName,
     myId,
     userId,
-    loading,
     linkToPacks,
     onClickPageNumber,
     onClickLearn,
