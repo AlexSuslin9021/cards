@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import { cardsSearchParams } from "features/Cards/cards.slice";
+import { sortPacksSelector } from "features/Packs/packsSelector";
 
 type TableHeaderType = {
   sortName: string;
@@ -9,20 +10,19 @@ type TableHeaderType = {
 };
 const TableHeader = (props: TableHeaderType) => {
   const dispatch = useAppDispatch();
-
-  const sortCards = useAppSelector;
+  const sortPacks = useAppSelector(sortPacksSelector);
   const [changeFilter, setChangeFilter] = useState(false);
   const sortHandler = (name: string) => {
-    debugger;
     props.sortName === "question"
       ? dispatch(cardsSearchParams({ sortCards: changeFilter ? `0${name}` : `1${name}` }))
-      : dispatch(searchParamsAc({ sortPacks: changeFilter ? `0${name}` : `1${name}` }));
+      : dispatch(searchParamsAc({ sortPacks: sortPacks === `1${name}` ? `0${name}` : `1${name}` }));
     setChangeFilter(!changeFilter);
   };
+  const arrow = sortPacks === `0${props.sortName}` ? "↓" : sortPacks === `1${props.sortName}` ? "↑" : "";
   return (
     <span onClick={() => sortHandler(props.sortName)}>
       {props.headerName}
-      <span>{changeFilter ? "↓" : "↑"}</span>
+      <span>{arrow}</span>
     </span>
   );
 };

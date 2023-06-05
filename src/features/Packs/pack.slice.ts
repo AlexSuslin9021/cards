@@ -31,7 +31,7 @@ const initialState: InitialStateType = {
     block: false,
     page: 0,
     pageCount: 5,
-    sortPacks: "0updated",
+    sortPacks: "",
   },
 };
 
@@ -90,7 +90,7 @@ const slice = createSlice({
       state.queryParams.user_id = "";
       state.queryParams.min = state.packList.minCardsCount;
       state.queryParams.max = 78;
-      state.queryParams.sortPacks = "0updated";
+      state.queryParams.sortPacks = "";
       state.queryParams.pageCount = 5;
     },
   },
