@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "common/hooks";
 import {
   isLoggedInSelector,
+  maxCardSelector,
   maxSelector,
   minSelector,
   packNameSelector,
@@ -25,6 +26,7 @@ export function usePack() {
   const packName = useAppSelector(packNameSelector);
   const packs = useAppSelector(packSelector);
   const loading = useAppSelector(isLoggedInSelect);
+  const maxCardsCount = useAppSelector(maxCardSelector);
 
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {
@@ -32,7 +34,7 @@ export function usePack() {
   };
   return {
     onClickHandler,
-    useEffect,
+    maxCardsCount,
     page,
     user_id,
     max,

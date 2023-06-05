@@ -12,20 +12,8 @@ import { usePack } from "features/Packs/hooks/usePack";
 import { Table } from "common/component/Table/Table";
 
 export const Pack = () => {
-  const {
-    onClickHandler,
-    page,
-    user_id,
-    max,
-    min,
-    pageCount,
-    sortPacks,
-    packName,
-    isLoggedIn,
-    dispatch,
-    packs,
-    loading,
-  } = usePack();
+  const { onClickHandler, page, user_id, max, min, pageCount, sortPacks, packName, isLoggedIn, dispatch, packs } =
+    usePack();
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ user_id, min, max }));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);

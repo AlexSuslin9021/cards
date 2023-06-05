@@ -88,7 +88,7 @@ const slice = createSlice({
       state.queryParams.page = 1;
       state.queryParams.packName = "";
       state.queryParams.user_id = "";
-      state.queryParams.min = state.packList.minCardsCount;
+      state.queryParams.min = 0;
       state.queryParams.max = 78;
       state.queryParams.sortPacks = "";
       state.queryParams.pageCount = 5;
@@ -96,16 +96,13 @@ const slice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getPacksTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.packList.cardPacks = action.payload.cardPacks;
-        state.queryParams.page = action.payload.page;
-        state.queryParams.pageCount = action.payload.pageCount;
-        state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
-        state.packList.maxCardsCount = action.payload.maxCardsCount;
-        state.packList.minCardsCount = action.payload.minCardsCount;
-
-        // state.queryParams.min = action.payload.minCardsCount;
-      }
+      debugger;
+      state.packList.cardPacks = action.payload.cardPacks;
+      state.queryParams.page = action.payload.page;
+      state.queryParams.pageCount = action.payload.pageCount;
+      state.packList.cardPacksTotalCount = action.payload.cardPacksTotalCount;
+      state.packList.maxCardsCount = action.payload.maxCardsCount;
+      state.packList.minCardsCount = action.payload.minCardsCount;
     });
     builder.addCase(addPacksTC.fulfilled, (state, action) => {
       state.packList.cardPacks.unshift(action.payload);

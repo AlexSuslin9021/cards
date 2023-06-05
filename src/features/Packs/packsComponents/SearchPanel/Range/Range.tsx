@@ -1,34 +1,10 @@
-import React, { SyntheticEvent, useState } from "react";
+import React from "react";
 import s from "features/Packs/packsComponents/SearchPanel/Range/Range.module.scss";
 import { Slider } from "@mui/material";
-import { searchParamsAc } from "features/Packs/pack.slice";
-import { useAppDispatch, useAppSelector } from "common/hooks";
-import { maxCardSelector, minCardSelector } from "features/Packs/packsSelector";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
-import { isLoggedInSelect } from "app/selectorsApp";
-
+import { useSearch } from "features/Packs/hooks/useSearch";
 export const Range = () => {
-  const minCardsCount = useAppSelector(minCardSelector);
-  const maxCardsCount = useAppSelector(maxCardSelector);
-  const [value1, setValue1] = useState<number>(Number(minCardsCount));
-  const [value2, setValue2] = useState<number>(Number(maxCardsCount));
-  const dispatch = useAppDispatch();
-  const disabled = useAppSelector(isLoggedInSelect);
-
-  const change = (event: Event | SyntheticEvent<Element, Event>, value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setValue1(value[0]);
-      setValue2(value[1]);
-      dispatch(searchParamsAc({ min: value1, max: value2 }));
-    }
-  };
-
-  const handleChange = (event: Event, value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setValue1(value[0]);
-      setValue2(value[1]);
-    }
-  };
+  const { handleChange, change, disabled, valueRangeMin, valueRangeMax, minCardsCount, maxCardsCount } = useSearch();
 
   return (
     <div className={s.sliderCont}>
@@ -36,17 +12,19 @@ export const Range = () => {
       <div className={s.container}>
         <div className={s.wrapper}>
           <div className={s.number}>
-            <span> {value1}</span>
+            <span> {valueRangeMin}</span>
           </div>
           <Slider
             sx={{ width: "100px", margin: "0 15px 0 15px" }}
-            value={[value1, value2]}
+            value={[valueRangeMin, valueRangeMax]}
             onChange={handleChange}
             onChangeCommitted={change}
             disabled={disabled}
+            min={minCardsCount}
+            max={maxCardsCount}
           />
           <div className={s.number}>
-            <span> {value2}</span>
+            <span> {valueRangeMax}</span>
           </div>
         </div>
       </div>
