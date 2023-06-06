@@ -11,10 +11,9 @@ import { IconModal } from "common/component/Icon/IconModal";
 import { useProfile } from "common/hooks/useProfile";
 
 export const Profile = () => {
-  const { isLoggedIn, email, onClickLogout } = useProfile();
+  const { isLoggedIn, email, onClickLogout, setOpen } = useProfile();
 
   if (!isLoggedIn) {
-    debugger;
     return <Navigate to={"/login"} />;
   }
 
