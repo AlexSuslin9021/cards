@@ -1,16 +1,20 @@
 .modal{
-  width: 120px;
-  height: 80px;
+  width: 122px;
+  height: 104px;
   background: white;
-  border: 1px solid black;
+  border: 1px solid #CFCFCF;;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
   position: fixed;
   top:65px;
-  //display: none;
-  &hover{
-    //display: block;
+.str {
+    &:hover{
+      text-decoration: lightgrey ;
+    }
   }
+
+
 }
