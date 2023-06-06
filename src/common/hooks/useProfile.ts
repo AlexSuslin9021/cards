@@ -19,8 +19,8 @@ export const useProfile = () => {
     return navigate("/login");
   };
   const onClickProfile = () => {
-    navigate("/");
     setOpen(false);
+    navigate("/");
   };
 
   const onMouseMoveName = () => {
