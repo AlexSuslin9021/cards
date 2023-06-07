@@ -48,7 +48,7 @@ function App() {
           <Route path={"/forgot-password"} element={<ForgotPassword />} />
           <Route path={"/check-email"} element={<CheckEmail />} />
           <Route path={"/set-new-password/:token"} element={<CreatePassword />} />
-          <Route path={"/page-pack"} element={<PagePack />} />
+          <Route path={"/page-pack/:name/:idCard"} element={<PagePack />} />
           <Route path={"/cards/:id"} element={<Cards />} />
           <Route path={"/learn/:packName"} element={<Learn />} />
         </Routes>

@@ -57,7 +57,7 @@ export const addCard = createAppAsyncThunk<CardResponseType, { card: CardsType }
     return thunkTryCatch(thunkAPI, async () => {
       const { dispatch } = thunkAPI;
       let res = await apiCards.addCard(arg);
-      dispatch(getCards({ cardsPack_id: res.data.newCard.cardsPack_id }));
+      // dispatch(getCards({ cardsPack_id: res.data.newCard.cardsPack_id }));
       return res.data.newCard;
     });
   }

@@ -3,7 +3,6 @@ import { useAppSelector } from "app/store";
 import { myIdSelector, packSelector } from "features/Packs/packsSelector";
 import { useNavigate } from "react-router-dom";
 import { cardsSearchParams } from "features/Cards/cards.slice";
-import { cardsSelector } from "features/Cards/cardsSelectors";
 
 export const useTable = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +20,9 @@ export const useTable = () => {
   const onClickLearn = (name: string) => {
     navigate(`/learn/${name}`);
   };
-  const onClickNamePack = (countCards: number, id: string, cardId: string) => {
+  const onClickNamePack = (name: string, countCards: number, userId: string, cardId: string) => {
+    console.log(countCards, userId, myId, cardId);
+    if (countCards === 0 && userId === myId) navigate(`/page-pack/${name}/${cardId}`);
     if (countCards !== 0) navigate(`/cards/${cardId}`);
     dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1, sortCards: "" }));
   };

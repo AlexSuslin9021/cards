@@ -3,6 +3,7 @@ import { cardsPack_idSelector } from "features/Cards/cardsSelectors";
 import { useState } from "react";
 import { cardsThunks } from "features/Cards/cards.slice";
 import { SelectChangeEvent } from "@mui/material/Select";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const useModal = (answerUpdate: string, questionUpdate: string) => {
   const dispatch = useAppDispatch();
@@ -11,11 +12,16 @@ export const useModal = (answerUpdate: string, questionUpdate: string) => {
   const [question, setQuestion] = useState(questionUpdate);
   const [value, setValue] = useState<any>("");
   const [value1, setValue1] = useState<any>("");
+  const navigate = useNavigate();
+  const params = useParams();
+
   const onClickHandler = () => {
+    debugger;
     dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: question } }));
     setAnswer("");
     setValue("");
     setValue1("");
+    navigate(`/cards/${params.idCard}`);
   };
   const handleChangeQuestion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

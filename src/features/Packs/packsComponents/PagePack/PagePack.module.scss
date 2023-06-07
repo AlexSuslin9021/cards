@@ -1,8 +1,16 @@
 .buttonCont{
   width: 100%;
-  height: 100%;
+  height: 120%;
   flex-direction: column;
 display: flex;
   justify-content: center;
   align-items: center;
+}
+.back{
+  position: absolute;
+top: 100px;
+}
+.packName{
+  position: absolute;
+  top: 250px;
 }
