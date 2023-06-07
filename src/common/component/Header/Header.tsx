@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "common/component/Header/Header.module.scss";
 import { Button } from "common/component/Button/Button";
 import { useLocation, useParams } from "react-router-dom";
@@ -7,12 +7,20 @@ import { MenuModal } from "common/component/MenuModal/MenuModal";
 import { useProfile } from "common/hooks/useProfile";
 
 export const Header = () => {
-  const { isLoggedIn, open, name, logoutButton, onMouseMoveName, onMouseLeaveName } = useProfile();
+  const { isLoggedIn, open, name, setOpen, logoutButton, onMouseMoveName, onMouseLeaveName } = useProfile();
   const location = useLocation();
   const condition = location.pathname !== "/";
+
+  console.log(open, condition);
   return (
-    <div className={s.header}>
-      <div onClick={onMouseMoveName} onMouseLeave={onMouseLeaveName} className={s.button}>
+    <div
+      className={s.header}
+      onClick={() => {
+        debugger;
+        setOpen(!open);
+      }}
+    >
+      <div className={s.button}>
         {isLoggedIn ? (
           <div className={s.loginAvatar}>
             <span>{name}</span>

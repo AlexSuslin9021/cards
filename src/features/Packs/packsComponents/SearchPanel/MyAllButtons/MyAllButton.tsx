@@ -4,7 +4,7 @@ import { searchParamsAc } from "features/Packs/pack.slice";
 import { useAppDispatch } from "common/hooks";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "app/store";
-import { myIdSelector, user_idSelector } from "features/Packs/packsSelector";
+import { maxCardSelector, minCardSelector, myIdSelector, user_idSelector } from "features/Packs/packsSelector";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import { isLoggedInSelect } from "app/selectorsApp";
 
@@ -14,13 +14,15 @@ export const MyAllButton = () => {
   const myId = useAppSelector(myIdSelector);
   const userId = useAppSelector(user_idSelector);
   const disabled = useAppSelector(isLoggedInSelect);
+  const maxCardsCount = useAppSelector(maxCardSelector);
+  const minCardsCount = useAppSelector(minCardSelector);
 
   const onClickMyPack = () => {
-    dispatch(searchParamsAc({ user_id: myId }));
+    dispatch(searchParamsAc({ user_id: myId, max: maxCardsCount, min: minCardsCount }));
     navigate("/packs/my");
   };
   const onClickAllPack = () => {
-    dispatch(searchParamsAc({ user_id: "" }));
+    dispatch(searchParamsAc({ user_id: "", max: maxCardsCount, min: minCardsCount }));
     navigate("/packs/all");
   };
 

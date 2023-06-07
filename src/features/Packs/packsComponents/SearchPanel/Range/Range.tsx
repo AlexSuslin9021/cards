@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import s from "features/Packs/packsComponents/SearchPanel/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import { useSearch } from "features/Packs/hooks/useSearch";
 export const Range = () => {
-  const { handleChange, change, disabled, valueRangeMin, valueRangeMax, minCardsCount, maxCardsCount } = useSearch();
-
+  const {
+    handleChange,
+    change,
+    disabled,
+    valueRangeMin,
+    valueRangeMax,
+    minCardsCount,
+    maxCardsCount,
+    setValueRangeMax,
+    setValueRangeMin,
+  } = useSearch();
+  useEffect(() => {
+    setValueRangeMax(maxCardsCount);
+    setValueRangeMin(minCardsCount);
+  }, [maxCardsCount, minCardsCount]);
   return (
     <div className={s.sliderCont}>
       <MiniTitle name={"Number of cards"} />

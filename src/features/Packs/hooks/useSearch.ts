@@ -1,6 +1,6 @@
 import { useAppDispatch } from "common/hooks";
 import { useAppSelector } from "app/store";
-import { SyntheticEvent, useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useLayoutEffect, useState } from "react";
 import { useDebounce } from "common/hooks/useDebounce";
 import { deleteSearchParamsAC, searchParamsAc } from "features/Packs/pack.slice";
 import { maxCardSelector, minCardSelector } from "features/Packs/packsSelector";
@@ -15,8 +15,9 @@ export const useSearch = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [valueRangeMin, setValueRangeMin] = useState<number>(minCardsCount);
   const [valueRangeMax, setValueRangeMax] = useState<number>(maxCardsCount);
+
   const debounceValue = useDebounce(searchValue, 1000);
-  const [isFirstChanges, setIsFirstChanges] = useState(true);
+  // const [isFirstChanges, setIsFirstChanges] = useState(true);
 
   const onChangeInputHandler = (value: string) => {
     setSearchValue(value);
@@ -37,7 +38,7 @@ export const useSearch = () => {
       setValueRangeMax(value[1]);
     }
   };
-  // useEffect(() => {
+  // useLayoutEffect(() => {
   //   if (maxCardsCount !== 0 && isFirstChanges) {
   //     setValueRangeMax(maxCardsCount);
   //     setIsFirstChanges(false);
@@ -50,6 +51,8 @@ export const useSearch = () => {
   };
   console.log(valueRangeMax);
   return {
+    setValueRangeMax,
+    setValueRangeMin,
     debounceValue,
     isLoggedInApp,
     searchValue,

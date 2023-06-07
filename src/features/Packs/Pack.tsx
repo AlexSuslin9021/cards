@@ -17,13 +17,8 @@ export const Pack = () => {
   useEffect(() => {
     dispatch(packsThunks.getPacksTC({ user_id, min, max }));
   }, [page, user_id, max, min, pageCount, sortPacks, packName]);
-  useEffect(() => {
-    console.log(min);
-    console.log(max);
-  }, [max, min]);
 
   if (!isLoggedIn) {
-    debugger;
     return <Navigate to={"/login"} />;
   }
   return (

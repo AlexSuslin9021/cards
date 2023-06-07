@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "common/component/Profile/Profile.module.scss";
 import style from "common/styles/container.module.scss";
 import { Title } from "common/component/Title/Title";
@@ -11,7 +11,7 @@ import { IconModal } from "common/component/Icon/IconModal";
 import { useProfile } from "common/hooks/useProfile";
 
 export const Profile = () => {
-  const { isLoggedIn, email, onClickLogout, setOpen } = useProfile();
+  const { isLoggedIn, email, onClickLogout } = useProfile();
 
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;
