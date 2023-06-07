@@ -1,15 +1,18 @@
 import React from "react";
-import s from "common/component/MenuModal/menuModal.module.scss";
+import s from "../MenuModal/menuModal.module.scss";
 
-export const IconModal: React.FC<IconModalType> = ({ src, value }) => {
+export const IconModal: React.FC<IconModalType> = ({ src, value, callback }) => {
   const iconStyle = { width: "14px", height: "14px" };
   return (
-    <span className={s.str}>
-      <img style={iconStyle} src={src} alt="" /> {value}
-    </span>
+    <div onClick={callback}>
+      <span className={s.str}>
+        <img style={iconStyle} src={src} alt="" /> {value}
+      </span>
+    </div>
   );
 };
 type IconModalType = {
   src: string;
   value: string;
+  callback?: (value: any) => void;
 };

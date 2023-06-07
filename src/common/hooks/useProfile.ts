@@ -23,10 +23,10 @@ export const useProfile = () => {
     navigate("/");
   };
 
-  const onMouseMoveName = () => {
+  const openModal = () => {
     setOpen(true);
   };
-  const onMouseLeaveName = () => {
+  const closeModal = () => {
     setOpen(false);
     // return navigate("/");
   };
@@ -41,8 +41,8 @@ export const useProfile = () => {
     open,
     name,
     logoutButton,
-    onMouseMoveName,
-    onMouseLeaveName,
+    openModal,
+    closeModal,
     setOpen,
     onClickProfile,
   };

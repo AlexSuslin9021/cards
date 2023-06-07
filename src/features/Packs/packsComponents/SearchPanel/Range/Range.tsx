@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import s from "features/Packs/packsComponents/SearchPanel/Range/Range.module.scss";
 import { Slider } from "@mui/material";
 import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
