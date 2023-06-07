@@ -31,6 +31,7 @@ export const Cards = () => {
     sortCards,
     page,
   } = useCards();
+
   useEffect(() => {
     dispatch(getCards({ cardsPack_id: id ? id : "", cardAnswer: value }));
   }, [debounceValue, sortCards, page]);

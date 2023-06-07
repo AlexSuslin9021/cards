@@ -27,6 +27,7 @@ export function usePack() {
   const packs = useAppSelector(packSelector);
   const loading = useAppSelector(isLoggedInSelect);
   const maxCardsCount = useAppSelector(maxCardSelector);
+  console.log(maxCardsCount);
 
   const dispatch = useAppDispatch();
   const onClickHandler = (page: number) => {

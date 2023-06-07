@@ -7,7 +7,7 @@ import { packSelector } from "features/Packs/packsSelector";
 
 export const Table: React.FC<TableType> = ({ valueNotFound, children, elementCount }) => {
   const loading = useAppSelector(isLoggedInSelect);
-  const packs = useAppSelector(packSelector);
+
   return <>{loading ? <Loader /> : elementCount ? children : <ValueNotFound value={valueNotFound} />}</>;
 };
 

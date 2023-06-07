@@ -16,21 +16,21 @@ import { isLoggedInSelect } from "app/selectorsApp";
 import { cardsSearchParams } from "features/Cards/cards.slice";
 
 export const useCards = () => {
-  const [value, setValue] = useState<string>("");
   const dispatch = useAppDispatch();
-  const debounceValue = useDebounce(value, 1000);
+  const [value, setValue] = useState<string>("");
   const { id } = useParams();
+  const navigate = useNavigate();
+  const debounceValue = useDebounce(value, 1000);
   const packName = useAppSelector(packNameSelect);
   const myId = useAppSelector(myIdSelector);
   const userId = useAppSelector(packUserIdSelector);
   const sortCards = useAppSelector(sortCardsSelector);
   const page = useAppSelector(pageQuerySelector);
   const pageCount = useAppSelector(pageCountSelector);
-  const navigate = useNavigate();
   const loading = useAppSelector(isLoggedInSelect);
   const cards = useAppSelector(cardsSelector);
-
   const linkToPacks = myId === userId ? "my" : "all";
+
   const onClickPageNumber = (page: number) => {
     dispatch(cardsSearchParams({ page: page, pageCount: pageCount }));
   };

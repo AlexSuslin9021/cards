@@ -5,7 +5,7 @@ import { MiniTitle } from "features/Packs/packsComponents/MiniTitle/MiniTitle";
 import { useSearch } from "features/Packs/hooks/useSearch";
 export const Range = () => {
   const { handleChange, change, disabled, valueRangeMin, valueRangeMax, minCardsCount, maxCardsCount } = useSearch();
-  console.log(valueRangeMax);
+
   return (
     <div className={s.sliderCont}>
       <MiniTitle name={"Number of cards"} />

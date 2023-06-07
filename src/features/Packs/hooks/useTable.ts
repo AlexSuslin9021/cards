@@ -8,7 +8,11 @@ export const useTable = () => {
   const dispatch = useAppDispatch();
   const packs = useAppSelector(packSelector);
   const styleTableHead = { fontFamily: "Montserrat", fontWeight: "700" };
-  const styleTableBody = { background: "white", wordWrap: "break-word" };
+  const styleTableBody = {
+    background: "white",
+    maxWidth: "20vw",
+    wordWrap: "break-word",
+  };
   const myId = useAppSelector(myIdSelector);
   const navigate = useNavigate();
 
@@ -18,7 +22,7 @@ export const useTable = () => {
   };
   const onClickNamePack = (id: string, cardId: string) => {
     navigate(`/cards/${cardId}`);
-    dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1 }));
+    dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1, sortCards: "" }));
   };
 
   return { packs, styleTableHead, styleTableBody, onClickNamePack, myId, onClickLearn };

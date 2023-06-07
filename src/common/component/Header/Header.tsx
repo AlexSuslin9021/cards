@@ -10,7 +10,6 @@ export const Header = () => {
   const { isLoggedIn, open, name, logoutButton, onMouseMoveName, onMouseLeaveName } = useProfile();
   const location = useLocation();
   const condition = location.pathname !== "/";
-  console.log(location.pathname);
   return (
     <div className={s.header}>
       <div onClick={onMouseMoveName} onMouseLeave={onMouseLeaveName} className={s.button}>

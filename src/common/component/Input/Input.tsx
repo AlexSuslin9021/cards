@@ -2,7 +2,6 @@ import React, { FC, useState } from "react";
 import s from "./input.module.scss";
 
 export const Input: FC<inputT> = ({ register, placeholder, type, name, ...rest }) => {
-  const [editMode, setEditMode] = useState(false);
   return (
     <div className={s.input}>
       <input
