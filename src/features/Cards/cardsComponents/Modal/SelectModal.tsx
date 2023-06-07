@@ -10,7 +10,7 @@ export const SelectModal: React.FC<SelectModalType> = ({ value, label, option1, 
       <InputLabel>{label}</InputLabel>
       <Select value={value} label={label} onChange={handleChange}>
         <MenuItem value={option1}>Image</MenuItem>
-        <MenuItem value={option2}>Text questions</MenuItem>
+        <MenuItem value={option2}>{option2}</MenuItem>
       </Select>
     </FormControl>
   );

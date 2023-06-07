@@ -21,6 +21,7 @@ export const initialState: InitialStateType = {
     pageCount: 1,
     packUserId: "",
     packName: "",
+    packDeckCover: "",
   },
   queryParams: {
     cardAnswer: "",
@@ -114,6 +115,7 @@ const slice = createSlice({
       state.cardList.page = action.payload.page;
       state.cardList.pageCount = action.payload.pageCount;
       state.cardList.packName = action.payload.packName;
+      state.cardList.packDeckCover = action.payload.packDeckCover;
     });
     builder.addCase(addCard.fulfilled, (state, action) => {
       state.cardList.cards.unshift(action.payload);

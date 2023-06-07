@@ -8,7 +8,7 @@ export const Answer: React.FC<AnswerType> = ({ answer, setAnswer }) => {
   };
   return (
     <div className={s.input}>
-      <label>Answer</label>
+      <label>Answger</label>
       <input value={answer} onChange={onChangeAnswer} type="text" />
     </div>
   );

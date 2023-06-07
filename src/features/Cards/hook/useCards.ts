@@ -1,6 +1,7 @@
 import { useAppSelector } from "app/store";
 import {
   cardsSelector,
+  packDeckCoverSelector,
   packNameSelect,
   packUserIdSelector,
   pageCountSelector,
@@ -29,6 +30,7 @@ export const useCards = () => {
   const pageCount = useAppSelector(pageCountSelector);
   const loading = useAppSelector(isLoggedInSelect);
   const cards = useAppSelector(cardsSelector);
+  const packDeckCover = useAppSelector(packDeckCoverSelector);
   const linkToPacks = myId === userId ? "my" : "all";
 
   const onClickPageNumber = (page: number) => {
@@ -43,6 +45,7 @@ export const useCards = () => {
   };
 
   return {
+    packDeckCover,
     cards,
     value,
     setValue,

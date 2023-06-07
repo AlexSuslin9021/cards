@@ -76,6 +76,7 @@ export type GetCardsResponseType = {
   pageCount: number;
   packUserId: string;
   packName: string;
+  packDeckCover: "";
 };
 
 export type UpdateGradeType = {

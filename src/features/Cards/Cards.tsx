@@ -10,8 +10,7 @@ import { ModalAddCards } from "features/Cards/cardsComponents/Modal/ModalAddCard
 import { Pagination } from "common/component/Pagination/Pagination";
 import { Button } from "common/component/Button/Button";
 import { useCards } from "features/Cards/hook/useCards";
-import { ValueNotFound } from "features/Packs/packsComponents/ValueNotFound/ValueNotFound";
-import { Loader } from "common/component/Loader/Loader";
+import cover from "../../common/image/Mask.svg";
 import { Table } from "common/component/Table/Table";
 
 export const Cards = () => {
@@ -30,6 +29,7 @@ export const Cards = () => {
     debounceValue,
     sortCards,
     page,
+    packDeckCover,
   } = useCards();
 
   useEffect(() => {
@@ -39,9 +39,11 @@ export const Cards = () => {
   return (
     <div className={s1.container}>
       <BackTo name={"Back to MyPack List"} link={`/packs/${linkToPacks}`} />
+
       <PacksTitle name={packName}>
         {userId === myId ? <ModalAddCards /> : <Button callback={onClickLearn} name={"Learn"} />}
       </PacksTitle>
+      <img style={{ width: "50px", height: "50px" }} src={packDeckCover ? packDeckCover : cover} alt="" />
       <Search value={value} callback={SearchCards}></Search>
       <Table
         elementCount={cards.length}

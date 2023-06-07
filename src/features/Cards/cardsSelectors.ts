@@ -16,9 +16,11 @@ const sortCardsSelector = (state: RootState) => state.cards.queryParams.sortCard
 const pageQuerySelector = (state: RootState) => state.cards.queryParams.page;
 const pageCountQuerySelector = (state: RootState) => state.cards.queryParams.pageCount;
 const packNameSelect = (state: RootState) => state.cards.cardList.packName;
+const packDeckCoverSelector = (state: RootState) => state.cards.cardList.packDeckCover;
 //
 export {
   cardsSelector,
+  packDeckCoverSelector,
   maxGradeSelector,
   minGradeSelector,
   pageSelector,
