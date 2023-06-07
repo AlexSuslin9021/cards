@@ -17,7 +17,6 @@ import { CircularProgress, LinearProgress } from "@mui/material";
 import { Pack } from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
-import { useProfile } from "common/hooks/useProfile";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
