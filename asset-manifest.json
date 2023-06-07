@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/cards/static/css/main.173d5b29.css",
-    "main.js": "/cards/static/js/main.a9575f0d.js",
-    "static/js/787.8517b185.chunk.js": "/cards/static/js/787.8517b185.chunk.js",
-    "static/media/Mask.svg": "/cards/static/media/Mask.7e0015557d381395be7886e2c5487f88.svg",
-    "static/media/ava.svg": "/cards/static/media/ava.5ce34b234d561bfef351b16cfe4a3d99.svg",
-    "static/media/filter.svg": "/cards/static/media/filter.94834f22c3f2a223da67be1d289bdf7e.svg",
-    "static/media/trash.svg": "/cards/static/media/trash.2dc887d01f63a76cca299c4acf3b2101.svg",
-    "static/media/pencil.svg": "/cards/static/media/pencil.80237abf8b3a40342bca9b516ae5808a.svg",
-    "static/media/changePhoto.svg": "/cards/static/media/changePhoto.cba2d0780c64c8702573ab24ce69c94a.svg",
-    "static/media/teacher.svg": "/cards/static/media/teacher.98ddc8f9376c79b05bb474310295b927.svg",
-    "index.html": "/cards/index.html",
-    "static/media/logout2.svg": "/cards/static/media/logout2.4aa1e1e64c6485b52459fc4647db3caf.svg",
-    "static/media/mail.svg": "/cards/static/media/mail.bdff900da89488ede4d244b37657b331.svg",
-    "static/media/user.svg": "/cards/static/media/user.509dd0d17ca28178be2fd6a95d749a1f.svg",
-    "static/media/Vector 1.svg": "/cards/static/media/Vector 1.9c43ee4473c188dca31578cbfa023bb9.svg",
-    "main.173d5b29.css.map": "/cards/static/css/main.173d5b29.css.map",
-    "main.a9575f0d.js.map": "/cards/static/js/main.a9575f0d.js.map",
-    "787.8517b185.chunk.js.map": "/cards/static/js/787.8517b185.chunk.js.map"
+    "main.css": "/CardsProject/static/css/main.173d5b29.css",
+    "main.js": "/CardsProject/static/js/main.7b015791.js",
+    "static/js/787.8517b185.chunk.js": "/CardsProject/static/js/787.8517b185.chunk.js",
+    "static/media/Mask.svg": "/CardsProject/static/media/Mask.7e0015557d381395be7886e2c5487f88.svg",
+    "static/media/ava.svg": "/CardsProject/static/media/ava.5ce34b234d561bfef351b16cfe4a3d99.svg",
+    "static/media/filter.svg": "/CardsProject/static/media/filter.94834f22c3f2a223da67be1d289bdf7e.svg",
+    "static/media/trash.svg": "/CardsProject/static/media/trash.2dc887d01f63a76cca299c4acf3b2101.svg",
+    "static/media/pencil.svg": "/CardsProject/static/media/pencil.80237abf8b3a40342bca9b516ae5808a.svg",
+    "static/media/changePhoto.svg": "/CardsProject/static/media/changePhoto.cba2d0780c64c8702573ab24ce69c94a.svg",
+    "static/media/teacher.svg": "/CardsProject/static/media/teacher.98ddc8f9376c79b05bb474310295b927.svg",
+    "index.html": "/CardsProject/index.html",
+    "static/media/logout2.svg": "/CardsProject/static/media/logout2.4aa1e1e64c6485b52459fc4647db3caf.svg",
+    "static/media/mail.svg": "/CardsProject/static/media/mail.bdff900da89488ede4d244b37657b331.svg",
+    "static/media/user.svg": "/CardsProject/static/media/user.509dd0d17ca28178be2fd6a95d749a1f.svg",
+    "static/media/Vector 1.svg": "/CardsProject/static/media/Vector 1.9c43ee4473c188dca31578cbfa023bb9.svg",
+    "main.173d5b29.css.map": "/CardsProject/static/css/main.173d5b29.css.map",
+    "main.7b015791.js.map": "/CardsProject/static/js/main.7b015791.js.map",
+    "787.8517b185.chunk.js.map": "/CardsProject/static/js/787.8517b185.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.173d5b29.css",
-    "static/js/main.a9575f0d.js"
+    "static/js/main.7b015791.js"
   ]
 }
