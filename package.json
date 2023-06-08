@@ -2,7 +2,7 @@
   "name": "cards",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://AlexSuslin9021.github.io/cards",
+  "homepage": "https://AlexSuslin9021.github.io",
   "dependencies": {
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",

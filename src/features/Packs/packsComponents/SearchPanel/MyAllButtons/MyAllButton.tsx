@@ -18,11 +18,11 @@ export const MyAllButton = () => {
   const minCardsCount = useAppSelector(minCardSelector);
 
   const onClickMyPack = () => {
-    dispatch(searchParamsAc({ user_id: myId, max: maxCardsCount, min: minCardsCount }));
+    dispatch(searchParamsAc({ user_id: myId, max: maxCardsCount, min: minCardsCount, page: 1 }));
     navigate("/packs/my");
   };
   const onClickAllPack = () => {
-    dispatch(searchParamsAc({ user_id: "", max: maxCardsCount, min: minCardsCount }));
+    dispatch(searchParamsAc({ user_id: "", max: maxCardsCount, min: minCardsCount, page: 1 }));
     navigate("/packs/all");
   };
 

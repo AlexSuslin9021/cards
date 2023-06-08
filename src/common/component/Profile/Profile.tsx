@@ -19,7 +19,7 @@ export const Profile = () => {
 
   return (
     <div className={style.container}>
-      <BackTo name={"Back to MyPack List"} link={"/packs/all"} />
+      <BackTo name={"Go to Pack List"} link={"/packs/all"} />
       <Title name={"Personal Information"} />
       <Avatar />
       <EditableSpan />
