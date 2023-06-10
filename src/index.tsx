@@ -5,24 +5,22 @@ import { store } from "./app/store";
 import App from "app/App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import GlobalError from "common/component/Global/GlobalError";
+
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
+  <HashRouter>
     <Provider store={store}>
       <App />
       <GlobalError />
     </Provider>
-  </BrowserRouter>
+  </HashRouter>
   // </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
