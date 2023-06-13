@@ -1,33 +1,16 @@
 import { RootState } from "app/store";
 
-const packSelector = (state: RootState) => state.pack.packList.cardPacks;
-const myIdSelector = (state: RootState) => state.auth.profile?._id;
-const isLoggedInSelector = (state: RootState) => state.auth.isLoggedIn;
-const pageSelector = (state: RootState) => state.pack.queryParams.page;
-const maxCardSelector = (state: RootState) => state.pack.packList.maxCardsCount;
-const minCardSelector = (state: RootState) => state.pack.packList.minCardsCount;
-const maxSelector = (state: RootState) => state.pack.queryParams.max;
-const minSelector = (state: RootState) => state.pack.queryParams.min;
-const pageCountSelector = (state: RootState) => state.pack.queryParams.pageCount;
-const user_idSelector = (state: RootState) => state.pack.queryParams.user_id;
-const sortPacksSelector = (state: RootState) => state.pack.queryParams.sortPacks;
-const packNameSelector = (state: RootState) => state.pack.queryParams.packName;
-const pageCurrentSelector = (state: RootState) => state.pack.queryParams.page;
-
-const cardPacksTotalCountSelector = (state: RootState) => state.pack.packList.cardPacksTotalCount;
-export {
-  minCardSelector,
-  maxCardSelector,
-  packSelector,
-  myIdSelector,
-  pageCurrentSelector,
-  isLoggedInSelector,
-  pageSelector,
-  maxSelector,
-  minSelector,
-  pageCountSelector,
-  user_idSelector,
-  sortPacksSelector,
-  packNameSelector,
-  cardPacksTotalCountSelector,
-};
+export const packSelector = (state: RootState) => state.pack.packList.cardPacks;
+export const myIdSelector = (state: RootState) => state.auth.profile?._id;
+export const isLoggedInSelector = (state: RootState) => state.auth.isLoggedIn;
+export const pageSelector = (state: RootState) => state.pack.queryParams.page;
+export const maxCardSelector = (state: RootState) => state.pack.packList.maxCardsCount;
+export const minCardSelector = (state: RootState) => state.pack.packList.minCardsCount;
+export const maxSelector = (state: RootState) => state.pack.queryParams.max;
+export const minSelector = (state: RootState) => state.pack.queryParams.min;
+export const pageCountSelector = (state: RootState) => state.pack.queryParams.pageCount;
+export const user_idSelector = (state: RootState) => state.pack.queryParams.user_id;
+export const sortPacksSelector = (state: RootState) => state.pack.queryParams.sortPacks;
+export const packNameSelector = (state: RootState) => state.pack.queryParams.packName;
+export const pageCurrentSelector = (state: RootState) => state.pack.queryParams.page;
+export const cardPacksTotalCountSelector = (state: RootState) => state.pack.packList.cardPacksTotalCount;
