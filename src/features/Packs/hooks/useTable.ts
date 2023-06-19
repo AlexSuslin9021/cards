@@ -23,7 +23,7 @@ export const useTable = () => {
   const onClickNamePack = (name: string, countCards: number, userId: string, cardId: string) => {
     console.log(countCards, userId, myId, cardId);
     if (countCards === 0 && userId === myId) navigate(`/page-pack/${name}/${cardId}`);
-    if (countCards !== 0) navigate(`/cards/${cardId}`);
+    if (countCards !== 0) navigate(`/cardsPage/${cardId}`);
     dispatch(cardsSearchParams({ cardsPack_id: cardId, page: 1, sortCards: "" }));
   };
 
