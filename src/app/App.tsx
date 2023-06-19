@@ -43,7 +43,7 @@ function App() {
       <div className={s.container}>
         <Routes>
           <Route path={"/cards"} element={<Profile />} />
-          <Route path={"/"} element={<Navigate to="/cards" replace />} />
+          <Route path={"/"} element={<Navigate to="/cards"/>} />
           <Route path={"/packs/:section"} element={<Pack />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
@@ -53,7 +53,7 @@ function App() {
           <Route path={"/page-pack/:name/:idCard"} element={<PagePack />} />
           <Route path={"/cardsPage/:id"} element={<Cards />} />
           <Route path={"/learn/:packName"} element={<Learn />} />
-          {/*<Route path={"/*"} element={<Error/>} />*/}
+          <Route path={"/*"} element={<Error/>} />
         </Routes>
       </div>
     </div>

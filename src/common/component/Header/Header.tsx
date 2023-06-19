@@ -9,7 +9,7 @@ import { HeaderModal } from "common/component/MenuModal/HeaderModal";
 export const Header = () => {
   const { isLoggedIn, open, name, setOpen, logoutButton } = useProfile();
   const location = useLocation();
-  const condition = location.pathname !== "/";
+  const condition = location.pathname !== "/cards";
 
   return (
     <div

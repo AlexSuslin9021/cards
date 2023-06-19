@@ -33,6 +33,7 @@ export const useProfile = () => {
   const onClickLogout = () => {
     dispatch(logoutTC());
     setOpen(false);
+    navigate('/login')
   };
   return {
     isLoggedIn,
