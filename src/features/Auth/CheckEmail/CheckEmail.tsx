@@ -5,6 +5,7 @@ import s1 from "common/component/Button/button.module.scss";
 import s from "features/Auth/CheckEmail/checkEmail.module.scss";
 import { Message } from "common/component/Message/Message";
 import mail from "../../../common/image/mail.svg";
+import { NavLink } from "react-router-dom";
 
 export const CheckEmail = () => {
   return (
@@ -15,9 +16,9 @@ export const CheckEmail = () => {
       </span>
       <Message message={"We’ve sent an Email with instructions to example@mail.com"} />
       <button className={s1.button}>
-        <a className={s.link} href="/">
+        <NavLink className={s.link} to="/">
           Back to login
-        </a>
+        </NavLink>
       </button>
     </div>
   );
