@@ -26,7 +26,9 @@ export const authApi = {
     );
   },
   createNewPassword(data: CreatePasswordType) {
-    return instance.post(`/auth/set-new-password`, data);
+    debugger
+    return axios.post(`https://neko-back.herokuapp.com/2.0/auth/set-new-password`,
+      data, {withCredentials:true});
   },
   changeAvatar(data: UpdateUserType) {
     return instance.put("/auth/me", data);

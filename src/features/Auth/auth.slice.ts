@@ -79,7 +79,7 @@ export const forgotPasswordTC = createAppAsyncThunk("Auth/forgot", async (email:
     "test-front-admin",
     `<div style="background-color: lime; padding: 15px">
 password recovery link: 
-<a href="http://localhost:3000/set-new-password/$token$">
+<a href="https://alexsuslin9021.github.io/set-new-password/$token$">
 link</a>
 </div>`
   );
@@ -95,6 +95,7 @@ export const initializedTC = createAppAsyncThunk("/new/pass", async (arg, thunkA
   }
 });
 export const authThunks = { registerTC, loginTC, createNewPasswordTC, forgotPasswordTC, initializedTC };
+
 const slice = createSlice({
   name: "auth",
   initialState: authInitialState,
@@ -112,7 +113,7 @@ const slice = createSlice({
       state.isLoggedIn = false;
     });
     builder.addCase(forgotPasswordTC.fulfilled, (state, action:PayloadAction<{success:boolean}>) => {
-      state.responseForgot= action.payload.success
+      state.responseForgot= true
     });
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;

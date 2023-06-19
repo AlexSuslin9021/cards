@@ -24,6 +24,7 @@ export const FormTest: FC<formT> = ({ defaultValues, children, callback }) => {
   const methods = useForm({ defaultValues });
   const { handleSubmit } = methods;
   const onSubmit: SubmitHandler<DefaultValueType> = (data) => dispatch(callback(data));
+  debugger
   return (
     <form className={s.formContainer} onSubmit={handleSubmit(onSubmit)}>
       {React.Children.map(children, (child) => {
