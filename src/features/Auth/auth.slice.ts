@@ -79,7 +79,7 @@ export const forgotPasswordTC = createAppAsyncThunk("Auth/forgot", async (email:
     "test-front-admin",
     `<div style="background-color: lime; padding: 15px">
 password recovery link: 
-<a href='https://alexsuslin9021.github.io/set-new-password/$token'>
+<a href='https://alexsuslin9021.github.io/set-new-password/$token$'>
 link</a>
 </div>`
   );
