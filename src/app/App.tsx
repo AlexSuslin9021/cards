@@ -42,8 +42,7 @@ function App() {
 
       <div className={s.container}>
         <Routes>
-          <Route path={"/cards"} element={<Profile />} />
-          <Route path={"/"} element={<Navigate to="/cards"/>} />
+          <Route path={"/"} element={<Profile />} />
           <Route path={"/packs/:section"} element={<Pack />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/register"} element={<Register />} />
