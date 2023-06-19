@@ -10,7 +10,7 @@ export const InputModal: React.FC<InputType> = ({ value }) => {
     setField("");
   };
   return (
-    <span className={s.input}>
+    <span className={s.inputContainer}>
       <input value={field} onChange={onChangeAnswer} type="text" />
     </span>
   );

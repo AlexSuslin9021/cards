@@ -15,7 +15,7 @@ export const UpdatePackModal: React.FC<UpdateModalType> = ({ id, src, name, deck
       <div className={s.icon}>
         <img style={{ width: "40px", height: "40px" }} src={src ? src : cover} alt="" />
       </div>
-      <div className={s.input}>
+      <div className={s.inputContainer}>
         <div>
           <input value={value} onChange={onChangeHandler} />
         </div>

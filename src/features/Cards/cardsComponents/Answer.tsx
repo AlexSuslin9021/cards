@@ -7,7 +7,7 @@ export const Answer: React.FC<AnswerType> = ({ answer, setAnswer }) => {
     setAnswer(e.currentTarget.value);
   };
   return (
-    <div className={s.input}>
+    <div className={s.inputContainer}>
       <label>Answger</label>
       <input value={answer} onChange={onChangeAnswer} type="text" />
     </div>

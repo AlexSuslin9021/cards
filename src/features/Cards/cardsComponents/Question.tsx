@@ -7,7 +7,7 @@ export const Question: React.FC<AnswerType> = ({ question, setQuestion }) => {
     setQuestion(e.currentTarget.value);
   };
   return (
-    <div className={s.input}>
+    <div className={s.inputContainer}>
       <label>Question</label>
       <input value={question} onChange={onChangeQuestion} type="text" />
     </div>

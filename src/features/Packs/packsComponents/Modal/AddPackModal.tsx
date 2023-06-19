@@ -8,7 +8,7 @@ export const AddPackModal = () => {
   const { value, onChangeHandler, onClickAddModal, setFile } = useModal("", "", "");
   return (
     <BasicModal header={"Add new Pack"} name={"Add new Pack"} callback={onClickAddModal}>
-      <div className={s.input}>
+      <div className={s.inputContainer}>
         <label>Pack name</label>
         <input value={value} onChange={onChangeHandler} type="text" />
       </div>

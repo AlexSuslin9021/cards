@@ -19,9 +19,10 @@ export const useModal = (answerUpdate: string, questionUpdate: string) => {
     debugger;
     dispatch(cardsThunks.addCard({ card: { cardsPack_id: cardsPack_id, answer: answer, question: question } }));
     setAnswer("");
+    setQuestion('')
     setValue("");
     setValue1("");
-    navigate(`/cards/${params.idCard}`);
+    // navigate(`/cardsPage/${params.idCard}`);
   };
   const handleChangeQuestion = (e: SelectChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
