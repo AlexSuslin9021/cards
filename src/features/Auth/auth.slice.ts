@@ -10,11 +10,14 @@ import {
 import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
 import { appActions } from "app/app.slice";
 import { thunkTryCatch } from "common/utils/thunkTryCatch";
+import { toast } from "react-toastify";
+import success = toast.success;
 
 const authInitialState = {
   profile: null as ProfileType | null,
   isLoggedIn: false,
   isInitialized: false,
+  responseForgot:false
 };
 
 //TC
@@ -108,8 +111,8 @@ const slice = createSlice({
     builder.addCase(logoutTC.fulfilled, (state, action) => {
       state.isLoggedIn = false;
     });
-    builder.addCase(forgotPasswordTC.fulfilled, (state, action) => {
-      state.isLoggedIn = true;
+    builder.addCase(forgotPasswordTC.fulfilled, (state, action:PayloadAction<{success:boolean}>) => {
+      state.responseForgot= action.payload.success
     });
     builder.addCase(updateUserTC.fulfilled, (state, action) => {
       if (state.profile !== null) state.profile = action.payload.profile;

@@ -12,7 +12,7 @@ import { FormTest } from "common/component/Form/Form";
 import style from "../../../common/styles/container.module.scss";
 
 export const ForgotPassword = () => {
-  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.isLoggedIn);
+  const isLoggedIn = useAppSelector<boolean>((state) => state.auth.responseForgot);
 
   if (isLoggedIn) {
     return <Navigate to={"/check-email"} />;

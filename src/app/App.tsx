@@ -17,6 +17,7 @@ import { CircularProgress, LinearProgress } from "@mui/material";
 import { Pack } from "features/Packs/Pack";
 import { Cards } from "features/Cards/Cards";
 import { Learn } from "features/Learn/Learn";
+import {Error} from "common/component/Error/Error";
 
 function App() {
   const isLoggedInApp = useAppSelector<boolean>((state) => state.app.isLoggedIn);
@@ -51,6 +52,7 @@ function App() {
           <Route path={"/page-pack/:name/:idCard"} element={<PagePack />} />
           <Route path={"/cardsPage/:id"} element={<Cards />} />
           <Route path={"/learn/:packName"} element={<Learn />} />
+          <Route path={"*"} element={<Error/>} />
         </Routes>
       </div>
     </div>

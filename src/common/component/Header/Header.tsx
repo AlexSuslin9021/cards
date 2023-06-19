@@ -3,7 +3,6 @@ import s from "common/component/Header/Header.module.scss";
 import { Button } from "common/component/Button/Button";
 import { useLocation } from "react-router-dom";
 import { ProfilePhoto } from "common/component/Avatar/ProfilePhoto/ProfilePhoto";
-
 import { useProfile } from "common/hooks/useProfile";
 import { HeaderModal } from "common/component/MenuModal/HeaderModal";
 
