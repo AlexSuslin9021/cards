@@ -35,7 +35,7 @@ export const TablePacks = () => {
                   <img style={{ width: "30px", height: "30px" }} src={el.deckCover ? el.deckCover : cover} alt="" />
                 </TableCell>
                 <TableCell sx={styleTableBody}>
-                  <span onClick={() => onClickNamePack(el.name, el.cardsCount, el.user_id, el._id)}> {el.name}</span>
+                  <span className={s1.name} onClick={() => onClickNamePack(el.name, el.cardsCount, el.user_id, el._id)}> {el.name}</span>
                 </TableCell>
                 <TableCell sx={styleTableBody}>{el.cardsCount}</TableCell>
                 <TableCell sx={styleTableBody}>{el.updated}</TableCell>
