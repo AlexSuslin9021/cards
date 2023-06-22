@@ -16,8 +16,13 @@ const Login = () => {
     return <Navigate to={"/"} />;
   }
 
-  return (
+  return (<div>
+
+  <p className={s.p}>Email: alexsuslin@inbox.ru</p>
+  <p className={s.p}>Password: 1234qwer</p>
     <div className={style.container}>
+
+
       <Title name={"Sign in"} />
       <FormTest callback={authThunks.loginTC} defaultValues={{ email: "", password: "", rememberMe: false }}>
         <Input name={"email"} placeholder={"Email"} />
@@ -30,6 +35,7 @@ const Login = () => {
         <Hint description={"Don't have an account?"} />
         <BottomAuth name={"Sign up"} to={"/register"} />
       </FormTest>
+    </div>
     </div>
   );
 };
