@@ -1,6 +1,4 @@
-import { createSlice, Dispatch, PayloadAction } from "@reduxjs/toolkit";
-import { createAppAsyncThunk } from "common/utils/createAppAsyncThunk";
-import { authApi } from "features/Auth/auth.api";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const appInitialState = {
   error: null as string | null,
