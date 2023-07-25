@@ -25,8 +25,8 @@ export const Profile = () => {
       <EditableSpan />
       <div className={s.email}> {email}</div>
 
-      <div className={s.button} onClick={onClickLogout}>
-        <IconModal value={"Logout"} src={logout} />
+      <div className={s.buttonBlock} onClick={onClickLogout}>
+       <button className={s.button}><IconModal value={"Logout"} src={logout} /></button>
       </div>
     </div>
   );

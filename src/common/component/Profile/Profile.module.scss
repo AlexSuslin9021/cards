@@ -33,9 +33,11 @@ text-align: center;
     opacity: 0.5;
   text-align: center;
   }
-
+.buttonBlock {
+  width: 100%;
+  text-align: center;
   .button {
-display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 127px;
@@ -46,11 +48,13 @@ display: flex;
     border-radius: 30px;
     margin-bottom: 36px;
     margin-top: 19px;
-img{}
+
+    img {
+    }
 
     &:hover {
       background: lavender;
     }
   }
-
+}
 
